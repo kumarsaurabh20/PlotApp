@@ -1,0 +1,5 @@
+class PlottingController < ApplicationController
+  def index
+  end
+
+end

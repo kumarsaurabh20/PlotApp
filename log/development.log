@@ -1,0 +1,463 @@
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2013-05-27 16:29:23) [GET]
+  [4;36;1mSCHEMA (0.3ms)[0m   [0;1mSHOW TABLES [0m
+  [4;35;1mSCHEMA (0.2ms)[0m   [0mSHOW TABLES [0m
+Completed in 22ms (View: 2, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:17) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:20) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:20) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:20) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:20) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:21) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:21) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:21) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:21) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:21) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:21) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:22) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:22) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:22) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:22) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:42:22) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:45:15) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:45:16) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:45:16) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:45:17) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:45:33) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:47:42) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:47:45) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-05-27 16:48:01) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-05-27 16:49:22) [GET]
+  [4;36;1mPlot Load (0.0ms)[0m   [0;1mMysql2::Error: Table 'plotter.plots' doesn't exist: SELECT * FROM `plots` [0m
+
+ActiveRecord::StatementInvalid (Mysql2::Error: Table 'plotter.plots' doesn't exist: SELECT * FROM `plots` ):
+  /usr/local/rvm/gems/ruby-1.8.7-p371@uAqua/gems/activerecord-mysql2-adapter-0.0.3/lib/active_record/connection_adapters/mysql2_adapter.rb:265:in `execute'
+  /usr/local/rvm/gems/ruby-1.8.7-p371@uAqua/gems/activerecord-mysql2-adapter-0.0.3/lib/active_record/connection_adapters/mysql2_adapter.rb:615:in `select'
+  app/controllers/plots_controller.rb:24:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (49.6ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-05-27 16:50:49) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 63ms (View: 62, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-05-27 16:50:50) [GET]
+  Parameters: {"id"=>"show_image"}
+Rendering template within layouts/plots
+Rendering plots/show
+Completed in 4ms (View: 3, DB: 0) | 200 OK [http://localhost/plots/show_image]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-05-27 21:14:33) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 72ms (View: 71, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-05-27 21:14:33) [GET]
+  Parameters: {"id"=>"show_image"}
+Rendering template within layouts/plots
+Rendering plots/show
+Completed in 4ms (View: 3, DB: 0) | 200 OK [http://localhost/plots/show_image]
