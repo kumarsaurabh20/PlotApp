@@ -9,10 +9,10 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
 
-  def InitR
-     @r = RSRuby.instance
-     return @r
-  end   
+  #def InitR
+  #   @r = RSRuby.instance
+  #   return @r
+  #end   
 
 
 
