@@ -3278,3 +3278,86 @@ Rendering template within layouts/plots
 Rendering plots/show
   [4;36;1mPlotImage Load (0.6ms)[0m   [0;1mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 1) [0m
 Completed in 15ms (View: 8, DB: 1) | 200 OK [http://localhost/plots/1]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 14:11:50) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPlot Load (0.3ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+Rendering template within layouts/plots
+Rendering plots/show
+  [4;36;1mPlotImage Load (0.3ms)[0m   [0;1mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 1) [0m
+Completed in 14ms (View: 9, DB: 1) | 200 OK [http://localhost/plots/1]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 18:56:24) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.6ms)[0m   [0mINSERT INTO `plots` (`created_at`, `updated_at`) VALUES('2013-07-05 16:56:24', '2013-07-05 16:56:24')[0m
+  [4;36;1mSQL (50.4ms)[0m   [0;1mCOMMIT[0m
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: identify -format %wx%h '/tmp/stream20130705-3851-11msiyj-0.png[0]'
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: convert '/tmp/stream20130705-3851-11msiyj-0.png[0]' -resize "300x300>" '/tmp/stream20130705-3851-11msiyj-020130705-3851-1vbhh0q-0'
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlotImage Create (0.4ms)[0m   [0;1mINSERT INTO `plot_images` (`graph_file_name`, `graph_file_size`, `plot_id`, `created_at`, `updated_at`, `graph_content_type`, `graph_updated_at`) VALUES('myplot.png', 3664, 2, '2013-07-05 16:56:25', '2013-07-05 16:56:25', 'image/png', '2013-07-05 16:56:24')[0m
+[paperclip] Saving attachments.
+[paperclip] saving /home/jarvis/PlotApp/public/graphs/2/original/myplot.png
+[paperclip] saving /home/jarvis/PlotApp/public/graphs/2/small/myplot.png
+  [4;35;1mSQL (53.6ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 877ms (View: 102, DB: 106) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 18:56:36) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.5ms)[0m   [0mINSERT INTO `plots` (`created_at`, `updated_at`) VALUES('2013-07-05 16:56:36', '2013-07-05 16:56:36')[0m
+  [4;36;1mSQL (32.4ms)[0m   [0;1mCOMMIT[0m
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: identify -format %wx%h '/tmp/stream20130705-3851-1jede5k-0.png[0]'
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: convert '/tmp/stream20130705-3851-1jede5k-0.png[0]' -resize "300x300>" '/tmp/stream20130705-3851-1jede5k-020130705-3851-1y22pj4-0'
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlotImage Create (0.3ms)[0m   [0;1mINSERT INTO `plot_images` (`graph_file_name`, `graph_file_size`, `plot_id`, `created_at`, `updated_at`, `graph_content_type`, `graph_updated_at`) VALUES('myplot.png', 3931, 3, '2013-07-05 16:56:36', '2013-07-05 16:56:36', 'image/png', '2013-07-05 16:56:36')[0m
+[paperclip] Saving attachments.
+[paperclip] saving /home/jarvis/PlotApp/public/graphs/3/original/myplot.png
+[paperclip] saving /home/jarvis/PlotApp/public/graphs/3/small/myplot.png
+  [4;35;1mSQL (39.4ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 444ms (View: 1, DB: 73) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 18:56:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPlot Load (0.4ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+Rendering template within layouts/plots
+Rendering plots/show
+  [4;35;1mPlotImage Load (0.4ms)[0m   [0mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 1) [0m
+Completed in 33ms (View: 27, DB: 1) | 200 OK [http://localhost/plots/1]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 18:56:44) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mPlot Load (0.5ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 2) [0m
+Rendering template within layouts/plots
+Rendering plots/show
+  [4;35;1mPlotImage Load (0.5ms)[0m   [0mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 2) [0m
+Completed in 11ms (View: 6, DB: 1) | 200 OK [http://localhost/plots/2]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 18:57:17) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mPlot Load (0.2ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 2) [0m
+Rendering template within layouts/plots
+Rendering plots/show
+  [4;35;1mPlotImage Load (0.4ms)[0m   [0mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 2) [0m
+Completed in 67ms (View: 62, DB: 1) | 200 OK [http://localhost/plots/2]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 18:58:00) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mPlot Load (0.3ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 2) [0m
+Rendering template within layouts/plots
+Rendering plots/show
+  [4;35;1mPlotImage Load (0.3ms)[0m   [0mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 2) [0m
+Completed in 26ms (View: 20, DB: 1) | 200 OK [http://localhost/plots/2]
