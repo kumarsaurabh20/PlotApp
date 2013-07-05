@@ -1421,3 +1421,1860 @@ Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 10:58:18) [GET]
 Rendering template within layouts/plots
 Rendering plots/index
 Completed in 243ms (View: 9, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 16:26:01) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 302ms (View: 81, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 16:28:20) [GET]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 16:30:31) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 193ms (View: 7, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 16:42:51) [GET]
+
+RinRuby::ParseError (Parse error on eval:      x <- rnorm(5)"
+      summary(x)
+      sd(x)     
+):
+  rinruby (2.0.3) lib/rinruby.rb:248:in `eval'
+  app/controllers/plots_controller.rb:11:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (21.9ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 16:43:14) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 164ms (View: 2, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 16:45:10) [GET]
+
+RuntimeError (Unsupported data type on R's end):
+  rinruby (2.0.3) lib/rinruby.rb:683:in `pull_engine'
+  rinruby (2.0.3) lib/rinruby.rb:467:in `pull'
+  app/controllers/plots_controller.rb:19:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (21.5ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 16:47:02) [GET]
+
+RuntimeError (Unsupported data type on R's end):
+  rinruby (2.0.3) lib/rinruby.rb:683:in `pull_engine'
+  rinruby (2.0.3) lib/rinruby.rb:467:in `pull'
+  app/controllers/plots_controller.rb:19:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (23.8ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:09:41) [GET]
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.length):
+  rinruby (2.0.3) lib/rinruby.rb:468:in `pull'
+  app/controllers/plots_controller.rb:21:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (23.8ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:10:34) [GET]
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.length):
+  rinruby (2.0.3) lib/rinruby.rb:468:in `pull'
+  app/controllers/plots_controller.rb:21:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (51.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:16:34) [GET]
+
+NameError (undefined local variable or method `rb' for #<PlotsController:0x7fb26a9f62e8>):
+  app/controllers/plots_controller.rb:24:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (18.8ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:16:36) [GET]
+
+NameError (undefined local variable or method `rb' for #<PlotsController:0x7fb26a827ef8>):
+  app/controllers/plots_controller.rb:24:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (48.9ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:17:00) [GET]
+Sending data 
+Completed in 162ms (View: 2, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:19:55) [GET]
+Sending data 
+Completed in 155ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:19:58) [GET]
+Sending data 
+Completed in 146ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:19:59) [GET]
+Sending data 
+Completed in 147ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:21:12) [GET]
+Sending data 
+Completed in 93ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:21:18) [GET]
+Sending data 
+Completed in 153ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:21:41) [GET]
+Sending data 
+Completed in 137ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:21:42) [GET]
+Sending data 
+Completed in 146ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:21:43) [GET]
+Sending data 
+Completed in 132ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:21:45) [GET]
+Sending data 
+Completed in 129ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:21:47) [GET]
+Sending data 
+Completed in 137ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:21:48) [GET]
+Sending data 
+Completed in 132ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:21:50) [GET]
+Sending data 
+Completed in 150ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:21:51) [GET]
+Sending data 
+Completed in 126ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:21:52) [GET]
+Sending data 
+Completed in 151ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:21:54) [GET]
+Sending data 
+Completed in 160ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:22:08) [GET]
+Sending data 
+Completed in 156ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:22:41) [GET]
+Sending data 
+Completed in 132ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:22:42) [GET]
+Sending data 
+Completed in 154ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:22:44) [GET]
+Sending data 
+Completed in 146ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:22:46) [GET]
+Sending data 
+Completed in 127ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:23:28) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 143ms (View: 11, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:24:18) [GET]
+Sending data 
+Completed in 162ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:29:28) [GET]
+
+NameError (undefined local variable or method `attachments' for #<PlotsController:0x7fc3056cbec8>):
+  app/controllers/plots_controller.rb:24:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (19.5ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:37:35) [GET]
+
+NameError (undefined local variable or method `file' for #<PlotsController:0x7fc3054d8d28>):
+  app/controllers/plots_controller.rb:25:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (19.8ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:37:57) [GET]
+Sending data 
+Completed in 145ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:38:17) [GET]
+Sending data 
+Completed in 155ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:38:45) [GET]
+Sending data 
+
+NoMethodError (undefined method `bytesize' for #<File:/tmp/myplot.png>):
+  app/controllers/plots_controller.rb:25:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (50.5ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:42:38) [GET]
+Sending data 
+
+NoMethodError (undefined method `bytesize' for #<File:/tmp/myplot.png>):
+  app/controllers/plots_controller.rb:25:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (21.1ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:42:39) [GET]
+Sending data 
+
+NoMethodError (undefined method `bytesize' for #<File:/tmp/myplot.png>):
+  app/controllers/plots_controller.rb:25:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (20.4ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:42:56) [GET]
+Sending data 
+Completed in 124ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:42:58) [GET]
+Sending data 
+Completed in 170ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:43:00) [GET]
+Sending data 
+Completed in 145ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:50:38) [GET]
+Sending data 
+Completed in 147ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:51:05) [GET]
+Sending data 
+Completed in 152ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:51:07) [GET]
+Sending data 
+Completed in 142ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:51:08) [GET]
+Sending data 
+Completed in 145ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:51:09) [GET]
+Sending data 
+Completed in 146ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:51:26) [GET]
+Sending data 
+Completed in 127ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:51:28) [GET]
+Sending data 
+Completed in 156ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-03 18:51:29) [GET]
+Sending data 
+Completed in 151ms (View: 0, DB: 0) | 200 OK [http://localhost/]
+  [4;36;1mSCHEMA (0.5ms)[0m   [0;1mSHOW TABLES [0m
+  [4;35;1mSQL (89.9ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `schema_migrations`[0m
+  [4;35;1mSQL (164.7ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSCHEMA (0.4ms)[0m   [0;1mSHOW TABLES [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreatePlots (20130527143158)
+  [4;36;1mSQL (73.1ms)[0m   [0;1mCREATE TABLE `plots` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (24.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20130527143158')[0m
+Migrating to AddAttachmentsGraphToPlot (20130704172102)
+  [4;36;1mSQL (129.9ms)[0m   [0;1mALTER TABLE `plots` ADD `graph_file_name` varchar(255)[0m
+  [4;35;1mSQL (132.0ms)[0m   [0mALTER TABLE `plots` ADD `graph_content_type` varchar(255)[0m
+  [4;36;1mSQL (148.6ms)[0m   [0;1mALTER TABLE `plots` ADD `graph_file_size` int(11)[0m
+  [4;35;1mSQL (164.8ms)[0m   [0mALTER TABLE `plots` ADD `graph_updated_at` datetime[0m
+  [4;36;1mSQL (32.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20130704172102')[0m
+  [4;35;1mSCHEMA (0.6ms)[0m   [0mSHOW TABLES [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSCHEMA (0.4ms)[0m   [0mSHOW TABLES [0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `plots`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `plots`[0m
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 19:53:02) [GET]
+
+NoMethodError (undefined method `save' for #<String:0x7f71907b95b8>):
+  app/controllers/plots_controller.rb:25:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (20.0ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSCHEMA (0.7ms)[0m   [0;1mSHOW TABLES [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSCHEMA (0.4ms)[0m   [0;1mSHOW TABLES [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddAttachmentsGraphToPlot (20130704172102)
+  [4;36;1mSQL (146.1ms)[0m   [0;1mALTER TABLE `plots` DROP `graph_file_name`[0m
+  [4;35;1mSQL (156.7ms)[0m   [0mALTER TABLE `plots` DROP `graph_content_type`[0m
+  [4;36;1mSQL (165.0ms)[0m   [0;1mALTER TABLE `plots` DROP `graph_file_size`[0m
+  [4;35;1mSQL (148.5ms)[0m   [0mALTER TABLE `plots` DROP `graph_updated_at`[0m
+  [4;36;1mSQL (24.1ms)[0m   [0;1mDELETE FROM schema_migrations WHERE version = '20130704172102'[0m
+  [4;35;1mSCHEMA (0.6ms)[0m   [0mSHOW TABLES [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSCHEMA (0.5ms)[0m   [0mSHOW TABLES [0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `plots`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `plots`[0m
+  [4;36;1mSCHEMA (0.7ms)[0m   [0;1mSHOW TABLES [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreatePlots (20130527143158)
+Migrating to AddAttachmentsGraphToPlot (20130704172102)
+  [4;36;1mSQL (153.5ms)[0m   [0;1mALTER TABLE `plots` ADD `graph_file_name` varchar(255)[0m
+  [4;35;1mSQL (132.1ms)[0m   [0mALTER TABLE `plots` ADD `graph_content_type` varchar(255)[0m
+  [4;36;1mSQL (140.6ms)[0m   [0;1mALTER TABLE `plots` ADD `graph_file_size` int(11)[0m
+  [4;35;1mSQL (166.9ms)[0m   [0mALTER TABLE `plots` ADD `graph_updated_at` datetime[0m
+  [4;36;1mSQL (32.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20130704172102')[0m
+Migrating to CreatePlotImages (20130704180144)
+  [4;35;1mSQL (71.5ms)[0m   [0mCREATE TABLE `plot_images` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (32.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20130704180144')[0m
+Migrating to AddAttachmentsGraphToPlotImage (20130704180249)
+  [4;35;1mSQL (137.7ms)[0m   [0mALTER TABLE `plot_images` ADD `graph_file_name` varchar(255)[0m
+  [4;36;1mSQL (131.9ms)[0m   [0;1mALTER TABLE `plot_images` ADD `graph_content_type` varchar(255)[0m
+  [4;35;1mSQL (132.0ms)[0m   [0mALTER TABLE `plot_images` ADD `graph_file_size` int(11)[0m
+  [4;36;1mSQL (131.9ms)[0m   [0;1mALTER TABLE `plot_images` ADD `graph_updated_at` datetime[0m
+  [4;35;1mSQL (24.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20130704180249')[0m
+  [4;36;1mSCHEMA (0.7ms)[0m   [0;1mSHOW TABLES [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSCHEMA (0.5ms)[0m   [0;1mSHOW TABLES [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `plot_images`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `plot_images`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `plots`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `plots`[0m
+  [4;36;1mSCHEMA (0.5ms)[0m   [0;1mSHOW TABLES [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreatePlots (20130527143158)
+Migrating to AddAttachmentsGraphToPlot (20130704172102)
+Migrating to CreatePlotImages (20130704180144)
+Migrating to AddAttachmentsGraphToPlotImage (20130704180249)
+Migrating to AddPlotIdToPlotImage (20130704180918)
+  [4;36;1mSQL (38.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20130704180918')[0m
+  [4;35;1mSCHEMA (0.6ms)[0m   [0mSHOW TABLES [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSCHEMA (0.3ms)[0m   [0mSHOW TABLES [0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `plot_images`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `plot_images`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `plots`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `plots`[0m
+  [4;36;1mSCHEMA (0.6ms)[0m   [0;1mSHOW TABLES [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreatePlots (20130527143158)
+Migrating to AddAttachmentsGraphToPlot (20130704172102)
+Migrating to CreatePlotImages (20130704180144)
+Migrating to AddAttachmentsGraphToPlotImage (20130704180249)
+Migrating to AddPlotIdToPlotImage (20130704181415)
+  [4;36;1mSQL (199.9ms)[0m   [0;1mALTER TABLE `plot_images` ADD `plot_id` int(11)[0m
+  [4;35;1mSQL (32.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20130704181415')[0m
+  [4;36;1mSCHEMA (0.6ms)[0m   [0;1mSHOW TABLES [0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSCHEMA (0.5ms)[0m   [0;1mSHOW TABLES [0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `plot_images`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `plot_images`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `plots`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `plots`[0m
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 20:46:05) [GET]
+
+NoMethodError (undefined method `save' for #<String:0x7f71905b9f38>):
+  app/controllers/plots_controller.rb:25:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (51.8ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 20:49:39) [GET]
+
+NoMethodError (undefined method `plot_images' for #<String:0x7f719083d7a0>):
+  app/controllers/plots_controller.rb:25:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (19.0ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 20:50:57) [GET]
+
+NoMethodError (undefined method `stringify_keys!' for #<String:0x7f71905ff330>):
+  app/controllers/plots_controller.rb:24:in `new'
+  app/controllers/plots_controller.rb:24:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (55.4ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 20:51:34) [GET]
+
+NoMethodError (undefined method `plot_images' for #<String:0x7f7190866588>):
+  app/controllers/plots_controller.rb:25:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (22.1ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 21:00:40) [GET]
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.[]):
+  app/controllers/plots_controller.rb:25:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (58.9ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 21:01:58) [GET]
+
+NoMethodError (undefined method `graph' for #<String:0x7f71908f8258>):
+  app/controllers/plots_controller.rb:25:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (18.5ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 21:02:23) [GET]
+
+NoMethodError (undefined method `object' for #<String:0x7f71906df6d8>):
+  app/controllers/plots_controller.rb:25:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (57.7ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 21:02:40) [GET]
+
+NoMethodError (undefined method `plot_images' for #<String:0x7f71909b11b8>):
+  app/controllers/plots_controller.rb:25:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (23.2ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 21:03:39) [GET]
+
+NameError (uninitialized constant PlotsController::Attachment):
+  app/controllers/plots_controller.rb:26:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (21.1ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 21:23:11) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 103ms (View: 102, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 21:24:42) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 21:24:43) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 21:24:44) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:15:17) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:15:18) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:15:24) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:15:25) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 1ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:16:13) [GET]
+
+NoMethodError (undefined method `graph=' for #<String:0x7f71909b4c00>):
+  app/controllers/plots_controller.rb:25:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (24.8ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:16:34) [GET]
+
+NoMethodError (undefined method `plot_images' for #<String:0x7f719074af28>):
+  app/controllers/plots_controller.rb:25:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (18.4ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:17:08) [GET]
+
+NoMethodError (undefined method `plot_images' for #<String:0x7f7190a1c490>):
+  app/controllers/plots_controller.rb:27:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (21.2ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-07-04 22:21:40) [GET]
+
+SyntaxError (/home/jarvis/PlotApp/app/controllers/plots_controller.rb:30: syntax error, unexpected tSTRING_BEG, expecting ')'
+...> File.open(""/tmp/myplot.png", "rb""))
+                              ^
+/home/jarvis/PlotApp/app/controllers/plots_controller.rb:30: syntax error, unexpected tIDENTIFIER, expecting kEND
+...e.open(""/tmp/myplot.png", "rb""))
+                              ^
+/home/jarvis/PlotApp/app/controllers/plots_controller.rb:30: syntax error, unexpected ')', expecting kEND
+...pen(""/tmp/myplot.png", "rb""))
+                              ^):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (17.8ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:22:02) [GET]
+
+NameError (uninitialized constant PlotsController::Attachment):
+  app/controllers/plots_controller.rb:30:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (58.6ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:22:26) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:24:04) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:24:05) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:25:29) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:25:55) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:25:56) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:26:29) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:27:24) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-04 22:27:50) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:00:58) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 87ms (View: 86, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:02:45) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:04:33) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:04:34) [GET]
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 3ms (View: 2, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:04:49) [GET]
+
+NoMethodError (undefined method `graph=' for #<String:0x7f296dd9a5d8>):
+  app/controllers/plots_controller.rb:33:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (19.3ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:05:12) [GET]
+
+NoMethodError (undefined method `plot_images' for #<String:0x7f296dafe018>):
+  app/controllers/plots_controller.rb:33:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (25.2ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:09:23) [GET]
+
+NoMethodError (undefined method `graph=' for #<Plot id: nil, created_at: nil, updated_at: nil>):
+  app/controllers/plots_controller.rb:32:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (22.0ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:10:40) [GET]
+
+NoMethodError (undefined method `graph=' for #<Plot id: nil, created_at: nil, updated_at: nil>):
+  app/controllers/plots_controller.rb:33:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (25.3ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:10:42) [GET]
+
+NoMethodError (undefined method `graph=' for #<Plot id: nil, created_at: nil, updated_at: nil>):
+  app/controllers/plots_controller.rb:33:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (24.0ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:11:27) [GET]
+  [4;36;1mSCHEMA (0.4ms)[0m   [0;1mSHOW TABLES [0m
+
+NoMethodError (undefined method `graph=' for #<Class:0x7f296db20690>):
+  app/controllers/plots_controller.rb:33:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+  [4;35;1mSCHEMA (0.3ms)[0m   [0mSHOW TABLES [0m
+Rendered rescues/_trace (63.2ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:12:18) [GET]
+
+ActiveRecord::AssociationTypeMismatch (PlotImage(#69907956493000) expected, got String(#69908006429700)):
+  app/controllers/plots_controller.rb:33:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (21.8ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:14:23) [GET]
+
+ActiveRecord::AssociationTypeMismatch (PlotImage(#69907955163760) expected, got String(#69908006429700)):
+  app/controllers/plots_controller.rb:33:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (56.2ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:15:18) [GET]
+
+ActiveRecord::AssociationTypeMismatch (PlotImage(#69907956087320) expected, got String(#69908006429700)):
+  app/controllers/plots_controller.rb:33:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (21.5ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-07-05 12:17:21) [GET]
+
+SyntaxError (/home/jarvis/PlotApp/app/controllers/plots_controller.rb:34: syntax error, unexpected tIVAR, expecting ')'
+     @plot.save
+          ^):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (53.5ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-07-05 12:18:28) [GET]
+
+SyntaxError (/home/jarvis/PlotApp/app/controllers/plots_controller.rb:30: syntax error, unexpected tIVAR, expecting ')'
+     @plot.plot_images.save
+          ^):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (21.7ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:28:37) [GET]
+
+NameError (uninitialized constant PlotsController::Attachment):
+  app/controllers/plots_controller.rb:29:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (53.0ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:29:24) [GET]
+
+ActiveRecord::RecordNotSaved (You cannot call create unless the parent is saved):
+  app/controllers/plots_controller.rb:29:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (21.6ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (unprocessable_entity)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:30:01) [GET]
+
+NoMethodError (Attempt to call private method):
+  app/controllers/plots_controller.rb:29:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (54.4ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:30:49) [GET]
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/plots_controller.rb:28:in `params'
+  app/controllers/plots_controller.rb:28:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (22.2ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:31:09) [GET]
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/plots_controller.rb:28:in `params'
+  app/controllers/plots_controller.rb:28:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (25.0ms)
+Rendered rescues/_request_and_response (5.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:31:11) [GET]
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/plots_controller.rb:28:in `params'
+  app/controllers/plots_controller.rb:28:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (21.9ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:31:47) [GET]
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/plots_controller.rb:28:in `params'
+  app/controllers/plots_controller.rb:28:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (27.8ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:31:50) [GET]
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/plots_controller.rb:28:in `params'
+  app/controllers/plots_controller.rb:28:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (24.5ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:31:51) [GET]
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/plots_controller.rb:28:in `params'
+  app/controllers/plots_controller.rb:28:in `index'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (19.3ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:32:26) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.7ms)[0m   [0mINSERT INTO `plots` (`created_at`, `updated_at`) VALUES('2013-07-05 10:32:26', '2013-07-05 10:32:26')[0m
+  [4;36;1mSQL (28.0ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 175ms (View: 2, DB: 29) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-07-05 12:36:46) [GET]
+
+SyntaxError (/home/jarvis/PlotApp/app/controllers/plots_controller.rb:28: syntax error, unexpected tASSOC, expecting tCOLON2 or '[' or '.'
+     @plot.plot_images, :graph => File.open("/tmp/myplot.png", "rb")
+                                 ^):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (18.3ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:50:55) [GET]
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.6ms)[0m   [0;1mINSERT INTO `plots` (`created_at`, `updated_at`) VALUES('2013-07-05 10:50:55', '2013-07-05 10:50:55')[0m
+  [4;35;1mSQL (36.8ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 176ms (View: 2, DB: 38) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:53:38) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.6ms)[0m   [0mINSERT INTO `plots` (`created_at`, `updated_at`) VALUES('2013-07-05 10:53:39', '2013-07-05 10:53:39')[0m
+  [4;36;1mSQL (40.4ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 233ms (View: 36, DB: 41) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:54:37) [GET]
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.6ms)[0m   [0;1mINSERT INTO `plots` (`created_at`, `updated_at`) VALUES('2013-07-05 10:54:37', '2013-07-05 10:54:37')[0m
+  [4;35;1mSQL (29.7ms)[0m   [0mCOMMIT[0m
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: identify -format %wx%h '/tmp/stream20130705-2491-1kb7a5e-0.png[0]'
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: convert '/tmp/stream20130705-2491-1kb7a5e-0.png[0]' -resize "150x150>" '/tmp/stream20130705-2491-1kb7a5e-020130705-2491-1uvdlt-0'
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlotImage Create (0.4ms)[0m   [0mINSERT INTO `plot_images` (`plot_id`, `graph_file_size`, `created_at`, `updated_at`, `graph_updated_at`, `graph_file_name`, `graph_content_type`) VALUES(4, 3830, '2013-07-05 10:54:38', '2013-07-05 10:54:38', '2013-07-05 10:54:37', 'myplot.png', 'image/png')[0m
+[paperclip] Saving attachments.
+[paperclip] saving /home/jarvis/PlotApp/public/graphs/1/small/myplot.png
+[paperclip] saving /home/jarvis/PlotApp/public/graphs/1/original/myplot.png
+  [4;36;1mSQL (36.5ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 674ms (View: 3, DB: 68) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 12:55:49) [GET]
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.6ms)[0m   [0;1mINSERT INTO `plots` (`created_at`, `updated_at`) VALUES('2013-07-05 10:55:49', '2013-07-05 10:55:49')[0m
+  [4;35;1mSQL (28.9ms)[0m   [0mCOMMIT[0m
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: identify -format %wx%h '/tmp/stream20130705-2491-coilol-0.png[0]'
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: convert '/tmp/stream20130705-2491-coilol-0.png[0]' -resize "150x150>" '/tmp/stream20130705-2491-coilol-020130705-2491-1mbqc6i-0'
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlotImage Create (0.5ms)[0m   [0mINSERT INTO `plot_images` (`plot_id`, `graph_file_size`, `created_at`, `updated_at`, `graph_updated_at`, `graph_file_name`, `graph_content_type`) VALUES(5, 3611, '2013-07-05 10:55:49', '2013-07-05 10:55:49', '2013-07-05 10:55:49', 'myplot.png', 'image/png')[0m
+[paperclip] Saving attachments.
+[paperclip] saving /home/jarvis/PlotApp/public/graphs/2/small/myplot.png
+[paperclip] saving /home/jarvis/PlotApp/public/graphs/2/original/myplot.png
+  [4;36;1mSQL (32.3ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 404ms (View: 2, DB: 63) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 12:56:14) [GET]
+  Parameters: {"id"=>"4"}
+Rendering template within layouts/plots
+Rendering plots/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #7 of app/views/plots/show.html.erb:
+4: 
+5: <div class="field num">
+6:       <b>Image:</b><br />
+7:       <% @plot.each do |image| %>
+8:       <% unless image.new_record? || !image.graph? %>
+9: 
+10:      <%= link_to( image_tag(image.graph.url(:small)), image.graph.url(:original)) %>
+
+    app/views/plots/show.html.erb:7
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (64.3ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 12:56:23) [GET]
+  Parameters: {"id"=>"5"}
+Rendering template within layouts/plots
+Rendering plots/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #7 of app/views/plots/show.html.erb:
+4: 
+5: <div class="field num">
+6:       <b>Image:</b><br />
+7:       <% @plot.each do |image| %>
+8:       <% unless image.new_record? || !image.graph? %>
+9: 
+10:      <%= link_to( image_tag(image.graph.url(:small)), image.graph.url(:original)) %>
+
+    app/views/plots/show.html.erb:7
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (23.1ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 12:57:14) [GET]
+  Parameters: {"id"=>"5"}
+Rendering template within layouts/plots
+Rendering plots/show
+
+ActionView::TemplateError (undefined local variable or method `image' for #<ActionView::Base:0x7f296de1f918>) on line #7 of app/views/plots/show.html.erb:
+4: 
+5: <div class="field num">
+6:       <b>Image:</b><br />      
+7:      <%= link_to( image_tag(image.graph.url(:small)), image.graph.url(:original)) %>
+8:   </div>
+
+    app/views/plots/show.html.erb:7
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (23.1ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 12:57:37) [GET]
+  Parameters: {"id"=>"5"}
+Rendering template within layouts/plots
+Rendering plots/show
+
+ActionView::TemplateError (undefined method `graph' for nil:NilClass) on line #7 of app/views/plots/show.html.erb:
+4: 
+5: <div class="field num">
+6:       <b>Image:</b><br />      
+7:      <%= link_to( image_tag(@plot.graph.url(:small)), @plot.graph.url(:original)) %>
+8:   </div>
+
+    app/views/plots/show.html.erb:7
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (58.4ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 12:57:56) [GET]
+  Parameters: {"id"=>"5"}
+Rendering template within layouts/plots
+Rendering plots/show
+
+ActionView::TemplateError (undefined method `object' for nil:NilClass) on line #7 of app/views/plots/show.html.erb:
+4: 
+5: <div class="field num">
+6:       <b>Image:</b><br />      
+7:      <%= link_to( image_tag(@plot.object.graph.url(:small)), @plot.object.graph.url(:original)) %>
+8:   </div>
+
+    app/views/plots/show.html.erb:7
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (58.2ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 12:58:48) [GET]
+  Parameters: {"id"=>"5"}
+Rendering template within layouts/plots
+Rendering plots/show
+
+ActionView::TemplateError (undefined method `graph' for nil:NilClass) on line #7 of app/views/plots/show.html.erb:
+4: 
+5: <div class="field num">
+6:       <b>Image:</b><br />      
+7:      <%= image_tag(@plot.graph.url(:small)) %>
+8:   </div>
+
+    app/views/plots/show.html.erb:7
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (23.5ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 13:00:09) [GET]
+  Parameters: {"id"=>"5"}
+Rendering template within layouts/plots
+Rendering plots/show
+
+ActionView::TemplateError (undefined method `plot_images' for nil:NilClass) on line #7 of app/views/plots/show.html.erb:
+4: 
+5: <div class="field num">
+6:       <b>Image:</b><br />      
+7:      <%= image_tag(@plot.plot_images.graph.url(:small)) %>
+8:   </div>
+
+    app/views/plots/show.html.erb:7
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (59.9ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 13:00:30) [GET]
+  Parameters: {"id"=>"5"}
+Rendering template within layouts/plots
+Rendering plots/show
+
+ActionView::TemplateError (undefined method `url' for nil:NilClass) on line #7 of app/views/plots/show.html.erb:
+4: 
+5: <div class="field num">
+6:       <b>Image:</b><br />      
+7:      <%= image_tag(@plot.url(:small)) %>
+8:   </div>
+
+    app/views/plots/show.html.erb:7
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (55.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 13:00:52) [GET]
+  Parameters: {"id"=>"5"}
+Rendering template within layouts/plots
+Rendering plots/show
+
+ActionView::TemplateError (undefined method `graph' for nil:NilClass) on line #7 of app/views/plots/show.html.erb:
+4: 
+5: <div class="field num">
+6:       <b>Image:</b><br />      
+7:      <%= image_tag(@plot.graph.url(:small)) %>
+8:   </div>
+
+    app/views/plots/show.html.erb:7
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (23.3ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 13:03:18) [GET]
+  Parameters: {"id"=>"5"}
+Rendering template within layouts/plots
+Rendering plots/show
+
+ActionView::TemplateError (undefined method `plot_images' for nil:NilClass) on line #7 of app/views/plots/show.html.erb:
+4: 
+5: <div class="field num">
+6:       <b>Image:</b><br />      
+7:     <% @plot.plot_images.each do |image| %>
+8:    
+9:      <%= link_to( image_tag(image.photo.url(:small)), image.photo.url(:original)) %>
+10: 
+
+    app/views/plots/show.html.erb:7
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (59.9ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 13:05:30) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mPlot Load (0.6ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 5) [0m
+Rendering template within layouts/plots
+Rendering plots/show
+  [4;36;1mPlotImage Load (0.6ms)[0m   [0;1mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 5) [0m
+Completed in 14ms (View: 8, DB: 1) | 200 OK [http://localhost/plots/5]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 13:08:45) [GET]
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.5ms)[0m   [0;1mINSERT INTO `plots` (`created_at`, `updated_at`) VALUES('2013-07-05 11:08:45', '2013-07-05 11:08:45')[0m
+  [4;35;1mSQL (32.3ms)[0m   [0mCOMMIT[0m
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: identify -format %wx%h '/tmp/stream20130705-2491-utrq6f-0.png[0]'
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: convert '/tmp/stream20130705-2491-utrq6f-0.png[0]' -resize "150x150>" '/tmp/stream20130705-2491-utrq6f-020130705-2491-10xve3m-0'
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlotImage Create (0.5ms)[0m   [0mINSERT INTO `plot_images` (`plot_id`, `graph_file_size`, `created_at`, `updated_at`, `graph_updated_at`, `graph_file_name`, `graph_content_type`) VALUES(1, 3677, '2013-07-05 11:08:45', '2013-07-05 11:08:45', '2013-07-05 11:08:45', 'myplot.png', 'image/png')[0m
+[paperclip] Saving attachments.
+[paperclip] saving /home/jarvis/PlotApp/public/graphs/1/small/myplot.png
+[paperclip] saving /home/jarvis/PlotApp/public/graphs/1/original/myplot.png
+  [4;36;1mSQL (63.5ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 393ms (View: 3, DB: 97) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 13:11:05) [GET]
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.5ms)[0m   [0;1mINSERT INTO `plots` (`created_at`, `updated_at`) VALUES('2013-07-05 11:11:05', '2013-07-05 11:11:05')[0m
+  [4;35;1mSQL (31.1ms)[0m   [0mCOMMIT[0m
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: identify -format %wx%h '/tmp/stream20130705-2491-ktfwjd-0.png[0]'
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: convert '/tmp/stream20130705-2491-ktfwjd-0.png[0]' -resize "300x300>" '/tmp/stream20130705-2491-ktfwjd-020130705-2491-k58i66-0'
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlotImage Create (0.5ms)[0m   [0mINSERT INTO `plot_images` (`plot_id`, `graph_file_size`, `created_at`, `updated_at`, `graph_updated_at`, `graph_file_name`, `graph_content_type`) VALUES(1, 3895, '2013-07-05 11:11:06', '2013-07-05 11:11:06', '2013-07-05 11:11:05', 'myplot.png', 'image/png')[0m
+[paperclip] Saving attachments.
+[paperclip] saving /home/jarvis/PlotApp/public/graphs/2/small/myplot.png
+[paperclip] saving /home/jarvis/PlotApp/public/graphs/2/original/myplot.png
+  [4;36;1mSQL (76.5ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 451ms (View: 3, DB: 109) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-05 13:11:38) [GET]
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.4ms)[0m   [0;1mINSERT INTO `plots` (`created_at`, `updated_at`) VALUES('2013-07-05 11:11:38', '2013-07-05 11:11:38')[0m
+  [4;35;1mSQL (26.7ms)[0m   [0mCOMMIT[0m
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: identify -format %wx%h '/tmp/stream20130705-2491-12tpi05-0.png[0]'
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: convert '/tmp/stream20130705-2491-12tpi05-0.png[0]' -resize "300x300>" '/tmp/stream20130705-2491-12tpi05-020130705-2491-8f5k5o-0'
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlotImage Create (0.5ms)[0m   [0mINSERT INTO `plot_images` (`plot_id`, `graph_file_size`, `created_at`, `updated_at`, `graph_updated_at`, `graph_file_name`, `graph_content_type`) VALUES(1, 3836, '2013-07-05 11:11:38', '2013-07-05 11:11:38', '2013-07-05 11:11:38', 'myplot.png', 'image/png')[0m
+[paperclip] Saving attachments.
+[paperclip] saving /home/jarvis/PlotApp/public/graphs/1/small/myplot.png
+[paperclip] saving /home/jarvis/PlotApp/public/graphs/1/original/myplot.png
+  [4;36;1mSQL (69.4ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 411ms (View: 3, DB: 98) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-05 13:11:58) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPlot Load (0.8ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+Rendering template within layouts/plots
+Rendering plots/show
+  [4;36;1mPlotImage Load (0.6ms)[0m   [0;1mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 1) [0m
+Completed in 15ms (View: 8, DB: 1) | 200 OK [http://localhost/plots/1]

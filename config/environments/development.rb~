@@ -6,7 +6,6 @@
 config.cache_classes = false
 
 require 'rubygems'
-require 'rsruby'
 require 'rinruby'
 
 # Log error messages when you accidentally call methods on nil.

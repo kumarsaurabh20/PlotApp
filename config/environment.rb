@@ -8,6 +8,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 require 'rubygems'
 require 'rinruby'
+require 'paperclip'
 
 
 Rails::Initializer.run do |config|
