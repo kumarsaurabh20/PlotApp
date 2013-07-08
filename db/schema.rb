@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130704181415) do
+ActiveRecord::Schema.define(:version => 20130708175336) do
 
   create_table "plot_images", :force => true do |t|
     t.datetime "created_at"
@@ -24,6 +24,10 @@ ActiveRecord::Schema.define(:version => 20130704181415) do
   create_table "plots", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.binary   "calibFile"
+    t.integer  "explVariable"
+    t.integer  "respVariable"
+    t.string   "expName"
   end
 
 end

@@ -8,8 +8,185 @@ require 'paperclip'
 
   def index
 
-     @plot = Plot.new
+     @plot = Plot.all
 	
+      
+        
+   end
+
+   def new 
+
+       @plot = Plot.new
+       @title = "New Calibration Data Upload"
+
+       respond_to do |format|
+       format.html #new.html.erb
+       format.xml {render :xml => @plot}
+       end
+  end
+
+   def create
+      
+      @plot = Plot.new(params[:plot])
+      @title = "Calibration Data Upload"
+      logger.debug "here is the log: " + @plot.to_s
+
+      @savedfile = false
+
+      uploaded_io = params[:plot][:calibFile]
+      logger.debug "here is the log: " + uploaded_io.to_s
+ 
+      name = Time.now.strftime("%Y%m%d%H%M%S_") + sanitize_filename(uploaded_io.original_filename)
+      logger.debug "here is the log: " + name.to_s
+
+      #name =  Time.now.strftime("%Y%m%d%H%M%S ") + sanitize_filename(uploaded_io.original_filename)
+
+      directory = "public/calibration_data/"
+      Dir.mkdir(directory) unless File.directory?(directory)
+      path = File.join(directory, name)
+      File.open(path, "wb") { |file| file.write(uploaded_io.read) } 
+      @savedfile = true
+      #save the name and directory of file in different variables in the database 
+        
+      respond_to do |format|
+	 if @savedfile
+
+		 self.dataExtract(name)
+
+         format.html { 
+	      flash[:notice] = 'Calibration data file is successfully saved.'
+	      redirect_to :controller => "plots", :action => "index" }
+		format.xml  { render :xml => @plot, :status => :created, :location => @plot }
+	 else
+         format.html { render :action => "new" }
+	 format.xml  { render :xml => @plot.errors, :status => :unprocessable_entity }
+	 end
+       end
+
+  end
+
+  def dataExtract(name)
+      
+      directory = "public/calibration_data/" 
+      
+      path = File.join(directory, name)
+      logger.debug "File extract local path: " + path
+      file = File.open(path, "r") do |f|
+             f.each do |line|
+             logger.debug "[" + f.lineno.to_s + "]" + line
+             columns = line.split(",") 
+            end
+          end 
+  end
+
+
+   def sanitize_filename(file_name)
+  
+    just_filename = File.basename(file_name.to_s)
+    return just_filename.sub(/[^\w\.\-]/,'_')
+ 
+  end
+
+  def calTheta
+
+
+      @plot = Plot.find(params[:id])
+
+      explanatoryVar = @plot.explVariable
+      responseVar = @plot.respVariable
+
+      directory = "public/calibration_data/" 
+      path = File.join(directory, name)
+      logger.debug "File extract local path: " + path
+      #file = File.open(path, "r") do |f|
+      #       f.each do |line|
+      #       logger.debug "[" + f.lineno.to_s + "]" + line
+             
+      str = IO.read(path)
+      line = str.to_str
+      
+     if explanatoryVar == 1
+
+	      data = line.scan(/(\S+,\S+)/).flatten
+
+	      data.each do |line|
+
+	      if line =~ /(\S+),(\S+)/
+
+	      x1 = $1 
+              y= $2  
+	      end 
+	    end
+     
+    else if explanatoryVar == 2
+
+             data = line.scan(/(\S+,\S+,\S+)/).flatten
+
+	      data.each do |line|
+
+	      if line =~ /(\S+),(\S+),(\S+)/
+                    
+              x1 = $1 
+              x2 = $2
+	      y= $3
+		    
+		  
+	      end 
+	    end
+      
+    else if explanatoryVar == 3
+               
+             data = line.scan(/(\S+,\S+,\S+,\S+)/).flatten
+
+	      data.each do |line|
+
+	      if line =~ /(\S+),(\S+),(\S+),(\S+)/
+               
+              x1 = $1 
+              x2 = $2 
+              x3 = $3 
+              y = $4
+		  
+	      end 
+	    end
+
+    else if explanatoryVar == 4
+
+            data = line.scan(/(\S+,\S+,\S+,\S+,\S+)/).flatten
+
+	      data.each do |line|
+
+	      if line =~ /(\S+),(\S+),(\S+),(\S+),(\S+)/
+
+	      x1 = $1 
+              x2 = $2 
+              x3 = $3 
+              x4 = $4
+              y = $5   
+		  
+	      end 
+	    end
+
+    else 
+      
+        data = line.scan(/(\S+,\S+,\S+,\S+,\S+,\S+)/).flatten
+        data.each do |line|
+
+	      if line =~ /(\S+),(\S+),(\S+),(\S+),(\S+),(\S+)/
+
+	      x1 = $1 
+              x2 = $2 
+              x3 = $3 
+              x4 = $4
+              x5 = $4
+              y = $5     
+		  
+	      end 
+	    end
+
+    end
+
+
       sample_size = 5
       R.eval  <<-EOF
       x <- rnorm(#{sample_size})
@@ -19,14 +196,18 @@ require 'paperclip'
       png("/tmp/myplot.png")
       plot(x,y)
       dev.off()     
-     EOF
+      EOF
 
       
      @copy_of_x = R.pull "x"     
      @plot.save
      @plot.plot_images.create(:graph => File.new("/tmp/myplot.png", "rb"))
-        
-   end
+
+
+
+
+  end
+
 
   # GET /micro_array_images/1
   # GET /micro_array_images/1.xml

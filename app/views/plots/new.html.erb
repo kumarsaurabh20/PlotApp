@@ -1,11 +1,48 @@
-<h1>New plot</h1>
+<h1>Upload Calibration Data File</h1>
 
-<% form_for(@plot) do |f| %>
+<% form_for(@plot, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
+<table>
+<tr>
+     <td>
+     <div>
+        <b><%= f.label :expName, "Name of Experiment: " %></b> <br>
+        <%= f.text_field :expName %>
+     </div><br><br>
+     </td>
+</tr>
+<tr>
+    <td>
+    <div>
+       <b><%= f.label :explVariable, "Number of Explanatory Variable: " %></b><br>
+       <%= f.text_field :explVariable %>
+    </div><br><br>
+    </td>
+    <td>
+    <div>
+       <b><%= f.label :respVariable, "Number of Response Variable: " %></b><br>
+       <%= f.text_field :respVariable %>
+    </div><br><br>
+    </td>
+</tr>
+
+<tr>
+	<td>
+        <div>
+          <b><%= f.label :calibFile, 'Upload the Calibration data File' %></b><br>
+          <%= file_field(:plot, :calibFile, :accept => 'text/csv')  %>
+        </div><br><br>
+	</td>
+</tr>
+</tr>
+	<td>
+        <div>
+           <b><%= f.submit 'Create' %></b>
+        </div>
+            <% end %>
+	</td>
+</tr>
+</table>
 
 <%= link_to 'Back', plots_path %>
