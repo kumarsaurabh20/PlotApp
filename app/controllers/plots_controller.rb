@@ -9,12 +9,10 @@ require 'paperclip'
   def index
 
      @plot = Plot.all
-	
       
-        
-   end
+  end
 
-   def new 
+  def new 
 
        @plot = Plot.new
        @title = "New Calibration Data Upload"
@@ -46,12 +44,15 @@ require 'paperclip'
       path = File.join(directory, name)
       File.open(path, "wb") { |file| file.write(uploaded_io.read) } 
       @savedfile = true
+      @plot.save
+      id = @plot.id
       #save the name and directory of file in different variables in the database 
         
       respond_to do |format|
 	 if @savedfile
 
 		 self.dataExtract(name)
+                 self.calTheta(id, name)
 
          format.html { 
 	      flash[:notice] = 'Calibration data file is successfully saved.'
@@ -80,17 +81,17 @@ require 'paperclip'
   end
 
 
-   def sanitize_filename(file_name)
+  def sanitize_filename(file_name)
   
     just_filename = File.basename(file_name.to_s)
     return just_filename.sub(/[^\w\.\-]/,'_')
  
   end
 
-  def calTheta
+  def calTheta(id, name)
 
 
-      @plot = Plot.find(params[:id])
+      @plot = Plot.find(id)
 
       explanatoryVar = @plot.explVariable
       responseVar = @plot.respVariable
@@ -103,110 +104,133 @@ require 'paperclip'
       #       logger.debug "[" + f.lineno.to_s + "]" + line
              
       str = IO.read(path)
+      
       line = str.to_str
+      
+      @x1 = Array.new
+      @y = Array.new 
       
      if explanatoryVar == 1
 
 	      data = line.scan(/(\S+,\S+)/).flatten
+              logger.debug "here is data" + data.to_s	
 
 	      data.each do |line|
 
 	      if line =~ /(\S+),(\S+)/
 
-	      x1 = $1 
-              y= $2  
+		      @x1.push $1 
+                 logger.debug "here is @x1" + @x1.to_s
+		      @y.push $2
+                 logger.debug "here is @y" + @y.to_s                 
+
 	      end 
-	    end
-     
-    else if explanatoryVar == 2
 
-             data = line.scan(/(\S+,\S+,\S+)/).flatten
-
-	      data.each do |line|
-
-	      if line =~ /(\S+),(\S+),(\S+)/
-                    
-              x1 = $1 
-              x2 = $2
-	      y= $3
-		    
-		  
-	      end 
 	    end
       
-    else if explanatoryVar == 3
-               
-             data = line.scan(/(\S+,\S+,\S+,\S+)/).flatten
+      logger.debug "final variables " + @x1.to_s + " and array y " + @y.to_s  
+        # calLinReg(@y, @x1)
+      R.assign "x1", @x1
+      R.assign "y", @y
 
-	      data.each do |line|
+      #@plot = Plot.new    
 
-	      if line =~ /(\S+),(\S+),(\S+),(\S+)/
-               
-              x1 = $1 
-              x2 = $2 
-              x3 = $3 
-              y = $4
-		  
-	      end 
-	    end
-
-    else if explanatoryVar == 4
-
-            data = line.scan(/(\S+,\S+,\S+,\S+,\S+)/).flatten
-
-	      data.each do |line|
-
-	      if line =~ /(\S+),(\S+),(\S+),(\S+),(\S+)/
-
-	      x1 = $1 
-              x2 = $2 
-              x3 = $3 
-              x4 = $4
-              y = $5   
-		  
-	      end 
-	    end
-
-    else 
-      
-        data = line.scan(/(\S+,\S+,\S+,\S+,\S+,\S+)/).flatten
-        data.each do |line|
-
-	      if line =~ /(\S+),(\S+),(\S+),(\S+),(\S+),(\S+)/
-
-	      x1 = $1 
-              x2 = $2 
-              x3 = $3 
-              x4 = $4
-              x5 = $4
-              y = $5     
-		  
-	      end 
-	    end
-
-    end
-
-
-      sample_size = 5
       R.eval  <<-EOF
-      x <- rnorm(#{sample_size})
-      summary(x)
-      sd(x)
-      y <- rnorm(5)
+      x1 <- as.numeric(x1)
+      y <- as.numeric(y)
       png("/tmp/myplot.png")
-      plot(x,y)
+      plot(x1,y, xlab="#cells count", ylab="signal intensity", main="Plot of X and Y")
       dev.off()     
       EOF
-
-      
-     @copy_of_x = R.pull "x"     
-     @plot.save
-     @plot.plot_images.create(:graph => File.new("/tmp/myplot.png", "rb"))
+     
+      #@plot.save
+      @plot.plot_images.create(:graph => File.new("/tmp/myplot.png", "rb"))
 
 
-
+     
+#    elsif explanatoryVar == 2
+#
+#             data = line.scan(/(\S+,\S+,\S+)/).flatten
+#	     data.each do |line|
+#
+#	      if line =~ /(\S+),(\S+),(\S+)/
+#                    
+#		      @x1 = $1 
+#		      @x2 = $2
+#		      @y= $3    
+#	      end 
+#	    end
+#      
+#    elsif explanatoryVar == 3
+#               
+#             data = line.scan(/(\S+,\S+,\S+,\S+)/).flatten
+#	     data.each do |line|
+#
+#	      if line =~ /(\S+),(\S+),(\S+),(\S+)/
+#               
+#		      @x1 = $1 
+#		      @x2 = $2 
+#		      @x3 = $3 
+#		      @y = $4  
+#	      end 
+#	    end
+#
+#    elsif explanatoryVar == 4
+#
+#            data = line.scan(/(\S+,\S+,\S+,\S+,\S+)/).flatten
+#	     data.each do |line|
+#
+#	      if line =~ /(\S+),(\S+),(\S+),(\S+),(\S+)/
+#
+#		      @x1 = $1 
+#		      @x2 = $2 
+#		      @x3 = $3 
+#		      @x4 = $4
+#		      @y = $5   		  
+#	      end 
+#	    end
+#
+#    else 
+#      
+#        data = line.scan(/(\S+,\S+,\S+,\S+,\S+,\S+)/).flatten
+#        data.each do |line|
+#
+#	      if line =~ /(\S+),(\S+),(\S+),(\S+),(\S+),(\S+)/
+#
+#		      @x1 = $1 
+#		      @x2 = $2 
+#		      @x3 = $3 
+#		      @x4 = $4
+#		      @x5 = $4
+#		      @y = $5     		  
+#	      end 
+#	    end
+#
+#
+   end
 
   end
+
+      
+#  def calLinReg(@y, @x1)
+#       
+#      R.assign("x1", @x1)
+#      R.assign("y", @y)
+#
+#      @plot = Plot.new    
+#
+#      R.eval  <<-EOF
+#      x1 <- as.numeric(x1)
+#      y <- as.numeric(y)
+#      png("/tmp/myplot.png")
+#      plot(x1,y)
+#      dev.off()     
+#      EOF
+#     
+#      @plot.save
+#      @plot.plot_images.create(:graph => File.new("/tmp/myplot.png", "rb"))
+#
+#  end 
 
 
   # GET /micro_array_images/1
