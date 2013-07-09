@@ -6856,3 +6856,1012 @@ Rendering template within layouts/plots
 Rendering plots/show
   [4;35;1mPlotImage Load (0.3ms)[0m   [0mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 8) [0m
 Completed in 17ms (View: 11, DB: 1) | 200 OK [http://localhost/plots/8]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-09 18:04:27) [GET]
+  [4;36;1mPlot Load (0.4ms)[0m   [0;1mSELECT * FROM `plots` [0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 108ms (View: 62, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-07-09 18:04:32) [GET]
+
+ActionController::RoutingError (No route matches "/new" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 18:04:39) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 77ms (View: 73, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 18:04:56) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test 7", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-11j5mta-0>}}
+here is the log: #<Plot:0x7f5ea2729bd0>
+here is the log: #<File:0x7f5ea27c4108>
+here is the log: 20130709180456_array.txt
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.6ms)[0m   [0;1mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 16:04:56', 1, '2013-07-09 16:04:56', 1, 'test 7', '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (39.2ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20130709180456_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;36;1mPlot Load (0.7ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 9) [0m
+File extract local path: public/calibration_data/20130709180456_array.txt
+here is data0,.255,.7510,1.515,2.2520,3.2525,4.05
+here is @x10
+here is @y.25
+here is @x105
+here is @y.25.75
+here is @x10510
+here is @y.25.751.5
+here is @x1051015
+here is @y.25.751.52.25
+here is @x105101520
+here is @y.25.751.52.253.25
+here is @x10510152025
+here is @y.25.751.52.253.254.05
+
+RinRuby::ParseError (Parse error on eval:      x1 <- as.numeric(x1)
+      y <- as.numeric(y)
+
+      numOfRows <- length(y)
+      frame1 <- data.frame(d0=rep(1,each=length(y)), d1=y)
+      mX <- data.matrix(frame1)
+      theta = data.matrix(data.frame(theta0=0, theta1=0))
+      
+     computeLineOfFit <- function(mX, y, theta) {
+      
+      m <- length(y)
+      SEF <- 0
+      
+          for(i in 1:m) {
+          
+          SEF <- SEF + (1/(2*m)) * (mX[i,] %*% t(theta) - y[i])^2
+          
+        }
+      return(SEF)
+      }
+
+      gradDescentUniVar <- function(mX,y,theta,alpha,num_iters) {
+      
+      m <- length(y)
+      
+      histSEF <- rep(0, each=num_iters)
+      
+      for(iter in 1:num_iters) {
+        
+        init <- 0
+        
+          for(i in 1:m) {
+          
+            init <- init + (alpha/m) * (mX[i,] %*% t(theta) - y[i]) * mX[i,]
+            print(init)
+                        
+          }
+       
+      theta = theta - init
+
+      histSEF[iter] <- computeLineOfFit(mX,y,theta)
+     
+      png("/tmp/myplot.png")  
+      plot(1:num_iters, histSEF, xlab="Number of Iterations", ylab="Minimized Squared error function", main="Gradient Descent Check")
+        
+      }
+      
+      return(theta)
+      dev.off() 
+    }
+
+ gradDescentUniVar(mX,y,theta,alpha,num_iters)
+
+}
+     
+):
+  rinruby (2.0.3) lib/rinruby.rb:248:in `eval'
+  app/controllers/plots_controller.rb:138:in `calTheta'
+  app/controllers/plots_controller.rb:55:in `create'
+  app/controllers/plots_controller.rb:51:in `create'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (20.7ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 18:24:42) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 8ms (View: 5, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-09 18:24:59) [GET]
+  [4;35;1mPlot Load (0.8ms)[0m   [0mSELECT * FROM `plots` [0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 7ms (View: 3, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 18:25:43) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test 8", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-16a477j-0>}}
+here is the log: #<Plot:0x7f5ea279df30>
+here is the log: #<File:0x7f5ea2334bd8>
+here is the log: 20130709182543_array.txt
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.6ms)[0m   [0mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 16:25:43', 1, '2013-07-09 16:25:43', 1, 'test 8', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (26.3ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130709182543_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.7ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 10) [0m
+File extract local path: public/calibration_data/20130709182543_array.txt
+here is data0,.255,.7510,1.515,2.2520,3.2525,4.05
+here is @x10
+here is @y.25
+here is @x105
+here is @y.25.75
+here is @x10510
+here is @y.25.751.5
+here is @x1051015
+here is @y.25.751.52.25
+here is @x105101520
+here is @y.25.751.52.253.25
+here is @x10510152025
+here is @y.25.751.52.253.254.05
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: identify -format %wx%h '/tmp/stream20130709-2866-14roffq-0.png[0]'
+[paperclip] An error was received while processing: #<Paperclip::NotIdentifiedByImageMagickError: /tmp/stream20130709-2866-14roffq-0.png is not recognized by the 'identify' command.>
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+Redirected to http://localhost:3000/plots
+Completed in 1701ms (DB: 28) | 302 Found [http://localhost/plots]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-09 18:25:44) [GET]
+  [4;36;1mPlot Load (0.7ms)[0m   [0;1mSELECT * FROM `plots` [0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 4ms (View: 1, DB: 1) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-09 18:26:40) [GET]
+  Parameters: {"id"=>"9"}
+  [4;35;1mPlot Load (0.5ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 9) [0m
+Rendering template within layouts/plots
+Rendering plots/show
+  [4;36;1mPlotImage Load (0.3ms)[0m   [0;1mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 9) [0m
+Completed in 22ms (View: 15, DB: 1) | 200 OK [http://localhost/plots/9]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-09 18:26:43) [GET]
+  Parameters: {"id"=>"8"}
+  [4;35;1mPlot Load (0.5ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 8) [0m
+Rendering template within layouts/plots
+Rendering plots/show
+  [4;36;1mPlotImage Load (0.4ms)[0m   [0;1mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 8) [0m
+Completed in 38ms (View: 31, DB: 1) | 200 OK [http://localhost/plots/8]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-09 18:26:46) [GET]
+  Parameters: {"id"=>"9"}
+  [4;35;1mPlot Load (0.3ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 9) [0m
+Rendering template within layouts/plots
+Rendering plots/show
+  [4;36;1mPlotImage Load (0.3ms)[0m   [0;1mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 9) [0m
+Completed in 9ms (View: 3, DB: 1) | 200 OK [http://localhost/plots/9]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-09 18:31:19) [GET]
+  Parameters: {"id"=>"10"}
+  [4;35;1mPlot Load (0.3ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 10) [0m
+Rendering template within layouts/plots
+Rendering plots/show
+  [4;36;1mPlotImage Load (0.6ms)[0m   [0;1mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 10) [0m
+Completed in 9ms (View: 3, DB: 1) | 200 OK [http://localhost/plots/10]
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 18:31:46) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 18:31:59) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-4xjbwe-0>}}
+here is the log: #<Plot:0x7f5ea24778d8>
+here is the log: #<File:0x7f5ea24fb048>
+here is the log: 20130709183159_array.txt
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.5ms)[0m   [0;1mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 16:31:59', 1, '2013-07-09 16:31:59', 1, 'test', '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (26.1ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20130709183159_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;36;1mPlot Load (0.7ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+File extract local path: public/calibration_data/20130709183159_array.txt
+here is data0,.255,.7510,1.515,2.2520,3.2525,4.05
+here is @x10
+here is @y.25
+here is @x105
+here is @y.25.75
+here is @x10510
+here is @y.25.751.5
+here is @x1051015
+here is @y.25.751.52.25
+here is @x105101520
+here is @y.25.751.52.253.25
+here is @x10510152025
+here is @y.25.751.52.253.254.05
+
+Errno::ENOENT (No such file or directory - /tmp/myplot.png):
+  app/controllers/plots_controller.rb:200:in `initialize'
+  app/controllers/plots_controller.rb:200:in `new'
+  app/controllers/plots_controller.rb:200:in `calTheta'
+  app/controllers/plots_controller.rb:55:in `create'
+  app/controllers/plots_controller.rb:51:in `create'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (54.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 18:36:21) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 18:36:45) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-18tq62g-0>}}
+here is the log: #<Plot:0x7f5ea24e65f8>
+here is the log: #<File:0x7f5ea258e7a8>
+here is the log: 20130709183645_array.txt
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.3ms)[0m   [0;1mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 16:36:45', 1, '2013-07-09 16:36:45', 1, 'test', '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (30.9ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20130709183645_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;36;1mPlot Load (0.5ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+File extract local path: public/calibration_data/20130709183645_array.txt
+here is data0,.255,.7510,1.515,2.2520,3.2525,4.05
+here is @x10
+here is @y.25
+here is @x105
+here is @y.25.75
+here is @x10510
+here is @y.25.751.5
+here is @x1051015
+here is @y.25.751.52.25
+here is @x105101520
+here is @y.25.751.52.253.25
+here is @x10510152025
+here is @y.25.751.52.253.254.05
+Redirected to http://localhost:3000/plots
+Completed in 15203ms (DB: 32) | 302 Found [http://localhost/plots]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-09 18:37:00) [GET]
+  [4;35;1mPlot Load (0.6ms)[0m   [0mSELECT * FROM `plots` [0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 7ms (View: 2, DB: 1) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 18:40:53) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 40ms (View: 37, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 18:41:10) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-ep74af-0>}}
+here is the log: #<Plot:0x7f5ea26df288>
+here is the log: #<File:0x7f5ea27ad048>
+here is the log: 20130709184110_array.txt
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.6ms)[0m   [0mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 16:41:10', 1, '2013-07-09 16:41:10', 1, 'test', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (31.0ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130709184110_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.6ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+File extract local path: public/calibration_data/20130709184110_array.txt
+here is data0,.255,.7510,1.515,2.2520,3.2525,4.05
+here is @x10
+here is @y.25
+here is @x105
+here is @y.25.75
+here is @x10510
+here is @y.25.751.5
+here is @x1051015
+here is @y.25.751.52.25
+here is @x105101520
+here is @y.25.751.52.253.25
+here is @x10510152025
+here is @y.25.751.52.253.254.05
+Redirected to http://localhost:3000/plots
+Completed in 499ms (DB: 33) | 302 Found [http://localhost/plots]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-09 18:41:10) [GET]
+  [4;36;1mPlot Load (0.5ms)[0m   [0;1mSELECT * FROM `plots` [0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 4ms (View: 1, DB: 1) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 18:56:59) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 18:57:33) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-1t3hl3-0>}}
+here is the log: #<Plot:0x7f5ea2461c68>
+here is the log: #<File:0x7f5ea24d3bb0>
+here is the log: 20130709185733_array.txt
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.4ms)[0m   [0;1mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 16:57:33', 1, '2013-07-09 16:57:33', 1, 'test', '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (44.7ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20130709185733_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;36;1mPlot Load (0.5ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+File extract local path: public/calibration_data/20130709185733_array.txt
+here is data0,.255,.7510,1.515,2.2520,3.2525,4.05
+here is @x10
+here is @y.25
+here is @x105
+here is @y.25.75
+here is @x10510
+here is @y.25.751.5
+here is @x1051015
+here is @y.25.751.52.25
+here is @x105101520
+here is @y.25.751.52.253.25
+here is @x10510152025
+here is @y.25.751.52.253.254.05
+
+Errno::ENOENT (No such file or directory - /tmp/myplot.png):
+  app/controllers/plots_controller.rb:199:in `initialize'
+  app/controllers/plots_controller.rb:199:in `new'
+  app/controllers/plots_controller.rb:199:in `calTheta'
+  app/controllers/plots_controller.rb:55:in `create'
+  app/controllers/plots_controller.rb:51:in `create'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (52.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 18:59:29) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 18:59:39) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-ttarlv-0>}}
+here is the log: #<Plot:0x7f5ea24a0918>
+here is the log: #<File:0x7f5ea25481e0>
+here is the log: 20130709185939_array.txt
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.4ms)[0m   [0;1mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 16:59:39', 1, '2013-07-09 16:59:39', 1, 'test', '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (47.0ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20130709185939_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;36;1mPlot Load (0.7ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+File extract local path: public/calibration_data/20130709185939_array.txt
+here is data0,.255,.7510,1.515,2.2520,3.2525,4.05
+here is @x10
+here is @y.25
+here is @x105
+here is @y.25.75
+here is @x10510
+here is @y.25.751.5
+here is @x1051015
+here is @y.25.751.52.25
+here is @x105101520
+here is @y.25.751.52.253.25
+here is @x10510152025
+here is @y.25.751.52.253.254.05
+[paperclip] [DEPRECATION] :image_magick_path is deprecated and will be removed. Use :command_path instead
+[32mCommand[0m :: identify -format %wx%h '/tmp/stream20130709-2866-1vi3juq-0.png[0]'
+[paperclip] An error was received while processing: #<Paperclip::NotIdentifiedByImageMagickError: /tmp/stream20130709-2866-1vi3juq-0.png is not recognized by the 'identify' command.>
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mROLLBACK[0m
+Redirected to http://localhost:3000/plots
+Completed in 842ms (DB: 49) | 302 Found [http://localhost/plots]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-09 18:59:40) [GET]
+  [4;35;1mPlot Load (5.1ms)[0m   [0mSELECT * FROM `plots` [0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 45ms (View: 1, DB: 5) | 200 OK [http://localhost/plots]
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2013-07-09 19:09:23) [GET]
+
+SyntaxError (/home/jarvis/PlotApp/app/controllers/plots_controller.rb:201: syntax error, unexpected tSTRING_BEG, expecting kEND
+ return theta = R.pull "as.numeric(theta)"
+                        ^
+/home/jarvis/PlotApp/app/controllers/plots_controller.rb:202: syntax error, unexpected tSTRING_BEG, expecting kEND
+ return histSEF = R.pull "as.numeric(histSEF)"
+                          ^):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (18.5ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2013-07-09 19:10:47) [GET]
+
+SyntaxError (/home/jarvis/PlotApp/app/controllers/plots_controller.rb:201: syntax error, unexpected tSTRING_BEG, expecting kEND
+ return theta = R.pull "as.numeric(theta)"
+                        ^
+/home/jarvis/PlotApp/app/controllers/plots_controller.rb:202: syntax error, unexpected tSTRING_BEG, expecting kEND
+ return histSEF = R.pull "as.numeric(histSEF)"
+                          ^):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (18.2ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2013-07-09 19:11:42) [GET]
+
+SyntaxError (/home/jarvis/PlotApp/app/controllers/plots_controller.rb:201: syntax error, unexpected tSTRING_BEG, expecting kEND
+ return theta = R.pull "theta"
+                        ^
+/home/jarvis/PlotApp/app/controllers/plots_controller.rb:202: syntax error, unexpected tSTRING_BEG, expecting kEND
+ return histSEF = R.pull "histSEF"
+                          ^):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (54.5ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 19:12:39) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 6ms (View: 3, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 19:13:14) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-dl76o6-0>}}
+here is the log: #<Plot:0x7f5ea24cd3f0>
+here is the log: #<File:0x7f5ea2572260>
+here is the log: 20130709191314_array.txt
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.5ms)[0m   [0mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 17:13:14', 1, '2013-07-09 17:13:14', 1, 'test', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (43.3ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130709191314_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.3ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+File extract local path: public/calibration_data/20130709191314_array.txt
+here is data0,.255,.7510,1.515,2.2520,3.2525,4.05
+here is @x10
+here is @y.25
+here is @x105
+here is @y.25.75
+here is @x10510
+here is @y.25.751.5
+here is @x1051015
+here is @y.25.751.52.25
+here is @x105101520
+here is @y.25.751.52.253.25
+here is @x10510152025
+here is @y.25.751.52.253.254.05
+Redirected to http://localhost:3000/plots
+Completed in 807ms (DB: 44) | 302 Found [http://localhost/plots]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-09 19:13:15) [GET]
+  [4;36;1mPlot Load (0.6ms)[0m   [0;1mSELECT * FROM `plots` [0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 6ms (View: 2, DB: 1) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 19:26:20) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 39ms (View: 3, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 19:27:12) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-1rl95t4-0>}}
+here is the log: #<Plot:0x7f5ea26b47b8>
+here is the log: #<File:0x7f5ea278ffc0>
+here is the log: 20130709192712_array.txt
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.5ms)[0m   [0;1mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 17:27:12', 1, '2013-07-09 17:27:12', 1, 'test', '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (44.0ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20130709192712_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;36;1mPlot Load (0.6ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+File extract local path: public/calibration_data/20130709192712_array.txt
+Redirected to http://localhost:3000/plots
+Completed in 1021ms (DB: 45) | 302 Found [http://localhost/plots]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-09 19:27:13) [GET]
+  [4;35;1mPlot Load (0.6ms)[0m   [0mSELECT * FROM `plots` [0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 6ms (View: 2, DB: 1) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 19:30:03) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 19:30:18) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test 2", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-5dm9v0-0>}}
+here is the log: #<Plot:0x7f5ea23b6610>
+here is the log: #<File:0x7f5ea242d850>
+here is the log: 20130709193018_array.txt
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.3ms)[0m   [0mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 17:30:18', 1, '2013-07-09 17:30:18', 1, 'test 2', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (34.0ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130709193018_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.5ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 2) [0m
+File extract local path: public/calibration_data/20130709193018_array.txt
+
+NameError (undefined local variable or method `theta' for #<PlotsController:0x7f5ea23ce968>):
+  app/controllers/plots_controller.rb:172:in `calTheta'
+  app/controllers/plots_controller.rb:55:in `create'
+  app/controllers/plots_controller.rb:51:in `create'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (19.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 19:31:13) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 6ms (View: 3, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 19:31:25) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-1hrrid0-0>}}
+here is the log: #<Plot:0x7f5ea23df8d0>
+here is the log: #<File:0x7f5ea24610d8>
+here is the log: 20130709193125_array.txt
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.2ms)[0m   [0mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 17:31:25', 1, '2013-07-09 17:31:25', 1, 'test', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (46.2ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130709193125_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.7ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+File extract local path: public/calibration_data/20130709193125_array.txt
+
+TypeError (can't convert Matrix into String):
+  app/controllers/plots_controller.rb:172:in `+'
+  app/controllers/plots_controller.rb:172:in `calTheta'
+  app/controllers/plots_controller.rb:55:in `create'
+  app/controllers/plots_controller.rb:51:in `create'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (20.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 19:33:51) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 19:34:05) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-100gk5t-0>}}
+here is the log: #<Plot:0x7f5ea2442ef8>
+here is the log: #<File:0x7f5ea24c7748>
+here is the log: 20130709193405_array.txt
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.6ms)[0m   [0mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 17:34:05', 1, '2013-07-09 17:34:05', 1, 'test', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (28.9ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130709193405_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.7ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+File extract local path: public/calibration_data/20130709193405_array.txt
+
+TypeError (can't convert Array into String):
+  app/controllers/plots_controller.rb:174:in `+'
+  app/controllers/plots_controller.rb:174:in `calTheta'
+  app/controllers/plots_controller.rb:55:in `create'
+  app/controllers/plots_controller.rb:51:in `create'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (57.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 19:35:09) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 19:35:20) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-qwbkwv-0>}}
+here is the log: #<Plot:0x7f5ea2533768>
+here is the log: #<File:0x7f5ea25b1258>
+here is the log: 20130709193520_array.txt
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.4ms)[0m   [0mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 17:35:20', 1, '2013-07-09 17:35:20', 1, 'test', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (49.6ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130709193520_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.7ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+File extract local path: public/calibration_data/20130709193520_array.txt
+value of theta and J are 0.00.0 : 0.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.0
+Redirected to http://localhost:3000/plots
+Completed in 1150ms (DB: 51) | 302 Found [http://localhost/plots]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-09 19:35:21) [GET]
+  [4;36;1mPlot Load (0.6ms)[0m   [0;1mSELECT * FROM `plots` [0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 11ms (View: 8, DB: 1) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 20:25:54) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 38ms (View: 3, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 20:26:26) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-19vabvv-0>}}
+here is the log: #<Plot:0x7f5ea26bb7c0>
+here is the log: #<File:0x7f5ea2797a90>
+here is the log: 20130709202626_array.txt
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.4ms)[0m   [0;1mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 18:26:26', 1, '2013-07-09 18:26:26', 1, 'test', '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (35.5ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20130709202626_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;36;1mPlot Load (0.7ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 2) [0m
+File extract local path: public/calibration_data/20130709202626_array.txt
+
+TypeError (can't convert Array into String):
+  app/controllers/plots_controller.rb:174:in `+'
+  app/controllers/plots_controller.rb:174:in `calTheta'
+  app/controllers/plots_controller.rb:55:in `create'
+  app/controllers/plots_controller.rb:51:in `create'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (21.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 20:26:56) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 20:27:06) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-15pgecw-0>}}
+here is the log: #<Plot:0x7f5ea27cfb20>
+here is the log: #<File:0x7f5ea232c370>
+here is the log: 20130709202706_array.txt
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.6ms)[0m   [0;1mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 18:27:06', 1, '2013-07-09 18:27:06', 1, 'test', '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (53.1ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20130709202706_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;36;1mPlot Load (0.7ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 3) [0m
+File extract local path: public/calibration_data/20130709202706_array.txt
+value of theta and J are 0.2126254291738930.9229442091738992.542213044616182.222254011414311.942793878186031.698705229989431.485509821636321.299296387823641.136648859132760.9945836664337990.8704949830332760.7621068995858580.6674316540291230.5847331499289640.5124950936822750.449393165794180.3942707154850.3461175325464170.3040513068434520.2673014351857070.2351948783729010.2071438088469190.1826348222458470.1612195148580090.1425062540425950.1261529905781470.1118609810228490.09936930487215710.08845007588631350.07890425970052050.07055802095774220.06325953292250210.05687619102203790.05129217917451180.04640634423872810.0421303395748130.03838700364434370.03510894389213030.0322372999194190.02972066324884630.02751413385542840.02557849614795690.02387949927746260.02238722856414020.02107555650643850.01992166329660380.01890561804262510.01801001301068620.0172196441753220.01652123221436740.01590317882807870.01535535391011650.01486890966430690.01443611825563990.01405023001588920.01370534960148180.01339632783072310.01311866721525320.01286843945193750.01264221336091070.01243699194720970.01225015743088050.01207942323668730.01192279206228690.0117785192552870.01164508082704260.01152114551614540.01140555038888190.01129727952885550.01119544542465830.01109927271400040.01100808398595060.01092128738071580.01083836575937730.0107588672448150.01068239696021650.01060860981354920.01053720419556580.01046791647568580.01040051619473310.01033480186630520.01027059730971410.01020774844719930.01014612050663190.01008559557837250.01002607048144270.009967454899850420.009909669754864540.009852645783366160.009796322296185780.00974064609363850.009685570518355180.009631054628026580.00957706247287880.009523562464619980.009470526825277890.009417931105812850.009365753765672660.009313975805573410.009262580446767510.009211552850913390.009160879875406310.009110549859680720.009060552438563050.009010878379249970.008961519438921070.008912468240373720.008863718163397990.008815263249899210.008767098121027390.008719217904793580.00867161817284530.008624294885241540.008577244342214510.00853046314203370.008483948144199490.008437696437291750.008391705310884060.00834597223100870.008300494818723080.008255270831384940.008210298146293130.0081655747463950.008121098707798210.008076868188858990.008032881420647010.007989136698612730.007945632375304980.007902366854005790.00785933858316640.007816546051543060.007773987783944040.007731662337510380.007689568298463060.007647704279257320.007606068916092750.007564660866734110.007523478808603540.007482521437109810.007441787464184690.007401275617000140.007360984636843570.00732091327813110.007281060307541340.007241424503254610.007202004654284070.007162799559887340.007123808029048190.007085028880019890.007046460939921840.007008103044383330.0069699540372281
+Redirected to http://localhost:3000/plots
+Completed in 934ms (DB: 55) | 302 Found [http://localhost/plots]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-09 20:27:07) [GET]
+  [4;35;1mPlot Load (0.6ms)[0m   [0mSELECT * FROM `plots` [0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 12ms (View: 9, DB: 1) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 20:39:49) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 20:40:00) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-1h029h4-0>}}
+here is the log: #<Plot:0x7f5ea246b6c8>
+here is the log: #<File:0x7f5ea24df168>
+here is the log: 20130709204000_array.txt
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.4ms)[0m   [0mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 18:40:00', 1, '2013-07-09 18:40:00', 1, 'test', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (51.4ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130709204000_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.7ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+File extract local path: public/calibration_data/20130709204000_array.txt
+Redirected to http://localhost:3000/plots/show
+Completed in 1073ms (DB: 53) | 302 Found [http://localhost/plots]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-09 20:40:01) [GET]
+  Parameters: {"id"=>"show"}
+  [4;36;1mPlot Load (0.4ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Plot with ID=show):
+  app/controllers/plots_controller.rb:244:in `show'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (20.9ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (not_found)
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-09 20:41:00) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPlot Load (0.3ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+Rendering template within layouts/plots
+Rendering plots/show
+  [4;36;1mPlotImage Load (0.6ms)[0m   [0;1mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 1) [0m
+Completed in 24ms (View: 17, DB: 1) | 200 OK [http://localhost/plots/1]
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-09 20:42:24) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 6ms (View: 3, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-09 20:42:35) [POST]
+  Parameters: {"authenticity_token"=>"1qAK6IlGu/bvmFHrFRSX8FbM/bM1s7HZ6843M7KXhmM=", "commit"=>"Create", "plot"=>{"explVariable"=>"1", "respVariable"=>"1", "expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20130709-2866-eb2ljl-0>}}
+here is the log: #<Plot:0x7f5ea23466a8>
+here is the log: #<File:0x7f5ea23d0920>
+here is the log: 20130709204235_array.txt
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.6ms)[0m   [0;1mINSERT INTO `plots` (`updated_at`, `explVariable`, `created_at`, `respVariable`, `expName`, `calibFile`) VALUES('2013-07-09 18:42:35', 1, '2013-07-09 18:42:35', 1, 'test', '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (34.1ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20130709204235_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;36;1mPlot Load (0.7ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 2) [0m
+File extract local path: public/calibration_data/20130709204235_array.txt
+0.2126254291738930.9229442091738992.542213044616182.222254011414311.942793878186031.698705229989431.485509821636321.299296387823641.136648859132760.9945836664337990.8704949830332760.7621068995858580.6674316540291230.5847331499289640.5124950936822750.449393165794180.3942707154850.3461175325464170.3040513068434520.2673014351857070.2351948783729010.2071438088469190.1826348222458470.1612195148580090.1425062540425950.1261529905781470.1118609810228490.09936930487215710.08845007588631350.07890425970052050.07055802095774220.06325953292250210.05687619102203790.05129217917451180.04640634423872810.0421303395748130.03838700364434370.03510894389213030.0322372999194190.02972066324884630.02751413385542840.02557849614795690.02387949927746260.02238722856414020.02107555650643850.01992166329660380.01890561804262510.01801001301068620.0172196441753220.01652123221436740.01590317882807870.01535535391011650.01486890966430690.01443611825563990.01405023001588920.01370534960148180.01339632783072310.01311866721525320.01286843945193750.01264221336091070.01243699194720970.01225015743088050.01207942323668730.01192279206228690.0117785192552870.01164508082704260.01152114551614540.01140555038888190.01129727952885550.01119544542465830.01109927271400040.01100808398595060.01092128738071580.01083836575937730.0107588672448150.01068239696021650.01060860981354920.01053720419556580.01046791647568580.01040051619473310.01033480186630520.01027059730971410.01020774844719930.01014612050663190.01008559557837250.01002607048144270.009967454899850420.009909669754864540.009852645783366160.009796322296185780.00974064609363850.009685570518355180.009631054628026580.00957706247287880.009523562464619980.009470526825277890.009417931105812850.009365753765672660.009313975805573410.009262580446767510.009211552850913390.009160879875406310.009110549859680720.009060552438563050.009010878379249970.008961519438921070.008912468240373720.008863718163397990.008815263249899210.008767098121027390.008719217904793580.00867161817284530.008624294885241540.008577244342214510.00853046314203370.008483948144199490.008437696437291750.008391705310884060.00834597223100870.008300494818723080.008255270831384940.008210298146293130.0081655747463950.008121098707798210.008076868188858990.008032881420647010.007989136698612730.007945632375304980.007902366854005790.00785933858316640.007816546051543060.007773987783944040.007731662337510380.007689568298463060.007647704279257320.007606068916092750.007564660866734110.007523478808603540.007482521437109810.007441787464184690.007401275617000140.007360984636843570.00732091327813110.007281060307541340.007241424503254610.007202004654284070.007162799559887340.007123808029048190.007085028880019890.007046460939921840.007008103044383330.0069699540372281
+Redirected to http://localhost:3000/plots
+Completed in 1103ms (DB: 36) | 302 Found [http://localhost/plots]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-09 20:42:36) [GET]
+  [4;35;1mPlot Load (0.6ms)[0m   [0mSELECT * FROM `plots` [0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 9ms (View: 6, DB: 1) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-09 20:42:40) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mPlot Load (0.2ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 2) [0m
+Rendering template within layouts/plots
+Rendering plots/show
+  [4;35;1mPlotImage Load (0.5ms)[0m   [0mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 2) [0m
+Completed in 8ms (View: 3, DB: 1) | 200 OK [http://localhost/plots/2]
+
+
+Processing PlotsController#show (for 127.0.0.1 at 2013-07-09 20:42:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPlot Load (0.7ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+Rendering template within layouts/plots
+Rendering plots/show
+  [4;35;1mPlotImage Load (0.2ms)[0m   [0mSELECT * FROM `plot_images` WHERE (`plot_images`.plot_id = 1) [0m
+Completed in 18ms (View: 8, DB: 1) | 200 OK [http://localhost/plots/1]

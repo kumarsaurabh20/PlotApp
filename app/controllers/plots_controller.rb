@@ -51,8 +51,9 @@ require 'paperclip'
       respond_to do |format|
 	 if @savedfile
 
-		 self.dataExtract(name)
-                 self.calTheta(id, name)
+		        self.dataExtract(name)
+             @result =  self.calTheta(id, name)
+             logger.debug @result.to_s
 
          format.html { 
 	      flash[:notice] = 'Calibration data file is successfully saved.'
@@ -90,64 +91,77 @@ require 'paperclip'
 
   def calTheta(id, name)
 
-
       @plot = Plot.find(id)
-
       explanatoryVar = @plot.explVariable
       responseVar = @plot.respVariable
-
       directory = "public/calibration_data/" 
       path = File.join(directory, name)
       logger.debug "File extract local path: " + path
-      #file = File.open(path, "r") do |f|
-      #       f.each do |line|
-      #       logger.debug "[" + f.lineno.to_s + "]" + line
-             
       str = IO.read(path)
-      
       line = str.to_str
-      
       @x1 = Array.new
       @y = Array.new 
-      
      if explanatoryVar == 1
-
 	      data = line.scan(/(\S+,\S+)/).flatten
-              logger.debug "here is data" + data.to_s	
-
+              #logger.debug "here is data" + data.to_s	
 	      data.each do |line|
-
 	      if line =~ /(\S+),(\S+)/
-
 		      @x1.push $1 
-                 logger.debug "here is @x1" + @x1.to_s
+                # logger.debug "here is @x1" + @x1.to_s
 		      @y.push $2
-                 logger.debug "here is @y" + @y.to_s                 
-
+                # logger.debug "here is @y" + @y.to_s                 
 	      end 
-
 	    end
-      
-      logger.debug "final variables " + @x1.to_s + " and array y " + @y.to_s  
-        # calLinReg(@y, @x1)
       R.assign "x1", @x1
       R.assign "y", @y
-
-      #@plot = Plot.new    
-
       R.eval  <<-EOF
+      alpha <- 0.01
+      num_iters <- 150
       x1 <- as.numeric(x1)
       y <- as.numeric(y)
-      png("/tmp/myplot.png")
-      plot(x1,y, xlab="#cells count", ylab="signal intensity", main="Plot of X and Y")
-      dev.off()     
-      EOF
+      numOfRows <- length(y)
+      frame1 <- data.frame(d0=rep(1,each=length(y)), d1=y)
+      mX <- data.matrix(frame1)
+      theta = data.matrix(data.frame(theta0=0, theta1=0))
+      histSEF <- rep(0, each=num_iters)
+      computeLineOfFit <- function(mX, y, theta) {
+      m <- length(y)
+      SEF <- 0
+          for(i in 1:m) {
+          SEF <- SEF + (1/(2*m)) * (mX[i,] %*% t(theta) - y[i])^2
+        }
+      return(SEF)
+      }
      
-      #@plot.save
-      @plot.plot_images.create(:graph => File.new("/tmp/myplot.png", "rb"))
+      gradDescentUniVar <- function(mX,y,theta,alpha,num_iters) {
+      m <- length(y)
+      for(iter in 1:num_iters) {
+        init <- 0
+          for(i in 1:m) {
+            init <- init + (alpha/m) * (mX[i,] %*% t(theta) - y[i]) * mX[i,]                 
+          }
+      theta = theta - init
+      histSEF[iter] <- computeLineOfFit(mX,y,theta)
+      print(histSEF)
+      }
+      output <- list(thetaVal=theta, J=histSEF)
+      return(output) 
+    }
+   a <- gradDescentUniVar(mX,y,theta,alpha,num_iters)
+   b <- unlist(a)   
+   EOF
+     
+
+#png("/tmp/myplot.png")
+# plot(1:num_iters, histSEF, xlab="Number of Iterations", ylab="Minimized Squared error function",     #main="Gradient Descent Check")
+#@plot.save
+#@plot.plot_images.create(:graph => File.new("/tmp/myplot.png", "rb"))
 
 
-     
+ @output = R.b
+
+ return @output
+    
 #    elsif explanatoryVar == 2
 #
 #             data = line.scan(/(\S+,\S+,\S+)/).flatten
@@ -207,30 +221,10 @@ require 'paperclip'
 #	    end
 #
 #
-   end
+    end
 
   end
 
-      
-#  def calLinReg(@y, @x1)
-#       
-#      R.assign("x1", @x1)
-#      R.assign("y", @y)
-#
-#      @plot = Plot.new    
-#
-#      R.eval  <<-EOF
-#      x1 <- as.numeric(x1)
-#      y <- as.numeric(y)
-#      png("/tmp/myplot.png")
-#      plot(x1,y)
-#      dev.off()     
-#      EOF
-#     
-#      @plot.save
-#      @plot.plot_images.create(:graph => File.new("/tmp/myplot.png", "rb"))
-#
-#  end 
 
 
   # GET /micro_array_images/1
