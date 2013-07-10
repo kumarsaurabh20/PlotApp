@@ -1,0 +1,15 @@
+<h1>Listing result</h1>
+ 
+<%= "Intercept is: " + @result[0].to_s + " and Slope is  " + @result[1].to_s %><br><br>
+
+<div>
+<p>
+<h3>The Linear model for this data set is:</h3>
+<h2><%= "#cell count = " + @result[0].to_s + " + " + @result[1].to_s + " * Signal intensity" %><br><br></h2>
+</p>
+</div>
+<div>
+<p>
+<%= "The different values of minimum square caluculation after 150 repeatition check are: \n" + @result[3,150].to_s %>
+</p>
+</div>  

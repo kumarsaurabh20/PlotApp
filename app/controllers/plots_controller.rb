@@ -53,12 +53,12 @@ require 'paperclip'
 
 		        self.dataExtract(name)
              @result =  self.calTheta(id, name)
-             logger.debug @result.to_s
+             #logger.debug @result.to_s
 
-         format.html { 
-	      flash[:notice] = 'Calibration data file is successfully saved.'
-	      redirect_to :controller => "plots", :action => "index" }
-		format.xml  { render :xml => @plot, :status => :created, :location => @plot }
+         format.html { render :html => @result }
+	      #flash[:notice] = 'Calibration data file is successfully saved.'
+	      #redirect_to :controller => "plots", :action => "show" 
+		format.xml  { render :xml => @result }
 	 else
          format.html { render :action => "new" }
 	 format.xml  { render :xml => @plot.errors, :status => :unprocessable_entity }
@@ -158,9 +158,7 @@ require 'paperclip'
 #@plot.plot_images.create(:graph => File.new("/tmp/myplot.png", "rb"))
 
 
- @output = R.b
-
- return @output
+ output = R.b
     
 #    elsif explanatoryVar == 2
 #
