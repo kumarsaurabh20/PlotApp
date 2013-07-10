@@ -1,15 +1,50 @@
+<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<%= javascript_include_tag :defaults %>
+<%= javascript_include_tag "raphael" %>
+<%= javascript_include_tag "morris" %>
+
+
 <h1>Listing result</h1>
  
-<%= "Intercept is: " + @result[0].to_s + " and Slope is  " + @result[1].to_s %><br><br>
+<%= "Intercept is: " + @theta0.to_s + " and Slope is  " + @theta1.to_s %><br><br>
+
+<div id="myfirstchart" style="height: 250px; width:1000px;"></div>
+
 
 <div>
 <p>
 <h3>The Linear model for this data set is:</h3>
-<h2><%= "#cell count = " + @result[0].to_s + " + " + @result[1].to_s + " * Signal intensity" %><br><br></h2>
+<h2><%= "#cell count = " + @theta0.to_s + " + " + @theta1.to_s + " * Signal intensity" %><br><br></h2>
 </p>
 </div>
 <div>
 <p>
-<%= "The different values of minimum square caluculation after 150 repeatition check are: \n" + @result[3,150].to_s %>
+<%= "The different values of minimum square caluculation after 150 repeatition check are: \n" + @result.to_s %>
 </p>
 </div>  
+
+<script>
+new Morris.Line({
+  
+  element: 'myfirstchart',
+
+  data: [ 
+   <% @result.each do |key, value| %> 
+  
+   { Iterations: "<%= key.to_s %>", J_function: <%= value.to_s %>  }, 
+ 
+   <% end %>
+   { Iterations: "<%= @result.length + 1 %>", J_function: 0.00  }
+  
+    ],
+  xkey: 'Iterations',
+  
+  ykeys: ['J_function'],
+  
+  labels: ['J_function']
+});
+</script>

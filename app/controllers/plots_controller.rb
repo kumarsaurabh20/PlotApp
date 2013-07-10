@@ -53,12 +53,19 @@ require 'paperclip'
 
 		        self.dataExtract(name)
              @result =  self.calTheta(id, name)
-             #logger.debug @result.to_s
+             @theta0 = @result.shift
+             @theta1 = @result.shift
+
+             @result = self.array_to_hash(@result)
+             @result = @result.sort_by { |keys, values| keys }
+             
+             logger.debug @result.to_s
 
          format.html { render :html => @result }
 	      #flash[:notice] = 'Calibration data file is successfully saved.'
-	      #redirect_to :controller => "plots", :action => "show" 
-		format.xml  { render :xml => @result }
+              #flash[:result] = @result
+	      #redirect_to :controller => "plots", :action => "index"
+	 format.xml  { render :xml => @result }
 	 else
          format.html { render :action => "new" }
 	 format.xml  { render :xml => @plot.errors, :status => :unprocessable_entity }
@@ -66,6 +73,20 @@ require 'paperclip'
        end
 
   end
+
+  def array_to_hash(array)
+      
+     count=0
+
+     hash = Hash.new
+     (array.length).times do 
+     hash[count+1] = array[count]
+     count += 1
+     end
+     return hash
+
+  end
+
 
   def dataExtract(name)
       
