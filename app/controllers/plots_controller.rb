@@ -51,15 +51,22 @@ require 'paperclip'
       respond_to do |format|
 	 if @savedfile
 
-		        self.dataExtract(name)
+             self.dataExtract(name)
              @result =  self.calTheta(id, name)
              @theta0 = @result.shift
              @theta1 = @result.shift
+             
+             #for precesion up to 3 decimal places. To make 2 decimal places change 200 to 20. 
+             @result = @result.map do  |x|      
+                       (x*200).round / 200.0
+                       end
+             #logger.debug "rounded numbers: " + @result.to_s
 
              @result = self.array_to_hash(@result)
+             
              @result = @result.sort_by { |keys, values| keys }
              
-             logger.debug @result.to_s
+             #logger.debug @result.to_s
 
          format.html { render :html => @result }
 	      #flash[:notice] = 'Calibration data file is successfully saved.'

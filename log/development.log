@@ -13080,3 +13080,272 @@ File extract local path: public/calibration_data/20130711092127_array.txt
 12.5422130446161822.2222540114143131.9427938781860341.6987052299894351.4855098216363261.2992963878236471.1366488591327680.99458366643379990.870494983033276100.762106899585858110.667431654029123120.584733149928964130.512495093682275140.44939316579418150.394270715485160.346117532546417170.304051306843452180.267301435185707190.235194878372901200.207143808846919210.182634822245847220.161219514858009230.142506254042595240.126152990578147250.111860981022849260.0993693048721571270.0884500758863135280.0789042597005205290.0705580209577422300.0632595329225021310.0568761910220379320.0512921791745118330.0464063442387281340.042130339574813350.0383870036443437360.0351089438921303370.032237299919419380.0297206632488463390.0275141338554284400.0255784961479569410.0238794992774626420.0223872285641402430.0210755565064385440.0199216632966038450.0189056180426251460.0180100130106862470.017219644175322480.0165212322143674490.0159031788280787500.0153553539101165510.0148689096643069520.0144361182556399530.0140502300158892540.0137053496014818550.0133963278307231560.0131186672152532570.0128684394519375580.0126422133609107590.0124369919472097600.0122501574308805610.0120794232366873620.0119227920622869630.011778519255287640.0116450808270426650.0115211455161454660.0114055503888819670.0112972795288555680.0111954454246583690.0110992727140004700.0110080839859506710.0109212873807158720.0108383657593773730.010758867244815740.0106823969602165750.0106086098135492760.0105372041955658770.0104679164756858780.0104005161947331790.0103348018663052800.0102705973097141810.0102077484471993820.0101461205066319830.0100855955783725840.0100260704814427850.00996745489985042860.00990966975486454870.00985264578336616880.00979632229618578890.0097406460936385900.00968557051835518910.00963105462802658920.0095770624728788930.00952356246461998940.00947052682527789950.00941793110581285960.00936575376567266970.00931397580557341980.00926258044676751990.009211552850913391000.009160879875406311010.009110549859680721020.009060552438563051030.009010878379249971040.008961519438921071050.008912468240373721060.008863718163397991070.008815263249899211080.008767098121027391090.008719217904793581100.00867161817284531110.008624294885241541120.008577244342214511130.00853046314203371140.008483948144199491150.008437696437291751160.008391705310884061170.00834597223100871180.008300494818723081190.008255270831384941200.008210298146293131210.0081655747463951220.008121098707798211230.008076868188858991240.008032881420647011250.007989136698612731260.007945632375304981270.007902366854005791280.00785933858316641290.007816546051543061300.007773987783944041310.007731662337510381320.007689568298463061330.007647704279257321340.007606068916092751350.007564660866734111360.007523478808603541370.007482521437109811380.007441787464184691390.007401275617000141400.007360984636843571410.00732091327813111420.007281060307541341430.007241424503254611440.007202004654284071450.007162799559887341460.007123808029048191470.007085028880019891480.007046460939921841490.007008103044383331500.0069699540372281
 Rendering plots/create
 Completed in 1093ms (View: 20, DB: 65) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-11 12:10:38) [GET]
+  [4;36;1mPlot Load (0.7ms)[0m   [0;1mSELECT * FROM `plots` [0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 119ms (View: 81, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-07-11 12:10:44) [GET]
+
+ActionController::RoutingError (No route matches "/new" with {:method=>:get}):
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-11 12:10:49) [GET]
+  [4;35;1mPlot Load (0.4ms)[0m   [0mSELECT * FROM `plots` [0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 4ms (View: 1, DB: 0) | 200 OK [http://localhost/plots/]
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-11 12:10:53) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 49ms (View: 45, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-11 12:16:37) [POST]
+  Parameters: {"authenticity_token"=>"0Z1DN4kfWspDvwNJTPpnDKV57KWJoX4NOzGAyM981kQ=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20130711-3675-z97k81-0>}, "commit"=>"Create"}
+here is the log: #<Plot:0x7ff092b4fc28>
+here is the log: #<File:0x7ff092bf1ff0>
+here is the log: 20130711121637_array.txt
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.7ms)[0m   [0mINSERT INTO `plots` (`explVariable`, `expName`, `created_at`, `respVariable`, `updated_at`, `calibFile`) VALUES(1, 'test', '2013-07-11 10:16:37', 1, '2013-07-11 10:16:37', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (46.3ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130711121637_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.7ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 2) [0m
+File extract local path: public/calibration_data/20130711121637_array.txt
+12.5422130446161822.2222540114143131.9427938781860341.6987052299894351.4855098216363261.2992963878236471.1366488591327680.99458366643379990.870494983033276100.762106899585858110.667431654029123120.584733149928964130.512495093682275140.44939316579418150.394270715485160.346117532546417170.304051306843452180.267301435185707190.235194878372901200.207143808846919210.182634822245847220.161219514858009230.142506254042595240.126152990578147250.111860981022849260.0993693048721571270.0884500758863135280.0789042597005205290.0705580209577422300.0632595329225021310.0568761910220379320.0512921791745118330.0464063442387281340.042130339574813350.0383870036443437360.0351089438921303370.032237299919419380.0297206632488463390.0275141338554284400.0255784961479569410.0238794992774626420.0223872285641402430.0210755565064385440.0199216632966038450.0189056180426251460.0180100130106862470.017219644175322480.0165212322143674490.0159031788280787500.0153553539101165510.0148689096643069520.0144361182556399530.0140502300158892540.0137053496014818550.0133963278307231560.0131186672152532570.0128684394519375580.0126422133609107590.0124369919472097600.0122501574308805610.0120794232366873620.0119227920622869630.011778519255287640.0116450808270426650.0115211455161454660.0114055503888819670.0112972795288555680.0111954454246583690.0110992727140004700.0110080839859506710.0109212873807158720.0108383657593773730.010758867244815740.0106823969602165750.0106086098135492760.0105372041955658770.0104679164756858780.0104005161947331790.0103348018663052800.0102705973097141810.0102077484471993820.0101461205066319830.0100855955783725840.0100260704814427850.00996745489985042860.00990966975486454870.00985264578336616880.00979632229618578890.0097406460936385900.00968557051835518910.00963105462802658920.0095770624728788930.00952356246461998940.00947052682527789950.00941793110581285960.00936575376567266970.00931397580557341980.00926258044676751990.009211552850913391000.009160879875406311010.009110549859680721020.009060552438563051030.009010878379249971040.008961519438921071050.008912468240373721060.008863718163397991070.008815263249899211080.008767098121027391090.008719217904793581100.00867161817284531110.008624294885241541120.008577244342214511130.00853046314203371140.008483948144199491150.008437696437291751160.008391705310884061170.00834597223100871180.008300494818723081190.008255270831384941200.008210298146293131210.0081655747463951220.008121098707798211230.008076868188858991240.008032881420647011250.007989136698612731260.007945632375304981270.007902366854005791280.00785933858316641290.007816546051543061300.007773987783944041310.007731662337510381320.007689568298463061330.007647704279257321340.007606068916092751350.007564660866734111360.007523478808603541370.007482521437109811380.007441787464184691390.007401275617000141400.007360984636843571410.00732091327813111420.007281060307541341430.007241424503254611440.007202004654284071450.007162799559887341460.007123808029048191470.007085028880019891480.007046460939921841490.007008103044383331500.0069699540372281
+Rendering plots/create
+Completed in 1066ms (View: 8, DB: 48) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-11 12:32:23) [POST]
+  Parameters: {"authenticity_token"=>"0Z1DN4kfWspDvwNJTPpnDKV57KWJoX4NOzGAyM981kQ=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20130711-3675-2fwo4s-0>}, "commit"=>"Create"}
+here is the log: #<Plot:0x7ff092c9a6f0>
+here is the log: #<File:0x7ff0929b5980>
+here is the log: 20130711123223_array.txt
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.2ms)[0m   [0mINSERT INTO `plots` (`explVariable`, `expName`, `created_at`, `respVariable`, `updated_at`, `calibFile`) VALUES(1, 'test', '2013-07-11 10:32:23', 1, '2013-07-11 10:32:23', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (36.1ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130711123223_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.3ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 3) [0m
+File extract local path: public/calibration_data/20130711123223_array.txt
+
+NoMethodError (undefined method `round' for #<Array:0x7ff092b8ab20>):
+  app/controllers/plots_controller.rb:61:in `create'
+  app/controllers/plots_controller.rb:60:in `each'
+  app/controllers/plots_controller.rb:60:in `map'
+  app/controllers/plots_controller.rb:60:in `create'
+  app/controllers/plots_controller.rb:51:in `create'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (21.7ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-11 13:03:49) [POST]
+  Parameters: {"authenticity_token"=>"0Z1DN4kfWspDvwNJTPpnDKV57KWJoX4NOzGAyM981kQ=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20130711-3675-sqj1du-0>}, "commit"=>"Create"}
+here is the log: #<Plot:0x7ff0928ccd20>
+here is the log: #<File:0x7ff09293cb48>
+here is the log: 20130711130349_array.txt
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.2ms)[0m   [0mINSERT INTO `plots` (`explVariable`, `expName`, `created_at`, `respVariable`, `updated_at`, `calibFile`) VALUES(1, 'test', '2013-07-11 11:03:49', 1, '2013-07-11 11:03:49', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (29.3ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130711130349_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.2ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 4) [0m
+File extract local path: public/calibration_data/20130711130349_array.txt
+
+NoMethodError (undefined method `round' for #<Array:0x7ff092838710>):
+  app/controllers/plots_controller.rb:61:in `create'
+  app/controllers/plots_controller.rb:60:in `each'
+  app/controllers/plots_controller.rb:60:in `map'
+  app/controllers/plots_controller.rb:60:in `create'
+  app/controllers/plots_controller.rb:51:in `create'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (58.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-11 13:04:47) [POST]
+  Parameters: {"authenticity_token"=>"0Z1DN4kfWspDvwNJTPpnDKV57KWJoX4NOzGAyM981kQ=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20130711-3675-u4c1nj-0>}, "commit"=>"Create"}
+here is the log: #<Plot:0x7ff092a93280>
+here is the log: #<File:0x7ff092b10370>
+here is the log: 20130711130447_array.txt
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.4ms)[0m   [0mINSERT INTO `plots` (`explVariable`, `expName`, `created_at`, `respVariable`, `updated_at`, `calibFile`) VALUES(1, 'test', '2013-07-11 11:04:47', 1, '2013-07-11 11:04:47', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (32.1ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130711130447_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.3ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 5) [0m
+File extract local path: public/calibration_data/20130711130447_array.txt
+rounded numbers: 2.542.221.9451.71.4851.31.1350.9950.870.760.6650.5850.510.450.3950.3450.3050.2650.2350.2050.1850.160.1450.1250.110.10.090.080.070.0650.0550.050.0450.040.040.0350.030.030.030.0250.0250.020.020.020.020.020.0150.0150.0150.0150.0150.0150.0150.0150.0150.0150.0150.0150.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.0050.0050.0050.0050.0050.0050.0050.0050.0050.0050.0050.0050.0050.005
+12.5422.2231.94541.751.48561.371.13580.99590.87100.76110.665120.585130.51140.45150.395160.345170.305180.265190.235200.205210.185220.16230.145240.125250.11260.1270.09280.08290.07300.065310.055320.05330.045340.04350.04360.035370.03380.03390.03400.025410.025420.02430.02440.02450.02460.02470.015480.015490.015500.015510.015520.015530.015540.015550.015560.015570.015580.015590.01600.01610.01620.01630.01640.01650.01660.01670.01680.01690.01700.01710.01720.01730.01740.01750.01760.01770.01780.01790.01800.01810.01820.01830.01840.01850.01860.01870.01880.01890.01900.01910.01920.01930.01940.01950.01960.01970.01980.01990.011000.011010.011020.011030.011040.011050.011060.011070.011080.011090.011100.011110.011120.011130.011140.011150.011160.011170.011180.011190.011200.011210.011220.011230.011240.011250.011260.011270.011280.011290.011300.011310.011320.011330.011340.011350.011360.011370.0051380.0051390.0051400.0051410.0051420.0051430.0051440.0051450.0051460.0051470.0051480.0051490.0051500.005
+Rendering plots/create
+Completed in 1084ms (View: 7, DB: 33) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-11 13:07:19) [POST]
+  Parameters: {"authenticity_token"=>"0Z1DN4kfWspDvwNJTPpnDKV57KWJoX4NOzGAyM981kQ=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20130711-3675-1eru5km-0>}, "commit"=>"Create"}
+here is the log: #<Plot:0x7ff092c43850>
+here is the log: #<File:0x7ff092ce2dd8>
+here is the log: 20130711130719_array.txt
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.5ms)[0m   [0mINSERT INTO `plots` (`explVariable`, `expName`, `created_at`, `respVariable`, `updated_at`, `calibFile`) VALUES(1, 'test', '2013-07-11 11:07:19', 1, '2013-07-11 11:07:19', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (34.7ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130711130719_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.3ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 6) [0m
+File extract local path: public/calibration_data/20130711130719_array.txt
+rounded numbers: 2.542.221.9451.71.4851.31.1350.9950.870.760.6650.5850.510.450.3950.3450.3050.2650.2350.2050.1850.160.1450.1250.110.10.090.080.070.0650.0550.050.0450.040.040.0350.030.030.030.0250.0250.020.020.020.020.020.0150.0150.0150.0150.0150.0150.0150.0150.0150.0150.0150.0150.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.010.0050.0050.0050.0050.0050.0050.0050.0050.0050.0050.0050.0050.0050.005
+12.5422.2231.94541.751.48561.371.13580.99590.87100.76110.665120.585130.51140.45150.395160.345170.305180.265190.235200.205210.185220.16230.145240.125250.11260.1270.09280.08290.07300.065310.055320.05330.045340.04350.04360.035370.03380.03390.03400.025410.025420.02430.02440.02450.02460.02470.015480.015490.015500.015510.015520.015530.015540.015550.015560.015570.015580.015590.01600.01610.01620.01630.01640.01650.01660.01670.01680.01690.01700.01710.01720.01730.01740.01750.01760.01770.01780.01790.01800.01810.01820.01830.01840.01850.01860.01870.01880.01890.01900.01910.01920.01930.01940.01950.01960.01970.01980.01990.011000.011010.011020.011030.011040.011050.011060.011070.011080.011090.011100.011110.011120.011130.011140.011150.011160.011170.011180.011190.011200.011210.011220.011230.011240.011250.011260.011270.011280.011290.011300.011310.011320.011330.011340.011350.011360.011370.0051380.0051390.0051400.0051410.0051420.0051430.0051440.0051450.0051460.0051470.0051480.0051490.0051500.005
+Rendering plots/create
+Completed in 1054ms (View: 13, DB: 36) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-11 13:11:19) [POST]
+  Parameters: {"authenticity_token"=>"0Z1DN4kfWspDvwNJTPpnDKV57KWJoX4NOzGAyM981kQ=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20130711-3675-1cz3s5t-0>}, "commit"=>"Create"}
+here is the log: #<Plot:0x7ff0929cbfc8>
+here is the log: #<File:0x7ff092a66398>
+here is the log: 20130711131119_array.txt
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.3ms)[0m   [0mINSERT INTO `plots` (`explVariable`, `expName`, `created_at`, `respVariable`, `updated_at`, `calibFile`) VALUES(1, 'test', '2013-07-11 11:11:19', 1, '2013-07-11 11:11:19', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (31.2ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130711131119_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.3ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 7) [0m
+File extract local path: public/calibration_data/20130711131119_array.txt
+Rendering plots/create
+Completed in 1072ms (View: 4, DB: 32) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-11 13:17:20) [POST]
+  Parameters: {"authenticity_token"=>"0Z1DN4kfWspDvwNJTPpnDKV57KWJoX4NOzGAyM981kQ=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20130711-3675-uv300o-0>}, "commit"=>"Create"}
+here is the log: #<Plot:0x7ff092afa890>
+here is the log: #<File:0x7ff092b979b0>
+here is the log: 20130711131720_array.txt
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.5ms)[0m   [0mINSERT INTO `plots` (`explVariable`, `expName`, `created_at`, `respVariable`, `updated_at`, `calibFile`) VALUES(1, 'test', '2013-07-11 11:17:20', 1, '2013-07-11 11:17:20', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (32.9ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130711131720_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.6ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 8) [0m
+File extract local path: public/calibration_data/20130711131720_array.txt
+Rendering plots/create
+Completed in 1031ms (View: 14, DB: 34) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-11 13:21:05) [POST]
+  Parameters: {"authenticity_token"=>"0Z1DN4kfWspDvwNJTPpnDKV57KWJoX4NOzGAyM981kQ=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20130711-3675-1xbv73g-0>}, "commit"=>"Create"}
+here is the log: #<Plot:0x7ff092c29978>
+here is the log: #<File:0x7ff092ccfdc8>
+here is the log: 20130711132105_array.txt
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.5ms)[0m   [0mINSERT INTO `plots` (`explVariable`, `expName`, `created_at`, `respVariable`, `updated_at`, `calibFile`) VALUES(1, 'test', '2013-07-11 11:21:05', 1, '2013-07-11 11:21:05', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (38.1ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130711132105_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.3ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 9) [0m
+File extract local path: public/calibration_data/20130711132105_array.txt
+Rendering plots/create
+Completed in 1056ms (View: 14, DB: 39) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-11 13:35:51) [POST]
+  Parameters: {"authenticity_token"=>"0Z1DN4kfWspDvwNJTPpnDKV57KWJoX4NOzGAyM981kQ=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20130711-3675-qyrhy-0>}, "commit"=>"Create"}
+here is the log: #<Plot:0x7ff092c40650>
+here is the log: #<File:0x7ff092ce3210>
+here is the log: 20130711133551_array.txt
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.2ms)[0m   [0mINSERT INTO `plots` (`explVariable`, `expName`, `created_at`, `respVariable`, `updated_at`, `calibFile`) VALUES(1, 'test', '2013-07-11 11:35:51', 1, '2013-07-11 11:35:51', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (42.3ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130711133551_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.2ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 10) [0m
+File extract local path: public/calibration_data/20130711133551_array.txt
+Rendering plots/create
+Completed in 1044ms (View: 15, DB: 43) | 200 OK [http://localhost/plots]
