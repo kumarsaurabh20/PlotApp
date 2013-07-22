@@ -38,7 +38,8 @@ require 'paperclip'
       logger.debug "here is the log: " + name.to_s
 
       #name =  Time.now.strftime("%Y%m%d%H%M%S ") + sanitize_filename(uploaded_io.original_filename)
-
+      #name =  Time.now.strftime("%Y%m%d%H%M%S ") + sanitize_filename(uploaded_io.original_filename)
+ 
       directory = "public/calibration_data/"
       Dir.mkdir(directory) unless File.directory?(directory)
       path = File.join(directory, name)

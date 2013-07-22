@@ -13349,3 +13349,85 @@ File extract local path: public/calibration_data/20130711133551_array.txt
 File extract local path: public/calibration_data/20130711133551_array.txt
 Rendering plots/create
 Completed in 1044ms (View: 15, DB: 43) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-11 13:55:22) [POST]
+  Parameters: {"authenticity_token"=>"0Z1DN4kfWspDvwNJTPpnDKV57KWJoX4NOzGAyM981kQ=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20130711-3675-15w37mo-0>}, "commit"=>"Create"}
+here is the log: #<Plot:0x7ff0929c4390>
+here is the log: #<File:0x7ff092a5aa48>
+here is the log: 20130711135522_array.txt
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.2ms)[0m   [0mINSERT INTO `plots` (`explVariable`, `expName`, `created_at`, `respVariable`, `updated_at`, `calibFile`) VALUES(1, 'test', '2013-07-11 11:55:22', 1, '2013-07-11 11:55:22', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (42.1ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130711135522_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.2ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 11) [0m
+File extract local path: public/calibration_data/20130711135522_array.txt
+Rendering plots/create
+Completed in 1077ms (View: 8, DB: 43) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-11 13:56:58) [POST]
+  Parameters: {"authenticity_token"=>"0Z1DN4kfWspDvwNJTPpnDKV57KWJoX4NOzGAyM981kQ=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20130711-3675-t6h0gy-0>}, "commit"=>"Create"}
+here is the log: #<Plot:0x7ff092b02748>
+here is the log: #<File:0x7ff092ba3a30>
+here is the log: 20130711135658_array.txt
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.4ms)[0m   [0mINSERT INTO `plots` (`explVariable`, `expName`, `created_at`, `respVariable`, `updated_at`, `calibFile`) VALUES(1, 'test', '2013-07-11 11:56:58', 1, '2013-07-11 11:56:58', '--- !ruby/object:File {}\n\n')[0m
+  [4;36;1mSQL (55.3ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20130711135658_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;35;1mPlot Load (0.7ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 12) [0m
+File extract local path: public/calibration_data/20130711135658_array.txt
+Rendering plots/create
+Completed in 1073ms (View: 15, DB: 57) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#index (for 127.0.0.1 at 2013-07-15 15:40:36) [GET]
+  [4;36;1mPlot Load (0.9ms)[0m   [0;1mSELECT * FROM `plots` [0m
+Rendering template within layouts/plots
+Rendering plots/index
+Completed in 144ms (View: 98, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-15 15:40:40) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 52ms (View: 47, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-07-15 15:45:32) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 6ms (View: 3, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-07-15 15:46:00) [POST]
+  Parameters: {"commit"=>"Create", "plot"=>{"calibFile"=>#<File:/tmp/RackMultipart20130715-2519-1rcrv2z-0>, "expName"=>"test", "respVariable"=>"2", "explVariable"=>"1"}, "authenticity_token"=>"XAfOdzUz1XL4eUP6eKTXLm6M2p0dt4aG4/+7oPajRQc="}
+here is the log: #<Plot:0x7f83068a3c30>
+here is the log: #<File:0x7f83069687b0>
+here is the log: 20130715154600_array.txt
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.6ms)[0m   [0;1mINSERT INTO `plots` (`calibFile`, `updated_at`, `created_at`, `expName`, `respVariable`, `explVariable`) VALUES('--- !ruby/object:File {}\n\n', '2013-07-15 13:46:00', '2013-07-15 13:46:00', 'test', 2, 1)[0m
+  [4;35;1mSQL (32.7ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20130715154600_array.txt
+[1]0,.25
+[2]5,.75
+[3]10,1.5
+[4]15,2.25
+[5]20,3.25
+[6]25,4.05
+  [4;36;1mPlot Load (0.7ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 1) [0m
+File extract local path: public/calibration_data/20130715154600_array.txt
+Rendering plots/create
+Completed in 1043ms (View: 17, DB: 34) | 200 OK [http://localhost/plots]
