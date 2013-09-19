@@ -179,15 +179,12 @@ require 'paperclip'
    a <- gradDescentUniVar(mX,y,theta,alpha,num_iters)
    b <- unlist(a)   
    EOF
-     
-
 #png("/tmp/myplot.png")
 # plot(1:num_iters, histSEF, xlab="Number of Iterations", ylab="Minimized Squared error function",     #main="Gradient Descent Check")
 #@plot.save
 #@plot.plot_images.create(:graph => File.new("/tmp/myplot.png", "rb"))
 
-
- output = R.b
+output = R.b
     
 #    elsif explanatoryVar == 2
 #
@@ -252,12 +249,9 @@ require 'paperclip'
 
   end
 
-
-
   # GET /micro_array_images/1
   # GET /micro_array_images/1.xml
   def show
-
     @plot = Plot.find(params[:id])
     @title = "Plot Image"
 
@@ -269,10 +263,6 @@ require 'paperclip'
 	      format.html # show.html.erb
 	      format.xml  { render :xml => @plot }
 	    end
-
   end
 
-
 end
-
-
