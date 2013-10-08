@@ -11,7 +11,7 @@
  
 <%= "Intercept is: " + @theta0.to_s + " and Slope is  " + @theta1.to_s %><br><br>
 
-<div id="myfirstchart" style="height: 250px;width:1000px;"></div>
+<div id="myfirstchart" style="height: 250px;width:1200px;"></div>
 
 
 <div>
@@ -32,9 +32,9 @@ new Morris.Line({
   element: 'myfirstchart',
 
   data: [<% @result.each do |key, value| %> 
-	   {Iterations:'<%= key.to_s %>',SE_function:<%= value.to_s %>}, 
+	   {Iterations:'<%= key %>', SE_function:<%= value.to_s %>}, 
 	   <% end %>
-	   {Iterations:'<%= @result.length + 1 %>',J_function:0.00}
+	   {Iterations:'<%= @result.length + 1 %>', J_function:0.00}
 	   ],
 
   xkey: 'Iterations',

@@ -64,10 +64,11 @@ require 'paperclip'
              #logger.debug "rounded numbers: " + @result.to_s
 
              @result = self.array_to_hash(@result)
+             logger.debug @result
              
              @result = @result.sort_by { |keys, values| keys }
              
-             #logger.debug @result.to_s
+             #logger.debug @result.instance_of? Array
 
          format.html { render :html => @result }
 	      #flash[:notice] = 'Calibration data file is successfully saved.'
@@ -131,10 +132,10 @@ require 'paperclip'
       @x1 = Array.new
       @y = Array.new 
      if explanatoryVar == 1
-	      data = line.scan(/(\S+,\S+)/).flatten
+	      data = line.scan(/(\S+\t\S+)/).flatten
               #logger.debug "here is data" + data.to_s	
 	      data.each do |line|
-	      if line =~ /(\S+),(\S+)/
+	      if line =~ /(\S+)\t(\S+)/
 		      @x1.push $1 
                 # logger.debug "here is @x1" + @x1.to_s
 		      @y.push $2
@@ -145,7 +146,7 @@ require 'paperclip'
       R.assign "y", @y
       R.eval  <<-EOF
       alpha <- 0.01
-      num_iters <- 150
+      num_iters <- 90
       x1 <- as.numeric(x1)
       y <- as.numeric(y)
       numOfRows <- length(y)
@@ -162,7 +163,7 @@ require 'paperclip'
       return(SEF)
       }
      
-      gradDescentUniVar <- function(mX,y,theta,alpha,num_iters) {
+      gradDescentUniVar <- function(mX, y, theta, alpha, num_iters) {
       m <- length(y)
       for(iter in 1:num_iters) {
         init <- 0
@@ -171,7 +172,7 @@ require 'paperclip'
           }
       theta = theta - init
       histSEF[iter] <- computeLineOfFit(mX,y,theta)
-      print(histSEF)
+      print(histSEF[iter])
       }
       output <- list(thetaVal=theta, J=histSEF)
       return(output) 
