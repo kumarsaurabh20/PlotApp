@@ -1,11 +1,4 @@
-<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<%= javascript_include_tag :defaults %>
-<%= javascript_include_tag "raphael" %>
-<%= javascript_include_tag "morris" %>
-
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 <h1>Listing result</h1>
  
@@ -27,20 +20,29 @@
 </div>  
 
 <script>
-new Morris.Line({
-  
-  element: 'myfirstchart',
 
-  data: [<% @result.each do |key, value| %> 
-	   {Iterations:'<%= key %>', SE_function:<%= value.to_s %>}, 
+google.load('visualization', '1.0', { 'packages': ['corechart'] });
+
+function drawJfunctionChart() {
+
+          var data = new google.visualization.arrayToDataTable([
+           [ 'Iterations', 'SE_function' ], 
+           <% @result.each do |key, value| %> 
+	   [ <%= key %>, <%= value.to_s %> ], 
 	   <% end %>
-	   {Iterations:'<%= @result.length + 1 %>', J_function:0.00}
-	   ],
+	   [ <%= @result.length + 1 %>, 0 ]
 
-  xkey: 'Iterations',
-  
-  ykeys: ['SE_function'],
-  
-  labels: ['SE_function']
-});
+         ]);
+         
+
+         var options = {
+                  title: 'Standard Error Function'
+               };
+
+         var chart = new google.visualization.ScatterChart(document.getElementById('myfirstchart'));
+             chart.draw(data, options);
+
+    }
+
+google.setOnLoadCallback(drawJfunctionChart);
 </script>

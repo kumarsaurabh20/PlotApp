@@ -146,7 +146,7 @@ require 'paperclip'
       R.assign "y", @y
       R.eval  <<-EOF
       alpha <- 0.01
-      num_iters <- 90
+      num_iters <- 150
       x1 <- as.numeric(x1)
       y <- as.numeric(y)
       numOfRows <- length(y)
