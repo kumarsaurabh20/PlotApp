@@ -52,16 +52,37 @@ require 'paperclip'
       respond_to do |format|
 	 if @savedfile
 
+             @forBubbleChart = []
+             @output = []
+
              self.dataExtract(name)
-             @result =  self.calTheta(id, name)
+             @output =  self.calTheta(id, name)
+
+             #logger.debug "Total result: " + @output.to_s
+
+             @result = @output.shift
+             #puts @result.class
+             @thetaZeroValues = @output.shift
+             #puts @thetaZeroValues.class
+             @thetaOneValues = @output.shift
+            
+             #puts @thetaOneValues.class
              @theta0 = @result.shift
              @theta1 = @result.shift
              
              #for precesion up to 3 decimal places. To make 2 decimal places change 200 to 20. 
-             @result = @result.map do  |x|      
-                       (x*200).round / 200.0
-                       end
+             @result = round_up(@result)
+             @thetaZeroValues = round_up(@thetaZeroValues)
+             #logger.debug "thetaZeroValues: " + @thetaZeroValues.to_s
+             @thetaOneValues = round_up(@thetaOneValues)
+             #logger.debug "thetaOneValues: " + @thetaOneValues.to_s
+
+             #@result = @result.map do  |x|      
+              #         (x*200).round / 200.0
+               #        end
              #logger.debug "rounded numbers: " + @result.to_s
+
+             @forBubbleChart = @result
 
              @result = self.array_to_hash(@result)
              logger.debug @result
@@ -168,6 +189,7 @@ require 'paperclip'
       frame1 <- data.frame(d0=rep(1,each=length(y)), d1=y)
       mX <- data.matrix(frame1)
       theta = data.matrix(data.frame(theta0=0, theta1=0))
+      thetaRep = data.matrix(data.frame(theta0=rep(0, num_iters), theta1=rep(0, num_iters)))
       histSEF <- rep(0, each=num_iters)
       computeLineOfFit <- function(mX, y, theta) {
       m <- length(y)
@@ -186,21 +208,35 @@ require 'paperclip'
             init <- init + (alpha/m) * (mX[i,] %*% t(theta) - y[i]) * mX[i,]                 
           }
       theta = theta - init
+      thetaRep[iter,] = theta
       histSEF[iter] <- computeLineOfFit(mX,y,theta)
-      print(histSEF[iter])
       }
-      output <- list(thetaVal=theta, J=histSEF)
+      output <- list(thetaOriVal=theta, thetaAll=thetaRep, J=histSEF)
       return(output) 
     }
-   a <- gradDescentUniVar(mX,y,theta,alpha,num_iters)
-   b <- unlist(a)   
+   
+    allResults <- gradDescentUniVar(mX,y,theta,alpha,num_iters)
+    resultsUnlist <- unlist(allResults)  
+ 
+    thetaValues <- allResults[[2]]
+    thetaValuesFrame <- data.frame(thetaValues)
+    theta0Values <- thetaValuesFrame$theta0
+    theta1Values <- thetaValuesFrame$theta1
+    allResults[[2]] <- NULL
+    resultsUnlist <- unlist(allResults)
+
+ 
    EOF
 #png("/tmp/myplot.png")
 # plot(1:num_iters, histSEF, xlab="Number of Iterations", ylab="Minimized Squared error function",     #main="Gradient Descent Check")
 #@plot.save
 #@plot.plot_images.create(:graph => File.new("/tmp/myplot.png", "rb"))
 
-output = R.b
+	output = R.resultsUnlist
+	thetaZeroValues = R.theta0Values
+	thetaOneValues = R.theta1Values
+
+	return output, thetaZeroValues, thetaOneValues 
     
     end
 
@@ -221,6 +257,28 @@ output = R.b
 	      format.xml  { render :xml => @plot }
 	    end
   end
+
+
+
+ def round_up(object)
+     object = object.map do  |x|      
+              (x*200).round / 200.0
+              end
+   return object
+ end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 end
 
