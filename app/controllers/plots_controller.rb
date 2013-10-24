@@ -131,22 +131,37 @@ require 'paperclip'
       line = str.to_str
       @x1 = Array.new
       @y = Array.new 
+      @raw_data = Array.new
+      @raw_data_mod = Array.new
      if explanatoryVar == 1
-	      data = line.scan(/(\S+\t\S+)/).flatten
+	      data = line.scan(/(\S+[\t,]\S+)/).flatten
               #logger.debug "here is data" + data.to_s	
 	      data.each do |line|
-	      if line =~ /(\S+)\t(\S+)/
-		      @x1.push $1 
+	      if line =~ /((\S+)[\t,](\S+))/
+		      @x1.push $2
                 # logger.debug "here is @x1" + @x1.to_s
-		      @y.push $2
-                # logger.debug "here is @y" + @y.to_s                 
+		      @y.push $3
+                # logger.debug "here is @y" + @y.to_s
+                      @raw_data.push $1                
 	      end 
+                     
+                      if @raw_data.first.include?(',')
+                           @raw_data.each do |x|
+                           @raw_data_mod.push x
+                           end
+                      else
+                           @raw_data.each do |x|
+                           @raw_data_mod.push x.to_s.gsub(/\t/, ',')
+                           end
+                      end
+              
+
 	    end
       R.assign "x1", @x1
       R.assign "y", @y
       R.eval  <<-EOF
       alpha <- 0.01
-      num_iters <- 150
+      num_iters <- 300
       x1 <- as.numeric(x1)
       y <- as.numeric(y)
       numOfRows <- length(y)
@@ -187,6 +202,29 @@ require 'paperclip'
 
 output = R.b
     
+    end
+
+  end
+
+  # GET /micro_array_images/1
+  # GET /micro_array_images/1.xml
+  def show
+    @plot = Plot.find(params[:id])
+    @title = "Plot Image"
+
+	    if @plot.nil?
+		redirect_to :action => "index"
+	    end
+
+	    respond_to do |format|
+	      format.html # show.html.erb
+	      format.xml  { render :xml => @plot }
+	    end
+  end
+
+end
+
+
 #    elsif explanatoryVar == 2
 #
 #             data = line.scan(/(\S+,\S+,\S+)/).flatten
@@ -246,24 +284,3 @@ output = R.b
 #	    end
 #
 #
-    end
-
-  end
-
-  # GET /micro_array_images/1
-  # GET /micro_array_images/1.xml
-  def show
-    @plot = Plot.find(params[:id])
-    @title = "Plot Image"
-
-	    if @plot.nil?
-		redirect_to :action => "index"
-	    end
-
-	    respond_to do |format|
-	      format.html # show.html.erb
-	      format.xml  { render :xml => @plot }
-	    end
-  end
-
-end

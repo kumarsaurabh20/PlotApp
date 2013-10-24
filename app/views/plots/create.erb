@@ -1,10 +1,13 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
+
+<div id="myFirstChart" style="height: 250px;width:1200px;"></div>
+
 <h1>Listing result</h1>
  
 <%= "Intercept is: " + @theta0.to_s + " and Slope is  " + @theta1.to_s %><br><br>
 
-<div id="myfirstchart" style="height: 250px;width:1200px;"></div>
+<div id="mySecondChart" style="height: 250px;width:1200px;"></div>
 
 
 <div>
@@ -13,11 +16,6 @@
 <h2><%= "#cell count = " + @theta0.to_s + " + " + @theta1.to_s + " * Signal intensity" %><br><br></h2>
 </p>
 </div>
-<div>
-<p>
-<%= "The different values of minimum square caluculation after 150 repeatition check are: \n" + @result.to_s %>
-</p>
-</div>  
 
 <script>
 
@@ -39,10 +37,34 @@ function drawJfunctionChart() {
                   title: 'Standard Error Function'
                };
 
-         var chart = new google.visualization.ScatterChart(document.getElementById('myfirstchart'));
+         var chart = new google.visualization.ScatterChart(document.getElementById('mySecondChart'));
              chart.draw(data, options);
 
     }
 
+function drawOriScatterChart() {
+
+          var data = new google.visualization.arrayToDataTable([
+           [ 'Cell Count', 'Signal Intensity' ], 
+           <% @raw_data_mod.each do |x| %>
+       
+	   [ <%= x %> ], 
+	   <% end %>
+	   [ <%= @raw_data_mod.last %> ]
+
+         ]);
+         
+
+         var options = {
+                  title: 'Cell Count Vs Signal Intensity'
+               };
+
+         var chart = new google.visualization.ScatterChart(document.getElementById('myFirstChart'));
+             chart.draw(data, options);
+
+    }
+
+
+google.setOnLoadCallback(drawOriScatterChart);
 google.setOnLoadCallback(drawJfunctionChart);
 </script>
