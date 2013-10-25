@@ -84,7 +84,7 @@ require 'paperclip'
 
              @forBubbleChart = @result
 
-             @result = self.array_to_hash(@result)
+             @result = array_to_hash(@result)
              logger.debug @result
              
              @result = @result.sort_by { |keys, values| keys }
@@ -266,18 +266,6 @@ require 'paperclip'
               end
    return object
  end
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 end
