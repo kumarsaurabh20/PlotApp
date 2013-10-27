@@ -6,6 +6,8 @@ require 'rubygems'
 require 'rinruby'
 require 'paperclip'
 
+ DIRECTORY = "public/calibration_data/"
+
   def index
 
      @plot = Plot.all
@@ -28,20 +30,14 @@ require 'paperclip'
       @plot = Plot.new(params[:plot])
       @title = "Calibration Data Upload"
 
-      #logger.debug "here is the log: " + @plot.to_s
-
       @savedfile = false
 
       uploaded_io = params[:plot][:calibFile]
-      #logger.debug "here is the log: " + uploaded_io.to_s
  
       name = Time.now.strftime("%Y%m%d%H%M%S_") + sanitize_filename(uploaded_io.original_filename)
-
-      #logger.debug "here is the log: " + name.to_s
-     
-      directory = "public/calibration_data/"
-      Dir.mkdir(directory) unless File.directory?(directory)
-      path = File.join(directory, name)
+      
+      Dir.mkdir(DIRECTORY) unless File.directory?(DIRECTORY)
+      path = File.join(DIRECTORY, name)
       File.open(path, "wb") { |file| file.write(uploaded_io.read) } 
       @savedfile = true
       @plot.save
@@ -57,10 +53,8 @@ require 'paperclip'
              self.dataExtract(name)
              @output =  self.calTheta(id, name)
 
-             @result = @output.shift
-            
-             @thetaZeroValues = @output.shift
-             
+             @result = @output.shift        
+             @thetaZeroValues = @output.shift             
              @thetaOneValues = @output.shift
             
              #puts @thetaOneValues.class
@@ -70,14 +64,9 @@ require 'paperclip'
              #for precesion up to 3 decimal places. To make 2 decimal places change 200 to 20. 
              @result = round_up(@result)
              @thetaZeroValues = round_up(@thetaZeroValues)
-             
              @thetaOneValues = round_up(@thetaOneValues)
-             
-
              @forBubbleChart = @result #Both has same values, to be utilized in different graphs
-
              @result = array_to_hash(@result)
-             logger.debug @result
              
              @result = @result.sort_by { |keys, values| keys }
 
@@ -85,12 +74,9 @@ require 'paperclip'
 	 format.xml  { render :xml => @result }
 
 	 else
-
          format.html { render :action => "new" }
 	 format.xml  { render :xml => @plot.errors, :status => :unprocessable_entity }
-
 	 end
-
        end
   end
 
@@ -98,49 +84,41 @@ require 'paperclip'
   #Method to read calibration data from the file and send querries to R and get the resulting data
   def calTheta(id, name)
 
+      result_array = [] 
+ 
       @plot = Plot.find(id)
-      explanatoryVar = @plot.explVariable
-      responseVar = @plot.respVariable
-      directory = "public/calibration_data/" 
-      path = File.join(directory, name)
-      logger.debug "File extract local path: " + path
+      num_of_variables = dataExtract(name)       
+      path = File.join(DIRECTORY, name)
       str = IO.read(path)
       line = str.to_str
       @x1 = Array.new
       @y = Array.new 
       @raw_data = Array.new
       @raw_data_mod = Array.new
-     if explanatoryVar == 1
+     if num_of_variables == 2
 	      data = line.scan(/(\S+[\t,]\S+)/).flatten
-              #logger.debug "here is data" + data.to_s	
+             	
 	      data.each do |line|
 	      if line =~ /((\S+)[\t,](\S+))/
-		      @x1.push $2
-                # logger.debug "here is @x1" + @x1.to_s
-		      @y.push $3
-                # logger.debug "here is @y" + @y.to_s
+		      @x1.push $2               
+		      @y.push $3                
                       @raw_data.push $1                
-	      end 
-                     
-                      
-                     #check if the calibration file is tab or comma separated
-                      if @raw_data.first.include?(',')
-                           @raw_data.each do |x|
-                           @raw_data_mod.push x
-                           end
-                      else
-                           @raw_data.each do |x|
-                           @raw_data_mod.push x.to_s.gsub(/\t/, ',')
-                           end
-                      end
-              
+	      end                                          
+	 end
+        @raw_data_mod = check_file_return_mod(@raw_data) 
+        result_array =  univariate_data(@x1, @y)
+     end   
+   return result_array
+  end
 
-	    end
-      R.assign "x1", @x1 #assigning x axis data
-      R.assign "y", @y   #assigning y axis data
-      R.eval  <<-EOF
-      alpha <- 0.01
-      num_iters <- 300
+  def univariate_data(x, y)
+
+     R.assign "x1", x #assigning x axis data
+     R.assign "y", y   #assigning y axis data
+
+     R.eval  <<-EOF
+      alpha <- 0.001
+      num_iters <- 500
       x1 <- as.numeric(x1)
       y <- as.numeric(y)
       numOfRows <- length(y)
@@ -182,29 +160,31 @@ require 'paperclip'
     theta1Values <- thetaValuesFrame$theta1
     allResults[[2]] <- NULL
     resultsUnlist <- unlist(allResults)
-
- 
    EOF
-#png("/tmp/myplot.png")
-# plot(1:num_iters, histSEF, xlab="Number of Iterations", ylab="Minimized Squared error function",     #main="Gradient Descent Check")
-#@plot.save
-#@plot.plot_images.create(:graph => File.new("/tmp/myplot.png", "rb"))
 
-	output = R.resultsUnlist
-	thetaZeroValues = R.theta0Values
-	thetaOneValues = R.theta1Values
+     return R.resultsUnlist, R.theta0Values, R.theta1Values
+  end
 
-	return output, thetaZeroValues, thetaOneValues 
-    
-    end
+  def multivariate_data
+
 
   end
 
+  def lm_method
+
+
+  end
+
+  def line_method
+
+  end
+
+
   # GET /micro_array_images/1
   # GET /micro_array_images/1.xml
-  def show
-    @plot = Plot.find(params[:id])
-    @title = "Plot Image"
+   def show
+     @plot = Plot.find(params[:id])
+     @title = "Plot Image"
 
 	    if @plot.nil?
 		redirect_to :action => "index"
@@ -214,52 +194,67 @@ require 'paperclip'
 	      format.html # show.html.erb
 	      format.xml  { render :xml => @plot }
 	    end
-  end
+   end
 
-
- def dataExtract(name)
-      
-      directory = "public/calibration_data/" 
-      
-      path = File.join(directory, name)
-      logger.debug "File extract local path: " + path
+  #checks how many columns does data table has(weather a multivariate or univariate data)
+  def dataExtract(name)     
+      #directory = "public/calibration_data/" 
+      explVariable = 0
+      columns = []
+      path = File.join(DIRECTORY, name)
+      #logger.debug "File extract local path: " + path
       file = File.open(path, "r") do |f|
              f.each do |line|
-             logger.debug "[" + f.lineno.to_s + "]" + line
-             columns = line.split(",") 
-            end
+             #logger.debug "[" + f.lineno.to_s + "]" + line
+             columns = line.split(/[,\t\s]/)
+             end
           end 
-  end
+     return explVariable = columns.length      
+   end
 
 
-  def sanitize_filename(file_name)
-  
-    just_filename = File.basename(file_name.to_s)
-    return just_filename.sub(/[^\w\.\-]/,'_')
- 
-  end
+   def sanitize_filename(file_name)  
+     just_filename = File.basename(file_name.to_s)
+     return just_filename.sub(/[^\w\.\-]/,'_')
+   end
  
  #creates a map of key-value pairs for iterations and J function
- def array_to_hash(array)
-      
-     count=0
+  def array_to_hash(array)      
+      count=0
 
-     hash = Hash.new
-     (array.length).times do 
-     hash[count+1] = array[count]
-     count += 1
-     end
+      hash = Hash.new
+      (array.length).times do 
+      hash[count+1] = array[count]
+      count += 1
+      end
      return hash
-
-  end
+   end
 
  #rounding up the theta and J function values.
- def round_up(object)
+  def round_up(object)
      object = object.map do  |x|      
               (x*200).round / 200.0
               end
    return object
- end
+  end
+
+ #check if the calibration file is tab or comma separated(for scatter plot graph)
+ #mod_file_name is the modified file in case the file_name_ori is tab separated 
+  def check_file_return_mod(file_name_ori)
+         mod_file_name = Array.new       
+
+        if file_name_ori.first.include?(',')
+           file_name_ori.each do |x|
+           mod_file_name.push x
+          end
+        else
+           file_name_ori.each do |x|
+           mod_file_name.push x.to_s.gsub(/\t/, ',')
+          end
+        end
+       
+     return mod_file_name
+  end
 
 
 end
@@ -322,3 +317,8 @@ end
 #		      @y = $5     		  
 #	      end 
 #	    end
+
+#png("/tmp/myplot.png")
+# plot(1:num_iters, histSEF, xlab="Number of Iterations", ylab="Minimized Squared error function",     #main="Gradient Descent Check")
+#@plot.save
+#@plot.plot_images.create(:graph => File.new("/tmp/myplot.png", "rb"))

@@ -18297,3 +18297,520 @@ File extract local path: public/calibration_data/20131025192609_anna_calib_data.
 2340.0330.0751000.01670.02680.02010.0670.0051340.02350.0340.0651010.01680.02690.02020.0680.0051350.011.7352360.0350.061020.01690.02700.0690.0051360.021.5752030.02370.0360.0551030.01700.02710.0700.01370.031.4252040.02380.01040.01710.0370.052720.0710.01380.041.292050.02390.01050.01720.0380.0452730.0720.01390.051.172060.02400.01060.01730.0390.042740.0730.01400.061.062070.02410.01070.01740.0400.0352750.01410.070.962080.0740.02420.01080.01750.0410.0352760.01420.080.872090.0750.02430.01090.01760.0420.032770.01430.090.7852100.0760.02440.01100.01770.0430.032780.01440.0100.7152110.0770.02450.01780.0440.0251110.02790.01450.0110.6452120.0780.02460.01790.0450.0251120.02800.01460.0120.5852130.0790.02470.01800.0460.021130.02810.01470.0130.532140.0800.02480.01810.0470.021140.02820.0140.482150.0810.01480.02490.01820.0480.0151150.02830.0150.4352160.0820.01490.02500.01830.0490.0151160.02840.0160.3952170.0830.01500.02510.01840.0500.0151170.02850.0170.3552180.0840.01510.02520.0510.0151180.01850.02860.02190.0850.01520.0180.3252530.0520.011190.01860.02870.02200.0860.01530.0190.2952540.0530.011200.01870.02880.02210.0870.01540.0200.2652550.0540.011210.01880.02890.0880.01550.0210.242220.02560.01220.01890.0550.012900.02230.0890.01560.0220.222570.01230.01900.0560.012910.02240.0900.01570.0230.1952580.01240.01910.0570.0052920.02250.0910.01580.0240.182590.01250.01920.0580.0052930.02260.01590.0250.16920.02600.01260.01930.0590.0052940.02270.01600.0260.145930.02610.01270.01940.0600.0052950.02280.01610.0270.135940.02620.01280.01950.0610.0052960.02290.01620.0280.12950.02630.01960.0620.0051290.02970.02300.01630.0290.11960.02640.01970.0630.0051300.02980.02310.01640.0300.1970.02650.01980.0640.0051310.02990.02320.01650.0310.09980.02660.01990.0650.0051320.03000.02330.0320.08990.01660.02670.02000.0660.0051330.0
 Rendering plots/create
 Completed in 797ms (View: 8, DB: 48) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#new (for 127.0.0.1 at 2013-10-27 11:42:30) [GET]
+Rendering template within layouts/plots
+Rendering plots/new
+Completed in 175ms (View: 121, DB: 0) | 200 OK [http://localhost/plots/new]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-27 11:42:44) [POST]
+  Parameters: {"plot"=>{"expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20131027-3152-fkfxmw-0>, "respVariable"=>"1", "explVariable"=>"1"}, "authenticity_token"=>"V9UWisKV9Bb0sJXxI9q0TteQZt+zXzybFr/o0WQ+3TA=", "commit"=>"Create"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.3ms)[0m   [0mINSERT INTO `plots` (`expName`, `calibFile`, `updated_at`, `respVariable`, `explVariable`, `created_at`) VALUES('test', '--- !ruby/object:File {}\n\n', '2013-10-27 10:42:44', 1, 1, '2013-10-27 10:42:44')[0m
+  [4;36;1mSQL (157.4ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20131027114244_anna_reverse_data.txt
+[1]1.66	1
+[2]1.77	2
+[3]1.94	4
+[4]1.98	5
+[5]2.01	6
+[6]1.89	7
+[7]1.99	8
+[8]2.11	9
+[9]2.22	10
+  [4;35;1mPlot Load (0.6ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 77) [0m
+File extract local path: public/calibration_data/20131027114244_anna_reverse_data.txt
+2340.0330.01000.01670.02680.02010.0670.01340.02350.0340.01010.01680.02690.02020.0680.01350.016.892360.0350.01020.01690.02700.0690.01360.022.272030.02370.0360.01030.01700.02710.0700.01370.030.752040.02380.01040.01710.0370.02720.0710.01380.040.252050.02390.01050.01720.0380.02730.0720.01390.050.0852060.02400.01060.01730.0390.02740.0730.01400.060.032070.02410.01070.01740.0400.02750.01410.070.012080.0740.02420.01080.01750.0410.02760.01420.080.0052090.0750.02430.01090.01760.0420.02770.01430.090.0052100.0760.02440.01100.01770.0430.02780.01440.0100.02110.0770.02450.01780.0440.01110.02790.01450.0110.02120.0780.02460.01790.0450.01120.02800.01460.0120.02130.0790.02470.01800.0460.01130.02810.01470.0130.02140.0800.02480.01810.0470.01140.02820.0140.02150.0810.01480.02490.01820.0480.01150.02830.0150.02160.0820.01490.02500.01830.0490.01160.02840.0160.02170.0830.01500.02510.01840.0500.01170.02850.0170.02180.0840.01510.02520.0510.01180.01850.02860.02190.0850.01520.0180.02530.0520.01190.01860.02870.02200.0860.01530.0190.02540.0530.01200.01870.02880.02210.0870.01540.0200.02550.0540.01210.01880.02890.0880.01550.0210.02220.02560.01220.01890.0550.02900.02230.0890.01560.0220.02570.01230.01900.0560.02910.02240.0900.01570.0230.02580.01240.01910.0570.02920.02250.0910.01580.0240.02590.01250.01920.0580.02930.02260.01590.0250.0920.02600.01260.01930.0590.02940.02270.01600.0260.0930.02610.01270.01940.0600.02950.02280.01610.0270.0940.02620.01280.01950.0610.02960.02290.01620.0280.0950.02630.01960.0620.01290.02970.02300.01630.0290.0960.02640.01970.0630.01300.02980.02310.01640.0300.0970.02650.01980.0640.01310.02990.02320.01650.0310.0980.02660.01990.0650.01320.03000.02330.0320.0990.01660.02670.02000.0660.01330.0
+Rendering plots/create
+Completed in 984ms (View: 58, DB: 158) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-27 11:44:15) [POST]
+  Parameters: {"plot"=>{"expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20131027-3152-m8lxoq-0>, "respVariable"=>"1", "explVariable"=>"1"}, "authenticity_token"=>"V9UWisKV9Bb0sJXxI9q0TteQZt+zXzybFr/o0WQ+3TA=", "commit"=>"Create"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.4ms)[0m   [0mINSERT INTO `plots` (`expName`, `calibFile`, `updated_at`, `respVariable`, `explVariable`, `created_at`) VALUES('test', '--- !ruby/object:File {}\n\n', '2013-10-27 10:44:15', 1, 1, '2013-10-27 10:44:15')[0m
+  [4;36;1mSQL (55.7ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20131027114415_anna_reverse_data.txt
+[1]1.66	1
+[2]1.77	2
+[3]1.94	4
+[4]1.98	5
+[5]2.01	6
+[6]1.89	7
+[7]1.99	8
+[8]2.11	9
+[9]2.22	10
+  [4;35;1mPlot Load (0.6ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 78) [0m
+File extract local path: public/calibration_data/20131027114415_anna_reverse_data.txt
+4580.0650.0751960.03270.01310.02620.03930.04590.0660.071970.03280.01320.02630.03940.0119.154600.01980.03290.0670.0651330.02640.03950.0217.554610.01990.03300.0680.062650.03960.0316.091340.04620.02000.03310.0690.0552660.03970.0414.751350.04630.03320.0700.052010.02670.03980.0513.521360.04640.03330.0710.0452020.03990.0612.3951370.02680.04650.03340.0720.042030.04000.0711.361380.02690.04660.0730.042040.03350.04010.0810.4151390.02700.04670.0740.0352050.03360.099.5451400.02710.04020.04680.0750.032060.03370.04030.0108.751410.02720.04690.0760.032070.03380.04040.0118.021420.02730.04700.0770.0252080.03390.04050.0127.3551430.02740.04710.0780.0252090.03400.04060.0136.741440.02750.04720.0790.0252100.03410.04070.0146.181450.02760.04730.0800.022110.03420.04080.0155.6651460.02770.04740.0810.022120.03430.04090.0165.191470.02780.04750.0820.022130.03440.04100.0174.761480.02790.04760.0830.0152140.03450.04110.0184.3651490.02800.04770.0840.0152150.03460.04120.0194.01500.02810.04780.0850.0152160.03470.04130.0203.6651510.02820.04790.0860.0152170.03480.04140.0213.361520.02830.04800.0870.0152180.03490.04150.0223.081530.02840.04810.0880.012190.03500.04160.0232.8251540.02850.04820.0890.012200.03510.04170.0242.591550.02860.04830.0900.012210.03520.04180.0252.3751560.02870.04840.0910.012220.03530.04190.0262.1751570.02880.04850.0920.012230.03540.04200.0271.9951580.02890.04860.0930.012240.03550.04210.0281.831590.02900.04870.0940.012250.03560.04220.0291.6751600.02910.04880.0950.0052260.03570.04230.0301.5351610.02920.04890.0960.0052270.03580.04240.0311.411620.02930.04900.0970.0052280.03590.04250.0321.291630.02940.04910.0980.0052290.03600.04260.01640.02950.0331.1854920.0990.0052300.03610.04270.01650.02960.0341.0854930.02310.03620.01000.0054280.01660.02970.0350.9954940.02320.03630.01010.0054290.02980.0360.911670.04950.02330.03640.01020.0054300.02990.0370.8351680.04960.03650.01030.0052340.04310.03000.0380.7651690.04970.03660.01040.0052350.04320.0390.7051700.03010.04980.03670.01050.0052360.04330.0400.6451710.03020.04990.01060.0052370.03680.04340.0410.591720.03030.05000.01070.0052380.03690.04350.0420.541730.03040.01080.0052390.03700.04360.0430.4951740.03050.01090.0052400.03710.04370.0440.4551750.03060.01100.0052410.03720.04380.0450.421760.03070.01110.0052420.03730.04390.0460.3851770.03080.01120.0052430.03740.04400.0470.351780.03090.01130.0052440.03750.04410.0480.321790.03100.01140.0052450.03760.04420.0490.2951800.03110.01150.0052460.03770.04430.0500.271810.03120.01160.0052470.03780.04440.0510.251820.03130.01170.0052480.03790.04450.0520.231830.03140.01180.0052490.03800.04460.0530.211840.03150.01190.02500.03810.04470.0540.191850.03160.01200.02510.03820.04480.0550.1751860.03170.01210.02520.03830.04490.0560.161870.03180.01220.02530.03840.04500.0570.151880.03190.01230.02540.03850.04510.0580.1351890.03200.01240.02550.03860.04520.0590.1251900.03210.01250.02560.03870.04530.0600.1151910.03220.01260.02570.03880.04540.0610.1051920.03230.01270.02580.03890.04550.0620.0951930.03240.01280.02590.03900.04560.0630.091940.03250.01290.02600.03910.04570.0640.081950.03260.01300.02610.03920.0
+Rendering plots/create
+Completed in 885ms (View: 3, DB: 57) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-27 12:47:56) [POST]
+  Parameters: {"plot"=>{"expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20131027-3152-1888bg7-0>, "respVariable"=>"1", "explVariable"=>"1"}, "authenticity_token"=>"V9UWisKV9Bb0sJXxI9q0TteQZt+zXzybFr/o0WQ+3TA=", "commit"=>"Create"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.5ms)[0m   [0mINSERT INTO `plots` (`expName`, `calibFile`, `updated_at`, `respVariable`, `explVariable`, `created_at`) VALUES('test', '--- !ruby/object:File {}\n\n', '2013-10-27 11:47:56', 1, 1, '2013-10-27 11:47:56')[0m
+  [4;36;1mSQL (30.7ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20131027124756_anna_reverse_data.txt
+[1]1.66	1
+[2]1.77	2
+[3]1.94	4
+[4]1.98	5
+[5]2.01	6
+[6]1.89	7
+[7]1.99	8
+[8]2.11	9
+[9]2.22	10
+  [4;35;1mPlot Load (0.7ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 79) [0m
+File extract local path: public/calibration_data/20131027124756_anna_reverse_data.txt
+
+NameError (undefined local variable or method `output' for #<PlotsController:0x7f14c3106718>):
+  app/controllers/plots_controller.rb:140:in `calTheta'
+  app/controllers/plots_controller.rb:58:in `create'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:106:in `call'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:106:in `respond_to'
+  app/controllers/plots_controller.rb:51:in `create'
+  actionpack (2.3.11) lib/action_controller/base.rb:1333:in `send'
+  actionpack (2.3.11) lib/action_controller/base.rb:1333:in `perform_action_without_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:617:in `call_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+  actionpack (2.3.11) lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+  actionpack (2.3.11) lib/action_controller/flash.rb:151:in `perform_action'
+  actionpack (2.3.11) lib/action_controller/base.rb:532:in `send'
+  actionpack (2.3.11) lib/action_controller/base.rb:532:in `process_without_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:606:in `process'
+  actionpack (2.3.11) lib/action_controller/base.rb:391:in `process'
+  actionpack (2.3.11) lib/action_controller/base.rb:386:in `call'
+  actionpack (2.3.11) lib/action_controller/routing/route_set.rb:438:in `call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:87:in `dispatch'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:121:in `_call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:29:in `call'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:29:in `call'
+  activerecord (2.3.11) lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:9:in `cache'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:28:in `call'
+  activerecord (2.3.11) lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+  actionpack (2.3.11) lib/action_controller/string_coercion.rb:25:in `call'
+  rack (1.1.6) lib/rack/head.rb:9:in `call'
+  rack (1.1.6) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (2.3.11) lib/action_controller/params_parser.rb:15:in `call'
+  actionpack (2.3.11) lib/action_controller/session/cookie_store.rb:99:in `call'
+  actionpack (2.3.11) lib/action_controller/failsafe.rb:26:in `call'
+  rack (1.1.6) lib/rack/lock.rb:11:in `call'
+  rack (1.1.6) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.1.6) lib/rack/lock.rb:11:in `call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:114:in `call'
+  actionpack (2.3.11) lib/action_controller/reloader.rb:34:in `run'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:108:in `call'
+  rails (2.3.11) lib/rails/rack/static.rb:31:in `call'
+  rack (1.1.6) lib/rack/urlmap.rb:47:in `call'
+  rack (1.1.6) lib/rack/urlmap.rb:41:in `each'
+  rack (1.1.6) lib/rack/urlmap.rb:41:in `call'
+  rails (2.3.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.1.6) lib/rack/content_length.rb:13:in `call'
+  rack (1.1.6) lib/rack/handler/webrick.rb:48:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.1.6) lib/rack/handler/webrick.rb:14:in `run'
+  rails (2.3.11) lib/commands/server.rb:111
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:55:in `gem_original_require'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:55:in `require'
+  script/server:3
+
+Rendered rescues/_trace (19.9ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-27 12:51:53) [POST]
+  Parameters: {"plot"=>{"expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20131027-3152-p1uqap-0>, "respVariable"=>"1", "explVariable"=>"1"}, "authenticity_token"=>"V9UWisKV9Bb0sJXxI9q0TteQZt+zXzybFr/o0WQ+3TA=", "commit"=>"Create"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.2ms)[0m   [0mINSERT INTO `plots` (`expName`, `calibFile`, `updated_at`, `respVariable`, `explVariable`, `created_at`) VALUES('test', '--- !ruby/object:File {}\n\n', '2013-10-27 11:51:53', 1, 1, '2013-10-27 11:51:53')[0m
+  [4;36;1mSQL (36.2ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20131027125153_anna_reverse_data.txt
+[1]1.66	1
+[2]1.77	2
+[3]1.94	4
+[4]1.98	5
+[5]2.01	6
+[6]1.89	7
+[7]1.99	8
+[8]2.11	9
+[9]2.22	10
+  [4;35;1mPlot Load (0.7ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 80) [0m
+File extract local path: public/calibration_data/20131027125153_anna_reverse_data.txt
+
+NoMethodError (undefined method `round' for #<Array:0x7f14c3306158>):
+  app/controllers/plots_controller.rb:275:in `round_up'
+  app/controllers/plots_controller.rb:274:in `map'
+  app/controllers/plots_controller.rb:274:in `round_up'
+  app/controllers/plots_controller.rb:74:in `create'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:106:in `call'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:106:in `respond_to'
+  app/controllers/plots_controller.rb:51:in `create'
+  actionpack (2.3.11) lib/action_controller/base.rb:1333:in `send'
+  actionpack (2.3.11) lib/action_controller/base.rb:1333:in `perform_action_without_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:617:in `call_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+  actionpack (2.3.11) lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+  actionpack (2.3.11) lib/action_controller/flash.rb:151:in `perform_action'
+  actionpack (2.3.11) lib/action_controller/base.rb:532:in `send'
+  actionpack (2.3.11) lib/action_controller/base.rb:532:in `process_without_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:606:in `process'
+  actionpack (2.3.11) lib/action_controller/base.rb:391:in `process'
+  actionpack (2.3.11) lib/action_controller/base.rb:386:in `call'
+  actionpack (2.3.11) lib/action_controller/routing/route_set.rb:438:in `call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:87:in `dispatch'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:121:in `_call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:29:in `call'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:29:in `call'
+  activerecord (2.3.11) lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:9:in `cache'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:28:in `call'
+  activerecord (2.3.11) lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+  actionpack (2.3.11) lib/action_controller/string_coercion.rb:25:in `call'
+  rack (1.1.6) lib/rack/head.rb:9:in `call'
+  rack (1.1.6) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (2.3.11) lib/action_controller/params_parser.rb:15:in `call'
+  actionpack (2.3.11) lib/action_controller/session/cookie_store.rb:99:in `call'
+  actionpack (2.3.11) lib/action_controller/failsafe.rb:26:in `call'
+  rack (1.1.6) lib/rack/lock.rb:11:in `call'
+  rack (1.1.6) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.1.6) lib/rack/lock.rb:11:in `call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:114:in `call'
+  actionpack (2.3.11) lib/action_controller/reloader.rb:34:in `run'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:108:in `call'
+  rails (2.3.11) lib/rails/rack/static.rb:31:in `call'
+  rack (1.1.6) lib/rack/urlmap.rb:47:in `call'
+  rack (1.1.6) lib/rack/urlmap.rb:41:in `each'
+  rack (1.1.6) lib/rack/urlmap.rb:41:in `call'
+  rails (2.3.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.1.6) lib/rack/content_length.rb:13:in `call'
+  rack (1.1.6) lib/rack/handler/webrick.rb:48:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.1.6) lib/rack/handler/webrick.rb:14:in `run'
+  rails (2.3.11) lib/commands/server.rb:111
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:55:in `gem_original_require'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:55:in `require'
+  script/server:3
+
+Rendered rescues/_trace (51.7ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-27 12:56:07) [POST]
+  Parameters: {"plot"=>{"expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20131027-3152-1n3g4ij-0>, "respVariable"=>"1", "explVariable"=>"1"}, "authenticity_token"=>"V9UWisKV9Bb0sJXxI9q0TteQZt+zXzybFr/o0WQ+3TA=", "commit"=>"Create"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.3ms)[0m   [0mINSERT INTO `plots` (`expName`, `calibFile`, `updated_at`, `respVariable`, `explVariable`, `created_at`) VALUES('test', '--- !ruby/object:File {}\n\n', '2013-10-27 11:56:07', 1, 1, '2013-10-27 11:56:07')[0m
+  [4;36;1mSQL (31.0ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20131027125607_anna_reverse_data.txt
+[1]1.66	1
+[2]1.77	2
+[3]1.94	4
+[4]1.98	5
+[5]2.01	6
+[6]1.89	7
+[7]1.99	8
+[8]2.11	9
+[9]2.22	10
+  [4;35;1mPlot Load (0.6ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 81) [0m
+File extract local path: public/calibration_data/20131027125607_anna_reverse_data.txt
+Rendering plots/create
+Completed in 854ms (View: 9, DB: 32) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-27 13:11:18) [POST]
+  Parameters: {"plot"=>{"expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20131027-3152-3iutn6-0>, "respVariable"=>"1", "explVariable"=>"1"}, "authenticity_token"=>"V9UWisKV9Bb0sJXxI9q0TteQZt+zXzybFr/o0WQ+3TA=", "commit"=>"Create"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.2ms)[0m   [0mINSERT INTO `plots` (`expName`, `calibFile`, `updated_at`, `respVariable`, `explVariable`, `created_at`) VALUES('test', '--- !ruby/object:File {}\n\n', '2013-10-27 12:11:18', 1, 1, '2013-10-27 12:11:18')[0m
+  [4;36;1mSQL (34.5ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20131027131118_anna_reverse_data.txt
+[1]1.66	1
+[2]1.77	2
+[3]1.94	4
+[4]1.98	5
+[5]2.01	6
+[6]1.89	7
+[7]1.99	8
+[8]2.11	9
+[9]2.22	10
+  [4;35;1mPlot Load (0.3ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 82) [0m
+File extract local path: public/calibration_data/20131027131118_anna_reverse_data.txt
+
+ArgumentError (wrong number of arguments (1 for 2)):
+  app/controllers/plots_controller.rb:115:in `check_file_return_mod'
+  app/controllers/plots_controller.rb:115:in `calTheta'
+  app/controllers/plots_controller.rb:58:in `create'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:106:in `call'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:106:in `respond_to'
+  app/controllers/plots_controller.rb:51:in `create'
+  actionpack (2.3.11) lib/action_controller/base.rb:1333:in `send'
+  actionpack (2.3.11) lib/action_controller/base.rb:1333:in `perform_action_without_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:617:in `call_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+  actionpack (2.3.11) lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+  actionpack (2.3.11) lib/action_controller/flash.rb:151:in `perform_action'
+  actionpack (2.3.11) lib/action_controller/base.rb:532:in `send'
+  actionpack (2.3.11) lib/action_controller/base.rb:532:in `process_without_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:606:in `process'
+  actionpack (2.3.11) lib/action_controller/base.rb:391:in `process'
+  actionpack (2.3.11) lib/action_controller/base.rb:386:in `call'
+  actionpack (2.3.11) lib/action_controller/routing/route_set.rb:438:in `call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:87:in `dispatch'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:121:in `_call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:29:in `call'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:29:in `call'
+  activerecord (2.3.11) lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:9:in `cache'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:28:in `call'
+  activerecord (2.3.11) lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+  actionpack (2.3.11) lib/action_controller/string_coercion.rb:25:in `call'
+  rack (1.1.6) lib/rack/head.rb:9:in `call'
+  rack (1.1.6) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (2.3.11) lib/action_controller/params_parser.rb:15:in `call'
+  actionpack (2.3.11) lib/action_controller/session/cookie_store.rb:99:in `call'
+  actionpack (2.3.11) lib/action_controller/failsafe.rb:26:in `call'
+  rack (1.1.6) lib/rack/lock.rb:11:in `call'
+  rack (1.1.6) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.1.6) lib/rack/lock.rb:11:in `call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:114:in `call'
+  actionpack (2.3.11) lib/action_controller/reloader.rb:34:in `run'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:108:in `call'
+  rails (2.3.11) lib/rails/rack/static.rb:31:in `call'
+  rack (1.1.6) lib/rack/urlmap.rb:47:in `call'
+  rack (1.1.6) lib/rack/urlmap.rb:41:in `each'
+  rack (1.1.6) lib/rack/urlmap.rb:41:in `call'
+  rails (2.3.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.1.6) lib/rack/content_length.rb:13:in `call'
+  rack (1.1.6) lib/rack/handler/webrick.rb:48:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.1.6) lib/rack/handler/webrick.rb:14:in `run'
+  rails (2.3.11) lib/commands/server.rb:111
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:55:in `gem_original_require'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:55:in `require'
+  script/server:3
+
+Rendered rescues/_trace (21.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-27 13:12:27) [POST]
+  Parameters: {"plot"=>{"expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20131027-3152-oxnfl6-0>, "respVariable"=>"1", "explVariable"=>"1"}, "authenticity_token"=>"V9UWisKV9Bb0sJXxI9q0TteQZt+zXzybFr/o0WQ+3TA=", "commit"=>"Create"}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.5ms)[0m   [0mINSERT INTO `plots` (`expName`, `calibFile`, `updated_at`, `respVariable`, `explVariable`, `created_at`) VALUES('test', '--- !ruby/object:File {}\n\n', '2013-10-27 12:12:27', 1, 1, '2013-10-27 12:12:27')[0m
+  [4;36;1mSQL (31.8ms)[0m   [0;1mCOMMIT[0m
+File extract local path: public/calibration_data/20131027131227_anna_reverse_data.txt
+[1]1.66	1
+[2]1.77	2
+[3]1.94	4
+[4]1.98	5
+[5]2.01	6
+[6]1.89	7
+[7]1.99	8
+[8]2.11	9
+[9]2.22	10
+  [4;35;1mPlot Load (0.4ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 83) [0m
+File extract local path: public/calibration_data/20131027131227_anna_reverse_data.txt
+Rendering plots/create
+Completed in 883ms (View: 9, DB: 33) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-27 14:01:45) [POST]
+  Parameters: {"plot"=>{"expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20131027-3152-14ieq1l-0>, "respVariable"=>"1", "explVariable"=>"1"}, "authenticity_token"=>"V9UWisKV9Bb0sJXxI9q0TteQZt+zXzybFr/o0WQ+3TA=", "commit"=>"Create"}
+
+NameError (undefined local variable or method `directory' for #<PlotsController:0x7f14c314eb30>):
+  app/controllers/plots_controller.rb:46:in `create'
+  actionpack (2.3.11) lib/action_controller/base.rb:1333:in `send'
+  actionpack (2.3.11) lib/action_controller/base.rb:1333:in `perform_action_without_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:617:in `call_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+  actionpack (2.3.11) lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+  actionpack (2.3.11) lib/action_controller/flash.rb:151:in `perform_action'
+  actionpack (2.3.11) lib/action_controller/base.rb:532:in `send'
+  actionpack (2.3.11) lib/action_controller/base.rb:532:in `process_without_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:606:in `process'
+  actionpack (2.3.11) lib/action_controller/base.rb:391:in `process'
+  actionpack (2.3.11) lib/action_controller/base.rb:386:in `call'
+  actionpack (2.3.11) lib/action_controller/routing/route_set.rb:438:in `call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:87:in `dispatch'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:121:in `_call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:29:in `call'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:29:in `call'
+  activerecord (2.3.11) lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:9:in `cache'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:28:in `call'
+  activerecord (2.3.11) lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+  actionpack (2.3.11) lib/action_controller/string_coercion.rb:25:in `call'
+  rack (1.1.6) lib/rack/head.rb:9:in `call'
+  rack (1.1.6) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (2.3.11) lib/action_controller/params_parser.rb:15:in `call'
+  actionpack (2.3.11) lib/action_controller/session/cookie_store.rb:99:in `call'
+  actionpack (2.3.11) lib/action_controller/failsafe.rb:26:in `call'
+  rack (1.1.6) lib/rack/lock.rb:11:in `call'
+  rack (1.1.6) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.1.6) lib/rack/lock.rb:11:in `call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:114:in `call'
+  actionpack (2.3.11) lib/action_controller/reloader.rb:34:in `run'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:108:in `call'
+  rails (2.3.11) lib/rails/rack/static.rb:31:in `call'
+  rack (1.1.6) lib/rack/urlmap.rb:47:in `call'
+  rack (1.1.6) lib/rack/urlmap.rb:41:in `each'
+  rack (1.1.6) lib/rack/urlmap.rb:41:in `call'
+  rails (2.3.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.1.6) lib/rack/content_length.rb:13:in `call'
+  rack (1.1.6) lib/rack/handler/webrick.rb:48:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.1.6) lib/rack/handler/webrick.rb:14:in `run'
+  rails (2.3.11) lib/commands/server.rb:111
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:55:in `gem_original_require'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:55:in `require'
+  script/server:3
+
+Rendered rescues/_trace (18.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-27 14:03:20) [POST]
+  Parameters: {"plot"=>{"expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20131027-3152-15bu48x-0>, "respVariable"=>"1", "explVariable"=>"1"}, "authenticity_token"=>"V9UWisKV9Bb0sJXxI9q0TteQZt+zXzybFr/o0WQ+3TA=", "commit"=>"Create"}
+
+NoMethodError (undefined method `DIRECTORY?' for File:Class):
+  app/controllers/plots_controller.rb:45:in `create'
+  actionpack (2.3.11) lib/action_controller/base.rb:1333:in `send'
+  actionpack (2.3.11) lib/action_controller/base.rb:1333:in `perform_action_without_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:617:in `call_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+  actionpack (2.3.11) lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+  actionpack (2.3.11) lib/action_controller/flash.rb:151:in `perform_action'
+  actionpack (2.3.11) lib/action_controller/base.rb:532:in `send'
+  actionpack (2.3.11) lib/action_controller/base.rb:532:in `process_without_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:606:in `process'
+  actionpack (2.3.11) lib/action_controller/base.rb:391:in `process'
+  actionpack (2.3.11) lib/action_controller/base.rb:386:in `call'
+  actionpack (2.3.11) lib/action_controller/routing/route_set.rb:438:in `call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:87:in `dispatch'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:121:in `_call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:29:in `call'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:29:in `call'
+  activerecord (2.3.11) lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:9:in `cache'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:28:in `call'
+  activerecord (2.3.11) lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+  actionpack (2.3.11) lib/action_controller/string_coercion.rb:25:in `call'
+  rack (1.1.6) lib/rack/head.rb:9:in `call'
+  rack (1.1.6) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (2.3.11) lib/action_controller/params_parser.rb:15:in `call'
+  actionpack (2.3.11) lib/action_controller/session/cookie_store.rb:99:in `call'
+  actionpack (2.3.11) lib/action_controller/failsafe.rb:26:in `call'
+  rack (1.1.6) lib/rack/lock.rb:11:in `call'
+  rack (1.1.6) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.1.6) lib/rack/lock.rb:11:in `call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:114:in `call'
+  actionpack (2.3.11) lib/action_controller/reloader.rb:34:in `run'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:108:in `call'
+  rails (2.3.11) lib/rails/rack/static.rb:31:in `call'
+  rack (1.1.6) lib/rack/urlmap.rb:47:in `call'
+  rack (1.1.6) lib/rack/urlmap.rb:41:in `each'
+  rack (1.1.6) lib/rack/urlmap.rb:41:in `call'
+  rails (2.3.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.1.6) lib/rack/content_length.rb:13:in `call'
+  rack (1.1.6) lib/rack/handler/webrick.rb:48:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.1.6) lib/rack/handler/webrick.rb:14:in `run'
+  rails (2.3.11) lib/commands/server.rb:111
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:55:in `gem_original_require'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:55:in `require'
+  script/server:3
+
+Rendered rescues/_trace (20.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-27 14:03:41) [POST]
+  Parameters: {"plot"=>{"expName"=>"test", "calibFile"=>#<File:/tmp/RackMultipart20131027-3152-f0gw5h-0>, "respVariable"=>"1", "explVariable"=>"1"}, "authenticity_token"=>"V9UWisKV9Bb0sJXxI9q0TteQZt+zXzybFr/o0WQ+3TA=", "commit"=>"Create"}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPlot Create (0.4ms)[0m   [0mINSERT INTO `plots` (`expName`, `calibFile`, `updated_at`, `respVariable`, `explVariable`, `created_at`) VALUES('test', '--- !ruby/object:File {}\n\n', '2013-10-27 13:03:41', 1, 1, '2013-10-27 13:03:41')[0m
+  [4;36;1mSQL (36.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mPlot Load (0.7ms)[0m   [0mSELECT * FROM `plots` WHERE (`plots`.`id` = 84) [0m
+Rendering plots/create
+Completed in 828ms (View: 3, DB: 38) | 200 OK [http://localhost/plots]
