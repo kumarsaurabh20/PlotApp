@@ -27,19 +27,18 @@ require 'paperclip'
       
       @plot = Plot.new(params[:plot])
       @title = "Calibration Data Upload"
-      logger.debug "here is the log: " + @plot.to_s
+
+      #logger.debug "here is the log: " + @plot.to_s
 
       @savedfile = false
 
       uploaded_io = params[:plot][:calibFile]
-      logger.debug "here is the log: " + uploaded_io.to_s
+      #logger.debug "here is the log: " + uploaded_io.to_s
  
       name = Time.now.strftime("%Y%m%d%H%M%S_") + sanitize_filename(uploaded_io.original_filename)
-      logger.debug "here is the log: " + name.to_s
 
-      #name =  Time.now.strftime("%Y%m%d%H%M%S ") + sanitize_filename(uploaded_io.original_filename)
-      #name =  Time.now.strftime("%Y%m%d%H%M%S ") + sanitize_filename(uploaded_io.original_filename)
- 
+      #logger.debug "here is the log: " + name.to_s
+     
       directory = "public/calibration_data/"
       Dir.mkdir(directory) unless File.directory?(directory)
       path = File.join(directory, name)
@@ -58,12 +57,10 @@ require 'paperclip'
              self.dataExtract(name)
              @output =  self.calTheta(id, name)
 
-             #logger.debug "Total result: " + @output.to_s
-
              @result = @output.shift
-             #puts @result.class
+            
              @thetaZeroValues = @output.shift
-             #puts @thetaZeroValues.class
+             
              @thetaOneValues = @output.shift
             
              #puts @thetaOneValues.class
@@ -73,73 +70,32 @@ require 'paperclip'
              #for precesion up to 3 decimal places. To make 2 decimal places change 200 to 20. 
              @result = round_up(@result)
              @thetaZeroValues = round_up(@thetaZeroValues)
-             #logger.debug "thetaZeroValues: " + @thetaZeroValues.to_s
+             
              @thetaOneValues = round_up(@thetaOneValues)
-             #logger.debug "thetaOneValues: " + @thetaOneValues.to_s
+             
 
-             #@result = @result.map do  |x|      
-              #         (x*200).round / 200.0
-               #        end
-             #logger.debug "rounded numbers: " + @result.to_s
-
-             @forBubbleChart = @result
+             @forBubbleChart = @result #Both has same values, to be utilized in different graphs
 
              @result = array_to_hash(@result)
              logger.debug @result
              
              @result = @result.sort_by { |keys, values| keys }
-             
-             #logger.debug @result.instance_of? Array
 
          format.html { render :html => @result }
-	      #flash[:notice] = 'Calibration data file is successfully saved.'
-              #flash[:result] = @result
-	      #redirect_to :controller => "plots", :action => "index"
 	 format.xml  { render :xml => @result }
+
 	 else
+
          format.html { render :action => "new" }
 	 format.xml  { render :xml => @plot.errors, :status => :unprocessable_entity }
+
 	 end
+
        end
-
   end
 
-  def array_to_hash(array)
-      
-     count=0
-
-     hash = Hash.new
-     (array.length).times do 
-     hash[count+1] = array[count]
-     count += 1
-     end
-     return hash
-
-  end
-
-
-  def dataExtract(name)
-      
-      directory = "public/calibration_data/" 
-      
-      path = File.join(directory, name)
-      logger.debug "File extract local path: " + path
-      file = File.open(path, "r") do |f|
-             f.each do |line|
-             logger.debug "[" + f.lineno.to_s + "]" + line
-             columns = line.split(",") 
-            end
-          end 
-  end
-
-
-  def sanitize_filename(file_name)
-  
-    just_filename = File.basename(file_name.to_s)
-    return just_filename.sub(/[^\w\.\-]/,'_')
  
-  end
-
+  #Method to read calibration data from the file and send querries to R and get the resulting data
   def calTheta(id, name)
 
       @plot = Plot.find(id)
@@ -166,6 +122,8 @@ require 'paperclip'
                       @raw_data.push $1                
 	      end 
                      
+                      
+                     #check if the calibration file is tab or comma separated
                       if @raw_data.first.include?(',')
                            @raw_data.each do |x|
                            @raw_data_mod.push x
@@ -178,8 +136,8 @@ require 'paperclip'
               
 
 	    end
-      R.assign "x1", @x1
-      R.assign "y", @y
+      R.assign "x1", @x1 #assigning x axis data
+      R.assign "y", @y   #assigning y axis data
       R.eval  <<-EOF
       alpha <- 0.01
       num_iters <- 300
@@ -259,7 +217,43 @@ require 'paperclip'
   end
 
 
+ def dataExtract(name)
+      
+      directory = "public/calibration_data/" 
+      
+      path = File.join(directory, name)
+      logger.debug "File extract local path: " + path
+      file = File.open(path, "r") do |f|
+             f.each do |line|
+             logger.debug "[" + f.lineno.to_s + "]" + line
+             columns = line.split(",") 
+            end
+          end 
+  end
 
+
+  def sanitize_filename(file_name)
+  
+    just_filename = File.basename(file_name.to_s)
+    return just_filename.sub(/[^\w\.\-]/,'_')
+ 
+  end
+ 
+ #creates a map of key-value pairs for iterations and J function
+ def array_to_hash(array)
+      
+     count=0
+
+     hash = Hash.new
+     (array.length).times do 
+     hash[count+1] = array[count]
+     count += 1
+     end
+     return hash
+
+  end
+
+ #rounding up the theta and J function values.
  def round_up(object)
      object = object.map do  |x|      
               (x*200).round / 200.0
@@ -328,5 +322,3 @@ end
 #		      @y = $5     		  
 #	      end 
 #	    end
-#
-#

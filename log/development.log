@@ -18005,3 +18005,295 @@ File extract local path: public/calibration_data/20131025182057_anna_calib_data.
 2340.0330.0751000.01670.02680.02010.0670.0051340.02350.0340.0651010.01680.02690.02020.0680.0051350.011.7352360.0350.061020.01690.02700.0690.0051360.021.5752030.02370.0360.0551030.01700.02710.0700.01370.031.4252040.02380.01040.01710.0370.052720.0710.01380.041.292050.02390.01050.01720.0380.0452730.0720.01390.051.172060.02400.01060.01730.0390.042740.0730.01400.061.062070.02410.01070.01740.0400.0352750.01410.070.962080.0740.02420.01080.01750.0410.0352760.01420.080.872090.0750.02430.01090.01760.0420.032770.01430.090.7852100.0760.02440.01100.01770.0430.032780.01440.0100.7152110.0770.02450.01780.0440.0251110.02790.01450.0110.6452120.0780.02460.01790.0450.0251120.02800.01460.0120.5852130.0790.02470.01800.0460.021130.02810.01470.0130.532140.0800.02480.01810.0470.021140.02820.0140.482150.0810.01480.02490.01820.0480.0151150.02830.0150.4352160.0820.01490.02500.01830.0490.0151160.02840.0160.3952170.0830.01500.02510.01840.0500.0151170.02850.0170.3552180.0840.01510.02520.0510.0151180.01850.02860.02190.0850.01520.0180.3252530.0520.011190.01860.02870.02200.0860.01530.0190.2952540.0530.011200.01870.02880.02210.0870.01540.0200.2652550.0540.011210.01880.02890.0880.01550.0210.242220.02560.01220.01890.0550.012900.02230.0890.01560.0220.222570.01230.01900.0560.012910.02240.0900.01570.0230.1952580.01240.01910.0570.0052920.02250.0910.01580.0240.182590.01250.01920.0580.0052930.02260.01590.0250.16920.02600.01260.01930.0590.0052940.02270.01600.0260.145930.02610.01270.01940.0600.0052950.02280.01610.0270.135940.02620.01280.01950.0610.0052960.02290.01620.0280.12950.02630.01960.0620.0051290.02970.02300.01630.0290.11960.02640.01970.0630.0051300.02980.02310.01640.0300.1970.02650.01980.0640.0051310.02990.02320.01650.0310.09980.02660.01990.0650.0051320.03000.02330.0320.08990.01660.02670.02000.0660.0051330.0
 Rendering plots/create
 Completed in 808ms (View: 8, DB: 30) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-25 19:06:18) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"GNLftl8RmTVg5AkHLH1G/7acGtll4DDOqadasgh968U=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20131025-5104-1ryvjbx-0>}}
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.4ms)[0m   [0;1mINSERT INTO `plots` (`created_at`, `explVariable`, `expName`, `updated_at`, `respVariable`, `calibFile`) VALUES('2013-10-25 17:06:18', 1, 'test', '2013-10-25 17:06:18', 1, '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (42.8ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20131025190618_anna_calib_data.txt
+[1]1	1.66
+[2]2	1.77
+[3]4	1.94
+[4]5	1.98
+[5]6	2.01
+[6]7	1.89
+[7]8	1.99
+[8]9	2.11
+[9]10	2.22
+  [4;36;1mPlot Load (0.7ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 71) [0m
+File extract local path: public/calibration_data/20131025190618_anna_calib_data.txt
+2340.0330.0751000.01670.02680.02010.0670.0051340.02350.0340.0651010.01680.02690.02020.0680.0051350.011.7352360.0350.061020.01690.02700.0690.0051360.021.5752030.02370.0360.0551030.01700.02710.0700.01370.031.4252040.02380.01040.01710.0370.052720.0710.01380.041.292050.02390.01050.01720.0380.0452730.0720.01390.051.172060.02400.01060.01730.0390.042740.0730.01400.061.062070.02410.01070.01740.0400.0352750.01410.070.962080.0740.02420.01080.01750.0410.0352760.01420.080.872090.0750.02430.01090.01760.0420.032770.01430.090.7852100.0760.02440.01100.01770.0430.032780.01440.0100.7152110.0770.02450.01780.0440.0251110.02790.01450.0110.6452120.0780.02460.01790.0450.0251120.02800.01460.0120.5852130.0790.02470.01800.0460.021130.02810.01470.0130.532140.0800.02480.01810.0470.021140.02820.0140.482150.0810.01480.02490.01820.0480.0151150.02830.0150.4352160.0820.01490.02500.01830.0490.0151160.02840.0160.3952170.0830.01500.02510.01840.0500.0151170.02850.0170.3552180.0840.01510.02520.0510.0151180.01850.02860.02190.0850.01520.0180.3252530.0520.011190.01860.02870.02200.0860.01530.0190.2952540.0530.011200.01870.02880.02210.0870.01540.0200.2652550.0540.011210.01880.02890.0880.01550.0210.242220.02560.01220.01890.0550.012900.02230.0890.01560.0220.222570.01230.01900.0560.012910.02240.0900.01570.0230.1952580.01240.01910.0570.0052920.02250.0910.01580.0240.182590.01250.01920.0580.0052930.02260.01590.0250.16920.02600.01260.01930.0590.0052940.02270.01600.0260.145930.02610.01270.01940.0600.0052950.02280.01610.0270.135940.02620.01280.01950.0610.0052960.02290.01620.0280.12950.02630.01960.0620.0051290.02970.02300.01630.0290.11960.02640.01970.0630.0051300.02980.02310.01640.0300.1970.02650.01980.0640.0051310.02990.02320.01650.0310.09980.02660.01990.0650.0051320.03000.02330.0320.08990.01660.02670.02000.0660.0051330.0
+Rendering plots/create
+Completed in 788ms (View: 8, DB: 44) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-25 19:06:30) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"GNLftl8RmTVg5AkHLH1G/7acGtll4DDOqadasgh968U=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20131025-5104-154w40l-0>}}
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.5ms)[0m   [0;1mINSERT INTO `plots` (`created_at`, `explVariable`, `expName`, `updated_at`, `respVariable`, `calibFile`) VALUES('2013-10-25 17:06:30', 1, 'test', '2013-10-25 17:06:30', 1, '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (114.2ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20131025190630_anna_calib_data.txt
+[1]1	1.66
+[2]2	1.77
+[3]4	1.94
+[4]5	1.98
+[5]6	2.01
+[6]7	1.89
+[7]8	1.99
+[8]9	2.11
+[9]10	2.22
+  [4;36;1mPlot Load (0.3ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 72) [0m
+File extract local path: public/calibration_data/20131025190630_anna_calib_data.txt
+2340.0330.0751000.01670.02680.02010.0670.0051340.02350.0340.0651010.01680.02690.02020.0680.0051350.011.7352360.0350.061020.01690.02700.0690.0051360.021.5752030.02370.0360.0551030.01700.02710.0700.01370.031.4252040.02380.01040.01710.0370.052720.0710.01380.041.292050.02390.01050.01720.0380.0452730.0720.01390.051.172060.02400.01060.01730.0390.042740.0730.01400.061.062070.02410.01070.01740.0400.0352750.01410.070.962080.0740.02420.01080.01750.0410.0352760.01420.080.872090.0750.02430.01090.01760.0420.032770.01430.090.7852100.0760.02440.01100.01770.0430.032780.01440.0100.7152110.0770.02450.01780.0440.0251110.02790.01450.0110.6452120.0780.02460.01790.0450.0251120.02800.01460.0120.5852130.0790.02470.01800.0460.021130.02810.01470.0130.532140.0800.02480.01810.0470.021140.02820.0140.482150.0810.01480.02490.01820.0480.0151150.02830.0150.4352160.0820.01490.02500.01830.0490.0151160.02840.0160.3952170.0830.01500.02510.01840.0500.0151170.02850.0170.3552180.0840.01510.02520.0510.0151180.01850.02860.02190.0850.01520.0180.3252530.0520.011190.01860.02870.02200.0860.01530.0190.2952540.0530.011200.01870.02880.02210.0870.01540.0200.2652550.0540.011210.01880.02890.0880.01550.0210.242220.02560.01220.01890.0550.012900.02230.0890.01560.0220.222570.01230.01900.0560.012910.02240.0900.01570.0230.1952580.01240.01910.0570.0052920.02250.0910.01580.0240.182590.01250.01920.0580.0052930.02260.01590.0250.16920.02600.01260.01930.0590.0052940.02270.01600.0260.145930.02610.01270.01940.0600.0052950.02280.01610.0270.135940.02620.01280.01950.0610.0052960.02290.01620.0280.12950.02630.01960.0620.0051290.02970.02300.01630.0290.11960.02640.01970.0630.0051300.02980.02310.01640.0300.1970.02650.01980.0640.0051310.02990.02320.01650.0310.09980.02660.01990.0650.0051320.03000.02330.0320.08990.01660.02670.02000.0660.0051330.0
+Rendering plots/create
+Completed in 870ms (View: 8, DB: 115) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-25 19:10:50) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"GNLftl8RmTVg5AkHLH1G/7acGtll4DDOqadasgh968U=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20131025-5104-11dkgpu-0>}}
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.2ms)[0m   [0;1mINSERT INTO `plots` (`created_at`, `explVariable`, `expName`, `updated_at`, `respVariable`, `calibFile`) VALUES('2013-10-25 17:10:50', 1, 'test', '2013-10-25 17:10:50', 1, '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (45.3ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20131025191050_anna_calib_data.txt
+[1]1	1.66
+[2]2	1.77
+[3]4	1.94
+[4]5	1.98
+[5]6	2.01
+[6]7	1.89
+[7]8	1.99
+[8]9	2.11
+[9]10	2.22
+  [4;36;1mPlot Load (0.3ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 73) [0m
+File extract local path: public/calibration_data/20131025191050_anna_calib_data.txt
+2340.0330.0751000.01670.02680.02010.0670.0051340.02350.0340.0651010.01680.02690.02020.0680.0051350.011.7352360.0350.061020.01690.02700.0690.0051360.021.5752030.02370.0360.0551030.01700.02710.0700.01370.031.4252040.02380.01040.01710.0370.052720.0710.01380.041.292050.02390.01050.01720.0380.0452730.0720.01390.051.172060.02400.01060.01730.0390.042740.0730.01400.061.062070.02410.01070.01740.0400.0352750.01410.070.962080.0740.02420.01080.01750.0410.0352760.01420.080.872090.0750.02430.01090.01760.0420.032770.01430.090.7852100.0760.02440.01100.01770.0430.032780.01440.0100.7152110.0770.02450.01780.0440.0251110.02790.01450.0110.6452120.0780.02460.01790.0450.0251120.02800.01460.0120.5852130.0790.02470.01800.0460.021130.02810.01470.0130.532140.0800.02480.01810.0470.021140.02820.0140.482150.0810.01480.02490.01820.0480.0151150.02830.0150.4352160.0820.01490.02500.01830.0490.0151160.02840.0160.3952170.0830.01500.02510.01840.0500.0151170.02850.0170.3552180.0840.01510.02520.0510.0151180.01850.02860.02190.0850.01520.0180.3252530.0520.011190.01860.02870.02200.0860.01530.0190.2952540.0530.011200.01870.02880.02210.0870.01540.0200.2652550.0540.011210.01880.02890.0880.01550.0210.242220.02560.01220.01890.0550.012900.02230.0890.01560.0220.222570.01230.01900.0560.012910.02240.0900.01570.0230.1952580.01240.01910.0570.0052920.02250.0910.01580.0240.182590.01250.01920.0580.0052930.02260.01590.0250.16920.02600.01260.01930.0590.0052940.02270.01600.0260.145930.02610.01270.01940.0600.0052950.02280.01610.0270.135940.02620.01280.01950.0610.0052960.02290.01620.0280.12950.02630.01960.0620.0051290.02970.02300.01630.0290.11960.02640.01970.0630.0051300.02980.02310.01640.0300.1970.02650.01980.0640.0051310.02990.02320.01650.0310.09980.02660.01990.0650.0051320.03000.02330.0320.08990.01660.02670.02000.0660.0051330.0
+Redirected to http://localhost:3000/plots
+
+ActionController::DoubleRenderError (Can only render or redirect once per action):
+  actionpack (2.3.11) lib/action_controller/base.rb:891:in `render_without_benchmark'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:51:in `render'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:51:in `render'
+  app/controllers/plots_controller.rb:84:in `create'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:135:in `call'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:135:in `custom'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:179:in `call'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:179:in `respond'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:173:in `each'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:173:in `respond'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:107:in `respond_to'
+  app/controllers/plots_controller.rb:51:in `create'
+  actionpack (2.3.11) lib/action_controller/base.rb:1333:in `send'
+  actionpack (2.3.11) lib/action_controller/base.rb:1333:in `perform_action_without_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:617:in `call_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+  actionpack (2.3.11) lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+  actionpack (2.3.11) lib/action_controller/flash.rb:151:in `perform_action'
+  actionpack (2.3.11) lib/action_controller/base.rb:532:in `send'
+  actionpack (2.3.11) lib/action_controller/base.rb:532:in `process_without_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:606:in `process'
+  actionpack (2.3.11) lib/action_controller/base.rb:391:in `process'
+  actionpack (2.3.11) lib/action_controller/base.rb:386:in `call'
+  actionpack (2.3.11) lib/action_controller/routing/route_set.rb:438:in `call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:87:in `dispatch'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:121:in `_call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:29:in `call'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:29:in `call'
+  activerecord (2.3.11) lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:9:in `cache'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:28:in `call'
+  activerecord (2.3.11) lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+  actionpack (2.3.11) lib/action_controller/string_coercion.rb:25:in `call'
+  rack (1.1.6) lib/rack/head.rb:9:in `call'
+  rack (1.1.6) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (2.3.11) lib/action_controller/params_parser.rb:15:in `call'
+  actionpack (2.3.11) lib/action_controller/session/cookie_store.rb:99:in `call'
+  actionpack (2.3.11) lib/action_controller/failsafe.rb:26:in `call'
+  rack (1.1.6) lib/rack/lock.rb:11:in `call'
+  rack (1.1.6) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.1.6) lib/rack/lock.rb:11:in `call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:114:in `call'
+  actionpack (2.3.11) lib/action_controller/reloader.rb:34:in `run'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:108:in `call'
+  rails (2.3.11) lib/rails/rack/static.rb:31:in `call'
+  rack (1.1.6) lib/rack/urlmap.rb:47:in `call'
+  rack (1.1.6) lib/rack/urlmap.rb:41:in `each'
+  rack (1.1.6) lib/rack/urlmap.rb:41:in `call'
+  rails (2.3.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.1.6) lib/rack/content_length.rb:13:in `call'
+  rack (1.1.6) lib/rack/handler/webrick.rb:48:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.1.6) lib/rack/handler/webrick.rb:14:in `run'
+  rails (2.3.11) lib/commands/server.rb:111
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:55:in `gem_original_require'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:55:in `require'
+  script/server:3
+
+Rendered rescues/_trace (24.0ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-25 19:23:40) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"GNLftl8RmTVg5AkHLH1G/7acGtll4DDOqadasgh968U=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20131025-5104-eyt3il-0>}}
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.2ms)[0m   [0;1mINSERT INTO `plots` (`created_at`, `explVariable`, `expName`, `updated_at`, `respVariable`, `calibFile`) VALUES('2013-10-25 17:23:40', 1, 'test', '2013-10-25 17:23:40', 1, '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (41.5ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20131025192340_anna_calib_data.txt
+[1]1	1.66
+[2]2	1.77
+[3]4	1.94
+[4]5	1.98
+[5]6	2.01
+[6]7	1.89
+[7]8	1.99
+[8]9	2.11
+[9]10	2.22
+  [4;36;1mPlot Load (0.6ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 74) [0m
+File extract local path: public/calibration_data/20131025192340_anna_calib_data.txt
+2340.0330.0751000.01670.02680.02010.0670.0051340.02350.0340.0651010.01680.02690.02020.0680.0051350.011.7352360.0350.061020.01690.02700.0690.0051360.021.5752030.02370.0360.0551030.01700.02710.0700.01370.031.4252040.02380.01040.01710.0370.052720.0710.01380.041.292050.02390.01050.01720.0380.0452730.0720.01390.051.172060.02400.01060.01730.0390.042740.0730.01400.061.062070.02410.01070.01740.0400.0352750.01410.070.962080.0740.02420.01080.01750.0410.0352760.01420.080.872090.0750.02430.01090.01760.0420.032770.01430.090.7852100.0760.02440.01100.01770.0430.032780.01440.0100.7152110.0770.02450.01780.0440.0251110.02790.01450.0110.6452120.0780.02460.01790.0450.0251120.02800.01460.0120.5852130.0790.02470.01800.0460.021130.02810.01470.0130.532140.0800.02480.01810.0470.021140.02820.0140.482150.0810.01480.02490.01820.0480.0151150.02830.0150.4352160.0820.01490.02500.01830.0490.0151160.02840.0160.3952170.0830.01500.02510.01840.0500.0151170.02850.0170.3552180.0840.01510.02520.0510.0151180.01850.02860.02190.0850.01520.0180.3252530.0520.011190.01860.02870.02200.0860.01530.0190.2952540.0530.011200.01870.02880.02210.0870.01540.0200.2652550.0540.011210.01880.02890.0880.01550.0210.242220.02560.01220.01890.0550.012900.02230.0890.01560.0220.222570.01230.01900.0560.012910.02240.0900.01570.0230.1952580.01240.01910.0570.0052920.02250.0910.01580.0240.182590.01250.01920.0580.0052930.02260.01590.0250.16920.02600.01260.01930.0590.0052940.02270.01600.0260.145930.02610.01270.01940.0600.0052950.02280.01610.0270.135940.02620.01280.01950.0610.0052960.02290.01620.0280.12950.02630.01960.0620.0051290.02970.02300.01630.0290.11960.02640.01970.0630.0051300.02980.02310.01640.0300.1970.02650.01980.0640.0051310.02990.02320.01650.0310.09980.02660.01990.0650.0051320.03000.02330.0320.08990.01660.02670.02000.0660.0051330.0
+Redirected to http://localhost:3000/plots
+
+ActionController::DoubleRenderError (Can only render or redirect once per action):
+  actionpack (2.3.11) lib/action_controller/base.rb:891:in `render_without_benchmark'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:51:in `render'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:51:in `render'
+  app/controllers/plots_controller.rb:84:in `create'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:135:in `call'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:135:in `custom'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:179:in `call'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:179:in `respond'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:173:in `each'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:173:in `respond'
+  actionpack (2.3.11) lib/action_controller/mime_responds.rb:107:in `respond_to'
+  app/controllers/plots_controller.rb:51:in `create'
+  actionpack (2.3.11) lib/action_controller/base.rb:1333:in `send'
+  actionpack (2.3.11) lib/action_controller/base.rb:1333:in `perform_action_without_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:617:in `call_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (2.3.11) lib/active_support/core_ext/benchmark.rb:17:in `ms'
+  actionpack (2.3.11) lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+  actionpack (2.3.11) lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+  actionpack (2.3.11) lib/action_controller/flash.rb:151:in `perform_action'
+  actionpack (2.3.11) lib/action_controller/base.rb:532:in `send'
+  actionpack (2.3.11) lib/action_controller/base.rb:532:in `process_without_filters'
+  actionpack (2.3.11) lib/action_controller/filters.rb:606:in `process'
+  actionpack (2.3.11) lib/action_controller/base.rb:391:in `process'
+  actionpack (2.3.11) lib/action_controller/base.rb:386:in `call'
+  actionpack (2.3.11) lib/action_controller/routing/route_set.rb:438:in `call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:87:in `dispatch'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:121:in `_call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:29:in `call'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:29:in `call'
+  activerecord (2.3.11) lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:9:in `cache'
+  activerecord (2.3.11) lib/active_record/query_cache.rb:28:in `call'
+  activerecord (2.3.11) lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+  actionpack (2.3.11) lib/action_controller/string_coercion.rb:25:in `call'
+  rack (1.1.6) lib/rack/head.rb:9:in `call'
+  rack (1.1.6) lib/rack/methodoverride.rb:24:in `call'
+  actionpack (2.3.11) lib/action_controller/params_parser.rb:15:in `call'
+  actionpack (2.3.11) lib/action_controller/session/cookie_store.rb:99:in `call'
+  actionpack (2.3.11) lib/action_controller/failsafe.rb:26:in `call'
+  rack (1.1.6) lib/rack/lock.rb:11:in `call'
+  rack (1.1.6) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.1.6) lib/rack/lock.rb:11:in `call'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:114:in `call'
+  actionpack (2.3.11) lib/action_controller/reloader.rb:34:in `run'
+  actionpack (2.3.11) lib/action_controller/dispatcher.rb:108:in `call'
+  rails (2.3.11) lib/rails/rack/static.rb:31:in `call'
+  rack (1.1.6) lib/rack/urlmap.rb:47:in `call'
+  rack (1.1.6) lib/rack/urlmap.rb:41:in `each'
+  rack (1.1.6) lib/rack/urlmap.rb:41:in `call'
+  rails (2.3.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.1.6) lib/rack/content_length.rb:13:in `call'
+  rack (1.1.6) lib/rack/handler/webrick.rb:48:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.1.6) lib/rack/handler/webrick.rb:14:in `run'
+  rails (2.3.11) lib/commands/server.rb:111
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:55:in `gem_original_require'
+  /usr/local/rvm/rubies/ruby-1.8.7-p371/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:55:in `require'
+  script/server:3
+
+Rendered rescues/_trace (60.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-25 19:23:58) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"GNLftl8RmTVg5AkHLH1G/7acGtll4DDOqadasgh968U=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20131025-5104-vvy49a-0>}}
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.2ms)[0m   [0;1mINSERT INTO `plots` (`created_at`, `explVariable`, `expName`, `updated_at`, `respVariable`, `calibFile`) VALUES('2013-10-25 17:23:58', 1, 'test', '2013-10-25 17:23:58', 1, '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (27.3ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20131025192358_anna_calib_data.txt
+[1]1	1.66
+[2]2	1.77
+[3]4	1.94
+[4]5	1.98
+[5]6	2.01
+[6]7	1.89
+[7]8	1.99
+[8]9	2.11
+[9]10	2.22
+  [4;36;1mPlot Load (0.5ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 75) [0m
+File extract local path: public/calibration_data/20131025192358_anna_calib_data.txt
+2340.0330.0751000.01670.02680.02010.0670.0051340.02350.0340.0651010.01680.02690.02020.0680.0051350.011.7352360.0350.061020.01690.02700.0690.0051360.021.5752030.02370.0360.0551030.01700.02710.0700.01370.031.4252040.02380.01040.01710.0370.052720.0710.01380.041.292050.02390.01050.01720.0380.0452730.0720.01390.051.172060.02400.01060.01730.0390.042740.0730.01400.061.062070.02410.01070.01740.0400.0352750.01410.070.962080.0740.02420.01080.01750.0410.0352760.01420.080.872090.0750.02430.01090.01760.0420.032770.01430.090.7852100.0760.02440.01100.01770.0430.032780.01440.0100.7152110.0770.02450.01780.0440.0251110.02790.01450.0110.6452120.0780.02460.01790.0450.0251120.02800.01460.0120.5852130.0790.02470.01800.0460.021130.02810.01470.0130.532140.0800.02480.01810.0470.021140.02820.0140.482150.0810.01480.02490.01820.0480.0151150.02830.0150.4352160.0820.01490.02500.01830.0490.0151160.02840.0160.3952170.0830.01500.02510.01840.0500.0151170.02850.0170.3552180.0840.01510.02520.0510.0151180.01850.02860.02190.0850.01520.0180.3252530.0520.011190.01860.02870.02200.0860.01530.0190.2952540.0530.011200.01870.02880.02210.0870.01540.0200.2652550.0540.011210.01880.02890.0880.01550.0210.242220.02560.01220.01890.0550.012900.02230.0890.01560.0220.222570.01230.01900.0560.012910.02240.0900.01570.0230.1952580.01240.01910.0570.0052920.02250.0910.01580.0240.182590.01250.01920.0580.0052930.02260.01590.0250.16920.02600.01260.01930.0590.0052940.02270.01600.0260.145930.02610.01270.01940.0600.0052950.02280.01610.0270.135940.02620.01280.01950.0610.0052960.02290.01620.0280.12950.02630.01960.0620.0051290.02970.02300.01630.0290.11960.02640.01970.0630.0051300.02980.02310.01640.0300.1970.02650.01980.0640.0051310.02990.02320.01650.0310.09980.02660.01990.0650.0051320.03000.02330.0320.08990.01660.02670.02000.0660.0051330.0
+Rendering plots/create
+Completed in 752ms (View: 3, DB: 28) | 200 OK [http://localhost/plots]
+
+
+Processing PlotsController#create (for 127.0.0.1 at 2013-10-25 19:26:09) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"GNLftl8RmTVg5AkHLH1G/7acGtll4DDOqadasgh968U=", "plot"=>{"explVariable"=>"1", "expName"=>"test", "respVariable"=>"1", "calibFile"=>#<File:/tmp/RackMultipart20131025-5104-35sv65-0>}}
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlot Create (0.6ms)[0m   [0;1mINSERT INTO `plots` (`created_at`, `explVariable`, `expName`, `updated_at`, `respVariable`, `calibFile`) VALUES('2013-10-25 17:26:09', 1, 'test', '2013-10-25 17:26:09', 1, '--- !ruby/object:File {}\n\n')[0m
+  [4;35;1mSQL (47.0ms)[0m   [0mCOMMIT[0m
+File extract local path: public/calibration_data/20131025192609_anna_calib_data.txt
+[1]1	1.66
+[2]2	1.77
+[3]4	1.94
+[4]5	1.98
+[5]6	2.01
+[6]7	1.89
+[7]8	1.99
+[8]9	2.11
+[9]10	2.22
+  [4;36;1mPlot Load (0.3ms)[0m   [0;1mSELECT * FROM `plots` WHERE (`plots`.`id` = 76) [0m
+File extract local path: public/calibration_data/20131025192609_anna_calib_data.txt
+2340.0330.0751000.01670.02680.02010.0670.0051340.02350.0340.0651010.01680.02690.02020.0680.0051350.011.7352360.0350.061020.01690.02700.0690.0051360.021.5752030.02370.0360.0551030.01700.02710.0700.01370.031.4252040.02380.01040.01710.0370.052720.0710.01380.041.292050.02390.01050.01720.0380.0452730.0720.01390.051.172060.02400.01060.01730.0390.042740.0730.01400.061.062070.02410.01070.01740.0400.0352750.01410.070.962080.0740.02420.01080.01750.0410.0352760.01420.080.872090.0750.02430.01090.01760.0420.032770.01430.090.7852100.0760.02440.01100.01770.0430.032780.01440.0100.7152110.0770.02450.01780.0440.0251110.02790.01450.0110.6452120.0780.02460.01790.0450.0251120.02800.01460.0120.5852130.0790.02470.01800.0460.021130.02810.01470.0130.532140.0800.02480.01810.0470.021140.02820.0140.482150.0810.01480.02490.01820.0480.0151150.02830.0150.4352160.0820.01490.02500.01830.0490.0151160.02840.0160.3952170.0830.01500.02510.01840.0500.0151170.02850.0170.3552180.0840.01510.02520.0510.0151180.01850.02860.02190.0850.01520.0180.3252530.0520.011190.01860.02870.02200.0860.01530.0190.2952540.0530.011200.01870.02880.02210.0870.01540.0200.2652550.0540.011210.01880.02890.0880.01550.0210.242220.02560.01220.01890.0550.012900.02230.0890.01560.0220.222570.01230.01900.0560.012910.02240.0900.01570.0230.1952580.01240.01910.0570.0052920.02250.0910.01580.0240.182590.01250.01920.0580.0052930.02260.01590.0250.16920.02600.01260.01930.0590.0052940.02270.01600.0260.145930.02610.01270.01940.0600.0052950.02280.01610.0270.135940.02620.01280.01950.0610.0052960.02290.01620.0280.12950.02630.01960.0620.0051290.02970.02300.01630.0290.11960.02640.01970.0630.0051300.02980.02310.01640.0300.1970.02650.01980.0640.0051310.02990.02320.01650.0310.09980.02660.01990.0650.0051320.03000.02330.0320.08990.01660.02670.02000.0660.0051330.0
+Rendering plots/create
+Completed in 797ms (View: 8, DB: 48) | 200 OK [http://localhost/plots]
