@@ -1,12 +1,10 @@
 class PlotsController < ApplicationController
-  # GET /plots
-  # GET /plots.xml
 
 require 'rubygems'
 require 'rinruby'
 require 'paperclip'
 
- DIRECTORY = "public/calibration_data/"
+DIRECTORY = "public/calibration_data/"
 
   def index
 
@@ -50,26 +48,32 @@ require 'paperclip'
              @forBubbleChart = []
              @output = []
 
-             self.dataExtract(name)
-             @output =  self.calTheta(id, name)
-
-             @result = @output.shift        
-             @thetaZeroValues = @output.shift             
-             @thetaOneValues = @output.shift
-            
-             #puts @thetaOneValues.class
+             dataExtract(name)
+             @output = calTheta(id, name)
+             logger.debug @output.inspect
+             @result = @output.shift
              @theta0 = @result.shift
              @theta1 = @result.shift
-             
-             #for precesion up to 3 decimal places. To make 2 decimal places change 200 to 20. 
-             @result = round_up(@result)
-             @thetaZeroValues = round_up(@thetaZeroValues)
-             @thetaOneValues = round_up(@thetaOneValues)
-             @forBubbleChart = @result #Both has same values, to be utilized in different graphs
-             @result = array_to_hash(@result)
-             
-             @result = @result.sort_by { |keys, values| keys }
+             @thetaZeroValues = @output.shift             
+             @thetaOneValues = @output.shift
 
+             if @output.length > 1                     
+                  @thetaTwoValues = @output.shift
+                  @thetaThreeValues = @output.shift
+                  @theta2 = @result.shift
+                  @theta3 = @result.shift                       
+             end
+
+             #for precesion up to 3 decimal places. To make 2 decimal places change 200 to 20. 
+                @result = round_up(@result)
+                @thetaZeroValues = round_up(@thetaZeroValues)
+                @thetaOneValues = round_up(@thetaOneValues)
+                @thetaTwoValues = round_up(@thetaTwoValues)
+                @thetaThreeValues = round_up(@thetaThreeValues) 
+                @forBubbleChart = @result #Both has same values, but to be utilized in different graphs
+                @result = array_to_hash(@result)
+                @result = @result.sort_by { |keys, values| keys }
+             
          format.html { render :html => @result }
 	 format.xml  { render :xml => @result }
 
@@ -93,32 +97,87 @@ require 'paperclip'
       line = str.to_str
       @x1 = Array.new
       @y = Array.new 
+      @x2 = Array.new
+      @x3 = Array.new
       @raw_data = Array.new
       @raw_data_mod = Array.new
+
      if num_of_variables == 2
 	      data = line.scan(/(\S+[\t,]\S+)/).flatten
              	
 	      data.each do |line|
-	      if line =~ /((\S+)[\t,](\S+))/
-		      @x1.push $2               
-		      @y.push $3                
+	      if line =~ /((\S+)[\t,](\S+))/		                    
+		      @y.push $2 
+                      @x1.push $3                
                       @raw_data.push $1                
 	      end                                          
 	 end
         @raw_data_mod = check_file_return_mod(@raw_data) 
-        result_array =  univariate_data(@x1, @y)
-     end   
+        result_array =  univariate_data(@y, @x1)
+   
+     elsif num_of_variables == 3 
+       
+       #data = line.scan(/(\S+[\t,]\S+[\t,](\S+){0,1}[\t,]*\S+)/).flatten
+       data = line.scan(/(\S+[\t,]\S+[\t,]\S+)/).flatten
+             	
+       data.each do |line|
+	      if line =~ /((\S+)[\t,](\S+)[\t,](\S+))/
+		      @y.push $2
+                      @x1.push $3
+                      @x2.push $4               
+                      @raw_data.push $1                
+	      end                       
+                   
+        end
+
+       @raw_data_mod = check_file_return_mod(@raw_data) 
+       result_array =  multivariate_data_with_two_x(@y, @x1, @x2)
+
+     elsif num_of_variables == 4 
+       
+       data = line.scan(/(\S+[\t,]\S+[\t,]\S+[\t,]\S+)/).flatten
+             	
+       data.each do |line|
+	      if line =~ /((\S+)[\t,](\S+)[\t,](\S+)[\t,](\S+))/
+		      @y.push $2
+                      @x1.push $3
+                      @x2.push $4
+                      #if $4.nil?
+                       #  @x3 = []
+                      #else
+                      @x3.push $5
+                      #end		                     
+                      @raw_data.push $1                
+	      end                       
+                   
+        end
+      
+       #if !@x3.empty?
+	#   @x3 = @x3.map do |obj|
+	#	 obj.delete ","
+	 #  end
+       #end
+
+       @raw_data_mod = check_file_return_mod(@raw_data) 
+       result_array =  multivariate_data_with_three_x(@y, @x1, @x2, @x3)
+   else
+       puts "Exception in number of column"
+   end
+
    return result_array
+
   end
 
-  def univariate_data(x, y)
+  #data table with one positive control and hence one x column
+  def univariate_data(y, x)
 
-     R.assign "x1", x #assigning x axis data
+     
      R.assign "y", y   #assigning y axis data
+     R.assign "x1", x #assigning x axis data
 
      R.eval  <<-EOF
-      alpha <- 0.001
-      num_iters <- 500
+      alpha <- 0.01
+      num_iters <- 100
       x1 <- as.numeric(x1)
       y <- as.numeric(y)
       numOfRows <- length(y)
@@ -151,8 +210,7 @@ require 'paperclip'
       return(output) 
     }
    
-    allResults <- gradDescentUniVar(mX,y,theta,alpha,num_iters)
-    resultsUnlist <- unlist(allResults)  
+    allResults <- gradDescentUniVar(mX,y,theta,alpha,num_iters) 
  
     thetaValues <- allResults[[2]]
     thetaValuesFrame <- data.frame(thetaValues)
@@ -160,42 +218,32 @@ require 'paperclip'
     theta1Values <- thetaValuesFrame$theta1
     allResults[[2]] <- NULL
     resultsUnlist <- unlist(allResults)
+
    EOF
 
      return R.resultsUnlist, R.theta0Values, R.theta1Values
   end
 
-  def multivariate_data(y, *args)
+  def multivariate_data_with_two_x(y, x1, x2)
 
        R.assign "Y", y
-       R.assign "X1", args[0]
-       R.assign "X2", args[1]
-       R.assign "X3", args[2] || nil if args[2].nil?
+       R.assign "X1", x1
+       R.assign "X2", x2
+       #R.assign "X3", columns[3] #|| nil if columns[3].nil?
 
        R.eval <<-EOF
 
-       alpha <- as.numeric(alpha)
-       num_iters <- as.numeric(num_iters)
-
+       alpha <- 0.01
+       num_iters <- 700
        x1 <- as.numeric(X1)
        x2 <- as.numeric(X2)
-       x3 <- as.numeric(X3)
         y <- as.numeric(Y)
+       mX <- cbind(x1,x2)
+       mean <- cbind(mean(mX[,1]), mean(mX[,2]))
+       sd <- cbind(sd(mX[,1]), sd(mX[,2]))
        numOfRows <- length(y)
-
-
-
-       if(length(x3) == 0) {
-          mX <- cbind(x1,x2)
-          mean <- cbind(mean(mX[,1]), mean(mX[,2]))
-          sd <- cbind(sd(mX[,1]), sd(mX[,2]))
-          theta = t(data.matrix(data.frame(theta0=0, theta1=0, theta2=0)))
-       } else {
-          mX <- cbind(x1,x2,x3)
-          mean <- cbind(mean(mX[,1]), mean(mX[,2]), mean(mX[,3]))
-          sd <- cbind(sd(mX[,1]), sd(mX[,2]), sd(mX[,3]))
-          theta = t(data.matrix(data.frame(theta0=0, theta1=0, theta2=0, theta3=0)))
-        }
+       theta = t(data.matrix(data.frame(theta0=0, theta1=0, theta2=0))) 
+       thetaRep = data.matrix(data.frame(theta0=rep(0, num_iters), theta1=rep(0, num_iters), theta2=rep(0, num_iters)))
      
        con <- rep(1, length(y))
        mX <- (mX - (con %*% mean))/(con %*% sd)
@@ -214,21 +262,96 @@ require 'paperclip'
            for(iter in 1:num_iters) {
          
                 theta = theta - (alpha/m) * t(t((cX %*% theta) - y) %*% cX)
+                thetaRep[iter,] = theta
                 histSEF[iter] <- SEF(cX,y,theta)
 
-       }
-       output <- list(thetaOriVal=theta, J=histSEF)
+               }
+       output <- list(thetaOriVal=theta, thetaAll=thetaRep, J=histSEF) 
        return(output)
-      }
+     }
 
    allResults <- multiGradDesc(cX,y,theta,alpha,num_iters)
-   resultsUnlist <- unlist(allResults) 
+
+    thetaValues <- allResults[[2]]
+    thetaValuesFrame <- data.frame(thetaValues)
+    theta0Values <- thetaValuesFrame$theta0
+    theta1Values <- thetaValuesFrame$theta1
+    theta2Values <- thetaValuesFrame$theta2
+    allResults[[2]] <- NULL
+    resultsUnlist <- unlist(allResults)
 
    EOF
-       
-   return R.resultsUnlist
+      
+   return R.resultsUnlist, R.theta0Values, R.theta1Values, R.theta2Values
       
   end
+
+  def multivariate_data_with_three_x(y, x1, x2, x3)
+
+      R.assign "Y", y
+       R.assign "X1", x1
+       R.assign "X2", x2
+       R.assign "X3", x3
+
+       R.eval <<-EOF
+
+       alpha <- 0.01
+       num_iters <- 700
+       x1 <- as.numeric(X1)
+       x2 <- as.numeric(X2)
+       x3 <- as.numeric(X3)
+        y <- as.numeric(Y)
+       numOfRows <- length(y)
+            
+       mX <- cbind(x1,x2,x3)
+       mean <- cbind(mean(mX[,1]), mean(mX[,2]), mean(mX[,3]))
+       sd <- cbind(sd(mX[,1]), sd(mX[,2]), sd(mX[,3]))
+       theta = t(data.matrix(data.frame(theta0=0, theta1=0, theta2=0, theta3=0)))
+       thetaRep = data.matrix(data.frame(theta0=rep(0, num_iters), theta1=rep(0, num_iters), theta2=rep(0, num_iters), theta3=rep(0, num_iters)))
+         
+       con <- rep(1, length(y))
+       mX <- (mX - (con %*% mean))/(con %*% sd)
+       cX <- cbind(x0=rep(1,each=length(y)), mX)
+
+      SEF <- function(cX, y, theta) {  
+             m <- length(y)
+             J <- 0         
+             J <- (1/(2*m)) * t((cX %*% theta) - y) %*% ((cX %*% theta) - y)  
+      }
+
+      multiGradDesc <- function(cX, y, theta, alpha, num_iters) {
+                       histSEF <- rep(0, each=num_iters)  
+                       m = length(y) 
+      
+           for(iter in 1:num_iters) {
+         
+                theta = theta - (alpha/m) * t(t((cX %*% theta) - y) %*% cX)
+                thetaRep[iter,] = theta
+                histSEF[iter] <- SEF(cX,y,theta)
+
+               }
+       output <- list(thetaOriVal=theta, thetaAll=thetaRep, J=histSEF) 
+       return(output)
+     }
+
+   allResults <- multiGradDesc(cX,y,theta,alpha,num_iters)
+
+    thetaValues <- allResults[[2]]
+    thetaValuesFrame <- data.frame(thetaValues)
+    theta0Values <- thetaValuesFrame$theta0
+    theta1Values <- thetaValuesFrame$theta1
+    theta2Values <- thetaValuesFrame$theta2
+    theta3Values <- thetaValuesFrame$theta3
+    allResults[[2]] <- NULL
+    resultsUnlist <- unlist(allResults)
+
+   EOF
+      
+   return R.resultsUnlist, R.theta0Values, R.theta1Values, R.theta2Values, R.theta3Values
+      
+  end
+
+
 
   def lm_method
 
@@ -319,64 +442,6 @@ require 'paperclip'
 
 end
 
-
-#    elsif explanatoryVar == 2
-#
-#             data = line.scan(/(\S+,\S+,\S+)/).flatten
-#	     data.each do |line|
-#
-#	      if line =~ /(\S+),(\S+),(\S+)/
-#                    
-#		      @x1 = $1 
-#		      @x2 = $2
-#		      @y= $3    
-#	      end 
-#	    end
-#      
-#    elsif explanatoryVar == 3
-#               
-#             data = line.scan(/(\S+,\S+,\S+,\S+)/).flatten
-#	     data.each do |line|
-#
-#	      if line =~ /(\S+),(\S+),(\S+),(\S+)/
-#               
-#		      @x1 = $1 
-#		      @x2 = $2 
-#		      @x3 = $3 
-#		      @y = $4  
-#	      end 
-#	    end
-#
-#    elsif explanatoryVar == 4
-#
-#            data = line.scan(/(\S+,\S+,\S+,\S+,\S+)/).flatten
-#	     data.each do |line|
-#
-#	      if line =~ /(\S+),(\S+),(\S+),(\S+),(\S+)/
-#
-#		      @x1 = $1 
-#		      @x2 = $2 
-#		      @x3 = $3 
-#		      @x4 = $4
-#		      @y = $5   		  
-#	      end 
-#	    end
-#
-#    else 
-#      
-#        data = line.scan(/(\S+,\S+,\S+,\S+,\S+,\S+)/).flatten
-#        data.each do |line|
-#
-#	      if line =~ /(\S+),(\S+),(\S+),(\S+),(\S+),(\S+)/
-#
-#		      @x1 = $1 
-#		      @x2 = $2 
-#		      @x3 = $3 
-#		      @x4 = $4
-#		      @x5 = $4
-#		      @y = $5     		  
-#	      end 
-#	    end
 
 #png("/tmp/myplot.png")
 # plot(1:num_iters, histSEF, xlab="Number of Iterations", ylab="Minimized Squared error function",     #main="Gradient Descent Check")

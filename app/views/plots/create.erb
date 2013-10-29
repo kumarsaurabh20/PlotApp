@@ -47,7 +47,7 @@ function drawJfunctionChart() {
 function drawOriScatterChart() {
 
           var data = new google.visualization.arrayToDataTable([
-           [ 'Cell Count', 'Signal Intensity' ], 
+           [  'Cell Count', 'Signal Intensity X1', 'Signal Intensity X2', 'Signal Intensity X3' ], 
            <% @raw_data_mod.each do |x| %>
        
 	   [ <%= x %> ], 
@@ -58,7 +58,7 @@ function drawOriScatterChart() {
          
 
          var options = {
-                  title: 'Cell Count Vs Signal Intensity'
+                  title: 'Signal Intensity Vs Cell Count'
                };
 
          var chart = new google.visualization.ScatterChart(document.getElementById('myFirstChart'));
