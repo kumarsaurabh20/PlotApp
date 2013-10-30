@@ -61,15 +61,16 @@ DIRECTORY = "public/calibration_data/"
                   @thetaTwoValues = @output.shift
                   @thetaThreeValues = @output.shift
                   @theta2 = @result.shift
-                  @theta3 = @result.shift                       
+                  @theta3 = @result.shift 
+                  @thetaTwoValues = round_up(@thetaTwoValues)
+                  @thetaThreeValues = round_up(@thetaThreeValues)                       
              end
 
              #for precesion up to 3 decimal places. To make 2 decimal places change 200 to 20. 
                 @result = round_up(@result)
                 @thetaZeroValues = round_up(@thetaZeroValues)
                 @thetaOneValues = round_up(@thetaOneValues)
-                @thetaTwoValues = round_up(@thetaTwoValues)
-                @thetaThreeValues = round_up(@thetaThreeValues) 
+                
                 @forBubbleChart = @result #Both has same values, but to be utilized in different graphs
                 @result = array_to_hash(@result)
                 @result = @result.sort_by { |keys, values| keys }
