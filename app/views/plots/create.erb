@@ -30,7 +30,7 @@ function drawJfunctionChart() {
            <% @result.each do |key, value| %> 
 	   [ <%= key %>, <%= value.to_s %> ], 
 	   <% end %>
-	   [ <%= @result.length + 1 %>, 0 ]
+	   [ <%= @result.length + 1 %> , 0 ]
 
          ]);
          
@@ -44,7 +44,29 @@ function drawJfunctionChart() {
 
     }
 
-function drawOriScatterChart() {
+function drawOriScatterChartUnivariate() {
+
+          var data = new google.visualization.arrayToDataTable([
+           [  'Cell Count', 'Signal Intensity' ], 
+           <% @raw_data_mod.each do |x| %>
+       
+	   [ <%= x %> ], 
+	   <% end %>
+	   [ <%= @raw_data_mod.last %> ]
+
+         ]);
+         
+
+         var options = {
+                  title: 'Signal Intensity Vs Cell Count'
+               };
+
+         var chart = new google.visualization.ScatterChart(document.getElementById('myFirstChart'));
+             chart.draw(data, options);
+
+    }
+
+function drawOriScatterChartMultivariate() {
 
           var data = new google.visualization.arrayToDataTable([
            [  'Cell Count', 'Signal Intensity X1', 'Signal Intensity X2', 'Signal Intensity X3' ], 
@@ -80,7 +102,7 @@ function drawOriBubbleChart() {
          
 
          var options = {
-                  title: '3 Dimensional graph with theta0, theta1, SEF on X, Y and Z axis'
+                  title: '3 Dimensional graph with theta0, theta1 and SEF'
                };
 
          var chart = new google.visualization.BubbleChart(document.getElementById('myThirdChart'));
@@ -88,8 +110,38 @@ function drawOriBubbleChart() {
 
     }
 
-google.setOnLoadCallback(drawOriScatterChart);
+function drawOriBubbleChartMultivariate() {
+
+          var data = new google.visualization.arrayToDataTable([
+           ['', 'theta1', 'theta2', 'theta3', 'SE_Function' ], 
+           <% for i in 0..@forBubbleChart.length - 1 %>
+       
+	   [ '', <%= @thetaOneValues[i] %>, <%= @thetaTwoValues[i] %>, <%= @thetaThreeValues[i] %>, <%= @forBubbleChart[i] %> ], 
+	   <% end %>
+	   [ '', <%= @thetaOneValues.last %>, <%= @thetaTwoValues.last %>, <%= @thetaThreeValues.last %>, <%= @forBubbleChart.last %> ]
+
+         ]);
+         
+
+         var options = {
+                  title: '4 Dimensional graph with theta1, theta2, theta3 and SEF'
+               };
+
+         var chart = new google.visualization.BubbleChart(document.getElementById('myThirdChart'));
+             chart.draw(data, options);
+
+    }
+
+
 google.setOnLoadCallback(drawJfunctionChart);
-google.setOnLoadCallback(drawOriBubbleChart);
+ 
+  <% if @forBubbleChart.length > 100 %>
+   google.setOnLoadCallback(drawOriScatterChartMultivariate); 
+   google.setOnLoadCallback(drawOriBubbleChartMultivariate);
+  <% else %> 
+  google.setOnLoadCallback(drawOriScatterChartUnivariate); 
+  google.setOnLoadCallback(drawOriBubbleChart); 
+  <% end %>
+
 
 </script>

@@ -45,6 +45,13 @@ DIRECTORY = "public/calibration_data/"
       respond_to do |format|
 	 if @savedfile
 
+             @thetaTwoValues = []
+             @thetaThreeValues = []
+             @theta2 = []
+             @theta3 = [] 
+             @thetaTwoValues = []
+             @thetaThreeValues = []
+
              @forBubbleChart = []
              @output = []
 
