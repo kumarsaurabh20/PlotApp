@@ -56,8 +56,8 @@ DIRECTORY = "public/calibration_data/"
              @output = []
 
              dataExtract(name)
-             @output = calTheta(id, name)
-             logger.debug @output.inspect
+             @output = calTheta(name)
+             #logger.debug @output.inspect
              @result = @output.shift
              @theta0 = @result.shift
              @theta1 = @result.shift
@@ -83,7 +83,7 @@ DIRECTORY = "public/calibration_data/"
                 @result = @result.sort_by { |keys, values| keys }
              
          format.html { render :html => @result }
-	 format.xml  { render :xml => @result }
+	 format.xml  { render :xml => @output }
 
 	 else
          format.html { render :action => "new" }
@@ -91,26 +91,18 @@ DIRECTORY = "public/calibration_data/"
 	 end
        end
   end
-
  
   #Method to read calibration data from the file and send querries to R and get the resulting data
-  def calTheta(id, name)
+  def calTheta(name)
 
-      result_array = [] 
+      @y, @x1, @x2, @x3, @raw_data, @raw_data_mod, @result_array = [], [], [], [], [], [], []
  
-      @plot = Plot.find(id)
       num_of_variables = dataExtract(name)       
       path = File.join(DIRECTORY, name)
       str = IO.read(path)
       line = str.to_str
-      @x1 = Array.new
-      @y = Array.new 
-      @x2 = Array.new
-      @x3 = Array.new
-      @raw_data = Array.new
-      @raw_data_mod = Array.new
-
-     if num_of_variables == 2
+   
+      if num_of_variables == 2
 	      data = line.scan(/(\S+[\t,]\S+)/).flatten
              	
 	      data.each do |line|
@@ -121,7 +113,7 @@ DIRECTORY = "public/calibration_data/"
 	      end                                          
 	 end
         @raw_data_mod = check_file_return_mod(@raw_data) 
-        result_array =  univariate_data(@y, @x1)
+        @result_array =  univariate_data(@y, @x1)
    
      elsif num_of_variables == 3 
        
@@ -139,7 +131,7 @@ DIRECTORY = "public/calibration_data/"
         end
 
        @raw_data_mod = check_file_return_mod(@raw_data) 
-       result_array =  multivariate_data_with_two_x(@y, @x1, @x2)
+       @result_array =  multivariate_two_x(@y, @x1, @x2)
 
      elsif num_of_variables == 4 
        
@@ -167,12 +159,12 @@ DIRECTORY = "public/calibration_data/"
        #end
 
        @raw_data_mod = check_file_return_mod(@raw_data) 
-       result_array =  multivariate_data_with_three_x(@y, @x1, @x2, @x3)
+       @result_array =  multivariate_three_x(@y, @x1, @x2, @x3)
    else
        puts "Exception in number of column"
    end
 
-   return result_array
+   return @result_array
 
   end
 
@@ -232,7 +224,7 @@ DIRECTORY = "public/calibration_data/"
      return R.resultsUnlist, R.theta0Values, R.theta1Values
   end
 
-  def multivariate_data_with_two_x(y, x1, x2)
+  def multivariate_two_x(y, x1, x2)
 
        R.assign "Y", y
        R.assign "X1", x1
@@ -294,7 +286,7 @@ DIRECTORY = "public/calibration_data/"
       
   end
 
-  def multivariate_data_with_three_x(y, x1, x2, x3)
+  def multivariate_three_x(y, x1, x2, x3)
 
       R.assign "Y", y
        R.assign "X1", x1
@@ -446,6 +438,41 @@ DIRECTORY = "public/calibration_data/"
        
      return mod_file_name
   end
+
+
+  def cal_s2c(columns=[*args]) 
+
+    result, output, block = [], [], []
+    
+    if columns.length == 2   
+    result = univariate_data(columns[0], columns[1])
+    block = result.shift
+    output.push block.shift
+    output.push block.shift
+    
+    elsif columns.length == 3   
+    result = multivariate_two_x(columns[0], columns[1], columns[2]) 
+    block = result.shift
+    output.push block.shift
+    output.push block.shift
+    output.push block.shift
+    else
+    result = multivariate_three_x(columns[0], columns[1], columns[2], columns[2])   
+    block = result.shift
+    output.push block.shift
+    output.push block.shift
+    output.push block.shift
+    output.push block.shift
+    end
+  
+    respond_to do |format|
+	   format.xml { render :xml => output }
+	end
+
+  end
+
+
+
 
 
 end

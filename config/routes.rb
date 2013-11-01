@@ -43,4 +43,5 @@ map.resources :plots
   # consider removing or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+  map.connect '/get_coefficients.xml', :controller => 'plots', :action => "cal_s2c"
 end
