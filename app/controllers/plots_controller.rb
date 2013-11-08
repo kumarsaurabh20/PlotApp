@@ -23,8 +23,8 @@ DIRECTORY = "public/calibration_data/"
        end
   end
 
-   def create
-      
+   def create    
+
       @plot = Plot.new(params[:plot])
       @title = "Calibration Data Upload"
 
@@ -32,10 +32,10 @@ DIRECTORY = "public/calibration_data/"
 
       uploaded_io = params[:plot][:calibFile]
  
-      name = Time.now.strftime("%Y%m%d%H%M%S_") + sanitize_filename(uploaded_io.original_filename)
+      namefile = Time.now.strftime("%Y%m%d%H%M%S_") + sanitize_filename(uploaded_io.original_filename)
       
       Dir.mkdir(DIRECTORY) unless File.directory?(DIRECTORY)
-      path = File.join(DIRECTORY, name)
+      path = File.join(DIRECTORY, namefile)
       File.open(path, "wb") { |file| file.write(uploaded_io.read) } 
       @savedfile = true
       @plot.save
@@ -45,18 +45,10 @@ DIRECTORY = "public/calibration_data/"
       respond_to do |format|
 	 if @savedfile
 
-             @thetaTwoValues = []
-             @thetaThreeValues = []
-             @theta2 = []
-             @theta3 = [] 
-             @thetaTwoValues = []
-             @thetaThreeValues = []
+             @thetaTwoValues, @thetaThreeValues, @theta2, @theta3, @thetaTwoValues, @thetaThreeValues, @forBubbleChart, @output = [],[],[],[],[],[],[],[]
 
-             @forBubbleChart = []
-             @output = []
-
-             dataExtract(name)
-             @output = calTheta(name)
+             dataExtract(namefile)
+             @output = calTheta(namefile)
              #logger.debug @output.inspect
              @result = @output.shift
              @theta0 = @result.shift
@@ -87,7 +79,7 @@ DIRECTORY = "public/calibration_data/"
 
 	 else
          format.html { render :action => "new" }
-	 format.xml  { render :xml => @plot.errors, :status => :unprocessable_entity }
+	 #format.xml  { render :xml => @plot.errors, :status => :unprocessable_entity }
 	 end
        end
   end
