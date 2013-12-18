@@ -29,10 +29,10 @@
 		</u>
 		</b>
 		</div><br /><br />
-				<div class="new-navigation round">	
+				<span class="new-navigation round">	
 				<%= f.file_field :coeffs %>
-				</div>
-				<br /><br />
+				</span>
+				<br />
 			</td>
 
 			<td class="table-placment">
@@ -46,14 +46,43 @@
 		<a href="<%= '/download_sample_raw_inten_file' %>" >Check an example file</a>
 		</u>
 		</b>
-		</div><br /><br />
-				<div class="new-navigation round">
+		</div><br />
+				<span class="new-navigation round">
 				<%= f.file_field :rawinten %>
-				</div>
+				  </span><span><b>Add Replicates</b><button type="button" style="background-color:transparent; border-color:transparent; cursor: pointer;" id="addFiles"  ><%= image_tag("add.ico", :alt => "S2C", :class => "round", :size => "35x35") %></button></span>
+                             
 				<br /><br />
+                                
 			</td>
 		</tr>
-		<tr>
+                <tr>
+                     <td>
+                     
+                     </td>
+                     <td>
+                          
+<div class="table-placment">                      
+			</div>	 
+                              <br />                          
+                             <div class="new-navigation round" id="repBlock">                  
+                                <br />
+                                <div class="file">
+				<%= f.file_field :repone %>
+				</div>
+                                <br />
+                                <div class="file">
+				<%= f.file_field :reptwo %>
+				</div >
+                                <br />
+                                <div class="file">
+				<%= f.file_field :repthree %>
+				</div>
+                                <br />
+                             </div>
+                               
+                     </td>
+                </tr>
+		<tr><br /><br />
 			<td colspan="2" class="table-placment">
 				<div>
 				<%= f.submit "Upload", :id => "upload"  %>
@@ -68,3 +97,35 @@
 
 
 <br />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+$("#repBlock").css("display","none");
+$("div.file").css("display","none");
+$("div.file")[0].id = "file1";
+$("div.file")[1].id = "file2";
+$("div.file")[2].id = "file3";
+
+$("#addFiles").click(function() {
+        $("#repBlock").fadeIn("fast");
+	$("#file1").fadeIn("slow");
+		
+		//Setup for the second click.
+		   $(this).off('click');
+		   $(this).on('click', function() {$("#file2").fadeIn("slow"); 
+			
+			//Setup for the third click.
+			   $(this).off('click');
+			   $(this).on('click', function() {$("#file3").fadeIn("slow"); 
+
+				//Setup for the third click.
+			   	$(this).off('click');
+			   	$(this).on('click', function() {alert("Cannot add more replicates!!");
+
+					});
+			});
+		});
+	});
+
+</script>
+

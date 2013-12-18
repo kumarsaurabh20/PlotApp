@@ -178,6 +178,7 @@ blockquote {font-style: italic;padding: 0 3em;}
 .new-notice { position:absolute;margin: auto;top: 0;right: 0;bottom: 0;left: 0; }
 .new-navigation {background-color: white;padding: 0 0.7em;white-space:nowrap;border:1px solid #3399FF;width:50%;margin:0 auto;}
 .new-navigation-alternate {background-color: white;padding: 0 0.7em;white-space:nowrap;border:1px solid #3399FF;width:95%;margin:0 auto;}
+span.new-navigation {background-color: white;padding:7px;white-space:nowrap;border:1px solid #3399FF;width:50%;margin:15px;}
 /*==============================================*/
 
 /*Footer*/
