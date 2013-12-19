@@ -254,15 +254,14 @@ EOF
 
 
  #send a sample coeffecients file to the user
- def download_sample_coeffs_file	
-     temp = [["Probes", "Intensity with 1ng", "Intensity with 5ng", "Intensity with 50ng", "Intensity with 100ng"], ["cell counts","270","1351","6757","27027"], ["EukS_1209_25_dT","4102788.91290624","1.68E+07","2.62E+08","5.41E+08"], ["Test15 (EukS_1209_25dT)","3242670.65825","1.99E+07","3.92E+08","3.73E+08"],["EukS_328_25_dT","4564828.4446875","2.18E+07","4.40E+08","6.77E+08"], ["DinoB_25_dT","7269595.08139062","3.56E+07","4.00E+08","6.06E+08"]]
-
+ def download_sample_coeffs_file
+     temp = [[" EukS_1209_25_dT","-178.012","7310.55","-10963.59"], ["Test15 (EukS_1209_25dT)", "-1080.785", "14047.58", "-28426.59"]]
      send_sample_file("sample_calibration_file", temp)   
  end
 
  #send a sample raw intensities file to the user
  def download_sample_raw_inten_file
- temp = [["Probes for calibration"], ["EukS_1209_25_dT"], ["EukS_328_25_dT"], ["DinoB_25_dT"], ["Test1 (EukS_1209_25dT)"]]
+ temp = [["Probe", "Total Intensity"], ["POSITIVE_25_dT", "9.27E+07"], ["Poly-T-CY5", "2.11E+08"], ["EukS_1209_25_dT", "3.21E+08"], ["Test15 (EukS_1209_25dT)", "1.23E+08"]]
  send_sample_file("sample_probe_list", temp)
  end
 
