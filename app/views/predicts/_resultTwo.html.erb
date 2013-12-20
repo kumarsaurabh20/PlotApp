@@ -1,7 +1,30 @@
+
+<div class="ajaxResponce">
+
+<% if @results %>
+
+<table id="upload">
+<thead>
+<tr>
+   <th>Probe Name</th>
+   <th>Cell Count</th>
+</tr>
+</thead>
+<tbody>
+<% for i in 0..@probes.size %>
+<tr><td><%= @probes[i] %></td><td><%= @counts[i] %></td></tr>
+<% end %>    
+</tbody>
+
+<% end %>
+</table>
+</div>
+<br /><br />
 <div>
-<%= @coeffs_data_transpose %>
+<a href="<%= '/download_cell_counts' %>"><u>Export Cell Count Table as CSV</u></a>
 </div>
 
-<div>
-<%= @countToView %>
-</div>
+<script>
+$('#upload').dataTable();
+</script>
+

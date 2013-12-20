@@ -71,5 +71,6 @@ PlotApp::Application.routes.draw do
   match '/normalize' => 'uploads#normalize'
   match '/download_coeffs' => 'uploads#download_coeffs'
   match '/calculate' => 'predicts#calculate'
+  match '/download_cell_counts' => 'predicts#download_cell_counts'
 
 end

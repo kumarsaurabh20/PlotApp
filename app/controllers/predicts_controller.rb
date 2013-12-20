@@ -136,16 +136,25 @@ attr_accessor :raw_inten_transpose, :coeffs_transpose, :probe_list, :id, :data
      
       
 EOF
-     @results = R.pull("results")
 
-     @countToView = Array.new
+ @results = R.pull("results")
+
+ @countToView = Array.new
+
   for i in 0..@results.row_size
    	@countToView.push(@results.row(i).to_a)
   end
+
   #remove the last empty array from the matrix
   @countToView.pop
+  #convert string formatted count values to nearby integer
+  countToView_transpose = @countToView.transpose
+  @counts = countToView_transpose[1].map {|x| x.to_i}
+  @probes = countToView_transpose[0]
+
   #count the total number of vectors in the matrix
   @totalSize = @countToView.size
+
   #count total number of elements in the matrix, useful for counting <td> elements in the view
   @columnSize = @countToView[1].size
  
@@ -238,7 +247,7 @@ EOF
 
  #method to download cell counts file in ajax request from the link
  def download_cell_counts     
-    file =  Dir.glob("#{Rails.root}/public/Predict/cellCounts/*.csv")[0].to_s
+    file =  Dir.glob("#{Rails.root}/public/Predict/counts/*.csv")[0].to_s
     logger.debug file
     send_file(file)
  end
