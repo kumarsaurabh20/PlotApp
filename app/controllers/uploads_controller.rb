@@ -260,7 +260,7 @@ EOF
      respond_to do |format|
      format.html { render "normalize" }
      format.js     
-     end 
+     end 	
     
  end
 
