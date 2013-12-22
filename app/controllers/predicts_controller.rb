@@ -54,6 +54,12 @@ attr_accessor :raw_inten_transpose, :coeffs_transpose, :probe_list, :id
      @coeffs_data_transpose = import(coeffs_path)
      @raw_inten_data = import(rawintens_path)
 
+     return @coeffs_data_transpose
+      
+     respond_to do |format|
+     format.html { render "calculate" }
+     format.js     
+     end 
 
 
  end
