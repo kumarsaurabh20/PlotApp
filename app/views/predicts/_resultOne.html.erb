@@ -1,0 +1,86 @@
+<div class="show-div" id="probeList">
+<fieldset class="field-set round"><legend>Selection of probes for normalization</legend>
+
+
+<div class="multiselect new-navigation-alternate round">
+<% if @probe_list %>
+<% for i in 0..@probe_list.length - 1 %>
+<label><input type="checkbox" id="<%= i %>" value="<%= @probe_list[i]%>" /><b><i><%= @probe_list[i]%></i></b></label>
+<% end %>
+</div>
+<% end %>
+<br /><br />
+
+<div style="display:none;">
+<input type="text" id="hidden" value="<%= @id %>" />
+</div>
+
+<div class="buttonHolder">
+<input type="button" id="normalize" value="Normalize"  />
+</div>
+
+</fieldset>
+</div>
+
+
+
+<script>
+//this code is for checkbox and probe name view
+jQuery.fn.multiselect = function() {
+    $(this).each(function() {
+        var checkboxes = $(this).find("input:checkbox");
+        checkboxes.each(function() {
+            var checkbox = $(this);
+            // Highlight pre-selected checkboxes
+            if (checkbox.prop("checked"))
+                checkbox.parent().addClass("multiselect-on");
+ 
+            // Highlight checkboxes that the user selects
+            checkbox.click(function() {
+                if (checkbox.prop("checked"))
+                    checkbox.parent().addClass("multiselect-on");
+                else
+                    checkbox.parent().removeClass("multiselect-on");
+            });
+        });
+    });
+};
+
+$(function() {
+     $(".multiselect").multiselect();
+});
+
+
+
+//add a code for ajax request to send probe list for normalization
+function sendProbeListToServer(){
+      var arr = [],
+          id = $('#hidden').val();
+          console.log(id);
+          id = id+",";
+          
+      $('input[type="checkbox"]:checked').each(function(){arr.push($(this).val());});
+      var data = arr.join(',');
+      console.log(data); 
+      
+      data = id.concat(data);
+      console.log(data); 
+
+      $.ajax({
+               url: '<%= url_for :controller => "predicts", :action => "calculate"%>',
+               type: 'POST',
+               data: {data:data},
+               dataType: 'script',
+               success: function() {$('#preloader').hide();}
+
+            });
+
+      
+  }
+
+ $('#normalize').click(function () { sendProbeListToServer();
+                                     $('#preloader').show(); });
+
+
+</script>
+

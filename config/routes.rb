@@ -70,5 +70,6 @@ PlotApp::Application.routes.draw do
   match '/sample_probe_list' => 'uploads#download_sample_probe_list'
   match '/normalize' => 'uploads#normalize'
   match '/download_coeffs' => 'uploads#download_coeffs'
+  match '/calculate' => 'predicts#calculate'
 
 end

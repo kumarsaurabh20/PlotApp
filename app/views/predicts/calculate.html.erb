@@ -1,0 +1,17 @@
+<%= render 'resultOne' %>
+
+<% if flash[:notice] %>
+<div class="notice round new-notice" id="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<div id="preloader" style="display:none;" class="upload">
+<%= link_to uploadLogo, root_path %>
+</div>
+
+
+<script type="text/javascript">
+
+    var notice = $('#notice');
+    if ( notice.text().length > 0 ) { notice.delay(1500).fadeOut('slow'); }
+
+</script>

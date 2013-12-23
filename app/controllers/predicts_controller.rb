@@ -1,4 +1,7 @@
 class PredictsController < ApplicationController
+
+attr_accessor :raw_inten_transpose, :coeffs_transpose, :probe_list, :id
+
   # GET /predicts
   # GET /predicts.json
   def index
@@ -19,8 +22,12 @@ class PredictsController < ApplicationController
 
     respond_to do |format|
       if @predict.save
-      
 
+        @id = @predict.id
+        coeffs_path, raw_inten_path = get_paths(id)
+        @raw_inten_transpose = import(raw_inten_path)
+        @coeffs_transpose = import(coeffs_path)
+        @probe_list = @raw_inten_transpose[0]
 
         flash[:notice] = "Files were successfully uploaded!!"
         format.html { render "calculate" }
@@ -32,8 +39,21 @@ class PredictsController < ApplicationController
   end
 
  #method recieving Ajax request from the view posting selected probes for normalization
- #cell count prediction calculation are done in the method
+ #cell count prediction calculation are done in this method
  def calculate
+
+     #logger.debug @cell_counts.to_s
+     #ajax request; filter out id from rest of the array/ajax request
+     @data = params['data'].split(',') 
+     @id = @data.shift
+
+     #fetch saved file paths
+     coeffs_path, rawintens_path = get_paths(id)
+     
+     #file data in R input compatible format (currently its 2D array as row vectors)
+     @coeffs_data_transpose = import(coeffs_path)
+     @raw_inten_data = import(rawintens_path)
+
 
 
  end
@@ -45,17 +65,17 @@ class PredictsController < ApplicationController
  def get_paths(id)
      #use ID argument to fetch that particular record.
      #with the help of id fetch the file names from database
-     upload = Predict.find(id)
-     coeffs_file_name = upload.calib_file_name
-     rawintens_file_name = upload.inten_file_name
+     predict = Predict.find(id)
+     coeffs_file_name = predict.coeffs_file_name
+     rawintens_file_name = predict.rawinten_file_name
 
      #set the path to the file folder
-     calib_path = "#{Rails.root}/public/Predict/coeffs"
-     inten_path = "#{Rails.root}/public/Predict/rawintens"
+     coeffs_path = "#{Rails.root}/public/Predict/coeffs"
+     rawintens_path = "#{Rails.root}/public/Predict/rawintens"
       
      #create file paths and return them    
-     coeffs_file = File.join(calib_path, calib_file_name)
-     rawintens_file = File.join(inten_path, inten_file_name)
+     coeffs_file = File.join(coeffs_path, coeffs_file_name)
+     rawintens_file = File.join(rawintens_path, rawintens_file_name)
  
      return coeffs_file, rawintens_file
  end
@@ -66,14 +86,14 @@ class PredictsController < ApplicationController
      array = import_ori(file_path)
      array_splitted = array.map {|a| a.split(",")} 
      array_transpose = array_splitted.transpose
-     return array_splitted, array_transpose
+     return array_transpose
  end
  
  #method for parsing calibration probe data
  def import_ori(file_path)
      string = IO.read(file_path)
      array = string.split("\n")
-     array.shift
+     array.delete_if {|x| x[/^Probe*/]}
      return array
  end
 
