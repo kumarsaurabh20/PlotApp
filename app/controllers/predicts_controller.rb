@@ -35,13 +35,7 @@ class PredictsController < ApplicationController
 
  end
 
- 
- #method to download coeffs file in ajax request from the link
- def download_coeffs     
-    file =  Dir.glob("#{Rails.root}/public/Predict/cellCounts/*.csv")[0].to_s
-    logger.debug file
-    send_file(file)
- end
+#==================================INPUT FILE HANDLING============================================
 
  #method for fetching saved file path based on retrived upload ID from database
  #ID is required to fetch session specific file.
@@ -81,15 +75,26 @@ class PredictsController < ApplicationController
  end
 
 
- #send a sample calibration file to the user
- def download_sample_calib_file	
+#===========================================SEND FILE TO USER=================================================
+
+
+ #method to download cell counts file in ajax request from the link
+ def download_cell_counts     
+    file =  Dir.glob("#{Rails.root}/public/Predict/cellCounts/*.csv")[0].to_s
+    logger.debug file
+    send_file(file)
+ end
+
+
+ #send a sample coeffecients file to the user
+ def download_sample_coeffs_file	
      temp = [["Probes", "Intensity with 1ng", "Intensity with 5ng", "Intensity with 50ng", "Intensity with 100ng"], ["cell counts","270","1351","6757","27027"], ["EukS_1209_25_dT","4102788.91290624","1.68E+07","2.62E+08","5.41E+08"], ["Test15 (EukS_1209_25dT)","3242670.65825","1.99E+07","3.92E+08","3.73E+08"],["EukS_328_25_dT","4564828.4446875","2.18E+07","4.40E+08","6.77E+08"], ["DinoB_25_dT","7269595.08139062","3.56E+07","4.00E+08","6.06E+08"]]
 
      send_sample_file("sample_calibration_file", temp)   
  end
 
- #send a sample calibration probe file to the user
- def download_sample_probe_list
+ #send a sample raw intensities file to the user
+ def download_sample_raw_inten_file
  temp = [["Probes for calibration"], ["EukS_1209_25_dT"], ["EukS_328_25_dT"], ["DinoB_25_dT"], ["Test1 (EukS_1209_25dT)"]]
  send_sample_file("sample_probe_list", temp)
  end
@@ -107,13 +112,6 @@ class PredictsController < ApplicationController
        :type => 'text/csv;charset=utf-8;header=present', 
        :disposition => "attachment;filename=#{file_name}_#{Time.now.strftime('%d%m%y-%H%M')}.csv")
  end
-
-
-
-
-
-
-
 
 
 

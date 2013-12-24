@@ -1,5 +1,19 @@
-<h1>Model Coeffecients Table</h1>
+<div class="table-placment">
+<h1>Linear Regression Model</h1><br /><br />
+<div class="table-placment model">
+ Y<sub>i</sub> = &alpha; + 
+<% for i in 1..@columnSize - 2 %>
+       &beta;<sub><%= i %></sub> * X<sub><%= i %></sub> +
+<% end %>
+ &epsilon;<sub>0</sub>
+</div>
+</div>
 
+<br />
+<br />
+<div class="table-placment">
+<h1>Model Coeffecients Table</h1>
+</div>
 <br /><br />
 
 <div class="ajaxResponce">
@@ -45,15 +59,13 @@
 <%= link_to upload2Logo, root_path %>
 </div>
 
-<br /><br />
-
 <div id="textMessage" style="display:none;" class="predictLink round new-notice">
-<p>Download the coeffecients file and Predict cell counts from raw intensities by clicking on Predict Cell Counts from navigation panel</p>
+<p>Download the coeffecients file and Predict cell counts from raw intensities by clicking on "Predict Cell Counts" tab from the navigation panel</p>
 </div>
 
 <script>
 $('#upload').dataTable();
 
-if ($('#hiddenTwo').val() > 0) {$('#textMessage').show().delay(15000).fadeOut('slow');}
+if ($('#hiddenTwo').val() > 0) {$('#textMessage').show().delay(10000).fadeOut('slow');}
 
 </script>

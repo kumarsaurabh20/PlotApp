@@ -194,3 +194,5 @@ hr {display: block; height: 2px;border: 1; border-top: 2px solid white;margin: 1
 .home {float:left;}
 .mainBlock H2, H5 {display:inline-block;}
 .predictLink { border:2px solid #FF0000;background-color:#FF9933;font-family:sans-serif;font-size:40px;line-height:40px;color:white;padding:5px;font-weight:bold;width:600px;height:50px;text-align:center; }
+.greek { font-family: 'Open Sans', sans-serif; }
+.model { color:#0000FF;font-size:20px;font-weight:bold; }
