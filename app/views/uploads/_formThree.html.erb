@@ -38,13 +38,22 @@
 </div>
 
 <div>
-<a href="<%= '/download_coeffs' %>"><b><i><u>Export coeffecients table as CSV</u></i></b></a>
+<a href="<%= '/download_coeffs' %>"><u>Export coeffecients table as CSV</u></a>
 </div>
 
 <div id="preloader2" style="display:none;" class="upload">
 <%= link_to upload2Logo, root_path %>
 </div>
 
+<br /><br />
+
+<div id="textMessage" style="display:none;" class="predictLink round new-notice">
+<p>Download the coeffecients file and Predict cell counts from raw intensities by clicking on Predict Cell Counts from navigation panel</p>
+</div>
+
 <script>
 $('#upload').dataTable();
+
+if ($('#hiddenTwo').val() > 0) {$('#textMessage').show().delay(15000).fadeOut('slow');}
+
 </script>
