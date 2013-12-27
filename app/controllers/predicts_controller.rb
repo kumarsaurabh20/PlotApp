@@ -4,6 +4,8 @@ class PredictsController < ApplicationController
   def index
     @predicts = Predict.all
 
+    @predict = Predict.new
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @predicts }

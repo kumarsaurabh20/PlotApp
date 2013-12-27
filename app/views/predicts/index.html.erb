@@ -1,21 +1,70 @@
-<h1>Listing predicts</h1>
+<div class="mainBlock">
+<fieldset class="field-set-alternate"><legend class="hide-div">File Upload</legend>
+	<%= form_for(@predict, :html => { :multipart => true }) do |f| %>
+	  <% if @predict.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@predict.errors.count, "error") %> prohibited this upload from being saved:</h2>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	      <ul>
+	      <% @predict.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
 
-<% @predicts.each do |predict| %>
-  <tr>
-    <td><%= link_to 'Show', predict %></td>
-    <td><%= link_to 'Edit', edit_predict_path(predict) %></td>
-    <td><%= link_to 'Destroy', predict, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+	<table width="100%" align="center">
+		<tr>
+			<td class="table-placment">
+				<div>
+				<h2>Select coeffecients file</h2><h5>(.csv format)</h5>
+				<blockquote>Generate coeffecients file from <b>Home</b>.<br /> The final coeffecients file represents multiple species</blockquote>
+				</div>
+
+
+		<div>
+		<b>
+		<u>
+		<a href="<%= '/sample_calib_file' %>" >Check an example coeffecients file</a>
+		</u>
+		</b>
+		</div><br /><br />
+				<div class="new-navigation round">	
+				<%= f.file_field :coeffs %>
+				</div>
+				<br /><br />
+			</td>
+
+			<td class="table-placment">
+				<div>
+				<h2>Select raw signal intensities</h2><h5>(.csv format)</h5>
+				<blockquote>Either upload a list of probe-signal intensity file <br /> or upload raw .gpr file</blockquote>
+				</div>
+		<div>
+		<b>
+		<u>
+		<a href="<%= '/sample_probe_list' %>" >Check an example file</a>
+		</u>
+		</b>
+		</div><br /><br />
+				<div class="new-navigation round">
+				<%= f.file_field :rawinten %>
+				</div>
+				<br /><br />
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="table-placment">
+				<div>
+				<%= f.submit "Upload", :id => "upload"  %>
+				<% end %>
+
+				</div>
+			</td>
+		</tr>
+	</table>
+</fieldset>
+</div>
+
 
 <br />
-
-<%= link_to 'New Predict', new_predict_path %>
