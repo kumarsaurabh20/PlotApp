@@ -1,6 +1,6 @@
 class UploadsController < ApplicationController
 
-attr_accessor :calib_data, :calib_data_transpose, :calib_probe, :probe_list, :cell_counts, :id
+attr_accessor :calib_data, :calib_data_transpose, :calib_probe, :probe_list, :cell_counts, :id, :result
 
 
   # GET /uploads
