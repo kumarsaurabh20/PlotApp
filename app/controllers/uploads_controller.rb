@@ -265,7 +265,7 @@ EOF
     
  end
 
- 
+ #method to download coeffs file in ajax request from the link
  def download_coeffs
      id = params[:data]
      #logger.debug id
