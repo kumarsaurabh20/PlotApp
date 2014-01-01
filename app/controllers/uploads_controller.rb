@@ -51,7 +51,7 @@ def normalize
 
      #ajax request; filter out id from rest of the array/ajax request
      @data = params['data'].split(',') 
-     id = @data.shift
+     @id = @data.shift
 
      #fetch saved file paths
      calib_path, inten_path = get_paths(id)
@@ -224,19 +224,25 @@ EOF
  
   
  #export a csv file containing coeffecients and keep it in public folder.
+   
  
+     #path to coeffs directory
+     root_coeffs = '#{Rails.root}/public/coeffs'   
+
      #provide a name to the file having individual calibration ID
      namefile = Time.now.strftime("%Y%m%d%H%M%S_") + "coeffs_file" + "_" + id + ".csv"
 
      #remove all previous csv coeffecients files
      #user have to caluclate coeffecients multiple times before performing prediction so its good
      #to delete all previous coeffs file and deal with the present
-     FileUtils.rm_rf Dir.glob('#{Rails.root}/public/coeffs/*') unless !Dir['#{Rails.root}/public/coeffs/*'].empty?
-    
-     #create a coeff directory in public folder of rails 
-     coeff_path = "#{Rails.root}/public/coeffs"
-     Dir.mkdir(coeff_path) unless File.directory?(coeff_path)
- 
+     #FileUtils.chmod 0777, root_coeffs, :verbose => true
+     if !Dir['#{root_coeffs}/*'].empty?
+        FileUtils.rm_rf Dir.glob('#{root_coeffs}/*')
+     else
+        #create a coeff directory in public folder of rails 
+        coeff_path = "#{Rails.root}/public/coeffs"
+        Dir.mkdir(coeff_path) unless File.directory?(coeff_path)
+     end
      #create a file path
      path = File.join(coeff_path, namefile)
 
@@ -257,6 +263,19 @@ EOF
      format.js     
      end 
     
+ end
+
+ 
+ def download_coeffs
+     id = params[:data]
+     #logger.debug id
+     #file = Dir.glob('/home/jarvis/PlotApp/public/coeffs/*#{id}.csv')[0].to_s
+     #logger.debug file
+     #file_path = '/home/jarvis/PlotApp/public/coeffs/20140505000004_coeffs_file_103.csv'
+     #logger.debug file_path
+     #send_file(file_path, 
+     #  :type => 'text/csv;charset=utf-8;header=present', 
+     #  :disposition => "attachment;")
  end
 
 
