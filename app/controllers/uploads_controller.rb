@@ -210,10 +210,21 @@ return(selectedProbesFromGpr)
 EOF
 
   #pull the resultant coeffecients matris
-  @result = R.pull "results"	
+  @result = R.pull "results"
+  @resultsToView = Array.new
+  for i in 0..@result.row_size
+   	@resultsToView.push(@result.row(i).to_a)
+  end
+  #remove the last empty array from the matrix
+  @resultsToView.pop
+  #count the total number of vectors in the matrix
+  @totalSize = @resultsToView.size
+  #count total number of elements in the matrix, useful for counting <td> elements in the view
+  @columnSize = @resultsToView[1].size
  
-     #export a csv file containing coeffecients and keep it in public folder.
-     
+  
+ #export a csv file containing coeffecients and keep it in public folder.
+ 
      #provide a name to the file having individual calibration ID
      namefile = Time.now.strftime("%Y%m%d%H%M%S_") + "coeffs_file" + "_" + id + ".csv"
 

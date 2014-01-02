@@ -1,10 +1,39 @@
+<h1>Model Coeffecients Table</h1>
+
+<br /><br />
+
 <div class="ajaxResponce">
 
-<% if @result %>
+<% if @resultsToView %>
 
- <label><b><i><%= @result %></i></b></label>
+<table id="upload">
+<thead>
+<tr>
+   <th>Probe Name</th>
+   <th>Intercept</th>
+<% for k in 1..@columnSize - 2 %>
+   <th>Coeffecient <%= k %></th>
+<% end %>
+</tr>
+</thead>
+
+<tbody>
+<% for i in 0..@totalSize - 1 %>
+<tr>
+   <% for j in 0..@columnSize - 1 %>
+     <td><%= @resultsToView[i][j] %></td>
+   <% end %>
+</tr>
+<% end %>    
+</tbody>
 
 <% end %>
-
-
+</table>
 </div>
+
+
+<script>
+
+$('#upload').dataTable();
+
+</script>
