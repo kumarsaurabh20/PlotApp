@@ -199,6 +199,11 @@ EOF
      
      #provide a name to the file having individual calibration ID
      namefile = Time.now.strftime("%Y%m%d%H%M%S_") + "coeffs_file" + "_" + id + ".csv"
+
+     #remove all previous csv coeffecients files
+     #user have to caluclate coeffecients multiple times before performing prediction so its good
+     #to delete all previous coeffs file and deal with the present
+     FileUtils.rm_rf Dir.glob('#{Rails.root}/public/coeffs/*') unless !Dir['#{Rails.root}/public/coeffs/*'].empty?
     
      #create a coeff directory in public folder of rails 
      coeff_path = "#{Rails.root}/public/coeffs"
@@ -207,10 +212,6 @@ EOF
      #create a file path
      path = File.join(coeff_path, namefile)
 
-     #remove all previous csv coeffecients files
-     #user have to caluclate coeffecients multiple times before performing prediction so its good
-     #to delete all previous coeffs file and deal with the present
-     FileUtils.rm_rf(Dir.glob('coeff_path/*.csv')) unless !Dir["#{Rails.root}/public/coeffs/*"].empty?
   
      #call CSV class and open a new csv file 
      CSV.open(path, 'wb') do |csv|
