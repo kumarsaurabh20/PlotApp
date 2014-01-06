@@ -110,12 +110,59 @@ def normalize
   myData <- list()
 
 
-  if (length(norm_probes) > 1) {
+  if (length(norm_probes) == 2) {
 	for(i in c(1:ncol(norm_val))) {tab_norm_1[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[1,i])}))}
 	for(i in c(1:ncol(norm_val))) {tab_norm_2[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[2,i])}))}
 t_tab_norm.1 <- t(tab_norm_1)
 t_tab_norm_2 <- t(tab_norm_2)
 for (i in c(1:ncol(t_tab_norm_1))) {myData[[i]] <- cbind(cells, t_tab_norm_1[,i], t_tab_norm_2[,i])}
+} else if (length(norm_probes) == 3) {
+	for(i in c(1:ncol(norm_val))) {tab_norm_1[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[1,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_2[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[2,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_3[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[3,i])}))}
+t_tab_norm_1 <- t(tab_norm_1)
+t_tab_norm_2 <- t(tab_norm_2)
+t_tab_norm_3 <- t(tab_norm_3)
+for (i in c(1:ncol(t_tab_norm_1))) {myData[[i]] <- cbind(cells, t_tab_norm_1[,i], t_tab_norm_2[,i], t_tab_norm_3[,i])}
+} else if (length(norm_probes) == 4) {
+	for(i in c(1:ncol(norm_val))) {tab_norm_1[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[1,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_2[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[2,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_3[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[3,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_4[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[4,i])}))}
+t_tab_norm_1 <- t(tab_norm_1)
+t_tab_norm_2 <- t(tab_norm_2)
+t_tab_norm_3 <- t(tab_norm_3)
+t_tab_norm_4 <- t(tab_norm_4)
+for (i in c(1:ncol(t_tab_norm_1))) {myData[[i]] <- cbind(cells, t_tab_norm_1[,i], t_tab_norm_2[,i], t_tab_norm_3[,i], t_tab_norm_4[,i])}
+} else if (length(norm_probes) == 5) {
+	for(i in c(1:ncol(norm_val))) {tab_norm_1[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[1,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_2[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[2,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_3[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[3,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_4[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[4,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_5[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[5,i])}))}
+t_tab_norm_1 <- t(tab_norm_1)
+t_tab_norm_2 <- t(tab_norm_2)
+t_tab_norm_3 <- t(tab_norm_3)
+t_tab_norm_4 <- t(tab_norm_4)
+t_tab_norm_5 <- t(tab_norm_5)
+for (i in c(1:ncol(t_tab_norm_1))) {myData[[i]] <- cbind(cells, t_tab_norm_1[,i], t_tab_norm_2[,i], t_tab_norm_3[,i], t_tab_norm_4[,i], t_tab_norm_5[,i])}
+} else if (length(norm_probes) == 6) {
+	for(i in c(1:ncol(norm_val))) {tab_norm_1[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[1,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_2[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[2,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_3[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[3,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_4[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[4,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_5[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[5,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_6[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[6,i])}))}
+t_tab_norm_1 <- t(tab_norm_1)
+t_tab_norm_2 <- t(tab_norm_2)
+t_tab_norm_3 <- t(tab_norm_3)
+t_tab_norm_4 <- t(tab_norm_4)
+t_tab_norm_5 <- t(tab_norm_5)
+t_tab_norm_6 <- t(tab_norm_6)
+for (i in c(1:ncol(t_tab_norm_1))) {myData[[i]] <- cbind(cells, t_tab_norm_1[,i], t_tab_norm_2[,i], t_tab_norm_3[,i], t_tab_norm_4[,i], t_tab_norm_5[,i], t_tab_norm_5[,i])}
+} else {for(i in c(1:ncol(norm_val))) {tab_norm_1[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[1,i])}))}
+t_tab_norm_1 <- t(tab_norm_1)
+for (i in c(1:ncol(t_tab_norm_1))) {myData[[i]] <- cbind(cells, t_tab_norm_1[,i])}
 }
 
 
