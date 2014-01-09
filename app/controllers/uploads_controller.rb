@@ -68,38 +68,15 @@ def normalize
 
      cells = @cell_counts.map {|e| e.to_i}
 
-     R.assign "cell_count", cells
+     R.assign "cells", cells
      R.assign "calib_probes", @calib_probe
      R.assign "probes", @probe_list
      R.assign "norm_probes", @data
      R.assign "count", count
 
-
-	cell = R.cell_count
-	calib_probe = R.calib_probes
-	prober = R.probes
-	norm_prober = R.norm_probes
-	counter = R.count
-	col_1 = R.col1
-	col_2 = R.col2
-	col_3 = R.col3
-	col_4 = R.col4
-	col_5 = R.col5
-
-	logger.debug cell.to_s
-	logger.debug calib_probe.to_s
-	logger.debug prober.to_s
-	logger.debug norm_prober.to_s
-	logger.debug counter
-	logger.debug col_1.to_s
-	logger.debug col_2.to_s
-	logger.debug col_3.to_s
-	logger.debug col_4.to_s
-	logger.debug col_5.to_s
-
      R.eval <<-EOF
 
-    columns <- matrix(0, length(probes), count)
+     columns <- matrix(0, length(probes), count)
 
      for (i in c(1:count)) {
          if (i == 1) { columns <- cbind(get(paste0("col",i))) } 
@@ -109,16 +86,59 @@ def normalize
 	norm_val <- matrix(0, length(norm_probes), ncol(columns) - 1)
 
         for (i in 1:length(norm_probes)) {
-        dummy <- columns[norm_probes[i] == columns[,1],]
+        dummy <- columns[norm_probes[i] == columns[,1]]
         print(dummy)
         dummy <- dummy[-1]
-        print(dummy)
         norm_val[i,] <- dummy
         }
 
+  column_filter <- columns[, -1]
+  col <- ncol(column_filter)
+  row <- nrow(column_filter)
+  tab_norm_1 <- matrix(0, row,col)
+  t_tab_norm_1 <- matrix(0, col,row)
+  tab_norm_2 <- matrix(0, row,col)
+  t_tab_norm_2 <- matrix(0, col,row)
+  tab_norm_3 <- matrix(0, row,col)
+  t_tab_norm_3 <- matrix(0, col,row)
+  tab_norm_4 <- matrix(0, row,col)
+  t_tab_norm_4 <- matrix(0, col,row)
+  tab_norm_5 <- matrix(0, row,col)
+  t_tab_norm_5 <- matrix(0, col,row)
+  tab_norm_6 <- matrix(0, row,col)
+  t_tab_norm_6 <- matrix(0, col,row)
+  myData <- list()
+
+
+  if (length(norm_probes) > 1) {
+	for(i in c(1:ncol(norm_val))) {tab_norm_1[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[1,i])}))}
+	for(i in c(1:ncol(norm_val))) {tab_norm_2[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[2,i])}))}
+t_tab_norm.1 <- t(tab_norm_1)
+t_tab_norm_2 <- t(tab_norm_2)
+for (i in c(1:ncol(t_tab_norm_1))) {myData[[i]] <- cbind(cells, t_tab_norm_1[,i], t_tab_norm_2[,i])}
+}
+
+
+
+calLinMod <- function(x) {
+            x <- as.matrix(x)
+            if (ncol(x) == 2) {fit <- lm(x[,1] ~ x[,2])}
+            if (ncol(x) == 3) {fit <- lm(x[,1] ~ x[,2] + x[,3])}
+            if (ncol(x) == 4) {fit <- lm(x[,1] ~ x[,2] + x[,3] + x[,4])}
+            if (ncol(x) == 5) {fit <- lm(x[,1] ~ x[,2] + x[,3] + x[,4] + x[,5])}
+            if (ncol(x) == 6) {fit <- lm(x[,1] ~ x[,2] + x[,3] + x[,4] + x[,5] + x[,6])}
+            if (ncol(x) == 7) {fit <- lm(x[,1] ~ x[,2] + x[,3] + x[,4] + x[,5] + x[,6] + x[,7])}
+            return(as.numeric(coef(fit)))
+       }
+
+ fitted_coeffs <- sapply(myData, calLinMod)
+ coeffs_matrix <- matrix(fitted_coeffs, nrow(columns), length(norm_probes) + 1, byrow = T)
+ probe_list <- columns[, 1]
+ result_matrix <- cbind(probe_list, coeffs_matrix)
+
 EOF
-    
-     return R.pull "norm_val"
+
+  @result = R.pull "result_matrix"	
         
      respond_to do |format|
      format.html { render "normalize" }
