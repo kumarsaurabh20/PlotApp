@@ -117,15 +117,8 @@ def normalize
         }
 
 EOF
-     @norm_val = []
-     val1 = R.pull "norm_val[1,]"
-     val2 = R.pull "norm_val[2,]"
-
-     @norm_val.push(val1)
-     @norm_val.push(val2)
-     
-     
-
+    
+     return R.pull "norm_val"
         
      respond_to do |format|
      format.html { render "normalize" }
