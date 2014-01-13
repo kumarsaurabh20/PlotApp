@@ -5,4 +5,13 @@
 </fieldset>
 </div>
 
+<div class="ajaxResponce">
 
+<% if @probe_list %>
+<% for i in 0..@probe_list.length - 1 %>
+<label><b><i><%= @probe_list[i] %></i></b></label>
+<% end %>
+</div>
+<% end %>
+
+</div>
