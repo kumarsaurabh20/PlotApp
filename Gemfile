@@ -1,18 +1,25 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.6'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+#use this (current version of mysql2) when you are using rails 3.1
+#gem 'mysql2' 
+
+
+
 gem 'rinruby'
 gem 'bio'
 gem 'fastercsv'
 gem 'gravatar'
 gem 'paperclip'
+#gem 'mysql2','0.2.7'
+gem 'mysql2', '>=0.3'
+gem 'rake', '0.8.7'
 
-gem 'activerecord-mysql2-adapter'
+#gem 'activerecord-mysql2-adapter'
 
 
 # Use unicorn as the web server

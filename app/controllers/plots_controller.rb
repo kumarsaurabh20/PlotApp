@@ -13,19 +13,18 @@ DIRECTORY = "public/calibration_data/"
   end
 
   def new 
-
-       @plot = Plot.new
+       @plot = Plot.new(params[:plot])
        @title = "New Calibration Data Upload"
 
        respond_to do |format|
        format.html #new.html.erb
-       format.xml {render :xml => @plot}
+       #format.xml {render :xml => @plot}
        end
   end
 
    def create    
 
-      @plot = Plot.new(params[:plot])
+      plot = Plot.new(:calibFile => params[:calibFile])
       @title = "Calibration Data Upload"
 
       @savedfile = false
@@ -36,10 +35,11 @@ DIRECTORY = "public/calibration_data/"
       
       Dir.mkdir(DIRECTORY) unless File.directory?(DIRECTORY)
       path = File.join(DIRECTORY, namefile)
-      File.open(path, "wb") { |file| file.write(uploaded_io.read) } 
+      File.open(path, 'w+') { |file| file.write(uploaded_io.read) }
+      #File.open(path, 'w+') { |file| file.write(plot.read) } 
       @savedfile = true
-      @plot.save
-      id = @plot.id
+      plot.save
+      id = plot.id
       #save the name and directory of file in different variables in the database 
         
       respond_to do |format|
@@ -79,18 +79,18 @@ DIRECTORY = "public/calibration_data/"
 
 	 else
          format.html { render :action => "new" }
-	 #format.xml  { render :xml => @plot.errors, :status => :unprocessable_entity }
+	 format.xml  { render :xml => @plot.errors, :status => :unprocessable_entity }
 	 end
        end
   end
  
   #Method to read calibration data from the file and send querries to R and get the resulting data
-  def calTheta(name)
+  def calTheta(namefile)
 
       @y, @x1, @x2, @x3, @raw_data, @raw_data_mod, @result_array = [], [], [], [], [], [], []
  
-      num_of_variables = dataExtract(name)       
-      path = File.join(DIRECTORY, name)
+      num_of_variables = dataExtract(namefile)       
+      path = File.join(DIRECTORY, namefile)
       str = IO.read(path)
       line = str.to_str
    
@@ -372,11 +372,11 @@ DIRECTORY = "public/calibration_data/"
    end
 
   #checks how many columns does data table has(weather a multivariate or univariate data)
-  def dataExtract(name)     
+  def dataExtract(namefile)     
       #directory = "public/calibration_data/" 
       explVariable = 0
       columns = []
-      path = File.join(DIRECTORY, name)
+      path = File.join(DIRECTORY, namefile)
       #logger.debug "File extract local path: " + path
       file = File.open(path, "r") do |f|
              f.each do |line|

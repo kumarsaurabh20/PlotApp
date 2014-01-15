@@ -12,7 +12,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: plotter
+  database: plotter_development
   pool: 5
   username: root
   password: rock1818
@@ -25,7 +25,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: plotter
+  database: plotter_test
   pool: 5
   username: root
   password: rock1818
@@ -35,8 +35,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: plotter
+  database: plotter_production
   pool: 5
   username: root
-  password:
+  password: rock1818
   socket: /var/run/mysqld/mysqld.sock

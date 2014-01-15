@@ -1,8 +1,8 @@
 PlotApp::Application.routes.draw do
 
   resources :plots
-  match ':controller/:action/:id'
-  match ':controller/:action/:id.:format'
+  #match ':controller/:action/:id'
+  #match ':controller/:action/:id.:format'
   match '/get_coefficients.xml' => 'plots#cal_s2c'
 
   # The priority is based upon order of creation:
