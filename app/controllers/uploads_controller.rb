@@ -31,7 +31,7 @@ class UploadsController < ApplicationController
         @probe_list = calib_data_transpose[0]
         
         flash[:notice] = "Files were successfully uploaded!!"
-        format.html
+        format.html { render "normalize" }
         #format.js #{ render json: @upload, status: :created, location: @upload }
       else
         flash[:notice] = "Error in uploading!!"
@@ -47,8 +47,6 @@ def normalize
      #ajax request; filter out id from rest of the array/ajax request
      @data = params['data'].split(',') 
      id = @data.shift
-     
-     #@upload = Upload.find(id)
 
      #fetch saved file paths
      calib_path, inten_path = get_paths(id)
@@ -59,8 +57,9 @@ def normalize
 
      #probe list of the uploaded file
      @probe_list = calib_data_transpose[0]
-     
+    
      respond_to do |format|
+     format.html { render "normalize" }
      format.js     
      end 
     

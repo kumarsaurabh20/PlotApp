@@ -1,4 +1,4 @@
-<div class="show-div">
+<div class="show-div" id="probeList">
 <fieldset class="field-set round"><legend>Selection of probes for normalization</legend>
 
 
@@ -70,7 +70,7 @@ function sendProbeListToServer(){
                url: '<%= url_for :controller => "uploads", :action => "normalize"%>',
                type: 'POST',
                data: {data:data},
-               dataType: 'string',
+               dataType: 'script',
                success: function(response) { console.log("AJAX Successfully posted the probe list!!!"); }
 
             });
