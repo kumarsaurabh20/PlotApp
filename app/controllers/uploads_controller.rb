@@ -61,9 +61,7 @@ def normalize
      @probe_list = calib_data_transpose[0]
      
      respond_to do |format|
-     format.html
-     format.js
-     
+     format.js     
      end 
     
  end
