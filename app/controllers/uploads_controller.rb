@@ -1,6 +1,6 @@
 class UploadsController < ApplicationController
 
- attr_accessor :calib_data, :calib_data_transpose, :calib_probe, :probe_list, :cell_counts
+ attr_accessor :calib_data, :calib_data_transpose, :calib_probe, :probe_list, :cell_counts, :id
   # GET /uploads
   # GET /uploads.json
   def index
@@ -33,6 +33,7 @@ class UploadsController < ApplicationController
 
     respond_to do |format|
       if @upload.save
+        @id = @upload.id
         @calib_data, @calib_data_transpose, @cell_counts = import(calib_path)
         @calib_probe = import_ori(inten_path)
         logger.debug @calib_data.to_s 

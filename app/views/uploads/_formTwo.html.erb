@@ -11,6 +11,10 @@
 <% end %>
 <br /><br />
 
+<div style="display:none;">
+<input type="text" id="hidden" value="<%= @id %>" />
+</div>
+
 <div class="buttonHolder">
 <input type="button" id="normalize" value="Normalize" />
 </div>
@@ -50,10 +54,17 @@ $(function() {
 
 //add a code for ajax request to send probe list for normalization
 function sendProbeListToServer(){
-      var arr = [];
+      var arr = [],
+          id = $('#hidden').val();
+          console.log(id);
+          id = id+",";
+          
       $('input[type="checkbox"]:checked').each(function(){arr.push($(this).val());});
       var data = arr.join(',');
-      //console.log(data); 
+      console.log(data); 
+      
+      data = id.concat(data);
+      console.log(data); 
 
       $.ajax({
                url: '<%= url_for :controller => "uploads", :action => "normalize"%>',
@@ -64,6 +75,7 @@ function sendProbeListToServer(){
 
             });
 
+      
   }
 
  $('#normalize').click(function () { sendProbeListToServer();});
