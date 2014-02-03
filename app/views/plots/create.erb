@@ -1,0 +1,147 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+<div id="myFirstChart" style="height: 250px;width:1200px;"></div>
+
+<h1>Listing result</h1>
+ 
+<%= "Intercept is: " + @theta0.to_s + " and Slope is  " + @theta1.to_s %><br><br>
+
+<div id="mySecondChart" style="height: 250px;width:1200px;"></div>
+
+
+<div>
+<p>
+<h3>The Linear model for this data set is:</h3>
+<h2><%= "#cell count = " + @theta0.to_s + " + " + @theta1.to_s + " * Signal intensity" %><br><br></h2>
+</p>
+</div>
+
+<div id="myThirdChart" style="height: 250px;width:1200px;"></div>
+
+<script>
+
+google.load('visualization', '1.0', { 'packages': ['corechart'] });
+
+function drawJfunctionChart() {
+
+          var data = new google.visualization.arrayToDataTable([
+           [ 'Iterations', 'SE_function' ], 
+           <% @result.each do |key, value| %> 
+	   [ <%= key %>, <%= value.to_s %> ], 
+	   <% end %>
+	   [ <%= @result.length + 1 %> , 0 ]
+
+         ]);
+         
+
+         var options = {
+                  title: 'Standard Error Function'
+               };
+
+         var chart = new google.visualization.ScatterChart(document.getElementById('mySecondChart'));
+             chart.draw(data, options);
+
+    }
+
+function drawOriScatterChartUnivariate() {
+
+          var data = new google.visualization.arrayToDataTable([
+           [  'Cell Count', 'Signal Intensity' ], 
+           <% @raw_data_mod.each do |x| %>
+       
+	   [ <%= x %> ], 
+	   <% end %>
+	   [ <%= @raw_data_mod.last %> ]
+
+         ]);
+         
+
+         var options = {
+                  title: 'Signal Intensity Vs Cell Count'
+               };
+
+         var chart = new google.visualization.ScatterChart(document.getElementById('myFirstChart'));
+             chart.draw(data, options);
+
+    }
+
+function drawOriScatterChartMultivariate() {
+
+          var data = new google.visualization.arrayToDataTable([
+           [  'Cell Count', 'Signal Intensity X1', 'Signal Intensity X2', 'Signal Intensity X3' ], 
+           <% @raw_data_mod.each do |x| %>
+       
+	   [ <%= x %> ], 
+	   <% end %>
+	   [ <%= @raw_data_mod.last %> ]
+
+         ]);
+         
+
+         var options = {
+                  title: 'Signal Intensity Vs Cell Count'
+               };
+
+         var chart = new google.visualization.ScatterChart(document.getElementById('myFirstChart'));
+             chart.draw(data, options);
+
+    }
+
+function drawOriBubbleChart() {
+
+          var data = new google.visualization.arrayToDataTable([
+           [ '', 'theta0', 'theta1', 'SE_Function' ], 
+           <% for i in 0..@forBubbleChart.length - 1 %>
+       
+	   [ '', <%= @thetaZeroValues[i] %>, <%= @thetaOneValues[i] %>, <%= @forBubbleChart[i] %> ], 
+	   <% end %>
+	   [ '', <%= @thetaZeroValues.last %>, <%= @thetaOneValues.last %>, <%= @forBubbleChart.last %> ]
+
+         ]);
+         
+
+         var options = {
+                  title: '3 Dimensional graph with theta0, theta1 and SEF'
+               };
+
+         var chart = new google.visualization.BubbleChart(document.getElementById('myThirdChart'));
+             chart.draw(data, options);
+
+    }
+
+function drawOriBubbleChartMultivariate() {
+
+          var data = new google.visualization.arrayToDataTable([
+           ['', 'theta1', 'theta2', 'theta3', 'SE_Function' ], 
+           <% for i in 0..@forBubbleChart.length - 1 %>
+       
+	   [ '', <%= @thetaOneValues[i] %>, <%= @thetaTwoValues[i] %>, <%= @thetaThreeValues[i] %>, <%= @forBubbleChart[i] %> ], 
+	   <% end %>
+	   [ '', <%= @thetaOneValues.last %>, <%= @thetaTwoValues.last %>, <%= @thetaThreeValues.last %>, <%= @forBubbleChart.last %> ]
+
+         ]);
+         
+
+         var options = {
+                  title: '4 Dimensional graph with theta1, theta2, theta3 and SEF'
+               };
+
+         var chart = new google.visualization.BubbleChart(document.getElementById('myThirdChart'));
+             chart.draw(data, options);
+
+    }
+
+
+google.setOnLoadCallback(drawJfunctionChart);
+ 
+  <% if @forBubbleChart.length > 100 %>
+   google.setOnLoadCallback(drawOriScatterChartMultivariate); 
+   google.setOnLoadCallback(drawOriBubbleChartMultivariate);
+  <% else %> 
+  google.setOnLoadCallback(drawOriScatterChartUnivariate); 
+  google.setOnLoadCallback(drawOriBubbleChart); 
+  <% end %>
+
+
+</script>
