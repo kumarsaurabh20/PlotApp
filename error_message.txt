@@ -1,0 +1,154 @@
+NoMethodError in PlotsController#create
+
+undefined method `name' for nil:NilClass
+
+Rails.root: /home/jarvis/PlotApp
+Application Trace | Framework Trace | Full Trace
+
+activesupport (3.0.6) lib/active_support/whiny_nil.rb:48:in `method_missing'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:26:in `block in initialize'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:28:in `yield'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:28:in `default'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:28:in `block in initialize'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:28:in `yield'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:28:in `default'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:28:in `block in initialize'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:28:in `yield'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:28:in `default'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:28:in `block in initialize'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:28:in `yield'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:28:in `default'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:28:in `block in initialize'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:103:in `yield'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:103:in `default'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:103:in `accept'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:449:in `block in dump_ivars'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:447:in `each'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:447:in `dump_ivars'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:125:in `visit_Object'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:103:in `accept'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/visitors/yaml_tree.rb:67:in `push'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych.rb:242:in `dump'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/psych/core_ext.rb:14:in `psych_to_yaml'
+activerecord (3.0.6) lib/active_record/connection_adapters/abstract/quoting.rb:34:in `quote'
+activerecord-mysql2-adapter (0.0.3) lib/active_record/connection_adapters/mysql2_adapter.rb:155:in `quote'
+arel (2.0.10) lib/arel/visitors/to_sql.rb:327:in `quote'
+arel (2.0.10) lib/arel/visitors/to_sql.rb:70:in `block in visit_Arel_Nodes_Values'
+arel (2.0.10) lib/arel/visitors/to_sql.rb:69:in `map'
+arel (2.0.10) lib/arel/visitors/to_sql.rb:69:in `visit_Arel_Nodes_Values'
+arel (2.0.10) lib/arel/visitors/visitor.rb:15:in `visit'
+arel (2.0.10) lib/arel/visitors/to_sql.rb:59:in `visit_Arel_Nodes_InsertStatement'
+arel (2.0.10) lib/arel/visitors/visitor.rb:15:in `visit'
+arel (2.0.10) lib/arel/visitors/visitor.rb:5:in `accept'
+arel (2.0.10) lib/arel/visitors/to_sql.rb:18:in `block in accept'
+activerecord (3.0.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:111:in `with_connection'
+arel (2.0.10) lib/arel/visitors/to_sql.rb:16:in `accept'
+arel (2.0.10) lib/arel/tree_manager.rb:20:in `to_sql'
+arel (2.0.10) lib/arel/select_manager.rb:217:in `insert'
+activerecord (3.0.6) lib/active_record/relation.rb:14:in `insert'
+activerecord (3.0.6) lib/active_record/persistence.rb:270:in `create'
+activerecord (3.0.6) lib/active_record/timestamp.rb:47:in `create'
+activerecord (3.0.6) lib/active_record/callbacks.rb:277:in `block in create'
+activesupport (3.0.6) lib/active_support/callbacks.rb:414:in `_run_create_callbacks'
+activerecord (3.0.6) lib/active_record/callbacks.rb:277:in `create'
+activerecord (3.0.6) lib/active_record/persistence.rb:246:in `create_or_update'
+activerecord (3.0.6) lib/active_record/callbacks.rb:273:in `block in create_or_update'
+activesupport (3.0.6) lib/active_support/callbacks.rb:419:in `_run_save_callbacks'
+activerecord (3.0.6) lib/active_record/callbacks.rb:273:in `create_or_update'
+activerecord (3.0.6) lib/active_record/persistence.rb:39:in `save'
+activerecord (3.0.6) lib/active_record/validations.rb:43:in `save'
+activerecord (3.0.6) lib/active_record/attribute_methods/dirty.rb:21:in `save'
+activerecord (3.0.6) lib/active_record/transactions.rb:240:in `block (2 levels) in save'
+activerecord (3.0.6) lib/active_record/transactions.rb:292:in `block in with_transaction_returning_status'
+activerecord (3.0.6) lib/active_record/connection_adapters/abstract/database_statements.rb:139:in `transaction'
+activerecord (3.0.6) lib/active_record/transactions.rb:207:in `transaction'
+activerecord (3.0.6) lib/active_record/transactions.rb:290:in `with_transaction_returning_status'
+activerecord (3.0.6) lib/active_record/transactions.rb:240:in `block in save'
+activerecord (3.0.6) lib/active_record/transactions.rb:251:in `rollback_active_record_state!'
+activerecord (3.0.6) lib/active_record/transactions.rb:239:in `save'
+app/controllers/plots_controller.rb:41:in `create'
+actionpack (3.0.6) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+actionpack (3.0.6) lib/abstract_controller/base.rb:150:in `process_action'
+actionpack (3.0.6) lib/action_controller/metal/rendering.rb:11:in `process_action'
+actionpack (3.0.6) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+activesupport (3.0.6) lib/active_support/callbacks.rb:436:in `_run__2199545760356544793__process_action__2831217106489128291__callbacks'
+activesupport (3.0.6) lib/active_support/callbacks.rb:410:in `_run_process_action_callbacks'
+activesupport (3.0.6) lib/active_support/callbacks.rb:94:in `run_callbacks'
+actionpack (3.0.6) lib/abstract_controller/callbacks.rb:17:in `process_action'
+actionpack (3.0.6) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+activesupport (3.0.6) lib/active_support/notifications.rb:52:in `block in instrument'
+activesupport (3.0.6) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (3.0.6) lib/active_support/notifications.rb:52:in `instrument'
+actionpack (3.0.6) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+actionpack (3.0.6) lib/action_controller/metal/rescue.rb:17:in `process_action'
+actionpack (3.0.6) lib/abstract_controller/base.rb:119:in `process'
+actionpack (3.0.6) lib/abstract_controller/rendering.rb:41:in `process'
+actionpack (3.0.6) lib/action_controller/metal.rb:138:in `dispatch'
+actionpack (3.0.6) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+actionpack (3.0.6) lib/action_controller/metal.rb:178:in `block in action'
+actionpack (3.0.6) lib/action_dispatch/routing/route_set.rb:62:in `call'
+actionpack (3.0.6) lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+actionpack (3.0.6) lib/action_dispatch/routing/route_set.rb:27:in `call'
+rack-mount (0.6.14) lib/rack/mount/route_set.rb:148:in `block in call'
+rack-mount (0.6.14) lib/rack/mount/code_generation.rb:93:in `block in recognize'
+rack-mount (0.6.14) lib/rack/mount/code_generation.rb:75:in `optimized_each'
+rack-mount (0.6.14) lib/rack/mount/code_generation.rb:92:in `recognize'
+rack-mount (0.6.14) lib/rack/mount/route_set.rb:139:in `call'
+actionpack (3.0.6) lib/action_dispatch/routing/route_set.rb:493:in `call'
+actionpack (3.0.6) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+actionpack (3.0.6) lib/action_dispatch/middleware/head.rb:14:in `call'
+rack (1.2.8) lib/rack/methodoverride.rb:24:in `call'
+actionpack (3.0.6) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+actionpack (3.0.6) lib/action_dispatch/middleware/flash.rb:182:in `call'
+actionpack (3.0.6) lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+actionpack (3.0.6) lib/action_dispatch/middleware/cookies.rb:302:in `call'
+activerecord (3.0.6) lib/active_record/query_cache.rb:32:in `block in call'
+activerecord (3.0.6) lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+activerecord (3.0.6) lib/active_record/query_cache.rb:12:in `cache'
+activerecord (3.0.6) lib/active_record/query_cache.rb:31:in `call'
+activerecord (3.0.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+actionpack (3.0.6) lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
+activesupport (3.0.6) lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+actionpack (3.0.6) lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+rack (1.2.8) lib/rack/sendfile.rb:106:in `call'
+actionpack (3.0.6) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+actionpack (3.0.6) lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+railties (3.0.6) lib/rails/rack/logger.rb:13:in `call'
+rack (1.2.8) lib/rack/runtime.rb:17:in `call'
+activesupport (3.0.6) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+rack (1.2.8) lib/rack/lock.rb:13:in `block in call'
+<internal:prelude>:10:in `synchronize'
+rack (1.2.8) lib/rack/lock.rb:13:in `call'
+actionpack (3.0.6) lib/action_dispatch/middleware/static.rb:30:in `call'
+railties (3.0.6) lib/rails/application.rb:168:in `call'
+railties (3.0.6) lib/rails/application.rb:77:in `method_missing'
+railties (3.0.6) lib/rails/rack/log_tailer.rb:14:in `call'
+rack (1.2.8) lib/rack/content_length.rb:13:in `call'
+rack (1.2.8) lib/rack/handler/webrick.rb:52:in `service'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+Request
+
+Parameters:
+
+{"utf8"=>"✓",
+ "authenticity_token"=>"m1/k9njUyc2YnCT/ph9Hnrw2OjZVzwRBkfnZue8XFBo=",
+ "plot"=>{"expName"=>"test",
+ "explVariable"=>"1",
+ "respVariable"=>"1",
+ "calibFile"=>#<ActionDispatch::Http::UploadedFile:0x000000017ac6e0 @original_filename="array.txt",
+ @content_type="text/plain",
+ @headers="Content-Disposition: form-data; name=\"plot[calibFile]\"; filename=\"array.txt\"\r\nContent-Type: text/plain\r\n",
+ @tempfile=#<File:/tmp/RackMultipart20131108-3464-1bfycme>>},
+ "commit"=>"Create"}
+
+Show session dump
+
+Show env dump
+Response
+
+Headers:
+
+None
