@@ -55,7 +55,8 @@ def normalize
      logger.debug @data.to_s
 
      respond_to do |format|
-     format.html
+     format.html { render action: "normalize" }
+     format.json { render json: @data.errors, status: :unprocessable_entity }
      end
  end
 #===============================================================================================
