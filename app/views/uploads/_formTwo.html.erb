@@ -53,14 +53,14 @@ function sendProbeListToServer(){
       var arr = [];
       $('input[type="checkbox"]:checked').each(function(){arr.push($(this).val());});
       var data = arr.join(',');
-      console.log(data); 
+      //console.log(data); 
 
       $.ajax({
                url: '<%= url_for :controller => "uploads", :action => "normalize"%>',
-               type: 'GET',
+               type: 'POST',
                data: {data:data},
                dataType: 'string',
-               success: function(response) { console.log(response); }
+               success: function(response) { console.log("AJAX Successfully posted the probe list!!!"); }
 
             });
 

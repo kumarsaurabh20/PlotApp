@@ -52,14 +52,14 @@ class UploadsController < ApplicationController
  #method recieving Ajax request from the view posting selected probes for normalization
 def normalize
      @data = params['data'].split(',') 
-     logger.debug data.to_s
+     logger.debug @data.to_s
 
      respond_to do |format|
-     format.html {  }
-     format.json {}   
-
+     format.html
+     end
  end
-
+#===============================================================================================
+#=============================================AJAX ERROR========================================
 #===============================================================================================
 #this error will come if you dont create a template for mormalize or redirect to appropriate page
 #ActionView::MissingTemplate (Missing template uploads/normalize, application/normalize with {:locale=>[:en], :formats=>[:html, :text, :js, :css, :ics, :csv, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip], :handlers=>[:erb, :builder, :rabl]}. Searched in:
