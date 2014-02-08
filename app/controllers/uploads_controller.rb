@@ -51,27 +51,33 @@ class UploadsController < ApplicationController
 
  #method recieving Ajax request from the view posting selected probes for normalization
 def normalize
-     data = params['data'].split(',') 
-     
+     @data = params['data'].split(',') 
+     logger.debug data.to_s
 
-     R.eval "columns <- matrix()"
-     
-     for i in 0..@calib_data_transpose.length - 1
-         if i == 0
-            R.eval "columns <- #{@calib_data_transpose[i]}"
-         else
-            R.eval "columns <- cbind(columns, #{@calib_data_transpose[i]})"
-         end
-     end
-    
-     R.assign "cells", @inten_data
-     R.assign "probes", data
-     R.eval <<-EOF
-
-
-   EOF
+     respond_to do |format|
+     format.html {  }
+     format.json {}   
 
  end
+
+#===============================================================================================
+#this error will come if you dont create a template for mormalize or redirect to appropriate page
+#ActionView::MissingTemplate (Missing template uploads/normalize, application/normalize with {:locale=>[:en], :formats=>[:html, :text, :js, :css, :ics, :csv, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip], :handlers=>[:erb, :builder, :rabl]}. Searched in:
+#  * "/home/jarvis/PlotApp/app/views"
+#):
+#===============================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  #check why its not working with the condition!!! Try to refactor import methods again

@@ -48,6 +48,28 @@ $(function() {
 
 
 
+//add a code for ajax request to send probe list for normalization
+function sendProbeListToServer(){
+      var arr = [];
+      $('input[type="checkbox"]:checked').each(function(){arr.push($(this).val());});
+      var data = arr.join(',');
+      console.log(data); 
+
+      $.ajax({
+               url: '<%= url_for :controller => "uploads", :action => "normalize"%>',
+               type: 'GET',
+               data: {data:data},
+               dataType: 'string',
+               success: function(response) { console.log(response); }
+
+            });
+
+  }
+
+ $('#normalize').click(function () { sendProbeListToServer();});
+
+
+
 
 //From now use gon gem to fetch data/variables from controllers to the javascript.
 
