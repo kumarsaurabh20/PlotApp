@@ -1,6 +1,6 @@
 class UploadsController < ApplicationController
 
- attr_accessor :calib_data, :calib_data_transpose, :inten_data, :probe_list
+ attr_accessor :calib_data, :calib_data_transpose, :calib_probe, :probe_list, :cell_counts
   # GET /uploads
   # GET /uploads.json
   def index
@@ -33,8 +33,8 @@ class UploadsController < ApplicationController
 
     respond_to do |format|
       if @upload.save
-        @calib_data, @calib_data_transpose = import(calib_path)
-        @inten_data = import_ori(inten_path)
+        @calib_data, @calib_data_transpose, @cell_counts = import(calib_path)
+        @calib_probe = import_ori(inten_path)
         #probe list of the uploaded file
         @probe_list = calib_data_transpose[0]
         #logger.debug @probe_list.to_s
@@ -77,9 +77,11 @@ def normalize
  #check why its not working with the condition!!! Try to refactor import methods again
  def import(file_path)
      array = import_ori(file_path)
+     counts = array.shift
+     cell_counts = get_cell_counts(counts)
      array_splitted = array.map {|a| a.split(",")} 
      array_transpose = array_splitted.transpose
-   return array_splitted, array_transpose
+     return array_splitted, array_transpose, cell_counts
  end
  
  def import_ori(file_path)
@@ -87,6 +89,12 @@ def normalize
      array = string.split("\n")
      array.shift
      return array
+ end
+
+ def get_cell_counts(array="")
+     cell_counts = array.split(",")
+     cell_counts.shift
+     return cell_counts
  end
 
  def download_sample_calib_file	
