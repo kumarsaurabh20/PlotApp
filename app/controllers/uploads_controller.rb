@@ -91,22 +91,23 @@ def normalize
 
  def download_sample_calib_file	
         cols = ["Probes", "Intensity with 1ng", "Intensity with 5ng", "Intensity with 50ng", "Intensity with 100ng"]
-        row1 = ["EukS_1209_25_dT","4102788.91290624","1.68E+07","2.62E+08","5.41E+08"]
-	row2 = ["Test15 (EukS_1209_25dT)","3242670.65825","1.99E+07","3.92E+08","3.73E+08"]
-	row3 = ["EukS_328_25_dT","4564828.4446875","2.18E+07","4.40E+08","6.77E+08"]
-	row4 = ["DinoB_25_dT","7269595.08139062","3.56E+07","4.00E+08","6.06E+08"]
+        row1 = ["cell counts","270","1351","6757","27027"]
+        row2 = ["EukS_1209_25_dT","4102788.91290624","1.68E+07","2.62E+08","5.41E+08"]
+	row3 = ["Test15 (EukS_1209_25dT)","3242670.65825","1.99E+07","3.92E+08","3.73E+08"]
+	row4 = ["EukS_328_25_dT","4564828.4446875","2.18E+07","4.40E+08","6.77E+08"]
+	row5 = ["DinoB_25_dT","7269595.08139062","3.56E+07","4.00E+08","6.06E+08"]
 
-        send_file("sample_calibration_file", cols,row1, row2, row3, row4)   
+        send_file("sample_calibration_file", cols,row1, row2, row3, row4, row5)   
  end
 
- def download_sample_cell_count_file
-      header = ["Cell Count"]
-      row1 = ["270"]
-      row2 = ["1351"]
-      row3 = ["6757"]
-      row4 = ["27027"]
+ def download_sample_probe_list
+      header = ["Probes for calibration"]
+      row1 = ["EukS_1209_25_dT"]
+      row2 = ["EukS_328_25_dT"]
+      row3 = ["DinoB_25_dT"]
+      row4 = ["Test15 (EukS_1209_25dT)"]
 
-      send_file("sample_cell_count_file", header,row1, row2, row3, row4)
+      send_file("sample_probe_list", header,row1, row2, row3, row4)
  end
 
  def send_file(file_name, *args)
