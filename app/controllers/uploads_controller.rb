@@ -68,24 +68,6 @@ def normalize
      R.assign "probes", data
      R.eval <<-EOF
 
-     
-table <- data.frame()
-for (i in c(1:length(columns))) {table <- data.frame(columns[i], table)}
-
-# make sure to convert them in character and numeric vectors
-
-#match the selected probe in the table
-
-#convert the found row of values from data.frame to numeric
-
-#divide each column of the table by the respective probe values and create a new table repat it with different probes.
-
-#make a new table with the cell count and different probe normalization and calculate for individual probes
-
-#finally return a data.frame with probe names and cell counts
-
-#return individual columns as an array not in the form of matrix/data.frame
-
 
    EOF
 
