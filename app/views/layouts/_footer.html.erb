@@ -1,11 +1,84 @@
-<div id="footer">
-  <ul class="navigation round">
-      <li><%= link_to "About", plots_path %></li>
-      <li><%= link_to "Contact", plots_path %></li>
-      <li><%= link_to "Help", plots_path %></li>
-      <li><a href="http://www.unicam.it/" target="_blank">Unicam</a></li>
-      <li><a href="http://engeebee.com/" target="_blank">engeebee</a></li>
-  </ul>
+<br /><br /><br />
 
-</div>
+<hr />
 
+
+<table width="100%">
+    <tr><td>   
+          <div class="span">
+            <h3>Brought to you by</h3>
+            <div>
+              <p>
+                 <a href="http://www.microaqua.eu/" >
+                  <%= link_to appHelperLogo, root_path %>
+                </a>
+              </p>
+              <p>
+                <a href="http://www.unicam.it/" >
+                  <%= link_to appUnicamLogo, root_path %>
+                </a>
+              </p>
+            </div>
+           </div>
+          </td>
+         <td>
+          <div class="span">
+            <h3>Contacts</h3>
+            <div class="muted">
+              <p id="copyright">
+                For feedbacks, bug reports and other informations:
+                <ul>
+                  <li><b>project@microaqua.eu</b></li>
+                  <li>kumar.saurabhsingh@unicam.it</li>
+                </ul>
+              </p>
+              <section>
+                <strong>Address:</strong>
+                Via Gentile III da Varano,
+                School of Biosciences and Veterniary Medicine,
+                University of Camerino, Camerino(MC) 62032 IT
+                 </section>
+               </p>            
+            </div>
+          </div>
+       </td>
+       <td>
+          <div class="span2">
+            <h3>Cite us</h3>
+            <p id="back-top">
+              <a href="" target="_blank">
+              <strong>
+                S2C: A web server for cell count prediction from multi-species microarray calibration dataset 
+              </strong>
+              </a><br />
+                Kumar Saurabh Singh, Nicola Cannata<br />
+                XXXXX 
+            </p>
+          </div>
+       </td>
+       <td>
+          <div class="span2">
+           <section>
+            <h3>Offline</h3>
+            <p id="back-top">
+              Fancy using it as a RESTful web service?
+              <br>
+              <a href="https://github.com/kumarsaurabh20/PlotApp">
+              <strong>
+                S2C RESTful web service
+              </strong>
+              </a>
+            </p>
+           </section>
+           <div>
+            <h3>Hosting</h3>
+              <p id="back-top">
+                <a href="https://github.com/kumarsaurabh20/PlotApp" target="_blank">
+                  <%= link_to appGithubLogo, root_path %>
+                </a>
+              </p>
+          </div>
+        </div>
+       </td>
+     </tr>
+</table>     

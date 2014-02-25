@@ -185,3 +185,8 @@ blockquote {font-style: italic;padding: 0 3em;}
 .buttonHolder { text-align:center; }
 .home {float:left;}
 .mainBlock H2, H5 {display:inline-block;}
+/*Footer*/
+.span{float:left;width:200px;clear:left;}
+.span2{float:right;width:200px;}
+hr {display: block; height: 2px;border: 1; border-top: 2px solid white;margin: 1em 0; padding: 0;}
+

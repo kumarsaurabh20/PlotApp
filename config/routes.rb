@@ -67,6 +67,6 @@ PlotApp::Application.routes.draw do
 
   match '/sample_calib_file' => 'uploads#download_sample_calib_file'
   match '/sample_cell_count_file' => 'uploads#download_sample_cell_count_file'
-
+  match '/normalize' => 'uploads#normalize'
 
 end

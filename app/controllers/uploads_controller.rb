@@ -37,7 +37,7 @@ class UploadsController < ApplicationController
         @inten_data = import_ori(inten_path)
         #probe list of the uploaded file
         @probe_list = calib_data_transpose[0]
-        logger.debug @probe_list.to_s
+        #logger.debug @probe_list.to_s
         flash[:notice] = "Files were successfully uploaded!!"
         format.html
         #format.js #{ render json: @upload, status: :created, location: @upload }
@@ -50,7 +50,7 @@ class UploadsController < ApplicationController
  end
 
  #method recieving Ajax request from the view posting selected probes for normalization
- def normalize
+def normalize
      data = params['data'].split(',') 
      
 

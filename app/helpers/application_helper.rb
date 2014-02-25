@@ -28,14 +28,18 @@ module ApplicationHelper
   end
 
  #LOGO
-  def appFp7Logo
-    image_tag("fp7_logo.jpg", :alt => "S2C", :class => "round", :size => "95x75")
+  def appUnicamLogo
+    image_tag("unicamit.jpg", :alt => "S2C", :class => "round", :size => "100x75")
   end
 
   #BETA
-  def appBetaLogo
-    image_tag("icon_beta3.jpg", :title => "Development version", :alt => "Development version", :class => "round", :size => "69x69")
+  def appGithubLogo
+    image_tag("github.jpg", :title => "Development version", :alt => "Development version", :class => "round", :size => "190x75")
   end
 
+ #contacts
+  def appContactLogo
+    image_tag("contacts.jpg", :title => "Development version", :alt => "Development version", :class => "round", :size => "70x50")
+  end
 
 end
