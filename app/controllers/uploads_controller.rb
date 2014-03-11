@@ -84,6 +84,8 @@ values2 <- as.numeric(newData2)
 
 #finally return a data.frame with probe names and cell counts
 
+#return individual columns as an array not in the form of matrix/data.frame
+
 
 EOF
 
