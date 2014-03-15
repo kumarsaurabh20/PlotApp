@@ -1,5 +1,6 @@
 class UploadsController < ApplicationController
 
+ attr_accessor :calib_data, :calib_data_transpose, :inten_data, :probe_list
   # GET /uploads
   # GET /uploads.json
   def index
@@ -32,12 +33,9 @@ class UploadsController < ApplicationController
 
     respond_to do |format|
       if @upload.save
-        calib_data, calib_data_transpose = import(calib_path)
-        inten_data = import_ori(inten_path)
-        #logger.debug @calib_data.to_s
-        #logger.debug @inten_data.to_s
-        #logger.debug @calib_data_transpose.to_s
-
+        @calib_data, @calib_data_transpose = import(calib_path)
+        @inten_data = import_ori(inten_path)
+        #probe list of the uploaded file
         @probe_list = calib_data_transpose[0]
         logger.debug @probe_list.to_s
         flash[:notice] = "Files were successfully uploaded!!"
@@ -50,6 +48,34 @@ class UploadsController < ApplicationController
       end
     end
  end
+
+ #method recieving Ajax request from the view posting selected probes for normalization
+ def normalize
+     data = params['data'].split(',') 
+     
+     for i in 0..@calib_data_transpose.length - 1
+     R.assign "col_#{i}", @calib_data_transpose[i] 
+     end
+    
+     R.assign "cells", @inten_data
+     R.assign "probes", data
+     R.eval <<-EOF
+
+
+
+     EOF
+
+     
+      
+
+
+
+
+
+
+
+ end
+
 
  #check why its not working with the condition!!! Try to refactor import methods again
  def import(file_path)
