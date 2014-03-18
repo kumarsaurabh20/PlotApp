@@ -5,7 +5,7 @@
 <div class="multiselect new-navigation-alternate round">
 <% if @probe_list %>
 <% for i in 0..@probe_list.length - 1 %>
-<label><input type="checkbox" name="option[]" value="<%= i %>" /><b><i><%= @probe_list[i]%></i></b></label>
+<label><input type="checkbox" id="<%= i %>" value="<%= @probe_list[i]%>" /><b><i><%= @probe_list[i]%></i></b></label>
 <% end %>
 </div>
 <% end %>
@@ -47,7 +47,6 @@ $(function() {
 });
 
 
-//add a code for ajax request to send probe list for normalization
 
 
 //From now use gon gem to fetch data/variables from controllers to the javascript.

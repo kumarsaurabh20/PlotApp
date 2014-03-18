@@ -44,6 +44,25 @@ Then it should be ok
 
 */
 
+//add a code for ajax request to send probe list for normalization
+
+ $(function () {
+        function dumpInArray(){
+           var arr = [];
+           $('input[type="checkbox"]:checked').each(function(){
+              arr.push($(this).val());
+           });
+           
+           var data = arr.join(',');
+               console.log(data); 
+        }
+
+        $('#normalize').click(function () {
+           dumpInArray();
+        });
+     });
+
+
 
 </script>
 
