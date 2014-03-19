@@ -167,7 +167,7 @@ border-left: 2px solid #1E3681;margin-right: 10px; }
 /*==========================================================================================*/
 /*==================Added lator in S2C project(scaffold is same as Bioaqua1)================*/
 /* per page */
-.title {text-align:center;width:100%;background-color:white;font-family:sans-serif;font-size:16px;line-height:30px;color:#3399CC;}
+.title {text-align:center;width:100%;background-color:white;font-family:sans-serif;font-size:16px;line-height:34px;color:#3399CC;}
 .table-placment {text-align:center;}
 .field-set-alternate {border-color:#0000FF;border-style:none;}
 .field-set {border:1px solid #0000FF;}
@@ -184,3 +184,4 @@ blockquote {font-style: italic;padding: 0 3em;}
 .multiselect-on {color:#ffffff;background-color:#000099;}
 .buttonHolder { text-align:center; }
 .home {float:left;}
+.mainBlock H2, H5 {display:inline-block;}
