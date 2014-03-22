@@ -66,8 +66,8 @@ a {  color: #09c;  text-decoration: none;}
 a:hover {  color: #069;  text-decoration: underline;}
 a:visited {  color: #069;}
 /* Navigation */
-.navigation {  float: right;}
-.navigation {  background-color: white;  padding: 0 0.7em; white-space: nowrap; }
+.navigation {float: right;}
+.navigation {background-color: white;  padding: 0 0.7em; white-space: nowrap; }
 ul.navigation {  margin: 0;}
 .navigation li {  list-style-type: none;  display: inline-block;  padding: 0.2em 0;}
 .navigation li a {  padding: 0 5px;  font-weight: bold;}
@@ -183,3 +183,4 @@ blockquote {font-style: italic;padding: 0 3em;}
 .multiselect label {display:block;}
 .multiselect-on {color:#ffffff;background-color:#000099;}
 .buttonHolder { text-align:center; }
+.home {float:left;}
