@@ -1,28 +1,23 @@
 <div class="show-div">
 <fieldset class="field-set round"><legend>Selection of probes for normalization</legend>
 
-<div class="new-navigation-alternate round">
-<div class="multiselect ">
+
+<div class="multiselect new-navigation-alternate round">
 <% if @probe_list %>
 <% for i in 0..@probe_list.length - 1 %>
 <label><input type="checkbox" name="option[]" value="<%= i %>" /><b><i><%= @probe_list[i]%></i></b></label>
 <% end %>
 </div>
 <% end %>
+<br /><br />
+
+<div class="buttonHolder">
+<input type="button" id="normalize" value="Normalize" />
 </div>
 
 </fieldset>
 </div>
 
-<div class="show-div">
-<fieldset class="field-set"><legend>Normalized signal intensities</legend>
-</fieldset>
-</div>
-
-<div class="show-div">
-<fieldset class="field-set"><legend>Select algorithms for cell counting/predicting</legend>
-</fieldset>
-</div>
 
 
 <script>

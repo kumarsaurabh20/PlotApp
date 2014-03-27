@@ -182,3 +182,4 @@ blockquote {font-style: italic;padding: 0 3em;}
 .multiselect {width:95%;height:20em;overflow:auto;margin:0 auto;}
 .multiselect label {display:block;}
 .multiselect-on {color:#ffffff;background-color:#000099;}
+.buttonHolder { text-align:center; }

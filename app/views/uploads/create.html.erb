@@ -1,15 +1,21 @@
 <%= render 'form' %>
 
-<%= render 'nextform' %>
+<%= render 'formTwo' %>
 
 <% if flash[:notice] %>
 <div class="notice round new-notice" id="notice"><%= flash[:notice] %></div>
 <% end %>
 
+<div class="hide-div">
+<fieldset class="field-set round"><legend>Normalized signal intensities</legend>
+</fieldset>
+</div>
+
+
 <script type="text/javascript">
 
     var notice = $('#notice');
-    if ( notice.text().length > 0 ) { notice.delay(3000).fadeOut('slow'); }
+    if ( notice.text().length > 0 ) { notice.delay(2000).fadeOut('slow'); }
 
 
 

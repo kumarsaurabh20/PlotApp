@@ -1,4 +1,77 @@
-<%= render 'form'%>
+<div>
+<fieldset class="field-set-alternate"><legend class="hide-div">File Upload</legend>
+	<%= form_for(@upload, :html => { :multipart => true }) do |f| %>
+	  <% if @upload.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@upload.errors.count, "error") %> prohibited this upload from being saved:</h2>
+
+	      <ul>
+	      <% @upload.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+
+	<table width="100%" align="center">
+		<tr>
+			<td class="table-placment">
+				<div>
+				<h2>Select calibration file</h2>
+				<blockquote>Calibration data consist of serial
+                                testing of probes against varying concentration
+				of sample i.e. either RNA or DNA</blockquote>
+				</div>
+
+
+		<div>
+		<b>
+		<u>
+		<a href="<%= '/sample_calib_file' %>" >Download an example calibration file</a>
+		</u>
+		</b>
+		</div><br /><br />
+				<div class="new-navigation round">	
+				<%= f.file_field :calib %>
+				</div>
+				<br /><br />
+			</td>
+
+			<td class="table-placment">
+				<div>
+				<h2>Select cell counts used in calibration</h2>
+				<blockquote>Cell count data consist of a single
+				coulmn with counted cell numbers from known
+				concentration of either RNA or DNA</blockquote>
+				</div>
+		<div>
+		<b>
+		<u>
+		<a href="<%= '/sample_cell_count_file' %>" >Download an example cell count file</a>
+		</u>
+		</b>
+		</div><br /><br />
+				<div class="new-navigation round">
+				<%= f.file_field :inten %>
+				</div>
+				<br /><br />
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="table-placment">
+				<div>
+				<%= f.submit "Upload", :id => "upload"  %>
+				<% end %>
+
+				</div>
+			</td>
+		</tr>
+	</table>
+</fieldset>
+</div>
+
+
+<br />
 
 
 
