@@ -41,7 +41,7 @@ class UploadsController < ApplicationController
         @probe_list = calib_data_transpose[0]
         logger.debug @probe_list.to_s
         flash[:notice] = "Files were successfully uploaded!!"
-        format.html 
+        format.html
         #format.js #{ render json: @upload, status: :created, location: @upload }
       else
         flash[:notice] = "Error in uploading!!"

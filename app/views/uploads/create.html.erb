@@ -11,4 +11,34 @@
     var notice = $('#notice');
     if ( notice.text().length > 0 ) { notice.delay(3000).fadeOut('slow'); }
 
+
+
+/*
+
+//IMPORTANT FOR CONTROLLER SPECIFIC JAVASCRIPT
+
+To load only the necessary name_of_the_js_file.js file:
+
+remove the //=require_tree from application.js
+
+keep your js file (that you want to load when a specific page is loaded) in the asset pipeline
+
+add a helper in application_helper.rb
+
+def javascript(*files)
+  content_for(:head) { javascript_include_tag(*files) }
+end
+yield into your layout:
+
+#ltmdeq# yield(:head) mdgt
+add this in your view file:
+
+#ltmd# javascript 'name_of_the_js_file' mdgt
+Then it should be ok
+
+*/
+
+
 </script>
+
+
