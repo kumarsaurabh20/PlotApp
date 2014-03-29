@@ -16,30 +16,42 @@
 	<table width="100%" align="center">
 		<tr>
 			<td class="table-placment">
-				<div class="actions">
-				<h2>Select Calibration file</h2>
+				<div>
+				<h2>Select calibration file</h2>
+				<blockquote>Calibration data consist of serial
+                                testing of probes against varying concentration
+				of sample i.e. either RNA or DNA</blockquote>
+				</div>
+
+
 		<div>
 		<b>
 		<u>
 		<a href="<%= '/sample_calib_file' %>" >Download an example calibration file</a>
 		</u>
 		</b>
-		</div>
+		</div><br /><br />
+				<div class="new-navigation round">	
 				<%= f.file_field :calib %>
 				</div>
 				<br /><br />
 			</td>
 
 			<td class="table-placment">
-				<div class="actions">
+				<div>
 				<h2>Select cell counts used in calibration</h2>
+				<blockquote>Cell count data consist of a single
+				coulmn with counted cell numbers from known
+				concentration of either RNA or DNA</blockquote>
+				</div>
 		<div>
 		<b>
 		<u>
-		<a href="<%= '/sample_cell_count_file' %>" >Download an example calibration file</a>
+		<a href="<%= '/sample_cell_count_file' %>" >Download an example cell count file</a>
 		</u>
 		</b>
-		</div>
+		</div><br /><br />
+				<div class="new-navigation round">
 				<%= f.file_field :inten %>
 				</div>
 				<br /><br />
@@ -47,12 +59,12 @@
 		</tr>
 		<tr>
 			<td colspan="2" class="table-placment">
-				<div class="actions">
+				<div>
 				<%= f.submit "Upload" %>
 				<% end %>
 
 				<% if flash[:notice] %>
-				<div class="notice"><%= flash[:notice] %></div>
+				<div class="notice round new-notice" id="notice"><%= flash[:notice] %></div>
 				<% end %>
 
 
@@ -79,3 +91,12 @@
 </div>
 
 <br />
+
+<script type="text/javascript">
+(function() {
+
+var notice = $('#notice');
+if ( notice.text().length > 0 ) { notice.delay(3000).fadeOut('slow'); }
+
+})();
+</script>

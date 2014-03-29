@@ -173,4 +173,7 @@ border-left: 2px solid #1E3681;margin-right: 10px; }
 .field-set {border:1px solid #0000FF;}
 .hide-div {display:none;}
 .show-div {display:show;}
-
+blockquote {font-style: italic;padding: 0 3em;}
+.notice { border:2px solid #FF0000;background-color:#FF9933;font-family:sans-serif;font-size:25px;line-height:25px;color:white;padding:5px;font-weight:bold;width:600px;height:30px;text-align:center; }
+.new-notice { position:absolute;margin: auto;top: 0;right: 0;bottom: 0;left: 0; }
+.new-navigation {background-color: white;padding: 0 0.7em;white-space:nowrap;border:1px solid #3399FF;width:50%;margin:0 auto;}
