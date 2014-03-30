@@ -1,8 +1,5 @@
 class UploadsController < ApplicationController
 
-require 'csv'
-
-
   # GET /uploads
   # GET /uploads.json
   def index
@@ -18,20 +15,56 @@ require 'csv'
 
   # POST /uploads
   # POST /uploads.json
-  def create
-    @upload = Upload.new(params[:upload])
+ def create
+  @upload = Upload.new(params[:upload]) 
+
+
+  @calib_data, @inten_data = [], []
+#DIRECTORY = "public/"
+#this returns dynamic constant assignment error means  each time you run the method you are assigning  #a new value to the constant. This is not allowed, as it makes the constant non-constant; even though #the contents of the string are the same (for the moment, anyhow), the actual string object itself is #different each time the method is called. 
+
+  directory = "public/"
+  io_calib = params[:upload][:calib]
+  io_inten = params[:upload][:inten]   
+
+  name_calib = io_calib.original_filename
+  name_inten = io_inten.original_filename
+  @calib_path = File.join(directory, "calibs", name_calib)
+  @inten_path = File.join(directory, "intens", name_inten)
 
     respond_to do |format|
       if @upload.save
+        @calib_data, @calib_data_transpose = import(@calib_path)
+        @inten_data = import_ori(@inten_path)
+        #logger.debug @calib_data.to_s
+        #logger.debug @inten_data.to_s
+        #logger.debug @calib_data_transpose.to_s
+
         flash[:notice] = "Files were successfully uploaded!!"
         format.html { redirect_to uploads_url }
         format.json { render json: @upload, status: :created, location: @upload }
       else
-        format.html { render action: "new" }
+        flash[:notice] = "Error in uploading!!"
+        format.html { render action: "index" }
         format.json { render json: @upload.errors, status: :unprocessable_entity }
       end
     end
-  end
+ end
+
+ #check why its not working with the condition!!! Try to refactor import methods again
+ def import(file_path)
+     array = import_ori(file_path)
+     array_splitted = array.map {|a| a.split(",")} 
+     array_transpose = array_splitted.transpose
+   return array_splitted, array_transpose
+ end
+ 
+ def import_ori(file_path)
+     string = IO.read(file_path)
+     array = string.split("\n")
+     array.shift
+     return array
+ end
 
 
 
@@ -42,7 +75,10 @@ require 'csv'
 
 
 
-  def download_sample_calib_file	
+
+
+
+ def download_sample_calib_file	
         cols = ["Probes", "Intensity with 1ng", "Intensity with 5ng", "Intensity with 50ng", "Intensity with 100ng"]
         row1 = ["EukS_1209_25_dT","4102788.91290624","1.68E+07","2.62E+08","5.41E+08"]
 	row2 = ["Test15 (EukS_1209_25dT)","3242670.65825","1.99E+07","3.92E+08","3.73E+08"]
@@ -50,9 +86,9 @@ require 'csv'
 	row4 = ["DinoB_25_dT","7269595.08139062","3.56E+07","4.00E+08","6.06E+08"]
 
         send_file("sample_calibration_file", cols,row1, row2, row3, row4)   
-  end
+ end
 
-  def download_sample_cell_count_file
+ def download_sample_cell_count_file
       header = ["Cell Count"]
       row1 = ["270"]
       row2 = ["1351"]
@@ -60,9 +96,9 @@ require 'csv'
       row4 = ["27027"]
 
       send_file("sample_cell_count_file", header,row1, row2, row3, row4)
-  end
+ end
 
-  def send_file(file_name, *args)
+ def send_file(file_name, *args)
      data = args.join(',').split(',')
      file = CSV.generate do |line|
         args.each do |element|
@@ -73,7 +109,7 @@ require 'csv'
    send_data(file, 
        :type => 'text/csv;charset=utf-8;header=present', 
        :disposition => "attachment;filename=#{file_name}_#{Time.now.strftime('%d%m%y-%H%M')}.csv")
-  end
+ end
 
  
 end
