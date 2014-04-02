@@ -5,20 +5,13 @@ class UploadsController < ApplicationController
   def index
     @uploads = Upload.all
     
-    @upload = Upload.new(params[:upload])
-    logger.debug @upload.inspect
-    
-
-    
-
-    
-
+    @upload = Upload.new
+   
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @uploads }
+      format.html 
+      format.json { render json: @uploads }   
     end
   end
-
 
   # POST /uploads
   # POST /uploads.json
@@ -27,7 +20,8 @@ class UploadsController < ApplicationController
 
     respond_to do |format|
       if @upload.save
-        format.html { redirect_to @upload, notice: 'Upload was successfully created.' }
+        flash[:notice] = "Files were successfully uploaded!!"
+        format.html { redirect_to uploads_url }
         format.json { render json: @upload, status: :created, location: @upload }
       else
         format.html { render action: "new" }
@@ -35,8 +29,6 @@ class UploadsController < ApplicationController
       end
     end
   end
-
- 
 
   # DELETE /uploads/1
   # DELETE /uploads/1.json
