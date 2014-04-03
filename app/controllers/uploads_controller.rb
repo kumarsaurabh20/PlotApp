@@ -5,11 +5,13 @@ class UploadsController < ApplicationController
   def index
     @uploads = Upload.all
     
-    @upload = Upload.new
+    @upload = Upload.new(params[:upload])
+    logger.debug @upload.inspect
     
-    if @ipload
-    @show = Upload.find(params[:id])
-    end
+
+    
+
+    
 
     respond_to do |format|
       format.html # index.html.erb

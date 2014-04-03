@@ -1,13 +1,14 @@
 <div>
 <fieldset class="field-set-alternate"><legend class="hide-div">File Upload</legend>
-<%= form_for(@upload, :html => {:multipart => true}) do |f| %>
+<%= form_for(:@upload, :html => {:multipart => true}) do |f| %>
 
 <table width="100%" align="center">
 <tr>
 <td class="table-placment">
 <div>
+<%= f.fields_for @upload do |asset|%>
 <h2>Select Calibration file</h2>
-<%= file_field(:uploads, :inten, :accept => "text/csv") %>
+<%= asset.file_field :calib %>
 
 </div>
 <br /><br />
@@ -16,7 +17,7 @@
 <td class="table-placment">
 <div>
 <h2>Select cell counts used in calibration</h2>
-<%= file_field(:uploads, :calib, :accept => "text/csv") %>
+<%= asset.file_field :inten %>
 </div>
 <br /><br />
 </td>
@@ -26,6 +27,7 @@
 </td>
 </table>
  <% end %>
+<% end %>
 
 </fieldset>
 </div>
