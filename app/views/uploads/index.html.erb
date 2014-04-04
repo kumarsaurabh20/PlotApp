@@ -1,11 +1,12 @@
-<fieldset class="field-set"><legend class="hide-div">File Upload</legend>
+<div>
+<fieldset class="field-set-alternate"><legend class="hide-div">File Upload</legend>
 <%= form_for(@upload, :html => {:multipart => true}) do |f| %>
 
 <table width="100%" align="center">
 <tr>
 <td class="table-placment">
 <div>
-<h2>Select Signal Intensity data</h2>
+<h2>Select Calibration file</h2>
 <%= file_field(:uploads, :inten, :accept => "text/csv") %>
 
 </div>
@@ -14,7 +15,7 @@
 
 <td class="table-placment">
 <div>
-<h2>Select Calibration Data</h2>
+<h2>Select cell counts used in calibration</h2>
 <%= file_field(:uploads, :calib, :accept => "text/csv") %>
 </div>
 <br /><br />
@@ -27,6 +28,7 @@
  <% end %>
 
 </fieldset>
+</div>
 
 <div class="hide-div">
 <fieldset class="field-set"><legend>Selection of probes for normalization</legend>
@@ -36,7 +38,11 @@
 <div class="hide-div">
 <fieldset class="field-set"><legend>Normalized signal intensities</legend>
 </fieldset>
-<div>
+</div>
 
+<div class="hide-div">
+<fieldset class="field-set"><legend>Select algorithms for cell counting/predicting</legend>
+</fieldset>
+</div>
 
 <br />
