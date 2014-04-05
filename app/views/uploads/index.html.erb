@@ -1,4 +1,4 @@
-<fieldset><legend>File Upload</legend>
+<fieldset class="field-set"><legend class="hide-div">File Upload</legend>
 <%= form_for(@upload, :html => {:multipart => true}) do |f| %>
 
 <table width="100%" align="center">
@@ -28,14 +28,15 @@
 
 </fieldset>
 
-<fieldset><legend>Selection of probes for normalization</legend>
+<div class="hide-div">
+<fieldset class="field-set"><legend>Selection of probes for normalization</legend>
 </fieldset>
+</div>
 
-<fieldset><legend>Normalized signal intensities</legend>
-
-
+<div class="hide-div">
+<fieldset class="field-set"><legend>Normalized signal intensities</legend>
 </fieldset>
-
+<div>
 
 
 <br />

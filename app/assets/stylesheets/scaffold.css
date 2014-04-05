@@ -164,7 +164,13 @@ textarea.bioarea{height: 800px;}
 .Element {clear: both; height: 15px; 	padding-top:0px; msargin-top:10px;
 border-left: 2px solid #1E3681;margin-right: 10px; }
 .AttributeName{float:left; padding-left: 5px;}
+/*==========================================================================================*/
+/*==================Added lator in S2C project(scaffold is same as Bioaqua1)================*/
 /* per page */
 .title {text-align:center;width:100%;background-color:white;font-family:sans-serif;font-size:16px;line-height:30px;color:#3399CC;}
 .table-placment {text-align:center;}
+.field-set {border-color:#0000FF;border-style:none;}
+.field-set-alternate {border:1px solid #0000FF;}
+.hide-div {display:none;}
+.show-div {display:show;}
 
