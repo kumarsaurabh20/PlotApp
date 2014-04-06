@@ -24,7 +24,12 @@ module ApplicationHelper
   #LOGO
   def appHelperLogo
     #image_tag("logo.png", :alt => "Sample App", :class => "round")
-    image_tag("uaqua1_logo2.png", :alt => "S2C", :class => "round", :size => "100x69")
+    image_tag("uaqua1_logo2.png", :alt => "S2C", :class => "round", :size => "100x75")
+  end
+
+ #LOGO
+  def appFp7Logo
+    image_tag("fp7_logo.jpg", :alt => "S2C", :class => "round", :size => "95x75")
   end
 
   #BETA

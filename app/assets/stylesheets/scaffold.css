@@ -12,6 +12,8 @@ pre {
   font-size: 11px;
 }
 
+h1 { margin-bottom: 0; } 
+
 a { color: #000; }
 a:visited { color: #666; }
 a:hover { color: #fff; background-color:#000; }
@@ -163,6 +165,6 @@ textarea.bioarea{height: 800px;}
 border-left: 2px solid #1E3681;margin-right: 10px; }
 .AttributeName{float:left; padding-left: 5px;}
 /* per page */
-.title {text-align:center;width:100%;background-color: white;font-family:sans-serif;font-size:18px;line-height:40px;color:#3399CC;}
+.title {text-align:center;width:100%;background-color:white;font-family:sans-serif;font-size:16px;line-height:30px;color:#3399CC;}
 
 
