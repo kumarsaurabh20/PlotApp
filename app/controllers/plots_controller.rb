@@ -45,24 +45,69 @@ DIRECTORY = "public/calibration_data/"
       respond_to do |format|
 	 if @savedfile
 
-             @thetaTwoValues, @thetaThreeValues, @theta2, @theta3, @thetaTwoValues, @thetaThreeValues, @forBubbleChart, @output = [],[],[],[],[],[],[],[]
+             @thetaTwoValues, @thetaThreeValues, @thetaTwoValues, @thetaThreeValues, @forBubbleChart, @output, @lineOfFit, @yAxis, @x1Axis, @x2Axis, @x3Axis = [],[],[],[],[],[],[],[],[],[],[]
 
-             dataExtract(namefile)
+     num_of_variables = dataExtract(namefile)
+
+      str = IO.read(path)
+      line = str.to_str
+  
+      if num_of_variables == 2
+	      data = line.scan(/(\S+[\t,]\S+)/).flatten
+             	
+	      data.each do |line|
+	      if line =~ /((\S+)[\t,](\S+))/		                    
+		      @yAxis.push $2 
+                      @x1Axis.push $3                                
+	      end                                          
+	 end  
+    elsif num_of_variables == 3 
+       data = line.scan(/(\S+[\t,]\S+[\t,]\S+)/).flatten
+             	
+       data.each do |line|
+	      if line =~ /((\S+)[\t,](\S+)[\t,](\S+))/
+		      @yAxis.push $2
+                      @x1Axis.push $3
+                      @x2Axis.push $4                       
+	      end                       
+        end
+     elsif num_of_variables == 4 
+       
+       data = line.scan(/(\S+[\t,]\S+[\t,]\S+[\t,]\S+)/).flatten
+             	
+       data.each do |line|
+	      if line =~ /((\S+)[\t,](\S+)[\t,](\S+)[\t,](\S+))/
+		      @yAxis.push $2
+                      @x1Axis.push $3
+                      @x2Axis.push $4
+                      @x3Axis.push $5                                    
+	      end                                         
+        end
+    
+     else
+        puts "Exception in number of column"
+     end
+
+
              @output = calTheta(namefile)
              #logger.debug @output.inspect
              @result = @output.shift
              @theta0 = @result.shift
+             @theta0 = round_up(@theta0)
              @theta1 = @result.shift
+             @theta1 = round_up(@theta1)
              @thetaZeroValues = @output.shift             
              @thetaOneValues = @output.shift
+             @lineOfFit = calLineOfFit(@theta0, @theta1, @x1Axis) 
 
-             if @output.length > 1                     
-                  @thetaTwoValues = @output.shift
-                  @thetaThreeValues = @output.shift
-                  @theta2 = @result.shift
-                  @theta3 = @result.shift 
-                  @thetaTwoValues = round_up(@thetaTwoValues)
-                  @thetaThreeValues = round_up(@thetaThreeValues)                       
+            if @output.length > 1                     
+               @thetaTwoValues = @output.shift
+               @thetaThreeValues = @output.shift
+               @theta2 = @result.shift
+               @theta3 = @result.shift 
+               @thetaTwoValues = round_up(@thetaTwoValues)
+               @thetaThreeValues = round_up(@thetaThreeValues)
+               #@lineOfFit = calLineOfFit(@theta0, @theta1, @x1Axis, @theta2, @x2Axis, @theta3, @x3Axis)                       
              end
 
              #for precesion up to 3 decimal places. To make 2 decimal places change 200 to 20. 
@@ -73,6 +118,9 @@ DIRECTORY = "public/calibration_data/"
                 @forBubbleChart = @result #Both has same values, but to be utilized in different graphs
                 @result = array_to_hash(@result)
                 @result = @result.sort_by { |keys, values| keys }
+
+         logger.debug @lineOfFit.inspect.to_s
+         logger.debug @x1Axis.inspect.to_s
              
          format.html { render :html => @result }
 	 format.xml  { render :xml => @output }
@@ -407,9 +455,13 @@ DIRECTORY = "public/calibration_data/"
 
  #rounding up the theta and J function values.
   def round_up(object)
-     object = object.map do  |x|      
+      if object.kind_of? Array 
+         object = object.map do  |x|      
               (x*200).round / 200.0
               end
+      else
+         object = (object*200).round / 200.0
+      end
    return object
   end
 
@@ -464,7 +516,22 @@ DIRECTORY = "public/calibration_data/"
   end
 
 
+ def calLineOfFit(theta0, theta1, x1=[], theta2=nil, x2=[], theta3=nil, x3=[])  
+     	line = []
 
+
+	     if theta2.nil? && theta3.nil?
+               x1.collect { |i| line.push(theta0+(theta1*i.to_f))  }
+                                
+	    # elsif !theta2.nil? && theta3.nil?
+	#	line.push(theta0 + ( theta1 * x1 ) + ( theta2 * x2 ))
+	 #    else
+	#	line.push(theta0 + ( theta1 * x1 ) + ( theta2 * x2 ) + ( theta3 * x3 ))
+	     end
+     return line
+ end
+
+ 
 
 
 end

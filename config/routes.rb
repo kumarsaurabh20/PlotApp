@@ -1,5 +1,8 @@
 PlotApp::Application.routes.draw do
 
+  resources :uploads
+
+
   resources :plots
   #match ':controller/:action/:id'
   #match ':controller/:action/:id.:format'
@@ -54,7 +57,7 @@ PlotApp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+   root :to => "uploads#index"
 
   # See how all your routes lay out with "rake routes"
 

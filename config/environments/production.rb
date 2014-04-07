@@ -46,4 +46,15 @@ PlotApp::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  #compress javascript and css
+  config.assets.compress = true
+
+  #Don't fall back to asset pipeline is a precompiled asset is missed
+  config.assets.compile = false
+
+  #generate digests for assets URLs
+  config.assets.digest = true
+
+
 end

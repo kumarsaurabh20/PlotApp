@@ -1,5 +1,24 @@
-
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<div id="mains">
+<table>
+<tr>
+<td>
+<table style="width:600px; height:200px;border:6px outset white;background:#0000FF;
+    color:white;">
+  <tr>
+    <th>Cell count</th>
+    <th>Normalized Signal Intensity</th>
+  </tr>
+
+<% for i in 0..@yAxis.length - 1 %>
+<tr><td style="text-align:center;"><%= @yAxis[i] %></td><td style="text-align:center;"><%= @x1Axis[i] %></td></tr>
+<% end %>
+</table>
+</td>
+</table>
+</div>
+
 <div id="container">
 <input type="button" value="Get the scatter plot" id="firstChart" /><br />
 <div id="myFirstChart" style="position:relative;margin:0 auto;"></div>
@@ -53,22 +72,36 @@ function drawJfunctionChart() {
 function drawOriScatterChartUnivariate() {
 
           var data = new google.visualization.arrayToDataTable([
-           [  'Cell Count', 'Signal Intensity' ], 
-           <% @raw_data_mod.each do |x| %>
-       
-	   [ <%= x %> ], 
-	   <% end %>
-	   [ <%= @raw_data_mod.last %> ]
+          
+         ['Signal intensity', 'cell count', 'Predicted Values'], 
+           <% for i in 0..@yAxis.length - 1 %>
+         [<%= @yAxis[i] %>, <%= @x1Axis[i] %>, <%= @lineOfFit[i] %>],
+         <% end %>
+	 [<%= @yAxis.last %>, <%= @x1Axis.last %>, <%= @lineOfFit.last %>]
+]);
 
-         ]);
-         
-
-         var options = {
+        var options = {
                   title: 'Signal Intensity Vs Cell Count'
                   ,width:1250
                   ,height:300
                   ,backgroundColor: { fill:'transparent' }
-               };
+
+                  ,hAxis: {
+                    title: 'Cell Count'
+                   }
+                 ,vAxis: {
+                   title: 'Signal Intensity'
+                   }
+                 ,series: {
+        // series 0 is the Scatter
+        // series 1 is the Line
+        1: {
+            lineWidth: 1,
+            pointSize: 1
+
+        }
+    }
+ };
 
          var chart = new google.visualization.ScatterChart(document.getElementById('myFirstChart'));
              chart.draw(data, options);
