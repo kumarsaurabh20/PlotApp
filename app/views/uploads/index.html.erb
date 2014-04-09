@@ -60,7 +60,7 @@
 		<tr>
 			<td colspan="2" class="table-placment">
 				<div>
-				<%= f.submit "Upload" %>
+				<%= f.submit "Upload", :id => "upload"  %>
 				<% end %>
 
 				<% if flash[:notice] %>
@@ -77,6 +77,11 @@
 
 <div class="hide-div">
 <fieldset class="field-set"><legend>Selection of probes for normalization</legend>
+
+<% if @probe_list %>
+<%= options_for_select(@probe_list, selected=nil)%>
+<% end %>
+
 </fieldset>
 </div>
 
@@ -95,8 +100,14 @@
 <script type="text/javascript">
 (function() {
 
-var notice = $('#notice');
-if ( notice.text().length > 0 ) { notice.delay(3000).fadeOut('slow'); }
+$('#upload').on('click', function() {
+     $('fieldset').removeClass('field-set-alternate').addClass('field-set');
+     $('legend').removeClass('hide-div').addClass('show-div');
+     $('div').removeClass('hide-div').addClass('show-div');
+
+    var notice = $('#notice');
+    if ( notice.text().length > 0 ) { notice.delay(3000).fadeOut('slow'); }
+});
 
 })();
 </script>

@@ -18,8 +18,6 @@ class UploadsController < ApplicationController
  def create
   @upload = Upload.new(params[:upload]) 
 
-
-  @calib_data, @inten_data = [], []
 #DIRECTORY = "public/"
 #this returns dynamic constant assignment error means  each time you run the method you are assigning  #a new value to the constant. This is not allowed, as it makes the constant non-constant; even though #the contents of the string are the same (for the moment, anyhow), the actual string object itself is #different each time the method is called. 
 
@@ -29,20 +27,23 @@ class UploadsController < ApplicationController
 
   name_calib = io_calib.original_filename
   name_inten = io_inten.original_filename
-  @calib_path = File.join(directory, "calibs", name_calib)
-  @inten_path = File.join(directory, "intens", name_inten)
+  calib_path = File.join(directory, "calibs", name_calib)
+  inten_path = File.join(directory, "intens", name_inten)
 
     respond_to do |format|
       if @upload.save
-        @calib_data, @calib_data_transpose = import(@calib_path)
-        @inten_data = import_ori(@inten_path)
+        calib_data, calib_data_transpose = import(calib_path)
+        inten_data = import_ori(inten_path)
         #logger.debug @calib_data.to_s
         #logger.debug @inten_data.to_s
         #logger.debug @calib_data_transpose.to_s
 
+        @probe_list = calib_data_transpose[0]
+        logger.debug @probe_list.to_s
+
         flash[:notice] = "Files were successfully uploaded!!"
         format.html { redirect_to uploads_url }
-        format.json { render json: @upload, status: :created, location: @upload }
+        #format.json { render json: @upload, status: :created, location: @upload }
       else
         flash[:notice] = "Error in uploading!!"
         format.html { render action: "index" }
@@ -65,18 +66,6 @@ class UploadsController < ApplicationController
      array.shift
      return array
  end
-
-
-
-
-
-
-
-
-
-
-
-
 
  def download_sample_calib_file	
         cols = ["Probes", "Intensity with 1ng", "Intensity with 5ng", "Intensity with 50ng", "Intensity with 100ng"]
