@@ -1,0 +1,14 @@
+<%= render 'form' %>
+
+<%= render 'nextform' %>
+
+<% if flash[:notice] %>
+<div class="notice round new-notice" id="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<script type="text/javascript">
+
+    var notice = $('#notice');
+    if ( notice.text().length > 0 ) { notice.delay(3000).fadeOut('slow'); }
+
+</script>
