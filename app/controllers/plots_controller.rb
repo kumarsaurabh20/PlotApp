@@ -1,9 +1,5 @@
 class PlotsController < ApplicationController
 
-require 'rubygems'
-require 'rinruby'
-require 'paperclip'
-
 DIRECTORY = "public/calibration_data/"
 
   def index
@@ -191,12 +187,6 @@ DIRECTORY = "public/calibration_data/"
 	      end                       
                    
         end
-      
-       #if !@x3.empty?
-	#   @x3 = @x3.map do |obj|
-	#	 obj.delete ","
-	 #  end
-       #end
 
        @raw_data_mod = check_file_return_mod(@raw_data) 
        @result_array =  multivariate_three_x(@y, @x1, @x2, @x3)
