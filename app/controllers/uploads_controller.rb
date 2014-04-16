@@ -54,19 +54,21 @@ def normalize
      data = params['data'].split(',') 
      
 
-     columns = Array.new
+     R.eval "columns <- matrix()"
      
      for i in 0..@calib_data_transpose.length - 1
-       columns.push(@calib_data_transpose[i]) 
+         if i == 0
+            R.eval "columns <- #{@calib_data_transpose[i]}"
+         else
+            R.eval "columns <- cbind(columns, #{@calib_data_transpose[i]})"
+         end
      end
-
-     R.assign "columns", columns
     
      R.assign "cells", @inten_data
      R.assign "probes", data
      R.eval <<-EOF
 
-
+     
 table <- data.frame()
 for (i in c(1:length(columns))) {table <- data.frame(columns[i], table)}
 
