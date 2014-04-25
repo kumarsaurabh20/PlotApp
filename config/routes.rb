@@ -1,5 +1,6 @@
 PlotApp::Application.routes.draw do
 
+  resources :predicts
   resources :uploads
 
 

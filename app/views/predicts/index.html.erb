@@ -1,0 +1,21 @@
+<h1>Listing predicts</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @predicts.each do |predict| %>
+  <tr>
+    <td><%= link_to 'Show', predict %></td>
+    <td><%= link_to 'Edit', edit_predict_path(predict) %></td>
+    <td><%= link_to 'Destroy', predict, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Predict', new_predict_path %>
