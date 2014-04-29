@@ -35,9 +35,16 @@ class UploadsController < ApplicationController
       if @upload.save
         @calib_data, @calib_data_transpose, @cell_counts = import(calib_path)
         @calib_probe = import_ori(inten_path)
+        logger.debug @calib_data.to_s 
+        logger.debug @calib_data_transpose.to_s
+        logger.debug @cell_counts.to_s        
+
         #probe list of the uploaded file
         @probe_list = calib_data_transpose[0]
-        #logger.debug @probe_list.to_s
+        logger.debug @probe_list.to_s
+
+        logger.debug @calib_probe.to_s
+        
         flash[:notice] = "Files were successfully uploaded!!"
         format.html
         #format.js #{ render json: @upload, status: :created, location: @upload }
@@ -51,14 +58,58 @@ class UploadsController < ApplicationController
 
  #method recieving Ajax request from the view posting selected probes for normalization
 def normalize
-     @data = params['data'].split(',') 
-     logger.debug @data.to_s
 
-     respond_to do |format|
-     format.html { render action: "normalize" }
-     format.json { render json: @data.errors, status: :unprocessable_entity }
-     end
- end
+#I cant access some instance variables from create actions for passing uploaded file data.
+#http://billpatrianakos.me/blog/2013/10/14/api-sessions-with-redis-in-rails/
+# https://www.ruby-forum.com/topic/4289725
+#Instance variables in Rails controllers are only shared for a request -response cycle. Ie, you cannot access variables set in the show action from the onepage action. You will need to reinitialise them. If you want to keep things DRY, put it in a before filter.
+#eg:
+#class onepages_controller
+#  before_filter :filter_name
+#  def show
+#    render 'onepages/onepage'
+#  end
+#
+#  def onepage
+#
+#  // have to access show method variables
+#  end
+#
+#  protected
+#
+#  def filter_name
+#    @name = "name1"
+#  end
+#
+#end
+#You will now have @name in both show and onepage.
+
+# To use above code I need to store file path some where. Global variable is not recommended, so I need to store path either in the data base or need to use session/cookies. So search also showed me the possibility of using Redis. check out the following links:
+#http://blog.bigbinary.com/2013/03/19/cookies-on-rails.html
+#http://billpatrianakos.me/blog/2013/10/14/api-sessions-with-redis-in-rails/
+#http://dev.housetrip.com/2014/01/14/session-store-and-security/
+#http://wonko.com/post/why-you-probably-shouldnt-use-cookies-to-store-session-data
+#what if user disable the cookies... rails can not use sessions without cookie
+#http://stackoverflow.com/questions/7267381/storing-data-if-cookies-are-disabled-in-browser
+#saving path in database looks feasible to me but some concerns in case of Restful APIs
+#http://www.tutorialspoint.com/ruby-on-rails/rails-session-cookies.htm
+#http://stevenyue.com/2013/07/04/sharing-sessions-and-authentication-between-rails-and-node-js-using-redis/
+#http://pothibo.com/2013/09/sessions-and-cookies-in-ruby-on-rails/
+#what we can do is create a hidden field in the create view with the saving file ID..and pass that ID along with probe names via AJAx and then in normalize method retrieve the id and file names from the database and perform the opperations. 
+
+#answer to this:
+#http://stackoverflow.com/questions/19526205/instance-variables-through-methods-in-ruby-on-rails
+
+     @data = params['data'].split(',')
+ 
+     logger.debug @data.to_s
+     logger.debug @calib_data.to_s
+     logger.debug @calib_data_transpose.to_s
+     logger.debug @cell_counts	.to_s
+
+     
+     render action: "normalize" 
+
 #===============================================================================================
 #=============================================AJAX ERROR========================================
 #===============================================================================================
@@ -67,6 +118,9 @@ def normalize
 #  * "/home/jarvis/PlotApp/app/views"
 #):
 #===============================================================================================
+
+     
+ end
 
 
 
