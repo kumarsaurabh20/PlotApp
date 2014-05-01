@@ -1,17 +1,12 @@
-<div class="show-div">
-<fieldset class="field-set round"><legend>Download model Coeffecients file</legend>
-
-
-</fieldset>
-</div>
-
 <div class="ajaxResponce">
 
-<% if @probe_list %>
-<% for i in 0..@probe_list.length - 1 %>
-<label><b><i><%= @probe_list[i] %></i></b></label>
-<% end %>
+<div>
+<% if @norm_val %>
+
+<label><b><i><%= @norm_val.to_s %></i></b></label>
+
 </div>
 <% end %>
+
 
 </div>

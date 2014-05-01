@@ -44,6 +44,8 @@ class UploadsController < ApplicationController
 
 #method recieving Ajax request from the view posting selected probes for normalization
 def normalize
+     #logger.debug @cell_counts.to_s
+
      #ajax request; filter out id from rest of the array/ajax request
      @data = params['data'].split(',') 
      id = @data.shift
@@ -57,7 +59,92 @@ def normalize
 
      #probe list of the uploaded file
      @probe_list = calib_data_transpose[0]
-    
+
+     count = 0
+     for i in 1..@calib_data_transpose.count
+         R.assign "col#{i}", @calib_data_transpose[i-1] 
+         count = count + 1 
+     end
+
+     cells = @cell_counts.map {|e| e.to_i}
+
+     R.assign "cell_count", cells
+     R.assign "calib_probes", @calib_probe
+     R.assign "probes", @probe_list
+     R.assign "norm_probes", @data
+     R.assign "count", count
+
+
+	cell = R.cell_count
+	calib_probe = R.calib_probes
+	prober = R.probes
+	norm_prober = R.norm_probes
+	counter = R.count
+	col_1 = R.col1
+	col_2 = R.col2
+	col_3 = R.col3
+	col_4 = R.col4
+	col_5 = R.col5
+
+	logger.debug cell.to_s
+	logger.debug calib_probe.to_s
+	logger.debug prober.to_s
+	logger.debug norm_prober.to_s
+	logger.debug counter
+	logger.debug col_1.to_s
+	logger.debug col_2.to_s
+	logger.debug col_3.to_s
+	logger.debug col_4.to_s
+	logger.debug col_5.to_s
+
+     R.eval <<-EOF
+
+     columns <- matrix(0, nrow(probes), count)
+
+     for (i in c(1:length(count))) {
+         if (i==1) {columns <- cbind(get(paste0("col",i)))
+             } else { columns <- cbind(columns, get(paste0("col",i)))
+           }    
+      }
+     
+	norm_val <- matrix(0, length(norm_probes), ncol(columns) - 1)
+
+	col.name <- colnames(columns)
+	col.name <- col.name[-1]
+  
+  for (i in c(1:length(norm_probes))) {
+  norm_val[i,] <- subset(columns, columns[, 1] == norm_probes[i], select = col.name)
+  }
+  
+  	column_filter <- columns[, -1]
+  	col <- ncol(column_filter)
+  	row <- nrow(column_filter)
+  	tab.norm.1 <- matrix(0, row,col)
+  	t.tab.norm.1 <- matrix(0, col,row)
+  	tab.norm.2 <- matrix(0, row,col)
+  	t.tab.norm.2 <- matrix(0, col,row)
+  	tab.norm.3 <- matrix(0, row,col)
+  	t.tab.norm.3 <- matrix(0, col,row)
+  	tab.norm.4 <- matrix(0, row,col)
+  	t.tab.norm.4 <- matrix(0, col,row)
+  	tab.norm.5 <- matrix(0, row,col)
+  	t.tab.norm.5 <- matrix(0, col,row)
+  	tab.norm.6 <- matrix(0, row,col)
+  	t.tab.norm.6 <- matrix(0, col,row)
+  	myData <- list()
+
+ 
+EOF
+     @norm_val = []
+     val1 = R.pull "norm_val[1,]"
+     val2 = R.pull "norm_val[2,]"
+
+     @norm_val.push(val1)
+     @norm_val.push(val2)
+     
+     
+
+        
      respond_to do |format|
      format.html { render "normalize" }
      format.js     
@@ -152,3 +239,26 @@ def normalize
 
  
 end
+
+
+#cell = R.cell_count
+#calib_probe = R.calib_probes
+#prober = R.probes
+#norm_prober = R.norm_probes
+#counter = R.count
+#col_1 = R.col1
+#col_2 = R.col2
+#col_3 = R.col3
+#col_4 = R.col4
+#col_5 = R.col5
+#
+#logger.debug cell.to_s
+#logger.debug calib_probe.to_s
+#logger.debug prober.to_s
+#logger.debug norm_prober.to_s
+#logger.debug counter
+#logger.debug col_1.to_s
+#logger.debug col_2.to_s
+#logger.debug col_3.to_s
+#logger.debug col_4.to_s
+#logger.debug col_5.to_s
