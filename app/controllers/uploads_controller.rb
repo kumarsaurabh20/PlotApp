@@ -99,41 +99,23 @@ def normalize
 
      R.eval <<-EOF
 
-     columns <- matrix(0, nrow(probes), count)
+    columns <- matrix(0, length(probes), count)
 
-     for (i in c(1:length(count))) {
-         if (i==1) {columns <- cbind(get(paste0("col",i)))
-             } else { columns <- cbind(columns, get(paste0("col",i)))
-           }    
-      }
+     for (i in c(1:count)) {
+         if (i == 1) { columns <- cbind(get(paste0("col",i))) } 
+         else { columns <- cbind(columns, get(paste0("col",i))) }    
+         }
      
 	norm_val <- matrix(0, length(norm_probes), ncol(columns) - 1)
 
-	col.name <- colnames(columns)
-	col.name <- col.name[-1]
-  
-  for (i in c(1:length(norm_probes))) {
-  norm_val[i,] <- subset(columns, columns[, 1] == norm_probes[i], select = col.name)
-  }
-  
-  	column_filter <- columns[, -1]
-  	col <- ncol(column_filter)
-  	row <- nrow(column_filter)
-  	tab.norm.1 <- matrix(0, row,col)
-  	t.tab.norm.1 <- matrix(0, col,row)
-  	tab.norm.2 <- matrix(0, row,col)
-  	t.tab.norm.2 <- matrix(0, col,row)
-  	tab.norm.3 <- matrix(0, row,col)
-  	t.tab.norm.3 <- matrix(0, col,row)
-  	tab.norm.4 <- matrix(0, row,col)
-  	t.tab.norm.4 <- matrix(0, col,row)
-  	tab.norm.5 <- matrix(0, row,col)
-  	t.tab.norm.5 <- matrix(0, col,row)
-  	tab.norm.6 <- matrix(0, row,col)
-  	t.tab.norm.6 <- matrix(0, col,row)
-  	myData <- list()
+        for (i in 1:length(norm_probes)) {
+        dummy <- columns[norm_probes[i] == columns[,1],]
+        print(dummy)
+        dummy <- dummy[-1]
+        print(dummy)
+        norm_val[i,] <- dummy
+        }
 
- 
 EOF
      @norm_val = []
      val1 = R.pull "norm_val[1,]"
