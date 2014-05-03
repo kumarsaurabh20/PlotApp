@@ -5,6 +5,8 @@ require 'rubygems'
 require 'csv'
 require 'rinruby'
 require 'paperclip'
+require 'matrix'
+require 'fileutils'
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.

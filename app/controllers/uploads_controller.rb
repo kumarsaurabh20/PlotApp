@@ -1,6 +1,9 @@
 class UploadsController < ApplicationController
 
- attr_accessor :calib_data, :calib_data_transpose, :calib_probe, :probe_list, :cell_counts, :id
+
+ attr_accessor :calib_data, :calib_data_transpose, :calib_probe, :probe_list, :cell_counts, :id, :result
+
+
   # GET /uploads
   # GET /uploads.json
   def index
@@ -60,20 +63,24 @@ def normalize
      #probe list of the uploaded file
      @probe_list = calib_data_transpose[0]
 
+     #assign col values to R. Column number is variable here and not fixed in the calibration file
      count = 0
      for i in 1..@calib_data_transpose.count
          R.assign "col#{i}", @calib_data_transpose[i-1] 
          count = count + 1 
      end
 
+     #map the cells to integer values
      cells = @cell_counts.map {|e| e.to_i}
 
+     #assign variables to R from Rails
      R.assign "cells", cells
      R.assign "calib_probes", @calib_probe
      R.assign "probes", @probe_list
      R.assign "norm_probes", @data
      R.assign "count", count
 
+     #Block of R code to be executed
      R.eval <<-EOF
 
      columns <- matrix(0, length(probes), count)
@@ -185,8 +192,37 @@ calLinMod <- function(x) {
 
 EOF
 
+  #pull the resultant coeffecients matris
   @result = R.pull "result_matrix"	
-        
+ 
+     #export a csv file containing coeffecients and keep it in public folder.
+     
+     #provide a name to the file having individual calibration ID
+     namefile = Time.now.strftime("%Y%m%d%H%M%S_") + "coeffs_file" + "_" + id + ".csv"
+    
+     #create a coeff directory in public folder of rails 
+     coeff_path = "#{Rails.root}/public/coeffs"
+     Dir.mkdir(coeff_path) unless File.directory?(coeff_path)
+ 
+     #create a file path
+     path = File.join(coeff_path, namefile)
+
+     #remove all previous csv coeffecients files
+     #user have to caluclate coeffecients multiple times before performing prediction so its good
+     #to delete all previous coeffs file and deal with the present
+     FileUtils.rm_rf(Dir.glob('coeff_path/*.csv')) unless !Dir["#{Rails.root}/public/coeffs/*"].empty?
+  
+     #call CSV class and open a new csv file 
+     CSV.open(path, 'wb') do |csv|
+         #use matrix class of ruby and check the row size of returned matrix.
+         row_count = @result.row_size
+         for i in 0..row_count         
+         #extract individual row of matrix as vector and convert it to array and push it to csv line
+		 csv << @result.row(i).to_a
+	     end
+     end
+
+      
      respond_to do |format|
      format.html { render "normalize" }
      format.js     
@@ -244,32 +280,22 @@ EOF
 
  #send a sample calibration file to the user
  def download_sample_calib_file	
-        cols = ["Probes", "Intensity with 1ng", "Intensity with 5ng", "Intensity with 50ng", "Intensity with 100ng"]
-        row1 = ["cell counts","270","1351","6757","27027"]
-        row2 = ["EukS_1209_25_dT","4102788.91290624","1.68E+07","2.62E+08","5.41E+08"]
-	row3 = ["Test15 (EukS_1209_25dT)","3242670.65825","1.99E+07","3.92E+08","3.73E+08"]
-	row4 = ["EukS_328_25_dT","4564828.4446875","2.18E+07","4.40E+08","6.77E+08"]
-	row5 = ["DinoB_25_dT","7269595.08139062","3.56E+07","4.00E+08","6.06E+08"]
+     temp = [["Probes", "Intensity with 1ng", "Intensity with 5ng", "Intensity with 50ng", "Intensity with 100ng"], ["cell counts","270","1351","6757","27027"], ["EukS_1209_25_dT","4102788.91290624","1.68E+07","2.62E+08","5.41E+08"], ["Test15 (EukS_1209_25dT)","3242670.65825","1.99E+07","3.92E+08","3.73E+08"],["EukS_328_25_dT","4564828.4446875","2.18E+07","4.40E+08","6.77E+08"], ["DinoB_25_dT","7269595.08139062","3.56E+07","4.00E+08","6.06E+08"]]
 
-        send_file("sample_calibration_file", cols,row1, row2, row3, row4, row5)   
+     send_file("sample_calibration_file", temp)   
  end
 
  #send a sample calibration probe file to the user
  def download_sample_probe_list
-      header = ["Probes for calibration"]
-      row1 = ["EukS_1209_25_dT"]
-      row2 = ["EukS_328_25_dT"]
-      row3 = ["DinoB_25_dT"]
-      row4 = ["Test15 (EukS_1209_25dT)"]
-
-      send_file("sample_probe_list", header,row1, row2, row3, row4)
+ temp = [["Probes for calibration"], ["EukS_1209_25_dT"], ["EukS_328_25_dT"], ["DinoB_25_dT"], ["Test1 (EukS_1209_25dT)"]]
+ send_file("sample_probe_list", temp)
  end
 
  #Parent method for sending the sample files to the user.
- def send_file(file_name, *args)
-     data = args.join(',').split(',')
+ def send_file(file_name, arg=[])
+     #data = args.join(',').split(',')
      file = CSV.generate do |line|
-        args.each do |element|
+        arg.each do |element|
         line << element
         end
      end
@@ -281,26 +307,3 @@ EOF
 
  
 end
-
-
-#cell = R.cell_count
-#calib_probe = R.calib_probes
-#prober = R.probes
-#norm_prober = R.norm_probes
-#counter = R.count
-#col_1 = R.col1
-#col_2 = R.col2
-#col_3 = R.col3
-#col_4 = R.col4
-#col_5 = R.col5
-#
-#logger.debug cell.to_s
-#logger.debug calib_probe.to_s
-#logger.debug prober.to_s
-#logger.debug norm_prober.to_s
-#logger.debug counter
-#logger.debug col_1.to_s
-#logger.debug col_2.to_s
-#logger.debug col_3.to_s
-#logger.debug col_4.to_s
-#logger.debug col_5.to_s
