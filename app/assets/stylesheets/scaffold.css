@@ -181,12 +181,14 @@ blockquote {font-style: italic;padding: 0 3em;}
 /*==============================================*/
 .multiselect {width:95%;height:20em;overflow:auto;margin:0 auto;}
 .multiselect label {display:block;}
-.multiselect-on {color:#ffffff;background-color:#000099;}
+.multiselect-on {color:#ffffff;background-color:#888888;}
 .buttonHolder { text-align:center; }
 .home {float:left;}
 .mainBlock H2, H5 {display:inline-block;}
 /*Footer*/
 .span{float:left;width:200px;clear:left;}
+
+.upload { position: absolute;top:50%;left:50%;margin-top: -50px;margin-left: -50px;width: 100px;height: 100px; }​
 .span2{float:right;width:200px;}
 hr {display: block; height: 2px;border: 1; border-top: 2px solid white;margin: 1em 0; padding: 0;}
 

@@ -27,6 +27,12 @@ module ApplicationHelper
     image_tag("uaqua1_logo2.png", :alt => "S2C", :class => "round", :size => "100x75")
   end
 
+ def uploadLogo
+
+     image_tag("upload.gif", :alt => "upload", :class => "round", :size => "150x150")
+
+ end
+
  #LOGO
   def appUnicamLogo
     image_tag("unicamit.jpg", :alt => "S2C", :class => "round", :size => "100x75")

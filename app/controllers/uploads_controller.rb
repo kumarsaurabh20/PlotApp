@@ -120,7 +120,7 @@ def normalize
   if (length(norm_probes) == 2) {
 	for(i in c(1:ncol(norm_val))) {tab_norm_1[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[1,i])}))}
 	for(i in c(1:ncol(norm_val))) {tab_norm_2[,i] <- unlist(lapply(as.numeric(column_filter[,i]), function(x) {x/as.numeric(norm_val[2,i])}))}
-t_tab_norm.1 <- t(tab_norm_1)
+t_tab_norm_1 <- t(tab_norm_1)
 t_tab_norm_2 <- t(tab_norm_2)
 for (i in c(1:ncol(t_tab_norm_1))) {myData[[i]] <- cbind(cells, t_tab_norm_1[,i], t_tab_norm_2[,i])}
 } else if (length(norm_probes) == 3) {
@@ -190,10 +190,27 @@ calLinMod <- function(x) {
  probe_list <- columns[, 1]
  result_matrix <- cbind(probe_list, coeffs_matrix)
 
+ selectProbeFromList <- function(result_matrix, calib_probes) {
+
+ commonProbesInTwoResults <- intersect(as.vector(result_matrix[,1]), calib_probes)
+ selectedProbesFromGpr <- matrix(0, length(commonProbesInTwoResults), ncol(result_matrix))
+  
+  for (i in c(1:length(commonProbesInTwoResults))) {
+  selectedProbesFromGpr[i,] <- subset(result_matrix, commonProbesInTwoResults[i] == result_matrix[ , 1])
+  }
+
+return(selectedProbesFromGpr)
+
+}
+
+ results <- selectProbeFromList(result_matrix, calib_probes)
+
+
+
 EOF
 
   #pull the resultant coeffecients matris
-  @result = R.pull "result_matrix"	
+  @result = R.pull "results"	
  
      #export a csv file containing coeffecients and keep it in public folder.
      

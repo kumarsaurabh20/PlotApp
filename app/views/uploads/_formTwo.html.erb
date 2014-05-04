@@ -71,14 +71,15 @@ function sendProbeListToServer(){
                type: 'POST',
                data: {data:data},
                dataType: 'script',
-               success: function(response) { console.log("AJAX Successfully posted the probe list!!!"); }
+               success: function() {$('#preloader').hide();}
 
             });
 
       
   }
 
- $('#normalize').click(function () { sendProbeListToServer();});
+ $('#normalize').click(function () { sendProbeListToServer();
+                                     $('#preloader').show(); });
 
 
 
