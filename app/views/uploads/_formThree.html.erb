@@ -38,7 +38,7 @@
 </div>
 
 <div>
-<a id="downloadCoeffs" download="Coeffecients file" href="<%= '/download_coeffs' %>" onclick="downloadCoeffsFile(); return false;">Export coeffs table as CSV</a>
+<a href="<%= '/download_coeffs' %>"><b><i><u>Export coeffecients table as CSV</u></i></b></a>
 </div>
 
 <div id="preloader2" style="display:none;" class="upload">
@@ -46,29 +46,5 @@
 </div>
 
 <script>
-
 $('#upload').dataTable();
-
-
-//add a code for ajax request to download coeffecients file
-function downloadCoeffsFile(){
-          id = $('#hiddenTwo').val();
-          console.log(id);
-          var result = "";
-
-     $.ajax({
-	     url: '<%= url_for :controller => "uploads", :action => "download_coeffs" %>',
-             type: 'POST',
-	     data: {data:id},
-	     dataType: 'string',
-             async: false,
-             success : function(response) { result = response;}
-         }); 
-
-    window.open('data:text/csv;charset=utf-8,' + escape(result));
-
-      
-  }    
-
-
 </script>

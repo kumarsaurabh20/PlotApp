@@ -235,13 +235,13 @@ EOF
      #user have to caluclate coeffecients multiple times before performing prediction so its good
      #to delete all previous coeffs file and deal with the present
      #FileUtils.chmod 0777, root_coeffs, :verbose => true
-     if !Dir['#{root_coeffs}/*'].empty?
-        FileUtils.rm_rf Dir.glob('#{root_coeffs}/*')
-     else
-        #create a coeff directory in public folder of rails 
-        coeff_path = "#{Rails.root}/public/coeffs"
-        Dir.mkdir(coeff_path) unless File.directory?(coeff_path)
-     end
+     
+     FileUtils.remove_dir "#{Rails.root}/public/coeffs", true
+     
+     #create a coeff directory in public folder of rails 
+     coeff_path = "#{Rails.root}/public/coeffs"
+     Dir.mkdir(coeff_path) unless File.directory?(coeff_path)
+    
      #create a file path
      path = File.join(coeff_path, namefile)
 
@@ -265,16 +265,10 @@ EOF
  end
 
  #method to download coeffs file in ajax request from the link
- def download_coeffs
-     id = params[:data]
-     #logger.debug id
-     #file = Dir.glob('/home/jarvis/PlotApp/public/coeffs/*#{id}.csv')[0].to_s
-     #logger.debug file
-     #file_path = '/home/jarvis/PlotApp/public/coeffs/20140505000004_coeffs_file_103.csv'
-     #logger.debug file_path
-     #send_file(file_path, 
-     #  :type => 'text/csv;charset=utf-8;header=present', 
-     #  :disposition => "attachment;")
+ def download_coeffs     
+    file =  Dir.glob("#{Rails.root}/public/coeffs/*.csv")[0].to_s
+    logger.debug file
+    send_file(file)
  end
 
 
@@ -329,17 +323,17 @@ EOF
  def download_sample_calib_file	
      temp = [["Probes", "Intensity with 1ng", "Intensity with 5ng", "Intensity with 50ng", "Intensity with 100ng"], ["cell counts","270","1351","6757","27027"], ["EukS_1209_25_dT","4102788.91290624","1.68E+07","2.62E+08","5.41E+08"], ["Test15 (EukS_1209_25dT)","3242670.65825","1.99E+07","3.92E+08","3.73E+08"],["EukS_328_25_dT","4564828.4446875","2.18E+07","4.40E+08","6.77E+08"], ["DinoB_25_dT","7269595.08139062","3.56E+07","4.00E+08","6.06E+08"]]
 
-     send_file("sample_calibration_file", temp)   
+     send_sample_file("sample_calibration_file", temp)   
  end
 
  #send a sample calibration probe file to the user
  def download_sample_probe_list
  temp = [["Probes for calibration"], ["EukS_1209_25_dT"], ["EukS_328_25_dT"], ["DinoB_25_dT"], ["Test1 (EukS_1209_25dT)"]]
- send_file("sample_probe_list", temp)
+ send_sample_file("sample_probe_list", temp)
  end
 
  #Parent method for sending the sample files to the user.
- def send_file(file_name, arg=[])
+ def send_sample_file(file_name, arg=[])
      #data = args.join(',').split(',')
      file = CSV.generate do |line|
         arg.each do |element|
