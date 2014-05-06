@@ -19,8 +19,11 @@ class PredictsController < ApplicationController
 
     respond_to do |format|
       if @predict.save
-        format.html { redirect_to @predict, notice: 'Predict was successfully created.' }
-        format.json { render json: @predict, status: :created, location: @predict }
+      
+
+
+        flash[:notice] = "Files were successfully uploaded!!"
+        format.html { render "calculate" }
       else
         format.html { render action: "new" }
         format.json { render json: @predict.errors, status: :unprocessable_entity }
@@ -63,7 +66,7 @@ class PredictsController < ApplicationController
      array = import_ori(file_path)
      array_splitted = array.map {|a| a.split(",")} 
      array_transpose = array_splitted.transpose
-     return array_splitted, array_transpose, cell_counts
+     return array_splitted, array_transpose
  end
  
  #method for parsing calibration probe data
