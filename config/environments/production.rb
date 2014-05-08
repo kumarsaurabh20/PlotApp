@@ -29,7 +29,7 @@ PlotApp::Application.configure do
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_assets = true
+  config.serve_static_assets = false
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -50,7 +50,7 @@ PlotApp::Application.configure do
   #compress javascript and css
   config.assets.compress = true
 
-  #Don't fall back to asset pipeline is a precompiled asset is missed
+  #Don't fall back to asset pipeline if a precompiled asset is missed
   config.assets.compile = false
 
   #generate digests for assets URLs

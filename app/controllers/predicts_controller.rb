@@ -1,5 +1,7 @@
 class PredictsController < ApplicationController
 
+require 'matrix'
+
 attr_accessor :raw_inten_transpose, :coeffs_transpose, :probe_list, :id, :data
 
   # GET /predicts

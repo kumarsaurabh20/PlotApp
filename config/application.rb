@@ -4,9 +4,10 @@ require 'rails/all'
 require 'rubygems'
 require 'csv'
 require 'rinruby'
-require 'paperclip'
-require 'matrix'
-require 'fileutils'
+require 'uglifier'
+require 'sass'
+#require 'paperclip'
+#require 'fileutils'
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -34,6 +35,9 @@ module PlotApp
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = false
+
+    #including scaffold.css in precompiling assets
+    config.assets.precompile += ['scaffold.css']
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
