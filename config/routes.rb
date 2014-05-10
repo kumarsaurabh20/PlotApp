@@ -3,11 +3,28 @@ PlotApp::Application.routes.draw do
   resources :predicts
   resources :uploads
 
+  root :to => "uploads#index"
 
-  resources :plots
+  match '/sample_calib_file' => 'uploads#download_sample_calib_file'
+  match '/sample_probe_list' => 'uploads#download_sample_probe_list'
+  match '/normalize' => 'uploads#normalize'
+  match '/download_coeffs' => 'uploads#download_coeffs'
+  match '/calculate' => 'predicts#calculate'
+  match '/download_cell_counts' => 'predicts#download_cell_counts'
+
+  namespace :api do
+
+  #.../api/...
+
+  end
+
+
+
+
+  #resources :plots
   #match ':controller/:action/:id'
   #match ':controller/:action/:id.:format'
-  match '/get_coefficients.xml' => 'plots#cal_s2c'
+  #match '/get_coefficients.xml' => 'plots#cal_s2c'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -58,7 +75,6 @@ PlotApp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => "uploads#index"
 
   # See how all your routes lay out with "rake routes"
 
@@ -66,11 +82,6 @@ PlotApp::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 
-  match '/sample_calib_file' => 'uploads#download_sample_calib_file'
-  match '/sample_probe_list' => 'uploads#download_sample_probe_list'
-  match '/normalize' => 'uploads#normalize'
-  match '/download_coeffs' => 'uploads#download_coeffs'
-  match '/calculate' => 'predicts#calculate'
-  match '/download_cell_counts' => 'predicts#download_cell_counts'
+  
 
 end
