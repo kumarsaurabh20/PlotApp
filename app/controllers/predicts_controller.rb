@@ -1,6 +1,7 @@
 class PredictsController < ApplicationController
 
 require 'matrix'
+require 'csv'
 
 attr_accessor :raw_inten_transpose, :coeffs_transpose, :probe_list, :id, :data
 

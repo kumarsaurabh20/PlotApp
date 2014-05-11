@@ -1,13 +1,15 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-require 'rubygems'
-require 'csv'
-require 'rinruby'
-require 'uglifier'
-require 'sass'
+
+#require 'rubygems'
+#require 'csv'
+#require 'rinruby'
+#require 'uglifier'
+#require 'sass'
 #require 'paperclip'
 #require 'fileutils'
+
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.

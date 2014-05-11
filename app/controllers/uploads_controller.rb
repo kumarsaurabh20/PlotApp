@@ -1,6 +1,7 @@
 class UploadsController < ApplicationController
 
 require 'matrix'
+require 'csv'
 
 attr_accessor :calib_data, :calib_data_transpose, :calib_probe, :probe_list, :cell_counts, :id, :result
 
