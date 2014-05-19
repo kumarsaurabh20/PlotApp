@@ -233,10 +233,24 @@ EOF
  #method for parsing calibration data
  #check why its not working with the condition!!! Try to refactor import methods again
  def import(file_path)
-     array = import_ori(file_path)
-     array_splitted = array.map {|a| a.split(",")} 
-     array_transpose = array_splitted.transpose
-     return array_transpose
+
+     accepted_formats = [".csv"]
+     begin
+	     if accepted_formats.include? File.extname(file_path)
+		     array = import_ori(file_path)
+		     array_splitted = array.map {|a| a.split(",")} 
+		     array_transpose = array_splitted.transpose
+		     return array_transpose
+	     else 
+		    name, tsi = readGpr(file_path)
+                    nameTsiArray = [ name, tsi ]
+                    return nameTsiArray
+	     end
+
+     rescue Exception => e
+            e.message
+     end
+
  end
  
  #method for parsing calibration probe data
@@ -276,7 +290,7 @@ EOF
               @get_tsi_list = calTotalSignalIntensity(@dia, @f633_mean, @b633_mean)
               @sorted_list = sortGprTsiList(@name, @get_tsi_list)
               
-              return(@sorted_list)
+              return @name, @sorted_list
 
     rescue Exception => e
               e.message
@@ -351,36 +365,48 @@ EOF
 
  def sortGprTsiList(probeNameList, totalSignalIntensities)
 
-     R.assign "names", probeNameList
+     names = probeNameList.flatten
+     names.shift
+     puts "#{names}"
+
+     R.assign "names", names
      R.assign "totalSignalIntensities", totalSignalIntensities
 
      R.eval <<-EOF
 	filterReplicatesFromGpr <- function(names, totalSignalIntensities) {
 
+        names <- as.vector(names)
+        totalSignalIntensities <- as.numeric(totalSignalIntensities)
+
 	tab <- cbind(Name=names, F633=totalSignalIntensities)
-	tab <- as.data.table(tab)
-	 
-	uniqueProbes <- as.vector(tab$Name)
-	uniqueProbeVec <- unique(uniqueProbes) 
+	tab <- data.frame(tab)	
+ 
+	allProbes <- as.character(tab[,1])
+	uniqueProbeVec <- unique(allProbes) 
+        print(uniqueProbeVec)
 
 	meanTSI <- list()
 	myData <- list()
 
-	for (i in c(1:nrow(uniqueProbes))) {
+	for (i in c(1:length(uniqueProbeVec))) {
 	    
 		myData[[i]] <- subset(tab, uniqueProbeVec[i] == tab[ , 1]) 
-	     
+	        print(myData[[i]])
 	} 
 
-	for (j in c(1:length(uniqueProbeVec ))) {
+	for (j in c(1:length(uniqueProbeVec))) {
 
-		meanTSI[[j]] <-  sum(myData[[j]][,2])/nrow(myData[[j]]) 
+                newVec <- as.numeric(as.character(myData[[j]][, 2]))
+                replicate <- as.numeric(length(newVec))
+
+		meanTSI[[j]] <- sum(newVec)/replicate
+                
 
 	}
 
 	meanTSI <- unlist(meanTSI)
 	
-	return(nameList)
+	return(meanTSI)
 
 	}
 
