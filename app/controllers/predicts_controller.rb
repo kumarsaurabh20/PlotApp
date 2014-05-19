@@ -288,9 +288,9 @@ EOF
               column_based_array = header_removed.transpose
               @name, @dia, @f633_mean, @b633_mean = getColumns(column_based_array)
               @get_tsi_list = calTotalSignalIntensity(@dia, @f633_mean, @b633_mean)
-              @sorted_list = sortGprTsiList(@name, @get_tsi_list)
+              @filterProbes, @sorted_list = sortGprTsiList(@name, @get_tsi_list)
               
-              return @name, @sorted_list
+              return @filterProbes, @sorted_list
 
     rescue Exception => e
               e.message
@@ -416,8 +416,9 @@ EOF
      EOF
 
      meanTSI = R.pull("list")
+     filterProbes = R.pull("uniqueProbeVec")
 
-     return meanTSI
+     return filterProbes, meanTSI
 
  end
       
