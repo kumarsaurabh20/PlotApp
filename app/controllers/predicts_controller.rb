@@ -274,12 +274,13 @@ EOF
               column_based_array = header_removed.transpose
               @name, @dia, @f633_mean, @b633_mean = getColumns(column_based_array)
               @get_tsi_list = calTotalSignalIntensity(@dia, @f633_mean, @b633_mean)
+              @sorted_list = sortGprTsiList(@name, @get_tsi_list)
               
-              return(@get_tsi_list)
+              return(@sorted_list)
 
     rescue Exception => e
               e.message
-              #e.backtrace.inspect
+              e.backtrace.inspect
     end 
 
  end 
@@ -298,7 +299,7 @@ EOF
 	   
 	    rescue Exception => e
 		   e.message
-                   #e.backtrace.inspect
+                   e.backtrace.inspect
 	    end
 
     return name, dia, f633_mean, b633_mean 
@@ -343,8 +344,54 @@ EOF
 
    rescue Exception => e
         e.message
-        #e.backtrace.inspect
+        e.backtrace.inspect
    end 
+
+ end
+
+ def sortGprTsiList(probeNameList, totalSignalIntensities)
+
+     R.assign "names", probeNameList
+     R.assign "totalSignalIntensities", totalSignalIntensities
+
+     R.eval <<-EOF
+	filterReplicatesFromGpr <- function(names, totalSignalIntensities) {
+
+	tab <- cbind(Name=names, F633=totalSignalIntensities)
+	tab <- as.data.table(tab)
+	 
+	uniqueProbes <- as.vector(tab$Name)
+	uniqueProbeVec <- unique(uniqueProbes) 
+
+	meanTSI <- list()
+	myData <- list()
+
+	for (i in c(1:nrow(uniqueProbes))) {
+	    
+		myData[[i]] <- subset(tab, uniqueProbeVec[i] == tab[ , 1]) 
+	     
+	} 
+
+	for (j in c(1:length(uniqueProbeVec ))) {
+
+		meanTSI[[j]] <-  sum(myData[[j]][,2])/nrow(myData[[j]]) 
+
+	}
+
+	meanTSI <- unlist(meanTSI)
+	
+	return(nameList)
+
+	}
+
+        list <- filterReplicatesFromGpr(names, totalSignalIntensities)
+
+
+     EOF
+
+     meanTSI = R.pull("list")
+
+     return meanTSI
 
  end
       
