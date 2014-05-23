@@ -6,6 +6,7 @@ module api
 	require 'csv'
         require 'rinruby'
         respond_to :json
+        
 
 #method recieving API request from the client 
 	def get_coeffecients

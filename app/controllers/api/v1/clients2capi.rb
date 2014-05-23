@@ -45,61 +45,38 @@ end
 #Your API is ready with step 3, but how other people will use it. You need to tell them, how to use it. Let #us Document the things
 #API USAGE DOCUMENT
 #___________________________________________________________________
-#Basic Authentication:
-#    username: myfinance
-#    password: credit123
-
+#Basic Authentication: nil
+#   
 #Content Type :
-#   application/xml or application/json
+#   application/json
 #
 #Body:
-#   You can pass xml or json data in Body
+#   You can pass json data
 #   
 #   sample json body
 #
 #   {
-#     "email" : "test@yopmail.com", 
-#     "first_name" : "arun", 
-#     "last_name" : "yadav"
+#     "email" : "test@test.com", 
+#     "first_name" : "xxxx", 
+#     "last_name" : "xxxx"
 #    }
 #
-#   Sample xml body
-#
-#    <user>
-#      <email>"test@yopmail.com">
-#      <first-name>arun</first-name>
-#      <last-name>yadav</last-name>
-#    </user>
-
-#NOTE : Content Type should be set to application/xml for xml data in body 
-#and to application/json for json data in body
+# 
+#NOTE : Content Type should be set to application/json
 #
 #API Requests:
 #
-#=> listing users
-#   url: http://localhost:3000/api/users
-#   method: GET
+#=> getting coeffecients values for selected probes
+#   url: http://localhost:3000/api/v1/get_coeffecients
+#   method: POST
 #   body : not needed
 #
-#=> Retrieving User detail
-#  url: http://localhost:3000/api/users/:id 
-#  method: GET
+#=> Predicting cell counts for the raw intensity data
+#  url: http://localhost:3000/api/v1/predict_cell_counts
+#  method: POST
 #  body : not needed
 #
-#=> creating users
-#   url: http://localhost:3000/api/users
-#   method: Post
-#   Body : It can be xml or json
 #
-#=> Updating User
-#  url: http://localhost:3000/api/users/:id 
-#  method: PUT
-#  Body : It can be xml or json
-#  
-#=> Deleting User 
-#  url: http://localhost:3000/api/users/:id 
-#  method: DELETE
-#  body : not needed
 
     
 
