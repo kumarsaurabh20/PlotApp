@@ -49,6 +49,11 @@ attr_accessor :calib_data, :calib_data_transpose, :calib_probe, :probe_list, :ce
 
 #method recieving Ajax request from the view posting selected probes for normalization
 def normalize
+
+     #Initialize RinRuby with executable path
+
+     #r = RinRuby.new(@executable="/usr/bin/R")
+  
      #logger.debug @cell_counts.to_s
 
      #ajax request; filter out id from rest of the array/ajax request
