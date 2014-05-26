@@ -1,6 +1,6 @@
 module api
 	module v1		
-	class UploadsController < ApplicationController
+	class ApicallsController < ApplicationController
       
         require 'matrix'
 	require 'csv'
