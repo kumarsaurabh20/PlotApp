@@ -1,3 +1,6 @@
+require 'api_constraints'
+
+
 PlotApp::Application.routes.draw do
 
   resources :predicts
@@ -12,12 +15,15 @@ PlotApp::Application.routes.draw do
   match '/calculate' => 'predicts#calculate'
   match '/download_cell_counts' => 'predicts#download_cell_counts'
 
-  namespace :api do
 
-  #.../api/...
 
+################API ROUTES################
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1) do
+      resources :apicalls
+    end
   end
-
+###########################################
 
 
 
