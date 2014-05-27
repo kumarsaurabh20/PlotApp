@@ -4,7 +4,7 @@ require 'rubygems'
 require 'rest_client'
 require 'json'
 
- def api_hook
+ def api_hook(method_name = "")
 
 	 # base url of the API
 	 API_BASE_URL = "http://localhost:3000/api/v1" 
