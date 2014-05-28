@@ -1,0 +1,41 @@
+<html>
+<head><title>S2C API DESCRIPTION</title>
+</head>
+<body>
+
+API USAGE DOCUMENT
+
+Basic Authentication: nil
+
+Content Type :
+   application/json
+
+Body:
+   You can pass json data
+   
+   sample json body
+
+   {
+     "email" : "test@yopmail.com", 
+     "first_name" : "XXXX", 
+     "last_name" : "XXXX"
+    }
+
+NOTE: Content Type should be set to application/json
+Ruby on Rails stores an authenticity token for each session, and submits this token as a hidden form field in any POST request upon a form submission. It does this to authenticate that the request is actually coming as a form submission through the web site, as opposed to a random POST request generated from CURL or another tool. A 3rd party application developer certainly doesn't have a token assigned and therefore can't submit this via their API request.
+Rails only checks for the authenticity token in the case of a form submission. If you submit your data as content-type application/json, then the token is not required. As a result you can set the content type appropriately and encode your input parameters as either xml or json. 
+
+API Requests:
+
+=> getting coeffecients values for selected probes
+   url: http://localhost:3000/api/v1/get_coeffecients
+   method: POST
+   body : not needed
+
+=> Predicting cell counts for the raw intensity data
+  url: http://localhost:3000/api/v1/predict_cell_counts
+  method: POST
+  body : not needed
+
+</body>
+</html>

@@ -12,18 +12,23 @@ module api
 	def get_coeffecients
 
 		     #ajax request; filter out id from rest of the array/ajax request
-		     @data = params['data'].split(',') 
-		     @id = @data.shift
+		     @data = params['data'] 
+		    
+                     
 
-		     #fetch saved file paths
-		     calib_path, inten_path = get_paths(id)
-		     
-		     #file data in R input compatible format
-		     @calib_data, @calib_data_transpose, @cell_counts = import(calib_path)
-		     @calib_probe = import_ori(inten_path)      
 
-		     #probe list of the uploaded file
-		     @probe_list = calib_data_transpose[0]
+
+
+
+
+
+
+
+
+
+
+
+
 
 		     #assign col values to R. Column number is variable here and not fixed in the calibration file
 		     count = 0

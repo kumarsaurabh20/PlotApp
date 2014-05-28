@@ -1,18 +1,20 @@
 class Clients2capi
 
+require 'rubygems'
 require 'rest_client'
 require 'json'
 
- def api_hook(method_name = "", params)
+ def api_hook
 
 	 # base url of the API
-	 API_BASE_URL = "http://localhost:3000/api" 
+	 API_BASE_URL = "http://localhost:3000/api/v1" 
 
 	 # specifying json format in the URl
 	 uri = "#{API_BASE_URL}/#{method_name}" 
 
-	 # converting the params to json
-	 payload = params.to_json 
+	 # convert the file data in to json string
+	 payload = read_data_to_json('api_calib_file.csv')
+         
 
 	 # It will createnew rest-client resource so that we can call different methods of it
 	 rest_resource = RestClient::Resource.new(uri)
@@ -26,15 +28,49 @@ require 'json'
 	 # we will convert the return data into array of hash.see json data parsing here
 	 @data = JSON.parse(results, :symbolize_names => true) 
 
- end
-
-
- def format_data
-
+         #write the resultant data in a neat json format
+         #File.open('output.json', 'w') {|file| file.write(JSON.pretty_generate(payload))}
 
  end
 
 
+ def read_data_to_json(file_name)
+          hash_data = Hash.new {|hash, key| hash[key] = []}
+        
+          data_string = IO.read(file_name)
+          data_array = data_string.split("\n")
+          
+          norm_probes = format_data(data_array)
+          hash_data['norm_probes'] = norm_probes
+                  
+          calib_probes = format_data(data_array)
+          hash_data['calib_probes'] = calib_probes
+                           
+          #remove headers
+          data_array.shift
+          
+          cell_counts = data_array.shift
+          cell_counts = cell_counts.split(",")
+          cell_counts.shift
+          hash_data['cell_counts'] = cell_counts
+          
+          signal_data= data_array.map {|a| a.split(",")}
+          signal_data_transpose = signal_data.transpose
+                    
+          for i in 0..signal_data_transpose.size - 1 
+              hash_data[i] << signal_data_transpose[i]
+          end
+
+          return hash_data.to_json          
+ end
+
+ 
+ def format_data(data_array = [])     
+     popped_list = data_array.pop
+     splitted_list = popped_list.split(',')
+     splitted_list.shift
+     return splitted_list
+ end
 
 
 end  
