@@ -12,39 +12,36 @@ module api
 	def get_coeffecients
 
 		     #ajax request; filter out id from rest of the array/ajax request
-		     @data = params['data'] 
+		     data = params['data'] 
 		    
                      
+                 begin
 
+			calib_data = JSON.parse(data, :symbolize_names => true)
 
-
-
-
-
-
-
-
-
-
-
-
-
+			norm_probes = calib_data[:norm_probes]
+			calib_data.shift
+			calib_probes = calib_data[:calib_probes]
+			calib_data.shift
+			cell_counts = calib_data[:cell_counts]
+			calib_data.shift
+                        probe_list = calib_data[:0]
+                        calib_data.shift
 
 		     #assign col values to R. Column number is variable here and not fixed in the calibration file
-		     count = 0
-		     for i in 1..@calib_data_transpose.count
-			 R.assign "col#{i}", @calib_data_transpose[i-1] 
-			 count = count + 1 
+		     count = calib_data.size 
+		     calib_data.each do |k,v|
+			 R.assign "col#{k}", v.to_a 			  
 		     end
 
 		     #map the cells to integer values
-		     cells = @cell_counts.map {|e| e.to_i}
+		     cells = cell_counts.map {|e| e.to_i}
 
 		     #assign variables to R from Rails
 		     R.assign "cells", cells
-		     R.assign "calib_probes", @calib_probe
-		     R.assign "probes", @probe_list
-		     R.assign "norm_probes", @data
+		     R.assign "calib_probes", calib_probe
+		     R.assign "probes", probe_list
+		     R.assign "norm_probes", norm_probes
 		     R.assign "count", count
 
 		     #Block of R code to be executed
@@ -187,6 +184,9 @@ module api
 		 
 		  respond_with @resultsToView
 	
+		rescue Exception => e
+			puts e.to_s + " Error originated in get_coeffecients() method!!"
+	        end
 		    
 	end
 
