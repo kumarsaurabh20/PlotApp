@@ -50,6 +50,7 @@ attr_accessor :calib_data, :calib_data_transpose, :calib_probe, :probe_list, :ce
 #method recieving Ajax request from the view posting selected probes for normalization
 def normalize
 
+  begin
      #Initialize RinRuby with executable path
 
      #r = RinRuby.new(@executable="/usr/bin/R")
@@ -264,6 +265,9 @@ EOF
 	     end
      end
 
+    rescue Exception => e
+        e.to_s
+    end
       
      respond_to do |format|
      format.html { render "normalize" }
@@ -275,6 +279,12 @@ EOF
  #method to download coeffs file in ajax request from the link
  def download_coeffs     
     file =  Dir.glob("#{Rails.root}/public/coeffs/*.csv")[0].to_s
+    logger.debug file
+    send_file(file)
+ end
+
+ def download_manual    
+    file =  Dir.glob("#{Rails.root}/public/s2c_tutorial.pdf")[0].to_s
     logger.debug file
     send_file(file)
  end

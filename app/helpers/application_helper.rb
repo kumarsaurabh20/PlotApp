@@ -27,6 +27,7 @@ module ApplicationHelper
     image_tag("uaqua1_logo2.png", :alt => "S2C", :class => "round", :size => "100x75")
   end
 
+
  def betaLogo
      image_tag("beta.jpg", :alt => "beta_version", :class => "round", :size => "100x75")
  end

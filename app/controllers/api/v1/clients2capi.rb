@@ -20,16 +20,18 @@ require 'json'
 	 rest_resource = RestClient::Resource.new(uri)
 
 	  begin
-	      results = rest_resource.post payload , :content_type => "application/json"    
+	      results = rest_resource.post payload , :content_type => "application/json"  
+
+              # we will convert the return data into array of hash.see json data parsing here
+	      data = JSON.parse(results, :symbolize_names => true) 
+              puts data
+
+              #write the resultant data in a neat json format
+              #File.open('output.json', 'w') {|file| file.write(JSON.pretty_generate(payload))}
+ 
 	  rescue Exception => e
-	      e.response
+	      puts e.to_s
 	  end 
-
-	 # we will convert the return data into array of hash.see json data parsing here
-	 @data = JSON.parse(results, :symbolize_names => true) 
-
-         #write the resultant data in a neat json format
-         #File.open('output.json', 'w') {|file| file.write(JSON.pretty_generate(payload))}
 
  end
 
@@ -73,7 +75,10 @@ require 'json'
  end
 
 
-end  
+end 
+
+callapi = Clients2capi.new
+callapi.api_hook('get_coeffecients') 
 
 
 ######################################STEP:CREATING API DOCUMENTATION######################################

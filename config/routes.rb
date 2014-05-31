@@ -1,4 +1,4 @@
-require 'api_constraints'
+#require 'api_constraints'
 
 
 PlotApp::Application.routes.draw do
@@ -11,20 +11,21 @@ PlotApp::Application.routes.draw do
   match '/sample_calib_file' => 'uploads#download_sample_calib_file'
   match '/sample_probe_list' => 'uploads#download_sample_probe_list'
   match '/normalize' => 'uploads#normalize'
-  match '/download_coeffs' => 'uploads#download_coeffs'
+  match '/download_coeffs' => 'uploads#download_coeffs', via: :get
   match '/calculate' => 'predicts#calculate'
   match '/download_cell_counts' => 'predicts#download_cell_counts'
 
+  match '/download_manual' => 'uploads#download_manual', via: :get
 
 
 ################API ROUTES################
-  namespace :api, defaults: {format: 'json'} do
-    scope module: :v1, constraints: ApiConstraints.new(version: 1) do
-      resources :apicalls
-    end
-  end
+  #namespace :api, defaults: {format: 'json'} do
+  #  scope module: :v1 do
+  #    resources :uploads
+  #  end
+  #end
 ###########################################
-
+#, constraints: ApiConstraints.new(version: 1)
 
 
   #resources :plots

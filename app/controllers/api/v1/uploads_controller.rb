@@ -1,6 +1,4 @@
-module api
-	module v1		
-	class ApicallsController < ApplicationController
+class Api::V1::UploadsController < ApplicationController
       
         require 'matrix'
 	require 'csv'
@@ -9,13 +7,14 @@ module api
         
 
 #method recieving API request from the client 
-	def get_coeffecients
+	def index
 
-		     #ajax request; filter out id from rest of the array/ajax request
-		     data = params['data'] 
-		    
-                     
+		     		                        
                  begin
+                        #ajax request; filter out id from rest of the array/ajax request
+		        #data = params['data'] 
+                        
+                        respond_with Upload.all
 
 			calib_data = JSON.parse(data, :symbolize_names => true)
 
@@ -182,7 +181,7 @@ module api
 		  @resultsToView.pop
 		 
 		 
-		  respond_with @resultsToView
+		  #respond_with @resultsToView
 	
 		rescue Exception => e
 			puts e.to_s + " Error originated in get_coeffecients() method!!"
