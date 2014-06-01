@@ -253,8 +253,8 @@ EOF
  def readGpr(file_path)
    begin
 	     read = IO.binread(file_path)
-	     test_test = []
-		     if test.valid_encoding?
+	      read_array = []
+		     if read.valid_encoding?
 			 read_array = read.split("\n")         
 		     else
 			 read_array = read.encode!("ASCII-8BIT","ASCII-8BIT", invalid: :replace).split("\n")
@@ -265,7 +265,7 @@ EOF
 	      element_stabilized = mod_array.map {|element| element.join(",").gsub("\"","").split(",")} 
 
 	      header_removed = []
-		      if new_array[0].include?("ATF")
+		      if element_stabilized [0].include?("ATF")
 			 header_removed = element_stabilized.drop_while {|i| i unless i.include?("Block")}
 		      else
 			 raise NoGprError, "File does not seem gpr formatted. Check the file"
@@ -273,9 +273,9 @@ EOF
 
               column_based_array = header_removed.transpose
               @name, @dia, @f633_mean, @b633_mean = getColumns(column_based_array)
-              @get_tsi_list = calTotalSignalIntensity(@dia, @f532_mean, @b532_mean)
+              @get_tsi_list = calTotalSignalIntensity(@dia, @f633_mean, @b633_mean)
               
-              
+              return(@get_tsi_list)
 
     rescue Exception => e
               e.message
@@ -304,13 +304,16 @@ EOF
     return name, dia, f633_mean, b633_mean 
  end
 
- def calTotalSignalIntensity(dia=[], f633_mean=[], b633_mean=[])
+ def calTotalSignalIntensity(diameter, forground, background)
  
    begin 
-
+        dia = diameter.flatten 
         dia.shift
-        f633_mean.shift
-        b633_mean.shift
+        f633 = foreground.flatten
+        f633.shift
+        b633 = background.flatten
+        b633.shift
+
 	#Formula for calculating Total Signal Intensity
 	#(F633_mean - B633_mean)*3.14*diameter^2*1/4
 	R.assign "dia", dia
