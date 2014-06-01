@@ -275,6 +275,7 @@ EOF
               @name, @dia, @f633_mean, @b633_mean = getColumns(column_based_array)
               @get_tsi_list = calTotalSignalIntensity(@dia, @f532_mean, @b532_mean)
               
+              
 
     rescue Exception => e
               e.message
@@ -284,14 +285,14 @@ EOF
  end 
 
  def getColumns(array=[])
-     name, dia, f532_mean, b532_mean = [], [],[],[]
+     name, dia, f633_mean, b633_mean = [], [],[],[]
 	   begin
 		     array.map do |element|     
 			       case
 				       when element.include?("Name") then name << element
 				       when element.include?("Dia.") then dia << element
-				       when element.include?("F633 Mean") then f532_mean << element
-				       when element.include?("B633 Mean") then b532_mean << element       
+				       when element.include?("F633 Mean") then f633_mean << element
+				       when element.include?("B633 Mean") then b633_mean << element       
 			       end
 		     end
 	   
@@ -300,19 +301,47 @@ EOF
                    #e.backtrace.inspect
 	    end
 
-    return name, dia, f532_mean, b532_mean 
+    return name, dia, f633_mean, b633_mean 
  end
 
- def calTotalSignalIntensity(dia=[], f532_mean=[], b532_mean=[])
-     
-      #Formula for calculating Total Signal Intensity
-      #(F633_mean - B633_mean)*3.14*diameter^2*1/4
+ def calTotalSignalIntensity(dia=[], f633_mean=[], b633_mean=[])
+ 
+   begin 
 
-      lsit = []
+        dia.shift
+        f633_mean.shift
+        b633_mean.shift
+	#Formula for calculating Total Signal Intensity
+	#(F633_mean - B633_mean)*3.14*diameter^2*1/4
+	R.assign "dia", dia
+	R.assign "f633", f633_mean
+	R.assign "b633", b633_mean
 
-      
-     
-     
+  R.eval <<-EOF
+
+	  calTSI <- function(dia, f633, b633) {
+
+	  dia <- as.numeric(dia)
+	  f633 <- as.numeric(f633)
+	  b633 <- as.numeric(b633)
+
+	  tsi <- (f633 - b633) * 3.14 * dia * dia * 1/4
+
+	  return(tsi)
+	} 
+
+	list <- calTSI(dia, f633, b633)
+
+   EOF
+
+	tsi = R.pull("list")
+
+        return tsi
+
+   rescue Exception => e
+        e.message
+        #e.backtrace.inspect
+   end 
 
  end
       
