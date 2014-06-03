@@ -247,33 +247,69 @@ EOF
      return array
  end
 
+#===================================CALCULATE TSI==========================================================
+
  #method for parsing gpr file and calculating Total intensities from raw intensities
- def calTotalInten(file_path)
+ def readGpr(file_path)
+   begin
+	     read = IO.binread(file_path)
+	     test_test = []
+		     if test.valid_encoding?
+			 read_array = read.split("\n")         
+		     else
+			 read_array = read.encode!("ASCII-8BIT","ASCII-8BIT", invalid: :replace).split("\n")
+		     end
+	    
+	      mod_array = read_array.map {|e| e.split("\t")}  
+	      
+	      element_stabilized = mod_array.map {|element| element.join(",").gsub("\"","").split(",")} 
 
-     test = IO.binread(file_path)
-     test_test = []
-     if test.valid_encoding?
-         test_test = test.split("\n")         
-     else
-         test_test = test.encode!("ASCII-8BIT","ASCII-8BIT", invalid: :replace).split("\n")
-     end
+	      header_removed = []
+		      if new_array[0].include?("ATF")
+			 header_removed = element_stabilized.drop_while {|i| i unless i.include?("Block")}
+		      else
+			 raise NoGprError, "File does not seem gpr formatted. Check the file"
+		      end
 
-      new_test = test_test.map {|e| e.split("\t")}  
+              column_based_array = header_removed.transpose
+              @name, @dia, @f633_mean, @b633_mean = getColumns(column_based_array)
+              @get_tsi_list = calTotalSignalIntensity(@dia, @f532_mean, @b532_mean)
+              
+
+    rescue Exception => e
+              e.message
+              #e.backtrace.inspect
+    end 
+
+ end 
+
+ def getColumns(array=[])
+     name, dia, f532_mean, b532_mean = [], [],[],[]
+	   begin
+		     array.map do |element|     
+			       case
+				       when element.include?("Name") then name << element
+				       when element.include?("Dia.") then dia << element
+				       when element.include?("F633 Mean") then f532_mean << element
+				       when element.include?("B633 Mean") then b532_mean << element       
+			       end
+		     end
+	   
+	    rescue Exception => e
+		   e.message
+                   #e.backtrace.inspect
+	    end
+
+    return name, dia, f532_mean, b532_mean 
+ end
+
+ def calTotalSignalIntensity(dia=[], f532_mean=[], b532_mean=[])
+     
+     
+     
+
+ end
       
-      new_array = new_test.map {|element| element.join(",").gsub("\"","").split(",")} 
-
-      new_choped = []
-      if new_array[0].include?("ATF")
-         new_chopped = new_array.drop_while {|i| i unless i.include?("Block")}
-      else
-         raise NoGprError, "File does not seem gpr formatted. Check the file"
-      end
-
-      
-      
-
-      
-
 
 #   public double getTotalSD() {
 #		int all = getPairNr();
@@ -397,7 +433,6 @@ EOF
 #	}
 #
 #
- end
 
 #===========================================SEND FILE TO USER=================================================
 
