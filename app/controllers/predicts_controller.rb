@@ -5,6 +5,9 @@ require 'csv'
 
 attr_accessor :raw_inten_transpose, :coeffs_transpose, :probe_list, :id, :data
 
+class NoGprError < StandardError
+end
+
   # GET /predicts
   # GET /predicts.json
   def index
@@ -256,8 +259,20 @@ EOF
      end
 
       new_test = test_test.map {|e| e.split("\t")}  
+      
       new_array = new_test.map {|element| element.join(",").gsub("\"","").split(",")} 
-     	
+
+      new_choped = []
+      if new_array[0].include?("ATF")
+         new_chopped = new_array.drop_while {|i| i unless i.include?("Block")}
+      else
+         raise NoGprError, "File does not seem gpr formatted. Check the file"
+      end
+
+      
+      
+
+      
 
 
 #   public double getTotalSD() {
