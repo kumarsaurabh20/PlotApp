@@ -247,6 +247,12 @@ EOF
  #method for parsing gpr file and calculating Total intensities from raw intensities
  def calTotalInten(file_path)
 
+     test = IO.binread("test_test.gpr")
+     test_test = test.split("\n")
+     new_test = test_test.map {|e| e.split("\t")}
+     new_test[30].join(",").gsub("\"","").split(",") #individual element	
+
+
  #   public double getTotalSD() {
 #		int all = getPairNr();
 #		int act = getActive();
