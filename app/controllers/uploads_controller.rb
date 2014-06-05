@@ -51,12 +51,7 @@ attr_accessor :calib_data, :calib_data_transpose, :calib_probe, :probe_list, :ce
 def normalize
 
   begin
-     #Initialize RinRuby with executable path
-
-     #r = RinRuby.new(@executable="/usr/bin/R")
-  
-     #logger.debug @cell_counts.to_s
-
+    
      #ajax request; filter out id from rest of the array/ajax request
      @data = params['data'].split(',') 
      @id = @data.shift
@@ -283,6 +278,7 @@ EOF
     send_file(file)
  end
 
+ #call to download s2c manual 
  def download_manual    
     file =  Dir.glob("#{Rails.root}/public/s2c_tutorial.pdf")[0].to_s
     logger.debug file
@@ -298,14 +294,21 @@ EOF
      upload = Upload.find(id)
      calib_file_name = upload.calib_file_name
      inten_file_name = upload.inten_file_name
+     logger.debug calib_file_name.to_s
+     logger.debug inten_file_name.to_s
 
      #set the path to the file folder
      calib_path = "#{Rails.root}/public/calibs"
      inten_path = "#{Rails.root}/public/intens"
-      
+     logger.debug calib_path.to_s
+     logger.debug inten_path.to_s     
+
+ 
      #create file paths and return them    
      calib_file = File.join(calib_path, calib_file_name)
      inten_file = File.join(inten_path, inten_file_name)
+     logger.debug calib_file.to_s
+     logger.debug inten_file.to_s 
  
      return calib_file, inten_file
  end
