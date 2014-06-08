@@ -3,19 +3,25 @@
 
 PlotApp::Application.routes.draw do
 
+  root :to => "uploads#index"
+ 
   resources :predicts
   resources :uploads
 
-  root :to => "uploads#index"
-
-  match '/sample_calib_file' => 'uploads#download_sample_calib_file'
-  match '/sample_probe_list' => 'uploads#download_sample_probe_list'
+  #upload routes
   match '/normalize' => 'uploads#normalize'
   match '/download_coeffs' => 'uploads#download_coeffs', via: :get
-  match '/calculate' => 'predicts#calculate'
-  match '/download_cell_counts' => 'predicts#download_cell_counts'
-
+  match '/sample_calib_file' => 'uploads#download_sample_calib_file'
+  match '/sample_probe_list' => 'uploads#download_sample_probe_list'
+ 
+  #manual route 
   match '/download_manual' => 'uploads#download_manual', via: :get
+
+  #Predict routes
+  match '/calculate' => 'predicts#calculate'
+  match '/download_cell_counts' => 'predicts#download_cell_counts', via: :get
+  match '/download_sample_coeffs_file' => 'predicts#download_sample_coeffs_file', via: :get
+  match '/download_sample_raw_inten_file' => 'predicts#download_sample_raw_inten_file', via: :get
 
 
 ################API ROUTES################

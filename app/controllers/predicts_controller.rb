@@ -384,8 +384,12 @@ EOF
 
  #send a sample coeffecients file to the user
  def download_sample_coeffs_file
-     temp = [[" EukS_1209_25_dT","-178.012","7310.55","-10963.59"], ["Test15 (EukS_1209_25dT)", "-1080.785", "14047.58", "-28426.59"]]
-     send_sample_file("sample_calibration_file", temp)   
+     temp = [["EukS_1209_25_dT","-178.0129","7310.551","-10963.59"],
+["Test15 (EukS_1209_25dT)","-1080.7852","14047.582","-28426.59"],
+["EukS_328_25_dT","-274.0996", "6707.7216", "-12045.7096"],
+["DinoB_25_dT", "-1164.4423", "7443.100","-12823.424"]]
+
+    send_sample_file("sample_calibration_file", temp)   
  end
 
  #send a sample raw intensities file to the user
