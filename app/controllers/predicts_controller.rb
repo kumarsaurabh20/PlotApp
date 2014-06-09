@@ -244,6 +244,132 @@ EOF
      return array
  end
 
+ #method for parsing gpr file and calculating Total intensities from raw intensities
+ def calTotalInten(file_path)
+
+ #   public double getTotalSD() {
+#		int all = getPairNr();
+#		int act = getActive();
+#		double result=0;
+#		double mean=getTotalMean();
+#		for (int i=0; i<all; i++)
+#			if (pairs.elementAt(i).isActive()) result=result+Math.pow((mean-pairs.elementAt(i).getTotal#()),2);
+#		if(act>1) result=result/(act-1);
+#		result=Math.sqrt(result);
+#		return result;
+#	}
+#
+#	public double getTotalMean() {
+#		int all = getPairNr();
+#		int act = getActive();
+#		double result=0;
+#		for (int i=0; i<all; i++)
+#			if (pairs.elementAt(i).isActive())result=result+pairs.elementAt(i).getTotal();
+#		if (act>0)result=result/act;
+#		return result;
+#	}
+#
+#	public double getSNSD() {
+#		int all = getPairNr();
+#		int act = getActive();
+#		double result=0;
+#		double mean=getSNMean();
+#		for (int i=0; i<all; i++)
+#			if (pairs.elementAt(i).isActive()) result=result+Math.pow((mean-pairs.elementAt(i).getSN#()),2);
+#		if (act>1)result=result/(act-1);
+#		result=Math.sqrt(result);
+#		return result;
+#	}
+#
+#	public double getSNMean() {
+#		int all = getPairNr();
+#		int act = getActive();
+#		double result=0;
+#		for (int i=0; i<all; i++)
+#			if (pairs.elementAt(i).isActive()) result=result+pairs.elementAt(i).getSN();
+#		if (act>0)result=result/act;
+#		return result;
+#	}
+#	
+#	public double getHypotheticalTotalMean(double snCutoff, double diameter){
+#		return ((snCutoff-1)*getMeanBackground())*diameter*diameter/4*3.14159;
+#	}
+#	
+#	public double getHypotheticalNormMean(CalData cal, double snCutoff, double diameter){
+#		if (cal.getNormFactor()==0) return 0;
+#		else return getHypotheticalTotalMean(snCutoff, diameter)/cal.getNormFactor();
+#	}
+#	
+#	public double getMeanBackground(){
+#		int all = getPairNr();
+#		int act = getActive();
+#		double result=0;
+#		for (int i=0; i<all; i++)
+#			if (pairs.elementAt(i).isActive())result=result+pairs.elementAt(i).getBmean();
+#		if (act>0)result=result/act;
+#		return result;
+#	}
+#	
+#	public double getMeanDia(){
+#		int all = getPairNr();
+#		int act = getActive();
+#		double result=0;
+#		for (int i=0; i<all; i++)
+#			if (pairs.elementAt(i).isActive())result=result+pairs.elementAt(i).getDia();
+#		if (act>0)result=result/act;
+#		return result;
+#	}
+#
+#	
+#	public double getNormMean(CalData cal){
+#		if (cal.getNormFactor()==0) return 0;
+#		else return getTotalMean()/cal.getNormFactor();
+#	}
+#	
+#	public double getNormSD(CalData cal){
+#		if (cal.getNormFactor()==0) return 0;
+#		else return getTotalSD()/cal.getNormFactor();		
+#	}
+#
+#	public String activeProbesString() {
+#		return getActive()+" / "+pairs.size();
+#	}
+#
+#	public int getPairNr() {
+#		if (pairs==null) return 0;
+#		else return pairs.size();
+#	}
+#	
+#	public GprPair getPairByNr(int nr){
+#		try {
+#			return pairs.elementAt(nr);
+#		}catch (Exception e){
+#			return null;
+#		}
+#	}
+#	
+#	public int getActive(){
+#		int i=0;
+#		for (int j=0; j<getPairNr();j++){
+#			if (pairs.elementAt(j).isActive()) i++;
+#		}
+#		return i;
+#	}
+#	
+#	public String toString(){
+#		return this.getProbeName();
+##
+#	public String getCellCount(CalData cal) {
+#		return cal.inferCellNr(this);
+#	}
+#	
+#	public String getHirarchyCheck(HirData hir) {
+#		if (hir!=null)return hir.checkHirarchyForProbe(getProbeName(), getSNMean());
+#		else return "";
+#	}
+#
+#
+ end
 
 #===========================================SEND FILE TO USER=================================================
 
