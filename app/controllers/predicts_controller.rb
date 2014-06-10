@@ -247,13 +247,20 @@ EOF
  #method for parsing gpr file and calculating Total intensities from raw intensities
  def calTotalInten(file_path)
 
-     test = IO.binread("test_test.gpr")
-     test_test = test.split("\n")
-     new_test = test_test.map {|e| e.split("\t")}
-     new_test[30].join(",").gsub("\"","").split(",") #individual element	
+     test = IO.binread(file_path)
+     test_test = []
+     if test.valid_encoding?
+         test_test = test.split("\n")         
+     else
+         test_test = test.encode!("ASCII-8BIT","ASCII-8BIT", invalid: :replace).split("\n")
+     end
+
+      new_test = test_test.map {|e| e.split("\t")}  
+      new_array = new_test.map {|element| element.join(",").gsub("\"","").split(",")} 
+     	
 
 
- #   public double getTotalSD() {
+#   public double getTotalSD() {
 #		int all = getPairNr();
 #		int act = getActive();
 #		double result=0;
