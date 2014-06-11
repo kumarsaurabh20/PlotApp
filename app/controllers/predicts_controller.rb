@@ -268,7 +268,7 @@ EOF
 		      if element_stabilized [0].include?("ATF")
 			 header_removed = element_stabilized.drop_while {|i| i unless i.include?("Block")}
 		      else
-			 raise NoGprError, "File does not seem gpr formatted. Check the file"
+			 raise NoGprError, "File does not seem to be GPR formatted. Check the file"
 		      end
 
               column_based_array = header_removed.transpose
