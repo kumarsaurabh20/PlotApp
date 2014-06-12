@@ -425,60 +425,6 @@ EOF
 
  end
 
- def sortGprTsiList(probeNameList, totalSignalIntensities)
-
-     names = probeNameList.flatten
-     names.shift
-     filterProbeNames = names.uniq
-
-     R.assign "names", names
-     R.assign "totalSignalIntensities", totalSignalIntensities
-
-     R.eval <<-EOF
-
-        names <- as.vector(names)
-        totalSignalIntensities <- as.numeric(totalSignalIntensities)
-
-	tab <- cbind(Name=names, F633=totalSignalIntensities)
-	tab <- data.frame(tab)	
- 
-	allProbes <- as.character(tab[,1])
-	uniqueProbeVec <- unique(allProbes) 
-
-	meanTSI <- list()
-	myData <- list()
-
-	for (i in c(1:length(uniqueProbeVec))) {
-	    
-		myData[[i]] <- subset(tab, uniqueProbeVec[i] == tab[ , 1])
-	} 
-
-	for (j in c(1:length(uniqueProbeVec))) {
-
-                newVec <- as.numeric(as.character(myData[[j]][, 2]))
-                replicate <- as.numeric(length(newVec))
-
-		meanTSI[[j]] <- sum(newVec)/replicate
-	}
-
-	meanTSI <- as.numeric(unlist(meanTSI))  
-
-     EOF
- 
-    #passing non UTF-8 char from R to ruby and vice versa throws an error... 
-    #"Error in nchar(var) : invalid multibyte string 1". 
-    #here is a workaround.
-    #Sys.setlocale('LC_ALL','C')
-    #http://stackoverflow.com/questions/6669911/error-in-nchar-when-reading-in-stata-file-in-r-on-mac
-
-
-     tsiList = R.pull("meanTSI")
-     
-
-     return filterProbeNames, tsiList
-
- end
-
  def partition_array(array=[], size=500)
 		dummy = []
 	     begin
@@ -605,4 +551,56 @@ end
 
 
 #==========================================EXTRA STUFF==================================================
-
+# def sortGprTsiList(probeNameList, totalSignalIntensities)
+#
+#     names = probeNameList.flatten
+#     names.shift
+#     filterProbeNames = names.uniq
+#
+#     R.assign "names", names
+#     R.assign "totalSignalIntensities", totalSignalIntensities
+#
+#     R.eval <<-EOF
+#
+#        names <- as.vector(names)
+#        totalSignalIntensities <- as.numeric(totalSignalIntensities)
+#
+#	tab <- cbind(Name=names, F633=totalSignalIntensities)
+#	tab <- data.frame(tab)	
+# 
+#	allProbes <- as.character(tab[,1])
+#	uniqueProbeVec <- unique(allProbes) 
+#
+#	meanTSI <- list()
+#	myData <- list()
+#
+#	for (i in c(1:length(uniqueProbeVec))) {
+#	    
+#		myData[[i]] <- subset(tab, uniqueProbeVec[i] == tab[ , 1])
+#	} 
+#
+#	for (j in c(1:length(uniqueProbeVec))) {
+#
+#                newVec <- as.numeric(as.character(myData[[j]][, 2]))
+#                replicate <- as.numeric(length(newVec))
+#
+#		meanTSI[[j]] <- sum(newVec)/replicate
+#	}
+#
+#	meanTSI <- as.numeric(unlist(meanTSI))  
+#
+#     EOF
+# 
+#    #passing non UTF-8 char from R to ruby and vice versa throws an error... 
+#    #"Error in nchar(var) : invalid multibyte string 1". 
+#    #here is a workaround.
+#    #Sys.setlocale('LC_ALL','C')
+#    #http://stackoverflow.com/questions/6669911/error-in-nchar-when-reading-in-stata-file-in-r-on-mac
+#
+#
+#     tsiList = R.pull("meanTSI")
+#     #
+#
+#     return filterProbeNames, tsiList
+#
+# end
