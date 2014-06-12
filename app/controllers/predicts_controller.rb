@@ -1,5 +1,4 @@
 class PredictsController < ApplicationController
-
 require 'matrix'
 require 'csv'
 
@@ -30,8 +29,11 @@ end
       if @predict.save
 
         @id = @predict.id
+        
         coeffs_path, raw_inten_path = get_paths(id)
         @raw_inten_transpose = import(raw_inten_path)
+        logger.debug @raw_inten_transpose.to_s + "##############################################"  
+
         @coeffs_transpose = import(coeffs_path)
         @probe_list = @raw_inten_transpose[0]
 
@@ -208,6 +210,197 @@ EOF
 
  end
 
+
+#===================================CALCULATE TSI==========================================================
+
+ #method for parsing gpr file and calculating Total intensities from raw intensities
+ def readGpr(file_path)
+   begin      
+	     read = IO.read(file_path)
+             read.encode!('UTF-8', :invalid => :replace, :undef => :replace)
+	     read_array = []
+             read_array = read.split("\n") 
+
+
+
+    # if read.valid_encoding?
+       #read_array = read.split("\n")
+	#		         
+	#	     else
+	#		 read_array = read.encode!("ASCII-8BIT","ASCII-8BIT", invalid: :replace, :undef => :replace).split("\n")
+	#	     end
+	    
+	      mod_array = read_array.map {|e| e.split("\t")}  
+	      
+              logger.debug @mod_array.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+
+	      element_stabilized = mod_array.map {|element| element.join(",").gsub("\"","").split(",")} 
+
+	      header_removed = []
+		      if element_stabilized [0].include?("ATF")
+			 header_removed = element_stabilized.drop_while {|i| i unless i.include?("Block")}
+		      else
+			 raise NoGprError, "File does not seem to be GPR formatted. Check the file"
+		      end
+
+              column_based_array = header_removed.transpose
+
+              @name, @dia, @f633_mean, @b633_mean = getColumns(column_based_array)
+
+
+
+              @get_tsi_list = calTotalSignalIntensity(@dia, @f633_mean, @b633_mean)
+     
+
+
+
+
+              @filterProbes, @sorted_list = sortGprTsiList(@name, @get_tsi_list)
+
+
+              #logger.debug @filterProbes.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+              #logger.debug @sorted_list.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"       
+              
+           return @filterProbes, @sorted_list
+
+    rescue Exception => e
+              e.message
+              e.backtrace.inspect
+    end 
+
+ end 
+
+ def getColumns(array=[])
+     name, dia, f633_mean, b633_mean = [], [],[],[]
+	   begin
+		     array.map do |element|     
+			       case
+				       when element.include?("Name") then name << element
+           #logger.debug name.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+				       when element.include?("Dia.") then dia << element
+
+           #logger.debug dia.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+				       when element.include?("F633 Mean") then f633_mean << element
+           #logger.debug f633_mean.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+				       when element.include?("B633 Mean") then b633_mean << element  
+           #logger.debug b633_mean.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+     
+			       end
+		     end
+	   
+	    rescue Exception => e
+		   e.message
+                   e.backtrace.inspect
+	    end
+
+    return name, dia, f633_mean, b633_mean 
+ end
+
+ def calTotalSignalIntensity(diameter, foreground, background)
+ 
+   begin 
+        dia = diameter.flatten 
+        dia.shift
+       #logger.debug dia.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+        f633 = foreground.flatten
+        f633.shift
+       #logger.debug f633.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"      
+        b633 = background.flatten
+        b633.shift
+       #logger.debug b633.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+	#Formula for calculating Total Signal Intensity
+	#(F633_mean - B633_mean)*3.14*diameter^2*1/4
+	R.assign "dia", dia
+	R.assign "f633", f633
+	R.assign "b633", b633
+
+  R.eval <<-EOF
+
+	  calTSI <- function(dia, f633, b633) {
+
+	  dia <- as.numeric(dia)
+	  f633 <- as.numeric(f633)
+	  b633 <- as.numeric(b633)
+
+	  tsi <- (f633 - b633) * 3.14 * dia * dia * 1/4
+
+	  return(tsi)
+	} 
+
+	list <- calTSI(dia, f633, b633)
+
+   EOF
+
+	tsi = R.pull("list")
+ #logger.debug tsi.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+        return tsi
+
+   rescue Exception => e
+        e.message
+        e.backtrace.inspect
+   end 
+
+ end
+
+ def sortGprTsiList(probeNameList, totalSignalIntensities)
+
+     names = probeNameList.flatten
+     names.shift
+     filterProbeNames = names.uniq
+
+     R.assign "names", names
+     R.assign "totalSignalIntensities", totalSignalIntensities
+
+     R.eval <<-EOF
+
+        names <- as.vector(names)
+        totalSignalIntensities <- as.numeric(totalSignalIntensities)
+
+	tab <- cbind(Name=names, F633=totalSignalIntensities)
+	tab <- data.frame(tab)	
+ 
+	allProbes <- as.character(tab[,1])
+	uniqueProbeVec <- unique(allProbes) 
+
+	meanTSI <- list()
+	myData <- list()
+
+	for (i in c(1:length(uniqueProbeVec))) {
+	    
+		myData[[i]] <- subset(tab, uniqueProbeVec[i] == tab[ , 1])
+	} 
+
+	for (j in c(1:length(uniqueProbeVec))) {
+
+                newVec <- as.numeric(as.character(myData[[j]][, 2]))
+                replicate <- as.numeric(length(newVec))
+
+		meanTSI[[j]] <- sum(newVec)/replicate
+	}
+
+	meanTSI <- as.numeric(unlist(meanTSI))  
+
+     EOF
+ 
+    #passing non UTF-8 char from R to ruby and vice versa throws an error... 
+    #"Error in nchar(var) : invalid multibyte string 1". 
+    #here is a workaround.
+    #Sys.setlocale('LC_ALL','C')
+    #http://stackoverflow.com/questions/6669911/error-in-nchar-when-reading-in-stata-file-in-r-on-mac
+
+
+     tsiList = R.pull("meanTSI")
+     
+
+     return filterProbeNames, tsiList
+
+ end
+      
+
 #==================================INPUT FILE HANDLING============================================
 
  #method for fetching saved file path based on retrived upload ID from database
@@ -261,167 +454,12 @@ EOF
      return array
  end
 
-#===================================CALCULATE TSI==========================================================
-
- #method for parsing gpr file and calculating Total intensities from raw intensities
- def readGpr(file_path)
-   begin
-	     read = IO.binread(file_path)
-	      read_array = []
-		     if read.valid_encoding?
-			 read_array = read.split("\n")         
-		     else
-			 read_array = read.encode!("ASCII-8BIT","ASCII-8BIT", invalid: :replace).split("\n")
-		     end
-	    
-	      mod_array = read_array.map {|e| e.split("\t")}  
-	      
-	      element_stabilized = mod_array.map {|element| element.join(",").gsub("\"","").split(",")} 
-
-	      header_removed = []
-		      if element_stabilized [0].include?("ATF")
-			 header_removed = element_stabilized.drop_while {|i| i unless i.include?("Block")}
-		      else
-			 raise NoGprError, "File does not seem to be GPR formatted. Check the file"
-		      end
-
-              column_based_array = header_removed.transpose
-              @name, @dia, @f633_mean, @b633_mean = getColumns(column_based_array)
-              @get_tsi_list = calTotalSignalIntensity(@dia, @f633_mean, @b633_mean)
-              @filterProbes, @sorted_list = sortGprTsiList(@name, @get_tsi_list)
-              
-              return @filterProbes, @sorted_list
-
-    rescue Exception => e
-              e.message
-              e.backtrace.inspect
-    end 
-
- end 
-
- def getColumns(array=[])
-     name, dia, f633_mean, b633_mean = [], [],[],[]
-	   begin
-		     array.map do |element|     
-			       case
-				       when element.include?("Name") then name << element
-				       when element.include?("Dia.") then dia << element
-				       when element.include?("F633 Mean") then f633_mean << element
-				       when element.include?("B633 Mean") then b633_mean << element       
-			       end
-		     end
-	   
-	    rescue Exception => e
-		   e.message
-                   e.backtrace.inspect
-	    end
-
-    return name, dia, f633_mean, b633_mean 
+ def filterGpr(file_path)
+       read = IO.binread(file_path)
+       check = read.encode('UTF-8', :invalid => :replace, :undef => :replace)
+       File.open(file_path, 'w') { |file| file.write(check) }
  end
 
- def calTotalSignalIntensity(diameter, forground, background)
- 
-   begin 
-        dia = diameter.flatten 
-        dia.shift
-        f633 = foreground.flatten
-        f633.shift
-        b633 = background.flatten
-        b633.shift
-
-	#Formula for calculating Total Signal Intensity
-	#(F633_mean - B633_mean)*3.14*diameter^2*1/4
-	R.assign "dia", dia
-	R.assign "f633", f633_mean
-	R.assign "b633", b633_mean
-
-  R.eval <<-EOF
-
-	  calTSI <- function(dia, f633, b633) {
-
-	  dia <- as.numeric(dia)
-	  f633 <- as.numeric(f633)
-	  b633 <- as.numeric(b633)
-
-	  tsi <- (f633 - b633) * 3.14 * dia * dia * 1/4
-
-	  return(tsi)
-	} 
-
-	list <- calTSI(dia, f633, b633)
-
-   EOF
-
-	tsi = R.pull("list")
-
-        return tsi
-
-   rescue Exception => e
-        e.message
-        e.backtrace.inspect
-   end 
-
- end
-
- def sortGprTsiList(probeNameList, totalSignalIntensities)
-
-     names = probeNameList.flatten
-     names.shift
-     puts "#{names}"
-
-     R.assign "names", names
-     R.assign "totalSignalIntensities", totalSignalIntensities
-
-     R.eval <<-EOF
-	filterReplicatesFromGpr <- function(names, totalSignalIntensities) {
-
-        names <- as.vector(names)
-        totalSignalIntensities <- as.numeric(totalSignalIntensities)
-
-	tab <- cbind(Name=names, F633=totalSignalIntensities)
-	tab <- data.frame(tab)	
- 
-	allProbes <- as.character(tab[,1])
-	uniqueProbeVec <- unique(allProbes) 
-        print(uniqueProbeVec)
-
-	meanTSI <- list()
-	myData <- list()
-
-	for (i in c(1:length(uniqueProbeVec))) {
-	    
-		myData[[i]] <- subset(tab, uniqueProbeVec[i] == tab[ , 1]) 
-	        print(myData[[i]])
-	} 
-
-	for (j in c(1:length(uniqueProbeVec))) {
-
-                newVec <- as.numeric(as.character(myData[[j]][, 2]))
-                replicate <- as.numeric(length(newVec))
-
-		meanTSI[[j]] <- sum(newVec)/replicate
-                
-
-	}
-
-	meanTSI <- unlist(meanTSI)
-	
-	return(meanTSI)
-
-	}
-
-        list <- filterReplicatesFromGpr(names, totalSignalIntensities)
-
-
-     EOF
-
-     meanTSI = R.pull("list")
-     filterProbes = R.pull("uniqueProbeVec")
-
-     return filterProbes, meanTSI
-
- end
-      
 
 #===========================================SEND FILE TO USER=================================================
 
