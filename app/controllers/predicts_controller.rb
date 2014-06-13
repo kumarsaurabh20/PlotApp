@@ -402,11 +402,21 @@ EOF
 	meanTSI <- unlist(meanTSI)
 
    EOF
+            
+            #passing non UTF-8 char from R to ruby and vice versa throws an error... 
+	    #"Error in nchar(var) : invalid multibyte string 1". 
+	    #here is a workaround.
+	    #Sys.setlocale('LC_ALL','C')
+	    #http://stackoverflow.com/questions/6669911/error-in-nchar-when-reading-in-stata-file-in-r-on-mac
 
-	tsi = R.pull("list")
- #logger.debug tsi.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+	   #Splitting with in R
+	   #split(a, ceiling(seq_along(a)/3))
 
-        return tsi
+          
+            #tsi = R.pull("totalSignalIntensities")
+           tsiList = R.pull("meanTSI")
+           return filterNames, tsiList
+
 
    rescue Exception => e
         e.message
