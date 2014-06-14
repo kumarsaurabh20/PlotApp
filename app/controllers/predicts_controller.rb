@@ -368,7 +368,38 @@ EOF
 	  return(tsi)
 	} 
 
-	list <- calTSI(dia, f633, b633)
+	totalSignalIntensities <- calTSI(dia, f633, b633)
+
+       names <- as.vector(names)
+       totalSignalIntensities <- as.numeric(totalSignalIntensities)
+
+	tab <- cbind(Name=names, F633=totalSignalIntensities)
+	tab <- data.frame(tab)	
+ 
+	allProbes <- as.character(tab[,1])
+	uniqueProbeVec <- unique(allProbes) 
+        uniqueProbeVecFilter <- gsub("\357\277\275\357\277\275\357\277\275M", "", uniqueProbeVec)
+        print(uniqueProbeVecFilter) 
+
+	meanTSI <- list()
+	myData <- list()
+
+	for (i in c(1:length(uniqueProbeVec))) {
+	    
+		myData[[i]] <- subset(tab, uniqueProbeVec[i] == tab[ , 1])
+	} 
+
+	for (j in c(1:length(uniqueProbeVec))) {
+
+                newVec <- as.numeric(as.character(myData[[j]][, 2]))
+                replicate <- as.numeric(length(newVec))
+
+		meanTSI[[j]] <- sum(newVec)/replicate
+                
+
+	}
+
+	meanTSI <- unlist(meanTSI)
 
    EOF
 
