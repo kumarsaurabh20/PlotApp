@@ -351,6 +351,12 @@ EOF
       return(dummy)
     }
 
+   names <- mergeVectors("name", counts)
+   names <- as.character(names)
+   dia <- mergeVectors("dia", counts)
+   f633 <- mergeVectors("f633", counts)
+   b633 <- mergeVectors("b633", counts)
+
 	  calTSI <- function(dia, f633, b633) {
 
 	  dia <- as.numeric(dia)
