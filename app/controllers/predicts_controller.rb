@@ -342,6 +342,15 @@ EOF
 
   R.eval <<-EOF
 
+
+    mergeVectors <- function(array, counts) {
+      for (i in c(1:counts)) {
+         if (i == 1) { dummy <- c(get(paste0(array,i))) } 
+         else { dummy <- c(dummy, get(paste0(array,i))) }    
+       }
+      return(dummy)
+    }
+
 	  calTSI <- function(dia, f633, b633) {
 
 	  dia <- as.numeric(dia)
