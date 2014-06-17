@@ -333,7 +333,12 @@ EOF
      end
      #R.assign "f633", f633
 
-     
+     b633 = partition_array(b633)
+     for i in 1..b633.count
+      R.assign "b633#{i}", b633[i-1]
+     end
+     #R.assign "b633", b633
+
 
   R.eval <<-EOF
 
