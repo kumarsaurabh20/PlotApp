@@ -327,6 +327,14 @@ EOF
      end
      #R.assign "dia", dia
 
+     f633 = partition_array(f633)
+     for i in 1..f633.count
+      R.assign "f633#{i}", f633[i-1]
+     end
+     #R.assign "f633", f633
+
+     
+
   R.eval <<-EOF
 
 	  calTSI <- function(dia, f633, b633) {
