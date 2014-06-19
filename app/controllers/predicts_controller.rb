@@ -319,12 +319,13 @@ EOF
 	 R.assign "name#{i}", names[i-1]
 	end
 
-
-	#Formula for calculating Total Signal Intensity
-	#(F633_mean - B633_mean)*3.14*diameter^2*1/4
-	R.assign "dia", dia
-	R.assign "f633", f633
-	R.assign "b633", b633
+     #Formula for calculating Total Signal Intensity
+     #(F633_mean - B633_mean)*3.14*diameter^2*1/4
+     dia = partition_array(dia)
+     for i in 1..dia.count
+      R.assign "dia#{i}", dia[i-1]
+     end
+     #R.assign "dia", dia
 
   R.eval <<-EOF
 
