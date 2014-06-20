@@ -310,6 +310,16 @@ EOF
         b633.shift
        #logger.debug b633.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
+
+        names = partition_array(names)
+	counts = names.length
+  
+        R.assign "counts", counts
+	for i in 1..names.count
+	 R.assign "name#{i}", names[i-1]
+	end
+
+
 	#Formula for calculating Total Signal Intensity
 	#(F633_mean - B633_mean)*3.14*diameter^2*1/4
 	R.assign "dia", dia
