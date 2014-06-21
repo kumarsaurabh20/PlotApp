@@ -248,8 +248,6 @@ EOF
 
               @name, @dia, @f633_mean, @b633_mean = getColumns(column_based_array)
 
-
-
               @probeNames, @sorted_list = calTotalSignalIntensity(@name, @dia, @f633_mean, @b633_mean)
                   
               #@filterProbes, @sorted_list = sortGprTsiList(@name, @get_tsi_list)
@@ -293,9 +291,15 @@ EOF
     return name, dia, f633_mean, b633_mean 
  end
 
- def calTotalSignalIntensity(diameter, foreground, background)
+ def calTotalSignalIntensity(probeNameList, diameter, foreground, background)
  
    begin 
+
+       names = probeNameList.flatten
+       names.shift
+       filterNames = names.uniq 
+       #logger.debug dia.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
         dia = diameter.flatten 
         dia.shift
        #logger.debug dia.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
