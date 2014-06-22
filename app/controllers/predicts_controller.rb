@@ -250,19 +250,14 @@ EOF
 
 
 
-              @get_tsi_list = calTotalSignalIntensity(@dia, @f633_mean, @b633_mean)
-     
-
-
-
-              
+              @probeNames, @sorted_list = calTotalSignalIntensity(@name, @dia, @f633_mean, @b633_mean)
+                  
               #@filterProbes, @sorted_list = sortGprTsiList(@name, @get_tsi_list)
-
 
               #logger.debug @filterProbes.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
               #logger.debug @sorted_list.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"       
               
-           return @filterProbes, @sorted_list
+           return @probeNames, @sorted_list
 
     rescue Exception => e
               e.message
