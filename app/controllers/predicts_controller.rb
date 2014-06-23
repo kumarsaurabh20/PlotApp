@@ -255,8 +255,8 @@ EOF
 
 
 
-
-              @filterProbes, @sorted_list = sortGprTsiList(@name, @get_tsi_list)
+              
+              #@filterProbes, @sorted_list = sortGprTsiList(@name, @get_tsi_list)
 
 
               #logger.debug @filterProbes.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
