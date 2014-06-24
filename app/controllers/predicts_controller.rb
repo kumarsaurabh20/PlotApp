@@ -399,6 +399,22 @@ EOF
      return filterProbeNames, tsiList
 
  end
+
+ def partition_array(array=[], size=500)
+		dummy = []
+	     begin
+		if array.empty?
+		   raise "Input array is empty!!"
+		else
+		array.each_slice(size) {|element| dummy.push(element)}
+		end
+	     rescue Exception => e
+		   e.message
+	     end     
+
+     return dummy 
+ end
+
       
 
 #==================================INPUT FILE HANDLING============================================
