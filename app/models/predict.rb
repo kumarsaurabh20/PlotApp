@@ -17,5 +17,16 @@ has_attached_file :rawinten, :url => "/:attachment/:id/:style/:basename.:extensi
 #  :content_type => { :content_type => ['text/csv', 'plain/text', 'gpr' , 'application/xls'] },
 #  :size => { :in => 0..50.megabytes }
 
+has_attached_file :repone, :url => "/:attachment/:basename.:extension",
+                          :path => ":rails_root/public/Predict/Replicate/:basename.:extension"
+
+has_attached_file :reptwo, :url => "/:attachment/:basename.:extension",
+                          :path => ":rails_root/public/Predict/Replicate/:basename.:extension"
+
+has_attached_file :repthree, :url => "/:attachment/:basename.:extension",
+                          :path => ":rails_root/public/Predict/Replicate/:basename.:extension"
+
+
+
 
 end
