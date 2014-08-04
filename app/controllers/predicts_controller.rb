@@ -32,7 +32,7 @@ end
         
         coeffs_path, raw_inten_path = get_paths(id)
         @raw_inten_transpose = import(raw_inten_path)
-        logger.debug @raw_inten_transpose.to_s + "##############################################"  
+        #logger.debug @raw_inten_transpose.to_s + "##############################################"  
 
         @coeffs_transpose = import(coeffs_path)
         @probe_list = @raw_inten_transpose[0]
@@ -44,6 +44,14 @@ end
         format.json { render json: @predict.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def include_replicates
+
+      
+
+
+
   end
 
  #method recieving Ajax request from the view posting selected probes for normalization
@@ -61,9 +69,9 @@ end
      
      #file data in R input compatible format (currently its 2D array as row vectors)
      @coeffs_transpose = import(coeffs_path)
-     logger.debug @coeffs_transpose.to_s
+     #logger.debug @coeffs_transpose.to_s
      @raw_inten_transpose = import(rawintens_path)
-     logger.debug @raw_inten_transpose
+     #logger.debug @raw_inten_transpose
 
      counter = 0
      for i in 1..@coeffs_transpose.count
@@ -102,7 +110,7 @@ end
         }
 
       length <- length(norm_probes) - 1
-      for (i in 1:length) { inten_matrix <- cbind(inten_matrix, inten_matrix[,2])}
+      for (i in c(1:length)) { inten_matrix <- cbind(inten_matrix, inten_matrix[,2])}
 
       column_filter <- inten_matrix[, -1]
       col <- ncol(column_filter)
@@ -126,7 +134,7 @@ end
         for (i in c(1:nrow(results))) { dummyMatrix[i,] <- results2[match_probes[i], ]}
         results2 <- dummyMatrix
 
-	results_filter <- results[, -1]
+       	results_filter <- results[, -1]
 	results2_filter <- results2[, -1]
 	results2_filter <- apply(results2_filter,2, function(x) as.numeric(x))
 	results_filter <- apply(results_filter,2, function(x) as.numeric(x))
@@ -146,6 +154,8 @@ end
 EOF
 
  @results = R.pull("results")
+
+ puts @results
 
  @countToView = Array.new
 
@@ -454,13 +464,16 @@ EOF
      rawintens_file_name = predict.rawinten_file_name
 
      #set the path to the file folder
-     coeffs_path = "#{Rails.root}/public/Predict/coeffs"
-     rawintens_path = "#{Rails.root}/public/Predict/rawintens"
+     coeffs_path = "#{Rails.root}/public/Predict/coeffs/#{id}"
+     rawintens_path = "#{Rails.root}/public/Predict/rawintens/#{id}"
+     
       
      #create file paths and return them    
      coeffs_file = File.join(coeffs_path, coeffs_file_name)
      rawintens_file = File.join(rawintens_path, rawintens_file_name)
  
+     #logger.debug rawintens_file.to_s
+
      return coeffs_file, rawintens_file
  end
 
@@ -475,6 +488,7 @@ EOF
 		     array_splitted = array.map {|a| a.split(",")} 
 		     array_transpose = array_splitted.transpose
 		     return array_transpose
+                     #logger.debug array_transpose
 	     else 
 		    name, tsi = readGpr(file_path)
                     nameTsiArray = [ name, tsi ]
@@ -491,7 +505,7 @@ EOF
  def import_ori(file_path)
      string = IO.read(file_path)
      array = string.split("\n")
-     array.delete_if {|x| x[/^Probe*/]}
+     array.delete_if {|x| x[/^Probe*/]} if array[0].include?("Probe,Total")
      return array
  end
 
