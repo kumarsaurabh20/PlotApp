@@ -1,4 +1,5 @@
 class PredictsController < ApplicationController
+
 require 'matrix'
 require 'csv'
 
@@ -46,21 +47,64 @@ end
     end
  end
 
- #take mean values of replicates
- def add_replicates(original_gpr)
+ #This method handles replicate .gpr files. The method reads individual replicate along with main gpr by applying
+ #readGpr method. It stores the calculates TSI and names in separate arrays. The names array carries same probe names.
+ #But the TSI has different intensities and the TSI array stores it as a 2D array. Each element of TSI has a calculated
+ # TSI of replicate. Then the method apply transpose function to carry same probe values in a single elemnet. After this
+ #step the negataive numbers are converted to zero and then airthmatic mean is applied to all elements of a individual
+ #element of TSI array. if [0,0,0] the 0/3 gives us 0. if [0,0,24] then 24/3 gives 8. In other way it provides a kind of 
+ # negative weight for a negative or zero value of a probe in a replicate. if [1, 21, 101] then 123/3 = 41
+ def add_replicates(id)
+
+     #create path variable
+     replicate_path = File.join("#{Rails.root}","public","Replicate", "#{id}")
+     main_gpr_path = File.join("#{Rails.root}","public", "Predict", "rawintens", "#{id}")
+
+     #check replicates
+     replicate = check_replicates_availability(replicate_path)
+
+     dummynames = Array.new
+     dummyTSI   = Array.new
+
+     #condition for the replicates presense or absense
+     if replicate == true
+
+	Dir["#{replicate_path}/*.gpr"].each_with_index do |file, i|
+		dummynames[i], dummyTSI[i] = readGpr(file)
+	end         
+	Dir["#{main_gpr_path}/*.gpr"].each do |file|
+		name, tsi =  readGpr(file)
+		dummynames.push(name)
+		dummyTSI.push(tsi)          
+	end
+	   
+	tsi_container = dummyTSI.transpose
+	tsi_container.map! {|e| e.map! {|f| f < 0? 0 : f}}
+	tsi_container.map! {|e| e.inject(:+)/e.size}
+
+	names_container = dummynames[0]
+
+	return names_container, tsi_container
+
+    else
+	Dir["#{main_gpr_path}/*.gpr"].each do |file|
+		name, tsi =  readGpr(file)        
+	end
+	 
+	return name, tsi
+    end
 
  end
 
 
  #check the presence of replicates
- def check_replicates
-
+ def check_replicates_availability(path)    
      #check the folders for replicates
-
-     #check the the uploaded files
-
-     #return true if replicates are avaiable else false     
-
+     if File.exist?(path) and !Dir["#{path}/*.gpr"].empty?
+        return true
+     else 
+        return false
+     end  
  end
 
  #method recieving Ajax request from the view posting selected probes for normalization
@@ -270,7 +314,6 @@ EOF
               @probeNames, @sorted_list = calTotalSignalIntensity(@name, @dia, @f633_mean, @b633_mean)
                   
               #@filterProbes, @sorted_list = sortGprTsiList(@name, @get_tsi_list)
-
               #logger.debug @filterProbes.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"
               #logger.debug @sorted_list.to_s + "++++++++++++++++++++++++++++++++++++++++++++++++++++"       
               
