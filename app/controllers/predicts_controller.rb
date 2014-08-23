@@ -31,11 +31,11 @@ end
 
         @id = @predict.id
         
-        coeffs_path, raw_inten_path = get_paths(id)
-        @raw_inten_transpose = import(raw_inten_path)
+        coeffs_path, raw_inten_path, replicate_path = get_paths(id)
+        @raw_inten_transpose = import(raw_inten_path, replicate_path)
         #logger.debug @raw_inten_transpose.to_s + "##############################################"  
 
-        @coeffs_transpose = import(coeffs_path)
+        @coeffs_transpose = import(coeffs_path, replicate_path)
         @probe_list = @raw_inten_transpose[0]
 
         flash[:notice] = "Files were successfully uploaded!!"
@@ -45,66 +45,6 @@ end
         format.json { render json: @predict.errors, status: :unprocessable_entity }
       end
     end
- end
-
- #This method handles replicate .gpr files. The method reads individual replicate along with main gpr by applying
- #readGpr method. It stores the calculates TSI and names in separate arrays. The names array carries same probe names.
- #But the TSI has different intensities and the TSI array stores it as a 2D array. Each element of TSI has a calculated
- # TSI of replicate. Then the method apply transpose function to carry same probe values in a single elemnet. After this
- #step the negataive numbers are converted to zero and then airthmatic mean is applied to all elements of a individual
- #element of TSI array. if [0,0,0] the 0/3 gives us 0. if [0,0,24] then 24/3 gives 8. In other way it provides a kind of 
- # negative weight for a negative or zero value of a probe in a replicate. if [1, 21, 101] then 123/3 = 41
- def add_replicates(id)
-
-     #create path variable
-     replicate_path = File.join("#{Rails.root}","public","Replicate", "#{id}")
-     main_gpr_path = File.join("#{Rails.root}","public", "Predict", "rawintens", "#{id}")
-
-     #check replicates
-     replicate = check_replicates_availability(replicate_path)
-
-     dummynames = Array.new
-     dummyTSI   = Array.new
-
-     #condition for the replicates presense or absense
-     if replicate == true
-
-	Dir["#{replicate_path}/*.gpr"].each_with_index do |file, i|
-		dummynames[i], dummyTSI[i] = readGpr(file)
-	end         
-	Dir["#{main_gpr_path}/*.gpr"].each do |file|
-		name, tsi =  readGpr(file)
-		dummynames.push(name)
-		dummyTSI.push(tsi)          
-	end
-	   
-	tsi_container = dummyTSI.transpose
-	tsi_container.map! {|e| e.map! {|f| f < 0? 0 : f}}
-	tsi_container.map! {|e| e.inject(:+)/e.size}
-
-	names_container = dummynames[0]
-
-	return names_container, tsi_container
-
-    else
-	Dir["#{main_gpr_path}/*.gpr"].each do |file|
-		name, tsi =  readGpr(file)        
-	end
-	 
-	return name, tsi
-    end
-
- end
-
-
- #check the presence of replicates
- def check_replicates_availability(path)    
-     #check the folders for replicates
-     if File.exist?(path) and !Dir["#{path}/*.gpr"].empty?
-        return true
-     else 
-        return false
-     end  
  end
 
  #method recieving Ajax request from the view posting selected probes for normalization
@@ -118,12 +58,12 @@ end
      logger.debug @data.to_s
 
      #fetch saved file paths
-     coeffs_path, rawintens_path = get_paths(id)
+     coeffs_path, rawintens_path, replicate_path = get_paths(id)
      
      #file data in R input compatible format (currently its 2D array as row vectors)
-     @coeffs_transpose = import(coeffs_path)
+     @coeffs_transpose = import(coeffs_path, replicate_path)
      #logger.debug @coeffs_transpose.to_s
-     @raw_inten_transpose = import(rawintens_path)
+     @raw_inten_transpose = import(rawintens_path, replicate_path)
      #logger.debug @raw_inten_transpose
 
      counter = 0
@@ -518,6 +458,7 @@ EOF
      #set the path to the file folder
      coeffs_path = "#{Rails.root}/public/Predict/coeffs/#{id}"
      rawintens_path = "#{Rails.root}/public/Predict/rawintens/#{id}"
+     replicate_path = File.join("#{Rails.root}","public","Replicate", "#{id}")
      
       
      #create file paths and return them    
@@ -526,12 +467,12 @@ EOF
  
      #logger.debug rawintens_file.to_s
 
-     return coeffs_file, rawintens_file
+     return coeffs_file, rawintens_file, replicate_path
  end
 
  #method for parsing calibration data
  #check why its not working with the condition!!! Try to refactor import methods again
- def import(file_path)
+ def import(file_path, replicate_path)
 
      accepted_formats = [".csv"]
      begin
@@ -542,9 +483,10 @@ EOF
 		     return array_transpose
                      #logger.debug array_transpose
 	     else 
-		    name, tsi = readGpr(file_path)
-                    nameTsiArray = [ name, tsi ]
-                    return nameTsiArray
+		    #name, tsi = readGpr(file_path)
+                    #nameTsiArray = [ name, tsi ]
+                    #return nameTsiArray
+                    add_replicates(file_path, replicate_path)
 	     end
 
      rescue Exception => e
@@ -560,6 +502,62 @@ EOF
      array.delete_if {|x| x[/^Probe*/]} if array[0].include?("Probe,Total")
      return array
  end
+
+ #This method handles replicate .gpr files. The method reads individual replicate along with main gpr by applying
+ #readGpr method. It stores the calculates TSI and names in separate arrays. The names array carries same probe names.
+ #But the TSI has different intensities and the TSI array stores it as a 2D array. Each element of TSI has a calculated
+ # TSI of replicate. Then the method apply transpose function to carry same probe values in a single elemnet. After this
+ #step the negataive numbers are converted to zero and then airthmatic mean is applied to all elements of a individual
+ #element of TSI array. if [0,0,0] the 0/3 gives us 0. if [0,0,24] then 24/3 gives 8. In other way it provides a kind of 
+ # negative weight for a negative or zero value of a probe in a replicate. if [1, 21, 101] then 123/3 = 41
+ def add_replicates(file_path, replicate_path)
+
+     #check replicates
+     replicate = check_replicates_availability(replicate_path)
+
+     dummynames = Array.new
+     dummyTSI   = Array.new
+
+     #condition for the replicates presense or absense
+     if replicate == true
+
+	Dir["#{replicate_path}/*.gpr"].each_with_index do |file, i|
+		dummynames[i], dummyTSI[i] = readGpr(file)
+	end         
+	Dir["#{file_path}"].each do |file|
+		name, tsi =  readGpr(file)
+		dummynames.push(name)
+		dummyTSI.push(tsi)          
+	end
+	   
+	tsi_container = dummyTSI.transpose
+	tsi_container.map! {|e| e.map! {|f| f < 0? 0 : f}}
+	tsi_container.map! {|e| e.inject(:+)/e.size}
+
+	names_container = dummynames[0]
+        container = [names_container, tsi_container]
+
+	return container
+
+    else	
+	name, tsi =  readGpr(file_path)  
+        array_transpose = [name, tsi]      
+	return array_transpose
+    end
+
+ end
+
+
+ #check the presence of replicates
+ def check_replicates_availability(path)    
+     #check the folders for replicates
+     if File.exist?(path) and !Dir["#{path}/*.gpr"].empty?
+        return true
+     else 
+        return false
+     end  
+ end
+
 
  def filterGpr(file_path)
        read = IO.binread(file_path)
@@ -613,60 +611,3 @@ EOF
 
 
 end
-
-
-
-#==========================================EXTRA STUFF==================================================
-# def sortGprTsiList(probeNameList, totalSignalIntensities)
-#
-#     names = probeNameList.flatten
-#     names.shift
-#     filterProbeNames = names.uniq
-#
-#     R.assign "names", names
-#     R.assign "totalSignalIntensities", totalSignalIntensities
-#
-#     R.eval <<-EOF
-#
-#        names <- as.vector(names)
-#        totalSignalIntensities <- as.numeric(totalSignalIntensities)
-#
-#	tab <- cbind(Name=names, F633=totalSignalIntensities)
-#	tab <- data.frame(tab)	
-# 
-#	allProbes <- as.character(tab[,1])
-#	uniqueProbeVec <- unique(allProbes) 
-#
-#	meanTSI <- list()
-#	myData <- list()
-#
-#	for (i in c(1:length(uniqueProbeVec))) {
-#	    
-#		myData[[i]] <- subset(tab, uniqueProbeVec[i] == tab[ , 1])
-#	} 
-#
-#	for (j in c(1:length(uniqueProbeVec))) {
-#
-#                newVec <- as.numeric(as.character(myData[[j]][, 2]))
-#                replicate <- as.numeric(length(newVec))
-#
-#		meanTSI[[j]] <- sum(newVec)/replicate
-#	}
-#
-#	meanTSI <- as.numeric(unlist(meanTSI))  
-#
-#     EOF
-# 
-#    #passing non UTF-8 char from R to ruby and vice versa throws an error... 
-#    #"Error in nchar(var) : invalid multibyte string 1". 
-#    #here is a workaround.
-#    #Sys.setlocale('LC_ALL','C')
-#    #http://stackoverflow.com/questions/6669911/error-in-nchar-when-reading-in-stata-file-in-r-on-mac
-#
-#
-#     tsiList = R.pull("meanTSI")
-#     #
-#
-#     return filterProbeNames, tsiList
-#
-# end
