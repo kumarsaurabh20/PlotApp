@@ -21,8 +21,8 @@ end
   end
 
   # POST /predicts
-  # POST /predicts.json
-  def create
+ # POST /predicts.json
+ def create
     @predict = Predict.new(params[:predict])
 
     respond_to do |format|
@@ -44,15 +44,24 @@ end
         format.json { render json: @predict.errors, status: :unprocessable_entity }
       end
     end
-  end
+ end
 
-  def include_replicates
+ #take mean values of replicates
+ def add_replicates(original_gpr)
 
-      
+ end
 
 
+ #check the presence of replicates
+ def check_replicates
 
-  end
+     #check the folders for replicates
+
+     #check the the uploaded files
+
+     #return true if replicates are avaiable else false     
+
+ end
 
  #method recieving Ajax request from the view posting selected probes for normalization
  #cell count prediction calculation are done in this method
