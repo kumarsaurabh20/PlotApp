@@ -8,6 +8,8 @@ Regardless of the installation method, RinRuby is invoked within a Ruby/in rails
   
    require "rinruby"
 
-The app utilizes google javascript/jquery charting library to create dynamic graphs.
+The app utilizes google javascript/jquery charting library to create dynamic graphs. 
+
+It implements Gradient descent algorithm for finding regression parameters based on calibration curves.
 
 
